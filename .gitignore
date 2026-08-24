@@ -83,3 +83,6 @@ script.md
 
 # Internal Infrastructure Diagnostics
 docs/infra-diagnostic-report.md
+
+# Feature Implementation Planning
+csv-implementation/
