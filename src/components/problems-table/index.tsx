@@ -730,27 +730,6 @@ export function ProblemsTable() {
     }
   }, [mutate]);
 
-  // Status save with optimistic update
-  const handleStatusSave = useCallback(async (id: string, status: string) => {
-    // Optimistic — update status immediately
-    mutate(
-      (prev: any[] | undefined) => prev?.map((p) => p.id === id ? { ...p, status } : p) ?? [],
-      { revalidate: false }
-    );
-    showToast(`Status updated to ${status.toLowerCase()}`);
-    try {
-      const res = await fetch(`/api/problems/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status }),
-      });
-      if (!res.ok) throw new Error('Failed to update status');
-    } catch (e: any) {
-      mutate(); // revert by refetching from server
-      showToast(e.message ?? 'Failed to update status');
-    }
-  }, [mutate]);
-
   const renderRows = (problems: any[]) =>
     problems.map((p) => (
       <ProblemRow
@@ -761,7 +740,6 @@ export function ProblemsTable() {
         isHighlighted={highlightId === p.id}
         onToggleSelect={handleToggleSelect}
         onStarToggle={handleStarToggle}
-        onStatusSave={handleStatusSave}
         onDifficultySave={handleDifficultySave}
         onTopicSave={handleTopicSave}
         onNotesSave={handleNotesSave}

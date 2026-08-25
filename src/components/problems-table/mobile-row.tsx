@@ -9,10 +9,9 @@ type MobileRowProps = {
   problem: any;
   isSelected?: boolean;
   onStarToggle: (id: string, current: boolean) => void;
-  onStatusSave?: (id: string, status: string) => void;
 };
 
-export function MobileRow({ problem, isSelected, onStarToggle, onStatusSave }: MobileRowProps) {
+export function MobileRow({ problem, isSelected, onStarToggle }: MobileRowProps) {
   const diffStyle = getDifficultyStyle(problem.difficulty);
   const topicColor = getTopicColor(problem.topic || '');
 
@@ -118,7 +117,7 @@ export function MobileRow({ problem, isSelected, onStarToggle, onStatusSave }: M
           </span>
         )}
         <div style={{ marginLeft: 'auto' }}>
-          <StatusCell problem={problem} onSave={onStatusSave ? (st) => onStatusSave(problem.id, st) : undefined} />
+          <StatusCell problem={problem} />
         </div>
       </div>
     </div>

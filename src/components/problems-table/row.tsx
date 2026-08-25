@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow, startOfDay } from 'date-fns';
-import { getDifficultyStyle, getTopicColor, Pill, DifficultyPickerCell, TopicPickerCell, TopLevelPortal } from './columns';
+import { getDifficultyStyle, getTopicColor, Pill, DifficultyPickerCell, TopicPickerCell } from './columns';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 import { useState, useRef, useEffect } from 'react';
@@ -9,98 +9,55 @@ import { CustomCheckbox } from '@/components/ui/custom-checkbox';
 import { Bookmark, Pencil } from 'lucide-react';
 
 // Status dot + label — derives from problem.status and revisions[0].confidence
-export function StatusCell({ problem, onSave }: { problem: any; onSave?: (status: string) => void }) {
-  const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLDivElement>(null);
-
-  const renderLabel = () => {
-    if (problem.status === 'MASTERED') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#a78bfa', flexShrink: 0 }} />
-          <span data-status-label style={{ fontSize: 13, color: '#a78bfa', fontFamily: 'var(--font-geist-mono), monospace' }}>Mastered</span>
-        </div>
-      );
-    }
-    if (problem.status === 'RETIRED') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#444', flexShrink: 0 }} />
-          <span data-status-label style={{ fontSize: 13, color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
-        </div>
-      );
-    }
-
-    const latestConfidence = problem.revisions?.[0]?.confidence ?? null;
-
-    if (!latestConfidence || problem.revisionCount === 0) {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#555', flexShrink: 0 }} />
-          <span data-status-label style={{ fontSize: 13, color: '#666', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
-        </div>
-      );
-    }
-
-    if (latestConfidence === 'CLEAN') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#4ade80', flexShrink: 0 }} />
-          <span data-status-label style={{ fontSize: 13, color: '#4ade80', fontFamily: 'var(--font-geist-mono), monospace' }}>Clean</span>
-        </div>
-      );
-    }
-    if (latestConfidence === 'SHAKY') {
-      return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#fb923c', flexShrink: 0 }} />
-          <span data-status-label style={{ fontSize: 13, color: '#fb923c', fontFamily: 'var(--font-geist-mono), monospace' }}>Shaky</span>
-        </div>
-      );
-    }
+export function StatusCell({ problem }: { problem: any }) {
+  if (problem.status === 'MASTERED') {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#f87171', flexShrink: 0 }} />
-        <span data-status-label style={{ fontSize: 13, color: '#f87171', fontFamily: 'var(--font-geist-mono), monospace' }}>Struggled</span>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#a78bfa', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: '#a78bfa', fontFamily: 'var(--font-geist-mono), monospace' }}>Mastered</span>
       </div>
     );
-  };
-
-  return (
-    <div ref={triggerRef} style={{ position: 'relative', cursor: onSave ? 'pointer' : 'default', display: 'inline-block' }}>
-      <div onClick={() => onSave && setOpen((o) => !o)}>
-        {renderLabel()}
+  }
+  if (problem.status === 'RETIRED') {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#444', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
       </div>
-      {open && onSave && (
-        <TopLevelPortal anchorRef={triggerRef} onClose={() => setOpen(false)} width={130}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            {[
-              { key: 'ACTIVE', label: 'Active', color: '#4ade80' },
-              { key: 'MASTERED', label: 'Mastered', color: '#a78bfa' },
-              { key: 'RETIRED', label: 'Retired', color: '#555555' },
-            ].map((s) => (
-              <button
-                key={s.key}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSave(s.key);
-                  setOpen(false);
-                }}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 8, width: '100%',
-                  background: 'none', border: 'none', cursor: 'pointer', padding: '6px 8px',
-                  borderRadius: 4, color: s.color, fontSize: 13, textAlign: 'left',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#252525')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = 'none')}
-              >
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: s.color }} />
-                {s.label}
-              </button>
-            ))}
-          </div>
-        </TopLevelPortal>
-      )}
+    );
+  }
+
+  const latestConfidence = problem.revisions?.[0]?.confidence ?? null;
+
+  if (!latestConfidence || problem.revisionCount === 0) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#555', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: '#666', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
+      </div>
+    );
+  }
+
+  if (latestConfidence === 'CLEAN') {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#4ade80', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: '#4ade80', fontFamily: 'var(--font-geist-mono), monospace' }}>Clean</span>
+      </div>
+    );
+  }
+  if (latestConfidence === 'SHAKY') {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#fb923c', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: '#fb923c', fontFamily: 'var(--font-geist-mono), monospace' }}>Shaky</span>
+      </div>
+    );
+  }
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+      <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#f87171', flexShrink: 0 }} />
+      <span data-status-label style={{ fontSize: 13, color: '#f87171', fontFamily: 'var(--font-geist-mono), monospace' }}>Struggled</span>
     </div>
   );
 }
@@ -379,14 +336,13 @@ type ProblemRowProps = {
   isHighlighted?: boolean;
   onToggleSelect: (id: string) => void;
   onStarToggle: (id: string, current: boolean) => void;
-  onStatusSave?: (id: string, status: string) => Promise<void> | void;
   onDifficultySave: (id: string, difficulty: string) => Promise<void> | void;
   onTopicSave: (id: string, topic: string) => Promise<void> | void;
   onNotesSave: (id: string, notes: string) => Promise<void> | void;
   onCustomFieldSave: (id: string, columnName: string, value: string) => Promise<void> | void;
 };
 
-export function ProblemRow({ problem, columns, isSelected, isHighlighted, onToggleSelect, onStarToggle, onStatusSave, onDifficultySave, onTopicSave, onNotesSave, onCustomFieldSave }: ProblemRowProps) {
+export function ProblemRow({ problem, columns, isSelected, isHighlighted, onToggleSelect, onStarToggle, onDifficultySave, onTopicSave, onNotesSave, onCustomFieldSave }: ProblemRowProps) {
   const [hovered, setHovered] = useState(false);
   const diffStyle = getDifficultyStyle(problem.difficulty);
   const topicColor = getTopicColor(problem.topic);
@@ -478,7 +434,7 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
 
       {/* Status */}
       <td data-cell="status" style={{ width: 140, padding: '0 12px' }}>
-        <StatusCell problem={problem} onSave={onStatusSave ? (s) => onStatusSave(problem.id, s) : undefined} />
+        <StatusCell problem={problem} />
       </td>
 
       {/* Star */}
