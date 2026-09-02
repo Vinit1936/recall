@@ -95,19 +95,65 @@ Full breakdown of every transition, trigger, and edge case is documented inline 
 
 ---
 
-## Architecture Notes
+## Building with Neon — what this project teaches
+
+This section exists specifically to help other developers avoid a mistake that's easy to make and hard to diagnose: using Neon incorrectly in a serverless Next.js app.
+
+### The problem this solves
+
+Vercel's serverless functions can spin up many concurrent invocations under real traffic. Each invocation that opens its own direct Postgres connection adds up fast — Neon's free tier (and even paid tiers, past a point) have a hard connection ceiling. If every API route opens a fresh direct connection, a modest traffic spike can exhaust it, and you start seeing intermittent `"too many connections"` errors that are maddening to debug because they only appear under load, never in local dev.
+
+### The fix — two connection strings, two jobs
+
+Neon gives you both a **pooled** endpoint (routed through PgBouncer) and a **direct** endpoint. They are not interchangeable, and using the wrong one for the wrong job is the root cause of most Neon + serverless connection issues:
+
+```prisma
+// prisma/schema.prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")   // pooled — every runtime query goes through this
+  directUrl = env("DIRECT_URL")     // direct — migrations ONLY
+}
+```
+
+- **`DATABASE_URL`** — Neon's pooled connection string (hostname contains `-pooler`). PgBouncer multiplexes many short-lived serverless connections onto a small number of real Postgres connections underneath. **Every API route, every Server Component query, everything that runs at request-time uses this one.**
+- **`DIRECT_URL`** — Neon's non-pooled connection string. PgBouncer's transaction pooling mode doesn't support some DDL operations Prisma migrations need, so migrations bypass the pooler entirely and talk to Postgres directly. **This connection is only ever used by `prisma migrate` / `prisma db push` — never at runtime.**
+
+Get both strings from your Neon dashboard's Connection Details panel — it explicitly labels which one is pooled.
+
+### The second half of the fix — a real singleton
+
+Even with the right connection string, creating a new `PrismaClient` instance on every request defeats the purpose — you're back to one connection per invocation. In Next.js specifically, hot reloads in development also spawn new clients unless you guard against it:
+
+```typescript
+// src/lib/prisma.ts
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+
+export const prisma = globalForPrisma.prisma || new PrismaClient();
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma;
+}
+```
+
+Import `prisma` from this one file everywhere in the app. Never call `new PrismaClient()` anywhere else.
+
+### How we verified this was actually working
+
+Rather than assume the setup was correct, we ran a concurrent-load diagnostic before shipping: 50 simultaneous requests against a live API route, checking for connection timeouts or pool exhaustion errors. Zero failures, confirming the pooled connection was correctly absorbing concurrent serverless load rather than each invocation fighting over the direct connection limit. If you're setting this up yourself, don't just trust that it's configured right — this exact test (fire N concurrent requests with `Promise.all()`, watch for connection errors) is the fastest way to confirm it before you find out the hard way in production.
+
+### The mistake we actually made, so you don't have to
+
+Early in this project, the Prisma dependency was installed without pinning a version, and an unrelated network error caused an automated build step to silently drift onto Prisma 7, which uses a different configuration pattern (`prisma.config.ts` instead of the `schema.prisma`-only datasource block shown above). This broke the dual-connection setup in a confusing way — the symptoms looked like a Neon problem but were actually a Prisma version mismatch. Lesson: **pin your Prisma version explicitly**, and if a dependency install fails partway through, don't assume whatever version ends up installed is the one you intended.
+
+---
+
+## Other Architecture Notes
 
 - **Pluggable Platform Resolver Pattern** — every platform lookup implements `PlatformResolver { resolve(identifier: string): ResolveResult }`, registered in a central dictionary. Adding platform #6 requires one new file, zero changes to the schema, UI, or API layer.
 - **Schema-less Custom Fields** — user-defined columns are stored in a `Json` field (`Problem.customFields`) rather than triggering a migration per new column, paired with `UserColumnConfig` for layout/ordering.
-- **Dual Neon Connection Setup** — this is the one worth reading closely for anyone evaluating Neon fit:
-  ```prisma
-  datasource db {
-    provider  = "postgresql"
-    url       = env("DATABASE_URL")   // pooled, PgBouncer — all serverless runtime queries
-    directUrl = env("DIRECT_URL")     // direct connection — migrations only
-  }
-  ```
-  Vercel's serverless functions can open many short-lived concurrent connections; routing all runtime traffic through Neon's pooled endpoint prevents exhausting Postgres's connection ceiling under real load. This was deliberately verified with a concurrent-load diagnostic before shipping — see commit history for the audit.
 
 ---
 
