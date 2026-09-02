@@ -1,3 +1,5 @@
+<div align="center">
+
 # recall.
 
 **Spaced repetition for Data Structures & Algorithms. Solve once. Remember forever.**
@@ -5,23 +7,43 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.9-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-6.19.3-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
+[![Neon](https://img.shields.io/badge/Database-Neon%20Postgres-00E599?style=flat-square&logo=postgresql)](https://neon.tech/)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-**Live Demo:** [recallx.tech](https://recallx.tech) &nbsp;•&nbsp; **Video Demo:** [YouTube Walkthrough](https://youtu.be/EF25DZDJ6gw)
+**Live:** [recallx.tech](https://recallx.tech) &nbsp;•&nbsp; **Video walkthrough:** [YouTube](https://youtu.be/EF25DZDJ6gw) &nbsp;•&nbsp; **Star this repo** if it's useful — it genuinely helps
+
+</div>
 
 ---
 
-## The Problem
+## What is this
 
-Solving a Data Structures & Algorithms problem once does not mean you will remember its core intuition weeks later under interview pressure. Without structured reinforcement, memory decays exponentially according to the forgetting curve. recall. automates spaced repetition so you review each problem right before you forget it.
+Solving a DSA problem once doesn't mean you'll remember it weeks later under interview pressure. recall. is an open-source spaced repetition engine for coding practice — add a problem once, and it automatically schedules revision at increasing intervals (3 → 7 → 14 → 30 days), adapting based on how well you actually recall it each time.
+
+It supports LeetCode, Codeforces, GeeksforGeeks, HackerRank, and CodeChef, with instant metadata auto-fill for over **18,000 indexed problems**, a Notion-style editable tracker, daily revision queues, streaks, and a full activity heatmap.
+
+Built and shipped solo, in active daily development, and used daily by its own creator.
 
 ![Forgetting Curve & Spaced Repetition Intervals](utils/Forgetting%20Curve.png)
 
 ---
 
-## How It Works
+## Why it's built the way it is (and why it belongs on Neon + Vercel)
 
-recall. uses a deterministic, pure spaced repetition engine (`src/lib/scheduling.ts`) to manage problem revision intervals.
+This project leans deliberately on both platforms rather than treating them as interchangeable infrastructure:
+
+- **Neon** — chosen specifically for its serverless Postgres model. recall. uses Neon's dual connection strings (pooled via PgBouncer for all runtime serverless queries, direct for migrations) to handle concurrent request load from Vercel's serverless functions without exhausting connection limits — a real, deliberate architectural decision documented in [Architecture Notes](#architecture-notes) below, not an afterthought.
+- **Vercel** — the entire app is deployed on Vercel's platform, using the App Router's Server Components and Route Handlers as first-class citizens rather than a bolted-on API layer. The project is a genuine, idiomatic Next.js 16 app, not a legacy app force-fit onto the platform.
+
+Both integrations are core to how the product works, not just where it happens to be hosted.
+
+---
+
+## How the core engine works
+
+recall.'s scheduling logic lives in [`src/lib/scheduling.ts`](src/lib/scheduling.ts) as a deterministic, pure, fully unit-tested function set — zero database dependency inside the logic itself, verified independently with Vitest before anything was built on top of it.
 
 ### The Revision Ladder
 Every tracked problem climbs a 4-step interval ladder (`LADDER_DAYS = [3, 7, 14, 30]`):
@@ -32,99 +54,72 @@ Every tracked problem climbs a 4-step interval ladder (`LADDER_DAYS = [3, 7, 14,
 
 ### Confidence Ratings & State Transitions
 
-#### 1. REGULAR Review (Active Problems)
-- **`CLEAN`**:
-  - If on **Step 0–2**: Advances to next step (`newStep: currentStep + 1`), scheduled for `today + LADDER_DAYS[nextStep]`.
-  - If on **Step 3**: Transitions to **`MASTERED`** (`newStatus: 'MASTERED'`, `nextRevisionAt: null`), exiting the active revision queue.
-- **`SHAKY`**: Retains current step (`newStep: currentStep`), repeating the current interval (`nextRevisionAt: today + LADDER_DAYS[currentStep]`).
-- **`STRUGGLED`**: Resets completely to **Step 0** (`newStep: 0`), scheduled for review in **3 days** (`today + LADDER_DAYS[0]`).
+**Regular review (active problems):**
+- **`CLEAN`** — advances to the next step (Step 0-2), or transitions to **`MASTERED`** if already at Step 3, exiting the active queue.
+- **`SHAKY`** — repeats the current interval (doesn't advance, doesn't reset).
+- **`STRUGGLED`** — resets completely to Step 0, regardless of prior progress.
 
-#### 2. RECHECK Review (Mastered Problems Pulled Back)
-When revising a previously mastered problem via "Revise again":
-- **`CLEAN`**: Fast-forwards directly to **Step 3** (`today + 30 days`).
-- **`SHAKY`**: Placed at **Step 1** (`today + 7 days`).
-- **`STRUGGLED`**: Full reset to **Step 0** (`today + 3 days`).
+**Recheck review (mastered problems pulled back into rotation):**
+- **`CLEAN`** — fast-forwards directly to Step 3.
+- **`SHAKY`** — placed at Step 1.
+- **`STRUGGLED`** — full reset to Step 0.
 
-### Lifecycle & Mechanics
-- **`MASTERED` Trigger:** Scoring `CLEAN` on Step 3 during a `REGULAR` review.
-- **Revise Again:** Pulls a `MASTERED` problem back into `ACTIVE` rotation at Step 0 (`nextRevisionAt: today + 3 days`) with a `RECHECK` revision flag (`reviseAgainFromMastered`).
-- **`RETIRED` Trigger:** Manual user action (`retireProblem`) setting status to `RETIRED` and `nextRevisionAt: null`.
-- **Overdue Handling:** `isDueToday` compares midnight-normalized dates (`due <= now`). Overdue problems never expire or drop off—they remain in the daily queue until revised.
-- **Streak Calculation:** Aggregates `StreakLog` entries and `Revision` timestamps:
-  - If today has a revision, counts contiguous active days backwards from today.
-  - If today is pending but yesterday had a revision, the streak remains intact and counts backwards from yesterday.
-  - If yesterday was missed, the streak resets to 0.
+### Lifecycle
+- **Overdue problems never expire or drop off** — they persist in the daily queue until revised, and rescheduling is calculated from the actual revision date, not the original due date.
+- **Streaks** count backward from today (or yesterday, if today's revision hasn't happened yet), resetting only if both days are empty.
 
 ![The Revision Ladder](utils/Revision%20ladder.png)
+
+Full breakdown of every transition, trigger, and edge case is documented inline in [`src/lib/scheduling.ts`](src/lib/scheduling.ts) and its accompanying [test suite](src/lib/scheduling.test.ts).
 
 ---
 
 ## Features
 
-- **Multi-Platform Support (`Platform` Enum):**
-  - `LEETCODE`
-  - `CODEFORCES`
-  - `GFG`
-  - `HACKERRANK`
-  - `CODECHEF`
-- **Instant Auto-Fill & Metadata Resolvers:**
-  - **LeetCode:** In-memory $O(1)$ lookup across **2,800** problems by ID.
-  - **Codeforces:** In-memory lookup across **11,335** problems by alphanumeric code (e.g., `4A`) or numeric ID.
-  - **CodeChef:** In-memory lookup across **4,825** problems by problem code (e.g., `FLOW001`), numeric ID, title, or URL.
-  - **GeeksforGeeks (GFG):** Local dataset mappings + regex fallback extracting slugs, titles, and difficulty from URLs.
-  - **HackerRank:** Local dataset mappings + regex fallback extracting challenge slugs and titles from URLs.
-- **Custom Columns & Dynamic Fields:**
-  - Users can create and reorder custom column definitions (`UserColumnConfig`).
-  - Problem values stored dynamically in a PostgreSQL `Json` column (`customFields`), with atomic read-modify-write updates (`PATCH /api/problems/[id]/custom-fields`).
-- **Authentication (`src/auth.ts`):**
-  - Powered by NextAuth.js v5 (Auth.js beta) with `@auth/prisma-adapter`.
-  - Configured providers: **Google OAuth**, **GitHub OAuth**, and **Credentials** (email/password with `bcryptjs`).
-  - Automatic account linking for existing user accounts.
-- **Daily Revisions & Habit Tracking:**
-  - Focused `/daily` review interface with rating cards.
-  - Consecutive streak counter with daily completion detection.
-  - 365-day revision activity heatmap (`/api/activity`) tracking active days and max streak.
-- **Data Export:**
-  - Full JSON backup download (`/api/export`) containing user profile, tracked problems, revision history, and streak logs.
-
-<!-- DIAGRAM: architecture.png -->
+- **Multi-platform, pluggable resolver architecture** — `LEETCODE`, `CODEFORCES`, `GFG`, `HACKERRANK`, `CODECHEF`, each implementing a shared `PlatformResolver` interface so a new platform is one new file, not a rewrite.
+  - LeetCode: in-memory O(1) lookup across 2,800 problems, with a **live GraphQL fallback** to LeetCode's public API for problems not yet in the local dataset.
+  - Codeforces: 11,335 problems indexed, lookup by code (`4A`) or numeric ID.
+  - CodeChef: 4,825 problems indexed, lookup by code, ID, title, or URL.
+  - GFG / HackerRank: seed datasets with URL-slug parsing fallback.
+- **Notion-style inline table** — click-to-create rows, click-to-edit cells, no modals, autosave.
+- **Schema-less custom columns** — users define their own columns without a database migration; values live in a `Json` field, updated atomically.
+- **Auth** — NextAuth.js v5 with Google, GitHub, and Credentials providers, automatic cross-provider account linking.
+- **Daily revision queue + streaks + 365-day activity heatmap.**
+- **Full data export** — one-click JSON backup of every problem, revision, and streak record. No lock-in.
 
 ---
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, React 19, Server & API Routes)
-- **Language:** TypeScript 5
-- **Database & ORM:** PostgreSQL (Neon Serverless), Prisma ORM 6.19
-- **Authentication:** NextAuth.js v5 (Auth.js beta), `@auth/prisma-adapter`, `bcryptjs`
-- **Styling:** Tailwind CSS 4, Radix/Base UI (`@base-ui/react`), Lucide React
-- **Animation & UX:** Motion (Framer Motion), Lenis (smooth scroll), Three.js
-- **Data Fetching:** SWR, Native Fetch
+**Framework:** Next.js 16 (App Router, React 19) · **Language:** TypeScript 5 · **Database:** Neon Serverless PostgreSQL · **ORM:** Prisma 6 · **Auth:** NextAuth.js v5 + `@auth/prisma-adapter` · **Styling:** Tailwind CSS 4 · **Animation:** Motion, Lenis · **Data fetching:** SWR · **Testing:** Vitest · **Hosting:** Vercel
 
 ---
 
 ## Architecture Notes
 
-- **Pluggable Platform Resolver Pattern:** Platform lookups implement the `PlatformResolver` interface (`resolve(identifier: string): ResolveResult`) and register in a central dictionary (`resolvers: Record<string, PlatformResolver>`), enabling instant multi-platform metadata extraction without external API latency.
-- **Dynamic JSON Custom Fields:** Custom user attributes are stored inside a PostgreSQL `Json` column on the `Problem` model (`customFields Json? @default("{}")`), paired with `UserColumnConfig` for column layout, enabling dynamic schema customization without running database migrations.
-- **Dual Neon Connection Setup:** Prisma handles connection pooling for serverless execution while keeping direct access for migrations:
+- **Pluggable Platform Resolver Pattern** — every platform lookup implements `PlatformResolver { resolve(identifier: string): ResolveResult }`, registered in a central dictionary. Adding platform #6 requires one new file, zero changes to the schema, UI, or API layer.
+- **Schema-less Custom Fields** — user-defined columns are stored in a `Json` field (`Problem.customFields`) rather than triggering a migration per new column, paired with `UserColumnConfig` for layout/ordering.
+- **Dual Neon Connection Setup** — this is the one worth reading closely for anyone evaluating Neon fit:
   ```prisma
   datasource db {
     provider  = "postgresql"
-    url       = env("DATABASE_URL")
-    directUrl = env("DIRECT_URL")
+    url       = env("DATABASE_URL")   // pooled, PgBouncer — all serverless runtime queries
+    directUrl = env("DIRECT_URL")     // direct connection — migrations only
   }
   ```
+  Vercel's serverless functions can open many short-lived concurrent connections; routing all runtime traffic through Neon's pooled endpoint prevents exhausting Postgres's connection ceiling under real load. This was deliberately verified with a concurrent-load diagnostic before shipping — see commit history for the audit.
 
 ---
 
-## Database Schema & Data Models
+## Database Schema
 
-- **`User`**: Core user accounts, hashed credentials, and NextAuth session/OAuth relations.
-- **`Problem`**: Problem metadata, platform enum, current ladder step (`0–3`), status (`ACTIVE`, `MASTERED`, `RETIRED`), `nextRevisionAt` timestamp, and `customFields` JSON.
-- **`Revision`**: Complete revision history logging timestamp, confidence rating (`CLEAN`, `SHAKY`, `STRUGGLED`), review type (`REGULAR`, `RECHECK`), and ladder step transitions (`stepBefore`, `stepAfter`).
-- **`StreakLog`**: Daily activity completion tracking (`userId`, `date DateTime @db.Date`, `completed Boolean`).
-- **`UserColumnConfig`**: Per-user custom column schemas and order configuration.
+| Model | Purpose |
+|---|---|
+| `User` | Accounts, hashed credentials, NextAuth session/OAuth relations |
+| `Problem` | Platform, ladder step (0-3), status (`ACTIVE`/`MASTERED`/`RETIRED`), `nextRevisionAt`, `customFields` JSON |
+| `Revision` | Full history — confidence rating, review type, step transitions |
+| `StreakLog` | Daily completion tracking |
+| `UserColumnConfig` | Per-user custom column schema |
 
 ---
 
@@ -132,17 +127,17 @@ When revising a previously mastered problem via "Revise again":
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET`, `POST` | `/api/problems` | List problems with multi-filtering and sorting, or create a problem with auto-metadata resolution |
-| `GET` | `/api/problems/due` | Fetch all problems currently due or overdue for revision |
-| `GET`, `PATCH`, `DELETE` | `/api/problems/[id]` | Fetch, update problem metadata, or delete a tracked problem |
-| `PATCH` | `/api/problems/[id]/revise` | Submit a revision confidence score (`CLEAN`, `SHAKY`, `STRUGGLED`) and advance the ladder |
-| `PATCH` | `/api/problems/[id]/revise-again` | Pull a `MASTERED` problem back into active rotation as a `RECHECK` |
-| `PATCH` | `/api/problems/[id]/retire` | Manually retire an active problem from revision rotation |
-| `PATCH` | `/api/problems/[id]/custom-fields` | Update dynamic custom column key-value fields atomically |
-| `GET`, `POST`, `DELETE` | `/api/columns` | List, create, or delete user custom column definitions |
-| `GET` | `/api/activity` | Fetch 365-day revision activity counts for the heatmap |
-| `GET` | `/api/streak` | Fetch current active streak and today's completion status |
-| `GET` | `/api/export` | Download a complete JSON backup of problems, revisions, and streaks |
+| `GET`, `POST` | `/api/problems` | List with filtering/sorting, or create with auto-metadata resolution |
+| `GET` | `/api/problems/due` | Problems currently due or overdue |
+| `GET`, `PATCH`, `DELETE` | `/api/problems/[id]` | Fetch, update, or delete a problem |
+| `PATCH` | `/api/problems/[id]/revise` | Submit a confidence rating, advance the ladder |
+| `PATCH` | `/api/problems/[id]/revise-again` | Pull a mastered problem back as a recheck |
+| `PATCH` | `/api/problems/[id]/retire` | Manually retire a problem |
+| `PATCH` | `/api/problems/[id]/custom-fields` | Atomic custom column value update |
+| `GET`, `POST`, `DELETE` | `/api/columns` | Manage custom column definitions |
+| `GET` | `/api/activity` | 365-day revision activity for the heatmap |
+| `GET` | `/api/streak` | Current streak + today's completion status |
+| `GET` | `/api/export` | Full JSON data export |
 
 ---
 
@@ -150,32 +145,27 @@ When revising a previously mastered problem via "Revise again":
 
 ```text
 recall/
-├── prisma/
-│   └── schema.prisma          # PostgreSQL schema & Prisma client configuration
+├── prisma/schema.prisma        # Schema + dual-connection Neon config
 ├── src/
 │   ├── app/
-│   │   ├── (app)/             # Authenticated views (/dashboard, /daily, /settings)
-│   │   ├── (landing)/         # Marketing landing page & components
-│   │   ├── api/               # Next.js App Router REST API endpoints
-│   │   └── auth/              # Login, registration, and auth routes
+│   │   ├── (app)/               # Authenticated views: dashboard, daily, settings
+│   │   ├── (landing)/            # Public marketing site
+│   │   ├── api/                  # Route handlers
+│   │   └── auth/                 # Login/register
 │   ├── components/
-│   │   ├── problems-table/    # Interactive table, cell editors, filters, and toolbar
-│   │   ├── daily/             # Revision card deck and celebration screen
-│   │   ├── heatmap/           # 365-day activity heatmap component
-│   │   └── ui/                # Base UI components and design tokens
-│   ├── data/                  # Pre-indexed offline problem catalogs
-│   ├── lib/
-│   │   ├── scheduling.ts      # Pure spaced repetition engine & interval calculations
-│   │   ├── prisma.ts          # Global Prisma client singleton
-│   │   └── platforms/         # Pluggable multi-platform problem metadata resolvers
-│   └── auth.ts                # NextAuth.js v5 configuration & provider setup
+│   │   ├── problems-table/       # Interactive table + cell editors
+│   │   ├── daily/                 # Revision queue + streak UI
+│   │   └── heatmap/               # Activity heatmap
+│   ├── data/                      # Indexed offline problem datasets
+│   └── lib/
+│       ├── scheduling.ts          # The spaced repetition engine
+│       ├── prisma.ts              # Prisma client singleton
+│       └── platforms/             # Pluggable platform resolvers
 ```
 
 ---
 
 ## Getting Started
-
-### 1. Clone & Install
 
 ```bash
 git clone https://github.com/Vinit1936/Recall.git
@@ -183,59 +173,49 @@ cd Recall
 npm install
 ```
 
-### 2. Environment Variables
-
-Create a `.env` file in the root directory:
-
+`.env`:
 ```env
-# Database (Neon PostgreSQL)
 DATABASE_URL="postgresql://user:password@endpoint-pooler.region.neon.tech/neondb?sslmode=require"
 DIRECT_URL="postgresql://user:password@endpoint.region.neon.tech/neondb?sslmode=require"
-
-# NextAuth Configuration
 AUTH_SECRET="your-auth-secret-key"
-
-# OAuth Providers
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-GITHUB_CLIENT_ID="your-github-client-id"
-GITHUB_CLIENT_SECRET="your-github-client-secret"
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
 ```
-
-### 3. Database Migration
 
 ```bash
 npx prisma db push
-```
-
-### 4. Run Locally
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [localhost:3000](http://localhost:3000). Run tests with `npm test`.
 
-### 5. Run Tests
+---
 
-```bash
-npm test
-```
+## Contributing
+
+This is an actively maintained, solo-built project that's genuinely open to contributions — not just open source in name. Bug reports, feature suggestions, and PRs are welcome. Open an issue before a large PR so the direction can be agreed on first.
+
+---
+
+## Roadmap
+
+- [ ] CSV / Anki import
+- [ ] Multiple named problem lists (e.g. Blind 75, NeetCode 150 as separate tracked sets)
+- [ ] Live-lookup fallback for Codeforces / CodeChef / GFG
+- [ ] Revision reminder notifications
 
 ---
 
 ## Author
 
-Created by **Vinit Patil**
-
-- **GitHub:** [github.com/Vinit1936](https://github.com/Vinit1936) • [recall. Repository](https://github.com/Vinit1936/Recall)
-- **Twitter / X:** [@vinitpatil193](https://twitter.com/vinitpatil193)
-- **LinkedIn:** [linkedin.com/in/vinitpatil19](https://www.linkedin.com/in/vinitpatil19/)
-
----
+**Vinit Patil** — [GitHub](https://github.com/Vinit1936) · [Twitter/X](https://twitter.com/vinitpatil193) · [LinkedIn](https://www.linkedin.com/in/vinitpatil19/)
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+MIT — see [LICENSE](LICENSE).
 
-*Master algorithms through structured spaced repetition.*
+<div align="center">
+<sub>Built solo. Used daily by its own creator. Master algorithms through structured spaced repetition.</sub>
+</div>
