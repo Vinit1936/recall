@@ -40,6 +40,9 @@ npm test
 
 Run `npm test` before opening a PR — the scheduling engine (`src/lib/scheduling.ts`) has full unit test coverage and any change to it must keep tests passing.
 
+> [!NOTE]
+> **Prisma Engine Safeguard**: Avoid force-killing `prisma generate` or build scripts mid-run (e.g. `SIGKILL` or closing terminals abruptly). Interrupted runs leave behind orphaned `query_engine-windows.dll.node.tmp*` files in `node_modules/.prisma/client/` which get picked up by Next.js serverless function bundlers and bloat deployment bundles. If you ever suspect stale engines, check `node_modules/.prisma/client/` and remove any `.tmp*` files.
+
 ## Project structure, briefly
 
 ```
