@@ -1,9 +1,9 @@
-// POST /api/auth/resend-code — resend 6-digit OTP code with 60s cooldown
+// POST /api/auth/forgot-password — send 6-digit OTP code to reset password with 60s cooldown
 
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { prisma } from '@/lib/prisma';
-import { sendVerificationEmail } from '@/lib/mail';
+import { sendPasswordResetEmail } from '@/lib/mail';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,23 +19,26 @@ export async function POST(req: NextRequest) {
       where: { email: normalizedEmail },
     });
 
+    // If user doesn't exist, return success to prevent email enumeration
     if (!user) {
       return NextResponse.json(
-        { error: 'No account found with this email address' },
-        { status: 404 }
+        { success: true, message: 'If an account exists with this email, a reset code has been sent.' },
+        { status: 200 }
       );
     }
 
-    if (user.emailVerified) {
+    // If user registered with OAuth and has no password
+    if (!user.password) {
       return NextResponse.json(
-        { error: 'This email is already verified. Please sign in directly, or use Forgot Password if you cannot remember your password.' },
+        { error: 'This account was created using Google or GitHub. Please sign in with your provider.' },
         { status: 400 }
       );
     }
 
-    // Check if a token was created in the last 60 seconds (10 min expiry = 600s, so > 540s remaining means < 60s since creation)
+    // Check if a reset token was created in the last 60 seconds (10 min expiry = 600s, > 540s remaining means < 60s elapsed)
+    const tokenIdentifier = `reset:${normalizedEmail}`;
     const existingToken = await prisma.verificationToken.findFirst({
-      where: { identifier: normalizedEmail },
+      where: { identifier: tokenIdentifier },
     });
 
     if (existingToken) {
@@ -54,37 +57,37 @@ export async function POST(req: NextRequest) {
     const code = crypto.randomInt(100000, 999999).toString();
     const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 mins
 
-    // Upsert or replace token
+    // Clean up old reset tokens for this email and save new one
     await prisma.verificationToken.deleteMany({
-      where: { identifier: normalizedEmail },
+      where: { identifier: tokenIdentifier },
     });
 
     await prisma.verificationToken.create({
       data: {
-        identifier: normalizedEmail,
+        identifier: tokenIdentifier,
         token: code,
         expires,
       },
     });
 
-    const mailResult = await sendVerificationEmail({
+    const mailResult = await sendPasswordResetEmail({
       email: normalizedEmail,
       code,
       name: user.name,
     });
 
     if (!mailResult.success) {
-      console.warn('[resend-code] Email send failed:', mailResult.error);
+      console.warn('[forgot-password] Email send failed:', mailResult.error);
     }
 
     return NextResponse.json(
-      { success: true, message: 'A new verification code has been sent to your email.' },
+      { success: true, message: 'If an account exists with this email, a reset code has been sent.' },
       { status: 200 }
     );
   } catch (e) {
-    console.error('[POST /api/auth/resend-code]', e);
+    console.error('[POST /api/auth/forgot-password]', e);
     return NextResponse.json(
-      { error: 'Failed to resend verification code. Please try again.' },
+      { error: 'Failed to process password reset request. Please try again.' },
       { status: 500 }
     );
   }

@@ -5,6 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
+import { Eye, EyeOff } from 'lucide-react';
 // @ts-ignore
 import downloadImg from '../../../../utils/download.jpg';
 // @ts-ignore
@@ -15,7 +16,7 @@ import { MobileAuth } from '@/components/auth/mobile-auth';
 import { OtpInput } from '@/components/auth/otp-input';
 
 type Tab = 'signin' | 'signup';
-type AuthMode = 'form' | 'verify';
+type AuthMode = 'form' | 'verify' | 'forgot' | 'reset';
 
 const errorMessages: Record<string, string> = {
   OAuthAccountNotLinked: 'This email is already registered with a different sign-in method. Try signing in with the method you used originally.',
@@ -44,31 +45,83 @@ function Spinner({ color = '#ffffff' }: { color?: string }) {
   );
 }
 
-function Input({ label, type, value, onChange, placeholder, error }: { label: string; type: string; value: string; onChange: (v: string) => void; placeholder?: string; error?: string }) {
+function Input({
+  label,
+  type,
+  value,
+  onChange,
+  placeholder,
+  error,
+  rightLabelAction,
+}: {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  error?: string;
+  rightLabelAction?: React.ReactNode;
+}) {
   const [focused, setFocused] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const isPassword = type === 'password';
+  const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
+
   return (
     <div style={{ marginBottom: 16 }}>
-      <label style={{ display: 'block', fontSize: 13, color: '#888', marginBottom: 6 }}>{label}</label>
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-        style={{
-          width: '100%',
-          background: '#1a1a1a',
-          border: `1px solid ${focused ? '#444' : '#2a2a2a'}`,
-          borderRadius: 6,
-          color: '#fff',
-          fontSize: 14,
-          padding: '10px 14px',
-          outline: 'none',
-          boxSizing: 'border-box',
-          transition: 'border-color 0.15s',
-        }}
-      />
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+        <label style={{ display: 'block', fontSize: 13, color: '#888' }}>{label}</label>
+        {rightLabelAction}
+      </div>
+      <div style={{ position: 'relative' }}>
+        <input
+          type={inputType}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          style={{
+            width: '100%',
+            background: '#1a1a1a',
+            border: `1px solid ${focused ? '#444' : '#2a2a2a'}`,
+            borderRadius: 6,
+            color: '#fff',
+            fontSize: 14,
+            padding: isPassword ? '10px 38px 10px 14px' : '10px 14px',
+            outline: 'none',
+            boxSizing: 'border-box',
+            transition: 'border-color 0.15s',
+          }}
+        />
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: 'absolute',
+              right: 10,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'none',
+              border: 'none',
+              padding: 4,
+              cursor: 'pointer',
+              color: '#888888',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'color 0.15s',
+            }}
+            tabIndex={-1}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+          >
+            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+          </button>
+        )}
+      </div>
       {error && <div style={{ fontSize: 12, color: '#f87171', marginTop: 4 }}>{error}</div>}
     </div>
   );
@@ -195,6 +248,19 @@ function LoginContent() {
   const [resendCooldown, setResendCooldown] = useState(0);
   const [resendLoading, setResendLoading] = useState(false);
 
+  // Forgot / Reset password state
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotError, setForgotError] = useState('');
+  const [forgotSuccess, setForgotSuccess] = useState('');
+  const [forgotLoading, setForgotLoading] = useState(false);
+  const [forgotCooldown, setForgotCooldown] = useState(0);
+
+  const [resetOtp, setResetOtp] = useState('');
+  const [resetNewPassword, setResetNewPassword] = useState('');
+  const [resetConfirmPassword, setResetConfirmPassword] = useState('');
+  const [resetError, setResetError] = useState('');
+  const [resetLoading, setResetLoading] = useState(false);
+
   // OAuth loading state
   const [oauthLoading, setOauthLoading] = useState<'google' | 'github' | null>(null);
 
@@ -208,6 +274,15 @@ function LoginContent() {
     }, 1000);
     return () => clearTimeout(timer);
   }, [resendCooldown]);
+
+  // Forgot password cooldown countdown timer
+  useEffect(() => {
+    if (forgotCooldown <= 0) return;
+    const timer = setTimeout(() => {
+      setForgotCooldown((prev) => prev - 1);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [forgotCooldown]);
 
   useEffect(() => {
     const errorParam = searchParams.get('error');
@@ -231,6 +306,7 @@ function LoginContent() {
 
   const handleSignIn = async () => {
     setSiError('');
+    setForgotSuccess('');
     setSiLoading(true);
     try {
       const res = await signIn('credentials', {
@@ -381,6 +457,114 @@ function LoginContent() {
     }
   };
 
+  const handleRequestPasswordReset = async () => {
+    if (!forgotEmail.trim()) {
+      setForgotError('Please enter your email address.');
+      return;
+    }
+    setForgotError('');
+    setForgotSuccess('');
+    setForgotLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim().toLowerCase() }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setForgotError(json.error || 'Failed to send reset code.');
+      } else {
+        setForgotSuccess(json.message || 'If an account exists, a reset code was sent.');
+        setForgotCooldown(60);
+        setResetOtp('');
+        setResetNewPassword('');
+        setResetConfirmPassword('');
+        setResetError('');
+        setMode('reset');
+      }
+    } catch {
+      setForgotError('Something went wrong. Please try again.');
+    } finally {
+      setForgotLoading(false);
+    }
+  };
+
+  const handleResendResetCode = async () => {
+    if (forgotCooldown > 0 || forgotLoading) return;
+    setForgotLoading(true);
+    setResetError('');
+    setForgotSuccess('');
+
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim().toLowerCase() }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setResetError(json.error || 'Failed to resend code.');
+      } else {
+        setForgotSuccess('New reset code sent to your inbox!');
+        setForgotCooldown(60);
+      }
+    } catch {
+      setResetError('Failed to resend reset code.');
+    } finally {
+      setForgotLoading(false);
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (resetOtp.length !== 6) {
+      setResetError('Please enter the 6-digit reset code.');
+      return;
+    }
+    if (resetNewPassword.length < 8) {
+      setResetError('Password must be at least 8 characters long.');
+      return;
+    }
+    if (resetNewPassword !== resetConfirmPassword) {
+      setResetError('Passwords do not match.');
+      return;
+    }
+
+    setResetError('');
+    setResetLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail.trim().toLowerCase(),
+          code: resetOtp,
+          newPassword: resetNewPassword,
+        }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setResetError(json.error || 'Failed to reset password.');
+      } else {
+        setMode('form');
+        setTab('signin');
+        setSiEmail(forgotEmail);
+        setSiPassword('');
+        setSiError('');
+        setForgotSuccess('Password reset successfully! Please sign in with your new password.');
+      }
+    } catch {
+      setResetError('Something went wrong. Please try again.');
+    } finally {
+      setResetLoading(false);
+    }
+  };
+
   const handlePromptVerifyFromLogin = (email: string) => {
     setVerifyEmail(email.trim().toLowerCase());
     setVerifyPassword(siPassword);
@@ -404,7 +588,7 @@ function LoginContent() {
       .catch(() => {});
   };
 
-  const isAnyLoading = siLoading || suLoading || verifyLoading || oauthLoading !== null;
+  const isAnyLoading = siLoading || suLoading || verifyLoading || forgotLoading || resetLoading || oauthLoading !== null;
 
   if (isMobile) {
     return <MobileAuth />;
@@ -664,6 +848,257 @@ function LoginContent() {
                   </button>
                 </div>
               </motion.div>
+            ) : mode === 'forgot' ? (
+              /* Forgot Password View */
+              <motion.div
+                key="forgot-screen"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div style={{ marginBottom: 20 }}>
+                  <button
+                    onClick={() => {
+                      setMode('form');
+                      setForgotError('');
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#888888',
+                      fontSize: 13,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      padding: 0,
+                      marginBottom: 16,
+                      transition: 'color 0.15s',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                  >
+                    ← Back to sign in
+                  </button>
+
+                  <h1
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      letterSpacing: '-0.02em',
+                      margin: '0 0 6px 0',
+                    }}
+                  >
+                    Reset your password
+                  </h1>
+                  <p style={{ fontSize: 13, color: '#888888', margin: 0, lineHeight: 1.5 }}>
+                    Enter your registered email address and we&apos;ll send you a 6-digit code to reset your password.
+                  </p>
+                </div>
+
+                {forgotError && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#f87171',
+                      background: 'rgba(248, 113, 113, 0.1)',
+                      border: '1px solid rgba(248, 113, 113, 0.2)',
+                      borderRadius: 6,
+                      padding: '10px 14px',
+                      marginBottom: 16,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {forgotError}
+                  </div>
+                )}
+
+                <Input
+                  label="Email"
+                  type="email"
+                  value={forgotEmail}
+                  onChange={setForgotEmail}
+                  placeholder="you@example.com"
+                />
+
+                <PrimaryButton
+                  onClick={handleRequestPasswordReset}
+                  loading={forgotLoading}
+                  disabled={!forgotEmail.trim() || forgotLoading}
+                >
+                  Send reset code →
+                </PrimaryButton>
+
+                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 12, color: '#71717a' }}>
+                  Remembered your password?{' '}
+                  <button
+                    onClick={() => {
+                      setMode('form');
+                      setTab('signin');
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#ffffff',
+                      cursor: 'pointer',
+                      fontSize: 12,
+                      textDecoration: 'underline',
+                      padding: 0,
+                    }}
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </motion.div>
+            ) : mode === 'reset' ? (
+              /* Reset Password View */
+              <motion.div
+                key="reset-screen"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div style={{ marginBottom: 20 }}>
+                  <button
+                    onClick={() => {
+                      setMode('forgot');
+                      setResetError('');
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#888888',
+                      fontSize: 13,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      padding: 0,
+                      marginBottom: 16,
+                      transition: 'color 0.15s',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                  >
+                    ← Change email
+                  </button>
+
+                  <h1
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      letterSpacing: '-0.02em',
+                      margin: '0 0 6px 0',
+                    }}
+                  >
+                    Set new password
+                  </h1>
+                  <p style={{ fontSize: 13, color: '#888888', margin: 0, lineHeight: 1.5 }}>
+                    Enter the 6-digit code sent to <strong style={{ color: '#ffffff' }}>{forgotEmail}</strong> and choose a new password.
+                  </p>
+                </div>
+
+                {resetError && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#f87171',
+                      background: 'rgba(248, 113, 113, 0.1)',
+                      border: '1px solid rgba(248, 113, 113, 0.2)',
+                      borderRadius: 6,
+                      padding: '10px 14px',
+                      marginBottom: 16,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {resetError}
+                  </div>
+                )}
+
+                {forgotSuccess && (
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: '#4ade80',
+                      background: 'rgba(74, 222, 128, 0.1)',
+                      border: '1px solid rgba(74, 222, 128, 0.2)',
+                      borderRadius: 6,
+                      padding: '10px 14px',
+                      marginBottom: 16,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {forgotSuccess}
+                  </div>
+                )}
+
+                <div style={{ marginBottom: 16 }}>
+                  <label style={{ display: 'block', fontSize: 13, color: '#888888', marginBottom: 8 }}>
+                    6-digit reset code
+                  </label>
+                  <OtpInput
+                    value={resetOtp}
+                    onChange={setResetOtp}
+                    disabled={resetLoading}
+                    error={!!resetError}
+                    autoFocus
+                  />
+                </div>
+
+                <Input
+                  label="New password (min 8 characters)"
+                  type="password"
+                  value={resetNewPassword}
+                  onChange={setResetNewPassword}
+                  placeholder="••••••••"
+                />
+
+                <Input
+                  label="Confirm new password"
+                  type="password"
+                  value={resetConfirmPassword}
+                  onChange={setResetConfirmPassword}
+                  placeholder="••••••••"
+                />
+
+                <PrimaryButton
+                  onClick={handleResetPassword}
+                  loading={resetLoading}
+                  disabled={resetOtp.length !== 6 || resetNewPassword.length < 8 || !resetConfirmPassword || resetLoading}
+                >
+                  Reset password & sign in →
+                </PrimaryButton>
+
+                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 13, color: '#71717a' }}>
+                  {forgotCooldown > 0 ? (
+                    <span>Resend code in <strong style={{ color: '#a1a1aa' }}>{forgotCooldown}s</strong></span>
+                  ) : (
+                    <span>
+                      Didn&apos;t receive the code?{' '}
+                      <button
+                        onClick={handleResendResetCode}
+                        disabled={forgotLoading}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: '#ffffff',
+                          cursor: 'pointer',
+                          fontSize: 13,
+                          textDecoration: 'underline',
+                          padding: 0,
+                          fontWeight: 500,
+                        }}
+                      >
+                        {forgotLoading ? 'Sending...' : 'Resend code'}
+                      </button>
+                    </span>
+                  )}
+                </div>
+              </motion.div>
             ) : (
               /* Standard Auth Form */
               <div>
@@ -749,6 +1184,22 @@ function LoginContent() {
                       exit={{ opacity: 0, x: 10 }}
                       transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
                     >
+                      {forgotSuccess && (
+                        <div
+                          style={{
+                            fontSize: 13,
+                            color: '#4ade80',
+                            background: 'rgba(74, 222, 128, 0.1)',
+                            border: '1px solid rgba(74, 222, 128, 0.2)',
+                            borderRadius: 6,
+                            padding: '10px 14px',
+                            marginBottom: 16,
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {forgotSuccess}
+                        </div>
+                      )}
                       {siError && (
                         <div
                           style={{
@@ -763,29 +1214,68 @@ function LoginContent() {
                           }}
                         >
                           <div>{siError}</div>
-                          {siEmail && (
-                            <button
-                              onClick={() => handlePromptVerifyFromLogin(siEmail)}
-                              style={{
-                                background: 'none',
-                                border: 'none',
-                                color: '#ffffff',
-                                textDecoration: 'underline',
-                                cursor: 'pointer',
-                                fontSize: 12,
-                                padding: 0,
-                                marginTop: 6,
-                                display: 'block',
-                              }}
-                            >
-                              Haven&apos;t verified your email yet? Enter verification code →
-                            </button>
-                          )}
                         </div>
                       )}
                       <Input label="Email" type="email" value={siEmail} onChange={setSiEmail} placeholder="you@example.com" />
-                      <Input label="Password" type="password" value={siPassword} onChange={setSiPassword} placeholder="••••••••" />
+                      <Input
+                        label="Password"
+                        type="password"
+                        value={siPassword}
+                        onChange={setSiPassword}
+                        placeholder="••••••••"
+                        rightLabelAction={
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setForgotEmail(siEmail);
+                              setForgotError('');
+                              setForgotSuccess('');
+                              setMode('forgot');
+                            }}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              color: '#a1a1aa',
+                              fontSize: 12,
+                              cursor: 'pointer',
+                              padding: 0,
+                              textDecoration: 'underline',
+                              transition: 'color 0.15s',
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = '#a1a1aa')}
+                          >
+                            Forgot password?
+                          </button>
+                        }
+                      />
                       <PrimaryButton onClick={handleSignIn} loading={siLoading} disabled={isAnyLoading}>Sign in →</PrimaryButton>
+                      <div style={{ textAlign: 'center', marginTop: 8, marginBottom: 4 }}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (siEmail) {
+                              handlePromptVerifyFromLogin(siEmail);
+                            } else {
+                              setMode('verify');
+                            }
+                          }}
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            color: '#71717a',
+                            fontSize: 12,
+                            cursor: 'pointer',
+                            textDecoration: 'underline',
+                            padding: 0,
+                            transition: 'color 0.15s',
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = '#a1a1aa')}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = '#71717a')}
+                        >
+                          Need to verify your signup email? Enter code →
+                        </button>
+                      </div>
                       <Divider />
                       <OAuthButton
                         provider="google"

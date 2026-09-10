@@ -5,10 +5,11 @@ import { signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
+import { Eye, EyeOff } from 'lucide-react';
 import { OtpInput } from '@/components/auth/otp-input';
 
 type Tab = 'signin' | 'signup';
-type AuthMode = 'form' | 'verify';
+type AuthMode = 'form' | 'verify' | 'forgot' | 'reset';
 
 const errorMessages: Record<string, string> = {
   OAuthAccountNotLinked: 'This email is already registered with a different sign-in method.',
@@ -33,6 +34,78 @@ function Spinner() {
         animation: 'spin 0.6s linear infinite',
       }}
     />
+  );
+}
+
+function MobileInput({
+  label,
+  type,
+  value,
+  onChange,
+  placeholder,
+  rightLabelAction,
+}: {
+  label: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  rightLabelAction?: React.ReactNode;
+}) {
+  const [showPassword, setShowPassword] = useState(false);
+  const isPassword = type === 'password';
+  const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
+
+  return (
+    <div style={{ marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+        <label style={{ display: 'block', fontSize: '13px', color: '#888888' }}>{label}</label>
+        {rightLabelAction}
+      </div>
+      <div style={{ position: 'relative' }}>
+        <input
+          type={inputType}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          style={{
+            width: '100%',
+            background: '#1a1a1a',
+            border: '1px solid #2a2a2a',
+            borderRadius: '8px',
+            color: '#ffffff',
+            fontSize: '16px',
+            padding: isPassword ? '12px 42px 12px 14px' : '12px 14px',
+            outline: 'none',
+            boxSizing: 'border-box',
+          }}
+        />
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: 'absolute',
+              right: 12,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: 'none',
+              border: 'none',
+              padding: 4,
+              cursor: 'pointer',
+              color: '#888888',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            tabIndex={-1}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+          >
+            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -64,6 +137,19 @@ export function MobileAuth() {
   const [resendCooldown, setResendCooldown] = useState(0);
   const [resendLoading, setResendLoading] = useState(false);
 
+  // Forgot / Reset password state
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotError, setForgotError] = useState('');
+  const [forgotSuccess, setForgotSuccess] = useState('');
+  const [forgotLoading, setForgotLoading] = useState(false);
+  const [forgotCooldown, setForgotCooldown] = useState(0);
+
+  const [resetOtp, setResetOtp] = useState('');
+  const [resetNewPassword, setResetNewPassword] = useState('');
+  const [resetConfirmPassword, setResetConfirmPassword] = useState('');
+  const [resetError, setResetError] = useState('');
+  const [resetLoading, setResetLoading] = useState(false);
+
   // OAuth loading state
   const [oauthLoading, setOauthLoading] = useState<'google' | 'github' | null>(null);
 
@@ -77,6 +163,15 @@ export function MobileAuth() {
     }, 1000);
     return () => clearTimeout(timer);
   }, [resendCooldown]);
+
+  // Forgot password cooldown countdown timer
+  useEffect(() => {
+    if (forgotCooldown <= 0) return;
+    const timer = setTimeout(() => {
+      setForgotCooldown((prev) => prev - 1);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [forgotCooldown]);
 
   useEffect(() => {
     const errorParam = searchParams.get('error');
@@ -247,6 +342,114 @@ export function MobileAuth() {
     }
   };
 
+  const handleRequestPasswordReset = async () => {
+    if (!forgotEmail.trim()) {
+      setForgotError('Please enter your email address.');
+      return;
+    }
+    setForgotError('');
+    setForgotSuccess('');
+    setForgotLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim().toLowerCase() }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setForgotError(json.error || 'Failed to send reset code.');
+      } else {
+        setForgotSuccess(json.message || 'If an account exists, a reset code was sent.');
+        setForgotCooldown(60);
+        setResetOtp('');
+        setResetNewPassword('');
+        setResetConfirmPassword('');
+        setResetError('');
+        setMode('reset');
+      }
+    } catch {
+      setForgotError('Something went wrong. Please try again.');
+    } finally {
+      setForgotLoading(false);
+    }
+  };
+
+  const handleResendResetCode = async () => {
+    if (forgotCooldown > 0 || forgotLoading) return;
+    setForgotLoading(true);
+    setResetError('');
+    setForgotSuccess('');
+
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: forgotEmail.trim().toLowerCase() }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setResetError(json.error || 'Failed to resend code.');
+      } else {
+        setForgotSuccess('New reset code sent to your inbox!');
+        setForgotCooldown(60);
+      }
+    } catch {
+      setResetError('Failed to resend reset code.');
+    } finally {
+      setForgotLoading(false);
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (resetOtp.length !== 6) {
+      setResetError('Please enter the 6-digit reset code.');
+      return;
+    }
+    if (resetNewPassword.length < 8) {
+      setResetError('Password must be at least 8 characters long.');
+      return;
+    }
+    if (resetNewPassword !== resetConfirmPassword) {
+      setResetError('Passwords do not match.');
+      return;
+    }
+
+    setResetError('');
+    setResetLoading(true);
+
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail.trim().toLowerCase(),
+          code: resetOtp,
+          newPassword: resetNewPassword,
+        }),
+      });
+      const json = await res.json();
+
+      if (!res.ok) {
+        setResetError(json.error || 'Failed to reset password.');
+      } else {
+        setMode('form');
+        setTab('signin');
+        setSiEmail(forgotEmail);
+        setSiPassword('');
+        setSiError('');
+        setForgotSuccess('Password reset successfully! Please sign in with your new password.');
+      }
+    } catch {
+      setResetError('Something went wrong. Please try again.');
+    } finally {
+      setResetLoading(false);
+    }
+  };
+
   const handlePromptVerifyFromLogin = (email: string) => {
     setVerifyEmail(email.trim().toLowerCase());
     setVerifyPassword(siPassword);
@@ -269,7 +472,7 @@ export function MobileAuth() {
       .catch(() => {});
   };
 
-  const isAnyLoading = siLoading || suLoading || verifyLoading || oauthLoading !== null;
+  const isAnyLoading = siLoading || suLoading || verifyLoading || forgotLoading || resetLoading || oauthLoading !== null;
   const currentError = tab === 'signin' ? siError : suError;
 
   return (
@@ -475,6 +678,287 @@ export function MobileAuth() {
               </button>
             </div>
           </motion.div>
+        ) : mode === 'forgot' ? (
+          /* Mobile Forgot Password View */
+          <motion.div
+            key="mobile-forgot"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+          >
+            <button
+              onClick={() => {
+                setMode('form');
+                setForgotError('');
+              }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#888888',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: 0,
+                marginBottom: '16px',
+              }}
+            >
+              ← Back to sign in
+            </button>
+
+            <h2
+              style={{
+                fontSize: '20px',
+                fontWeight: 600,
+                color: '#ffffff',
+                letterSpacing: '-0.02em',
+                margin: '0 0 6px 0',
+              }}
+            >
+              Reset your password
+            </h2>
+            <p style={{ fontSize: '13px', color: '#888888', margin: '0 0 16px 0', lineHeight: 1.4 }}>
+              Enter your email and we&apos;ll send you a 6-digit code to reset your password.
+            </p>
+
+            {forgotError && (
+              <div
+                style={{
+                  background: '#200e0e',
+                  border: '1px solid #481a1a',
+                  borderRadius: '8px',
+                  padding: '10px 14px',
+                  color: '#f87171',
+                  fontSize: '13px',
+                  marginBottom: '16px',
+                  lineHeight: 1.4,
+                }}
+              >
+                {forgotError}
+              </div>
+            )}
+
+            <MobileInput
+              label="Email"
+              type="email"
+              value={forgotEmail}
+              onChange={setForgotEmail}
+              placeholder="you@example.com"
+            />
+
+            <button
+              onClick={handleRequestPasswordReset}
+              disabled={!forgotEmail.trim() || forgotLoading}
+              style={{
+                width: '100%',
+                height: '44px',
+                background: forgotEmail.trim() && !forgotLoading ? '#ffffff' : '#2a2a2a',
+                color: forgotEmail.trim() && !forgotLoading ? '#000000' : '#888888',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: forgotEmail.trim() && !forgotLoading ? 'pointer' : 'not-allowed',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                marginTop: '8px',
+                marginBottom: '16px',
+              }}
+            >
+              {forgotLoading ? <Spinner /> : 'Send reset code →'}
+            </button>
+
+            <div style={{ textAlign: 'center', fontSize: '12px', color: '#71717a' }}>
+              Remembered your password?{' '}
+              <button
+                onClick={() => {
+                  setMode('form');
+                  setTab('signin');
+                }}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#ffffff',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  textDecoration: 'underline',
+                  padding: 0,
+                }}
+              >
+                Sign in
+              </button>
+            </div>
+          </motion.div>
+        ) : mode === 'reset' ? (
+          /* Mobile Reset Password View */
+          <motion.div
+            key="mobile-reset"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+          >
+            <button
+              onClick={() => {
+                setMode('forgot');
+                setResetError('');
+              }}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#888888',
+                fontSize: '13px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: 0,
+                marginBottom: '16px',
+              }}
+            >
+              ← Change email
+            </button>
+
+            <h2
+              style={{
+                fontSize: '20px',
+                fontWeight: 600,
+                color: '#ffffff',
+                letterSpacing: '-0.02em',
+                margin: '0 0 6px 0',
+              }}
+            >
+              Set new password
+            </h2>
+            <p style={{ fontSize: '13px', color: '#888888', margin: '0 0 16px 0', lineHeight: 1.4 }}>
+              Code sent to <strong style={{ color: '#ffffff' }}>{forgotEmail}</strong>
+            </p>
+
+            {resetError && (
+              <div
+                style={{
+                  background: '#200e0e',
+                  border: '1px solid #481a1a',
+                  borderRadius: '8px',
+                  padding: '10px 14px',
+                  color: '#f87171',
+                  fontSize: '13px',
+                  marginBottom: '16px',
+                  lineHeight: 1.4,
+                }}
+              >
+                {resetError}
+              </div>
+            )}
+
+            {forgotSuccess && (
+              <div
+                style={{
+                  background: 'rgba(74, 222, 128, 0.1)',
+                  border: '1px solid rgba(74, 222, 128, 0.2)',
+                  borderRadius: '8px',
+                  padding: '10px 14px',
+                  color: '#4ade80',
+                  fontSize: '13px',
+                  marginBottom: '16px',
+                  lineHeight: 1.4,
+                }}
+              >
+                {forgotSuccess}
+              </div>
+            )}
+
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '8px' }}>
+                6-digit reset code
+              </label>
+              <OtpInput
+                value={resetOtp}
+                onChange={setResetOtp}
+                disabled={resetLoading}
+                error={!!resetError}
+                autoFocus
+              />
+            </div>
+
+            <MobileInput
+              label="New password (min 8 chars)"
+              type="password"
+              value={resetNewPassword}
+              onChange={setResetNewPassword}
+              placeholder="••••••••"
+            />
+
+            <MobileInput
+              label="Confirm new password"
+              type="password"
+              value={resetConfirmPassword}
+              onChange={setResetConfirmPassword}
+              placeholder="••••••••"
+            />
+
+            <button
+              onClick={handleResetPassword}
+              disabled={resetOtp.length !== 6 || resetNewPassword.length < 8 || !resetConfirmPassword || resetLoading}
+              style={{
+                width: '100%',
+                height: '44px',
+                background:
+                  resetOtp.length === 6 && resetNewPassword.length >= 8 && resetConfirmPassword && !resetLoading
+                    ? '#ffffff'
+                    : '#2a2a2a',
+                color:
+                  resetOtp.length === 6 && resetNewPassword.length >= 8 && resetConfirmPassword && !resetLoading
+                    ? '#000000'
+                    : '#888888',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor:
+                  resetOtp.length === 6 && resetNewPassword.length >= 8 && resetConfirmPassword && !resetLoading
+                    ? 'pointer'
+                    : 'not-allowed',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                marginTop: '8px',
+                marginBottom: '16px',
+              }}
+            >
+              {resetLoading ? <Spinner /> : 'Reset password & sign in →'}
+            </button>
+
+            <div style={{ textAlign: 'center', fontSize: '13px', color: '#71717a' }}>
+              {forgotCooldown > 0 ? (
+                <span>Resend in <strong style={{ color: '#a1a1aa' }}>{forgotCooldown}s</strong></span>
+              ) : (
+                <span>
+                  Didn&apos;t get the code?{' '}
+                  <button
+                    onClick={handleResendResetCode}
+                    disabled={forgotLoading}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#ffffff',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      textDecoration: 'underline',
+                      padding: 0,
+                    }}
+                  >
+                    {forgotLoading ? 'Sending...' : 'Resend'}
+                  </button>
+                </span>
+              )}
+            </div>
+          </motion.div>
         ) : (
           /* Mobile Standard Form View */
           <div>
@@ -549,6 +1033,24 @@ export function MobileAuth() {
               </button>
             </div>
 
+            {/* Success Alert Box */}
+            {forgotSuccess && (
+              <div
+                style={{
+                  background: 'rgba(74, 222, 128, 0.1)',
+                  border: '1px solid rgba(74, 222, 128, 0.2)',
+                  borderRadius: '8px',
+                  padding: '10px 14px',
+                  color: '#4ade80',
+                  fontSize: '13px',
+                  marginBottom: '20px',
+                  lineHeight: 1.4,
+                }}
+              >
+                {forgotSuccess}
+              </div>
+            )}
+
             {/* Error Alert Box */}
             {currentError && (
               <div
@@ -564,24 +1066,6 @@ export function MobileAuth() {
                 }}
               >
                 <div>{currentError}</div>
-                {tab === 'signin' && siEmail && (
-                  <button
-                    onClick={() => handlePromptVerifyFromLogin(siEmail)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: '#ffffff',
-                      textDecoration: 'underline',
-                      cursor: 'pointer',
-                      fontSize: '12px',
-                      padding: 0,
-                      marginTop: '6px',
-                      display: 'block',
-                    }}
-                  >
-                    Haven&apos;t verified yet? Enter code →
-                  </button>
-                )}
               </div>
             )}
 
@@ -595,47 +1079,43 @@ export function MobileAuth() {
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <div style={{ marginBottom: '16px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '6px' }}>Email</label>
-                    <input
-                      type="email"
-                      value={siEmail}
-                      onChange={(e) => setSiEmail(e.target.value)}
-                      placeholder="you@example.com"
-                      style={{
-                        width: '100%',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '16px',
-                        padding: '12px 14px',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
+                  <MobileInput
+                    label="Email"
+                    type="email"
+                    value={siEmail}
+                    onChange={setSiEmail}
+                    placeholder="you@example.com"
+                  />
 
-                  <div style={{ marginBottom: '20px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '6px' }}>Password</label>
-                    <input
-                      type="password"
-                      value={siPassword}
-                      onChange={(e) => setSiPassword(e.target.value)}
-                      placeholder="••••••••"
-                      style={{
-                        width: '100%',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '16px',
-                        padding: '12px 14px',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
+                  <MobileInput
+                    label="Password"
+                    type="password"
+                    value={siPassword}
+                    onChange={setSiPassword}
+                    placeholder="••••••••"
+                    rightLabelAction={
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setForgotEmail(siEmail);
+                          setForgotError('');
+                          setForgotSuccess('');
+                          setMode('forgot');
+                        }}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: '#a1a1aa',
+                          fontSize: '12px',
+                          cursor: 'pointer',
+                          padding: 0,
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        Forgot password?
+                      </button>
+                    }
+                  />
 
                   <button
                     onClick={handleSignIn}
@@ -654,11 +1134,35 @@ export function MobileAuth() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '8px',
-                      marginBottom: '16px',
+                      marginBottom: '10px',
                     }}
                   >
                     {siLoading ? <Spinner /> : 'Sign in →'}
                   </button>
+
+                  <div style={{ textAlign: 'center', marginBottom: '14px' }}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (siEmail) {
+                          handlePromptVerifyFromLogin(siEmail);
+                        } else {
+                          setMode('verify');
+                        }
+                      }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#71717a',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        textDecoration: 'underline',
+                        padding: 0,
+                      }}
+                    >
+                      Need to verify your signup email? Enter code →
+                    </button>
+                  </div>
                 </motion.div>
               ) : (
                 <motion.div
@@ -668,68 +1172,29 @@ export function MobileAuth() {
                   exit={{ opacity: 0, y: -4 }}
                   transition={{ duration: 0.15 }}
                 >
-                  <div style={{ marginBottom: '14px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '6px' }}>Full Name</label>
-                    <input
-                      type="text"
-                      value={suName}
-                      onChange={(e) => setSuName(e.target.value)}
-                      placeholder="Alex Rivers"
-                      style={{
-                        width: '100%',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '16px',
-                        padding: '12px 14px',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
+                  <MobileInput
+                    label="Full Name"
+                    type="text"
+                    value={suName}
+                    onChange={setSuName}
+                    placeholder="Alex Rivers"
+                  />
 
-                  <div style={{ marginBottom: '14px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '6px' }}>Email</label>
-                    <input
-                      type="email"
-                      value={suEmail}
-                      onChange={(e) => setSuEmail(e.target.value)}
-                      placeholder="you@example.com"
-                      style={{
-                        width: '100%',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '16px',
-                        padding: '12px 14px',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
+                  <MobileInput
+                    label="Email"
+                    type="email"
+                    value={suEmail}
+                    onChange={setSuEmail}
+                    placeholder="you@example.com"
+                  />
 
-                  <div style={{ marginBottom: '20px' }}>
-                    <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '6px' }}>Password</label>
-                    <input
-                      type="password"
-                      value={suPassword}
-                      onChange={(e) => setSuPassword(e.target.value)}
-                      placeholder="••••••••"
-                      style={{
-                        width: '100%',
-                        background: '#1a1a1a',
-                        border: '1px solid #2a2a2a',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '16px',
-                        padding: '12px 14px',
-                        outline: 'none',
-                        boxSizing: 'border-box',
-                      }}
-                    />
-                  </div>
+                  <MobileInput
+                    label="Password (min 8 characters)"
+                    type="password"
+                    value={suPassword}
+                    onChange={setSuPassword}
+                    placeholder="••••••••"
+                  />
 
                   <button
                     onClick={handleSignUp}
