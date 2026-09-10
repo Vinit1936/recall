@@ -277,14 +277,14 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
     setLoading(true); setNotFound(false); setAutoFill(null); setError('');
     try {
       const endpoint = isLeetCode
-        ? `/api/leetcode/resolve?id=${encodeURIComponent(query)}`
+        ? `/api/resolve/leetcode?id=${encodeURIComponent(query)}`
         : isCodeforces
-          ? `/api/codeforces/resolve?id=${encodeURIComponent(query)}`
+          ? `/api/resolve/codeforces?id=${encodeURIComponent(query)}`
           : isCodeChef
-            ? `/api/codechef/resolve?id=${encodeURIComponent(query)}`
+            ? `/api/resolve/codechef?id=${encodeURIComponent(query)}`
             : isGFG
-              ? `/api/gfg/resolve?id=${encodeURIComponent(query)}`
-              : `/api/hackerrank/resolve?id=${encodeURIComponent(query)}`;
+              ? `/api/resolve/gfg?id=${encodeURIComponent(query)}`
+              : `/api/resolve/hackerrank?id=${encodeURIComponent(query)}`;
       const res = await fetch(endpoint);
       const json = await res.json();
       if (json.found) {
@@ -334,7 +334,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       if (!match) return;
       const cfCode = `${match[1]}${match[2]}`;
       try {
-        const res = await fetch(`/api/codeforces/resolve?id=${encodeURIComponent(cfCode)}`);
+        const res = await fetch(`/api/resolve/codeforces?id=${encodeURIComponent(cfCode)}`);
         const json = await res.json();
         if (json.found) {
           setAutoFill(json.data);
@@ -349,7 +349,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       if (!match) return;
       const ccCode = match[1];
       try {
-        const res = await fetch(`/api/codechef/resolve?id=${encodeURIComponent(ccCode)}`);
+        const res = await fetch(`/api/resolve/codechef?id=${encodeURIComponent(ccCode)}`);
         const json = await res.json();
         if (json.found) {
           setAutoFill(json.data);
@@ -361,7 +361,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       } catch {}
     } else if (isGFG) {
       try {
-        const res = await fetch(`/api/gfg/resolve?id=${encodeURIComponent(url)}`);
+        const res = await fetch(`/api/resolve/gfg?id=${encodeURIComponent(url)}`);
         const json = await res.json();
         if (json.found) {
           setAutoFill(json.data);
@@ -373,7 +373,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       } catch {}
     } else if (isHackerRank) {
       try {
-        const res = await fetch(`/api/hackerrank/resolve?id=${encodeURIComponent(url)}`);
+        const res = await fetch(`/api/resolve/hackerrank?id=${encodeURIComponent(url)}`);
         const json = await res.json();
         if (json.found) {
           setAutoFill(json.data);
