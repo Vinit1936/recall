@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     let meta: { title: string; difficulty: string; topic: string; url: string };
 
     if (resolver) {
-      const result = resolver.resolve(String(problemNumber));
+      const result = await resolver.resolve(String(problemNumber));
       if (result.found) {
         meta = result.data;
       } else {

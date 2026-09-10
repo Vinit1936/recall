@@ -15,5 +15,5 @@ export type ResolveResult =
   | { found: false };
 
 export interface PlatformResolver {
-  resolve(identifier: string): ResolveResult;
+  resolve(identifier: string): Promise<ResolveResult>;
 }

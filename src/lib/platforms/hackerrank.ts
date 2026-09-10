@@ -1,21 +1,36 @@
 import type { PlatformResolver, ResolveResult, ProblemMeta } from './types';
-import problems from '../../data/hackerrank-problems.json';
 
-const slugMap = new Map<string, ProblemMeta>();
-const codeMap = new Map<string, ProblemMeta>();
+let cachedMaps: {
+  slugMap: Map<string, ProblemMeta>;
+  codeMap: Map<string, ProblemMeta>;
+} | null = null;
 
-(problems as any[]).forEach((p) => {
-  const meta: ProblemMeta = {
-    title: p.title,
-    difficulty: p.difficulty,
-    topic: p.topic,
-    url: p.url,
-    problemNumber: p.numericId,
-    code: p.code,
-  };
-  if (p.slug) slugMap.set(p.slug.toLowerCase(), meta);
-  if (p.code) codeMap.set(p.code.toUpperCase(), meta);
-});
+async function getMaps(): Promise<{
+  slugMap: Map<string, ProblemMeta>;
+  codeMap: Map<string, ProblemMeta>;
+}> {
+  if (!cachedMaps) {
+    const problems = (await import('../../data/hackerrank-problems.json')).default;
+    const slugMap = new Map<string, ProblemMeta>();
+    const codeMap = new Map<string, ProblemMeta>();
+
+    (problems as any[]).forEach((p) => {
+      const meta: ProblemMeta = {
+        title: p.title,
+        difficulty: p.difficulty,
+        topic: p.topic,
+        url: p.url,
+        problemNumber: p.numericId,
+        code: p.code,
+      };
+      if (p.slug) slugMap.set(p.slug.toLowerCase(), meta);
+      if (p.code) codeMap.set(p.code.toUpperCase(), meta);
+    });
+
+    cachedMaps = { slugMap, codeMap };
+  }
+  return cachedMaps;
+}
 
 function hashString(str: string): number {
   let hash = 5381;
@@ -27,7 +42,7 @@ function hashString(str: string): number {
 }
 
 class HackerRankResolver implements PlatformResolver {
-  resolve(identifier: string): ResolveResult {
+  async resolve(identifier: string): Promise<ResolveResult> {
     const raw = identifier.trim();
     if (!raw) return { found: false };
 
@@ -37,6 +52,7 @@ class HackerRankResolver implements PlatformResolver {
       const slug = match ? match[1].toLowerCase() : raw.split('/').filter((s) => s !== 'problem').pop()?.toLowerCase();
 
       if (slug) {
+        const { slugMap } = await getMaps();
         // Check local dataset first
         const knownData = slugMap.get(slug);
         if (knownData) return { found: true, data: knownData };
@@ -61,6 +77,8 @@ class HackerRankResolver implements PlatformResolver {
         };
       }
     }
+
+    const { codeMap, slugMap } = await getMaps();
 
     // 2. Direct code lookup (e.g. HR_001)
     const codeData = codeMap.get(raw.toUpperCase());

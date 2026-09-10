@@ -63,7 +63,7 @@ This is the easiest high-value contribution to make. Every platform (LeetCode, C
 ```typescript
 // src/lib/platforms/types.ts
 export interface PlatformResolver {
-  resolve(identifier: string): ResolveResult;
+  resolve(identifier: string): Promise<ResolveResult>;
 }
 ```
 

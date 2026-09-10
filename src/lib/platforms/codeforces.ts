@@ -1,29 +1,45 @@
 import type { PlatformResolver, ResolveResult, ProblemMeta } from './types';
-import problems from '../../data/codeforces-problems.json';
 
-// Build in-memory lookup maps for both string code ("4A") and numericId (401)
-const codeMap = new Map<string, ProblemMeta>();
-const numMap = new Map<number, ProblemMeta>();
+let cachedMaps: {
+  codeMap: Map<string, ProblemMeta>;
+  numMap: Map<number, ProblemMeta>;
+} | null = null;
 
-(problems as any[]).forEach((p) => {
-  const meta: ProblemMeta = {
-    title: p.title,
-    difficulty: p.difficulty,
-    topic: p.topic,
-    url: p.url,
-    problemNumber: p.numericId,
-    code: p.id,
-  };
-  codeMap.set(p.id.toUpperCase(), meta);
-  if (p.numericId) {
-    numMap.set(p.numericId, meta);
+async function getMaps(): Promise<{
+  codeMap: Map<string, ProblemMeta>;
+  numMap: Map<number, ProblemMeta>;
+}> {
+  if (!cachedMaps) {
+    const problems = (await import('../../data/codeforces-problems.json')).default;
+    const codeMap = new Map<string, ProblemMeta>();
+    const numMap = new Map<number, ProblemMeta>();
+
+    (problems as any[]).forEach((p) => {
+      const meta: ProblemMeta = {
+        title: p.title,
+        difficulty: p.difficulty,
+        topic: p.topic,
+        url: p.url,
+        problemNumber: p.numericId,
+        code: p.id,
+      };
+      codeMap.set(p.id.toUpperCase(), meta);
+      if (p.numericId) {
+        numMap.set(p.numericId, meta);
+      }
+    });
+
+    cachedMaps = { codeMap, numMap };
   }
-});
+  return cachedMaps;
+}
 
 class CodeforcesResolver implements PlatformResolver {
-  resolve(identifier: string): ResolveResult {
+  async resolve(identifier: string): Promise<ResolveResult> {
     const raw = identifier.trim().toUpperCase();
     if (!raw) return { found: false };
+
+    const { codeMap, numMap } = await getMaps();
 
     // 1. Direct code lookup (e.g. "4A", "158A")
     let data = codeMap.get(raw);
