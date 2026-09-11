@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import { Play } from 'lucide-react';
 import { GitHubStarButton } from './github-star-button';
 
 export function Navbar() {
@@ -102,8 +103,48 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Right — GitHub + Sign in */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        {/* Right — How to use + GitHub + Sign in */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <a
+            data-nav-howtouse
+            href="https://youtu.be/EF25DZDJ6gw"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="How to use Recall (Video Demo)"
+            title="How to use Recall"
+            style={{
+              border: '1px solid #222',
+              background: 'rgba(255, 255, 255, 0.02)',
+              color: '#888',
+              fontSize: '12px',
+              fontWeight: 500,
+              height: '32px',
+              padding: '0 12px',
+              borderRadius: '8px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              textDecoration: 'none',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              transition: 'border-color 0.12s ease, color 0.12s ease, background 0.12s ease',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#333';
+              e.currentTarget.style.color = '#e5e5e5';
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#222';
+              e.currentTarget.style.color = '#888';
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+            }}
+          >
+            <Play size={11} fill="currentColor" style={{ opacity: 0.85 }} />
+            <span className="nav-howtouse-label">How to use</span>
+          </a>
+
           <GitHubStarButton />
 
           <Link
