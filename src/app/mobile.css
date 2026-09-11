@@ -61,8 +61,16 @@
 
   [data-nav-github] {
     display: inline-flex !important;
+    height: 28px !important;
+    padding: 0 8px !important;
+    font-size: 11px !important;
+    gap: 6px !important;
     min-height: auto !important;
     min-width: auto !important;
+  }
+
+  .nav-github-label {
+    display: none !important;
   }
 
   [data-nav-signin] {
