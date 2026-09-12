@@ -98,10 +98,23 @@ export async function POST(request: NextRequest) {
     const solvedAt = dateSolved ? new Date(dateSolved) : now;
     const schedule = getInitialSchedule(isNaN(solvedAt.getTime()) ? now : solvedAt);
 
-    const finalProblemNumber =
-      typeof (meta as any).problemNumber === 'number'
+    let finalProblemNumber =
+      typeof (meta as any).problemNumber === 'number' && (meta as any).problemNumber > 0
         ? (meta as any).problemNumber
         : parseInt(String(problemNumber), 10) || 0;
+
+    // Safety net: If problemNumber is <= 0 for LeetCode, hash the URL slug so we never save duplicate 0s
+    if (finalProblemNumber <= 0 && platform === 'LEETCODE' && meta.url) {
+      const match = meta.url.match(/leetcode\.com\/problems\/([^/?#]+)/);
+      if (match) {
+        let hash = 5381;
+        for (let i = 0; i < match[1].length; i++) {
+          hash = ((hash << 5) + hash) + match[1].charCodeAt(i);
+          hash |= 0;
+        }
+        finalProblemNumber = 100000 + (Math.abs(hash) % 899999);
+      }
+    }
 
     try {
       const problem = await prisma.problem.create({

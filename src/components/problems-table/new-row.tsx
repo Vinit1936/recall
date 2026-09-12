@@ -274,6 +274,17 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
     const query = problemNumber.trim();
     if (!query) return;
 
+    // Direct LeetCode URL paste in the main input
+    if (isLeetCode && (query.includes('leetcode.com/problems/') || query.startsWith('http'))) {
+      setLoading(true); setNotFound(false); setAutoFill(null); setError('');
+      try {
+        await handleLcUrl(query);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     setLoading(true); setNotFound(false); setAutoFill(null); setError('');
     try {
       const endpoint = isLeetCode
@@ -293,6 +304,24 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
         setTopic(json.data.topic === 'General' ? '' : json.data.topic);
         await executeAutoSave(json.data, query);
       } else {
+        // For LeetCode, if not found in indexed dataset, try live lookup before showing URL fallback
+        if (isLeetCode && /^\d+$/.test(query)) {
+          try {
+            const liveRes = await fetch('/api/leetcode/lookup', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ query }),
+            });
+            const liveJson = await liveRes.json();
+            if (!liveJson.error && liveJson.title) {
+              setAutoFill(liveJson);
+              setDifficulty(liveJson.difficulty);
+              setTopic(liveJson.topic === 'General' ? '' : liveJson.topic);
+              await executeAutoSave(liveJson, String(liveJson.problemNumber || query));
+              return;
+            }
+          } catch {}
+        }
         setNotFound(true);
         setTimeout(() => lcUrlRef.current?.focus(), 20);
       }
@@ -313,7 +342,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
     setLcUrl(url);
     if (saving) return;
     if (isLeetCode) {
-      const match = url.match(/leetcode\.com\/problems\/([^/]+)/);
+      const match = url.match(/leetcode\.com\/problems\/([^/?#]+)/);
       if (!match) return;
       try {
         const res = await fetch('/api/leetcode/lookup', {
@@ -326,7 +355,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
           setDifficulty(json.difficulty);
           setTopic(json.topic === 'General' ? '' : json.topic);
           setNotFound(false);
-          await executeAutoSave(json, match[1]);
+          await executeAutoSave(json, json.problemNumber ? String(json.problemNumber) : match[1]);
         }
       } catch {}
     } else if (isCodeforces) {
@@ -651,7 +680,9 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                 {(() => {
                   const isLeetCodeOrCF = platform === 'LEETCODE' || platform === 'CODEFORCES';
                   const isUrl = problemNumber.startsWith('http') || problemNumber.startsWith('www.');
-                  const codeDisplay = isLeetCodeOrCF && !isUrl ? (autoFill.code || problemNumber) : null;
+                  const codeDisplay = isLeetCodeOrCF
+                    ? (autoFill.code || (typeof autoFill.problemNumber === 'number' && autoFill.problemNumber > 0 ? String(autoFill.problemNumber) : (!isUrl ? problemNumber : null)))
+                    : null;
                   return codeDisplay ? (
                     <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: '#666', flexShrink: 0 }}>
                       {codeDisplay}

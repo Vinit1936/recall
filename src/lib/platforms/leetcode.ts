@@ -9,6 +9,7 @@ async function getProblemMap(): Promise<Map<number, ProblemMeta>> {
       (problems as any[]).map((p) => [
         p.id,
         {
+          problemNumber: p.id,
           title: p.title,
           difficulty: p.difficulty,
           topic: p.topic,

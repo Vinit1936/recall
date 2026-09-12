@@ -6,6 +6,7 @@ describe('LeetCode resolver', () => {
     const result = await leetcodeResolver.resolve('1');
     expect(result.found).toBe(true);
     if (result.found) {
+      expect(result.data.problemNumber).toBe(1);
       expect(result.data.title).toBe('Two Sum');
       expect(result.data.difficulty).toBe('EASY');
       expect(result.data.url).toContain('https://leetcode.com/problems/');
