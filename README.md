@@ -9,7 +9,7 @@
 [![Prisma](https://img.shields.io/badge/Prisma-6.19.3-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
 [![Neon](https://img.shields.io/badge/Database-Neon%20Postgres-00E599?style=flat-square&logo=postgresql)](https://neon.tech/)
 [![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com/)
-[![License: GPL-3.0](https://shields.io)](LICENSE)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
 **Live:** [recallx.tech](https://recallx.tech) &nbsp;•&nbsp; **Video walkthrough:** [YouTube](https://youtu.be/EF25DZDJ6gw) &nbsp;•&nbsp; **Star this repo** if it's useful — it genuinely helps
