@@ -55,7 +55,7 @@ export default function TermsPage() {
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '10px',
-              color: '#888',
+              color: 'var(--text-secondary)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '16px',
@@ -71,7 +71,7 @@ export default function TermsPage() {
               fontStyle: 'italic',
               fontWeight: 400,
               fontSize: 'clamp(34px, 4vw, 46px)',
-              color: '#f0f0f0',
+              color: 'var(--text-primary)',
               lineHeight: 1.15,
               margin: '0 0 24px',
             }}
@@ -83,7 +83,7 @@ export default function TermsPage() {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: '#777',
+              color: 'var(--text-secondary)',
               lineHeight: 1.75,
               margin: '0 0 56px',
             }}
@@ -97,10 +97,10 @@ export default function TermsPage() {
               <div
                 key={sec.num}
                 style={{
-                  borderTop: '1px solid #141414',
+                  borderTop: '1px solid var(--border)',
                   paddingTop: '28px',
                   paddingBottom: '32px',
-                  ...(i === SECTIONS.length - 1 ? { borderBottom: '1px solid #141414' } : {}),
+                  ...(i === SECTIONS.length - 1 ? { borderBottom: '1px solid var(--border)' } : {}),
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '12px' }}>
@@ -118,7 +118,7 @@ export default function TermsPage() {
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '16px',
                       fontWeight: 500,
-                      color: '#e5e5e5',
+                      color: 'var(--text-primary)',
                       margin: 0,
                     }}
                   >
@@ -130,7 +130,7 @@ export default function TermsPage() {
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '14px',
-                    color: '#666',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.75,
                     margin: 0,
                     paddingLeft: '32px',
@@ -143,19 +143,19 @@ export default function TermsPage() {
           </div>
 
           {/* Contact note */}
-          <div style={{ marginTop: '48px', paddingTop: '24px' }}>
+          <div style={{ marginTop: '48px', paddingTop: '24px', borderTop: '1px solid var(--border)' }}>
             <p
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '12px',
-                color: '#555',
+                color: 'var(--text-tertiary)',
                 margin: 0,
               }}
             >
               Questions regarding these terms? Reach out to{' '}
               <a
                 href="mailto:vinitdpatilwork193@gmail.com"
-                style={{ color: '#888', textDecoration: 'underline' }}
+                style={{ color: 'var(--text-secondary)', textDecoration: 'underline' }}
               >
                 vinitdpatilwork193@gmail.com
               </a>

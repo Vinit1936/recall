@@ -13,22 +13,14 @@ function formatStars(count: number): string {
 }
 
 export function GitHubStarButton() {
-  const [stars, setStars] = useState<number>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const cached = localStorage.getItem('recall_github_stars');
-        if (cached) {
-          const parsed = parseInt(cached, 10);
-          if (!isNaN(parsed) && parsed >= 0) return parsed;
-        }
-      } catch {}
-    }
-    return 4; // Instant 0ms render default matching current repo stars
-  });
+  // Keep the server and first client render identical. The cache is read after
+  // hydration so a previous API response cannot cause a hydration mismatch.
+  const [stars, setStars] = useState<number>(4);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     let mounted = true;
+
     fetch('/api/github/stars')
       .then((res) => res.json())
       .then((data) => {

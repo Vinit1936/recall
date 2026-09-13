@@ -57,7 +57,7 @@ export default function AboutPage() {
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '10px',
-              color: '#888',
+              color: 'var(--text-secondary)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '16px',
@@ -73,7 +73,7 @@ export default function AboutPage() {
               fontStyle: 'italic',
               fontWeight: 400,
               fontSize: 'clamp(34px, 4vw, 46px)',
-              color: '#f0f0f0',
+              color: 'var(--text-primary)',
               lineHeight: 1.15,
               margin: '0 0 24px',
             }}
@@ -85,7 +85,7 @@ export default function AboutPage() {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: '#777',
+              color: 'var(--text-secondary)',
               lineHeight: 1.75,
               margin: '0 0 56px',
             }}
@@ -99,10 +99,10 @@ export default function AboutPage() {
               <div
                 key={sec.num}
                 style={{
-                  borderTop: '1px solid #141414',
+                  borderTop: '1px solid var(--border)',
                   paddingTop: '28px',
                   paddingBottom: '32px',
-                  ...(i === SECTIONS.length - 1 ? { borderBottom: '1px solid #141414' } : {}),
+                  ...(i === SECTIONS.length - 1 ? { borderBottom: '1px solid var(--border)' } : {}),
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px', marginBottom: '12px' }}>
@@ -120,7 +120,7 @@ export default function AboutPage() {
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '16px',
                       fontWeight: 500,
-                      color: '#e5e5e5',
+                      color: 'var(--text-primary)',
                       margin: 0,
                     }}
                   >
@@ -132,7 +132,7 @@ export default function AboutPage() {
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '14px',
-                    color: '#666',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.75,
                     margin: 0,
                     paddingLeft: '32px',
@@ -161,15 +161,16 @@ export default function AboutPage() {
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '12px',
-                color: '#fff',
+                color: 'var(--foreground)',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                border: '1px solid #222',
+                border: '1px solid var(--border)',
+                background: 'var(--card)',
                 padding: '10px 20px',
                 borderRadius: '8px',
-                transition: 'border-color 0.15s ease',
+                transition: 'border-color 0.15s ease, background 0.15s ease',
               }}
             >
               Open Recall Dashboard →
@@ -183,7 +184,7 @@ export default function AboutPage() {
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '12px',
-                color: '#666',
+                color: 'var(--text-secondary)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
@@ -194,10 +195,10 @@ export default function AboutPage() {
 
           <style>{`
             .about-dashboard-btn:hover {
-              border-color: #444 !important;
+              border-color: var(--primary) !important;
             }
             .about-github-link:hover {
-              color: #fff !important;
+              color: var(--text-primary) !important;
             }
           `}</style>
         </article>

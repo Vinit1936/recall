@@ -29,10 +29,11 @@ export function HowItWorks() {
     <section
       id="how-it-works"
       style={{
-        background: '#080808',
-        borderTop: '1px solid #111',
-        borderBottom: '1px solid #111',
+        background: 'var(--bg)',
+        borderTop: '1px solid var(--border)',
+        borderBottom: '1px solid var(--border)',
         scrollMarginTop: '60px',
+        transition: 'background 0.2s ease, border-color 0.2s ease',
       }}
     >
       <div
@@ -47,7 +48,7 @@ export function HowItWorks() {
           style={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '10px',
-            color: '#888',
+            color: 'var(--text-secondary)',
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             marginBottom: '64px',
@@ -63,7 +64,7 @@ export function HowItWorks() {
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '1px',
-            background: '#141414',
+            background: 'var(--border)',
           }}
         >
           {STEPS.map((step, i) => (
@@ -77,7 +78,7 @@ export function HowItWorks() {
                 delay: i * 0.1,
               }}
               style={{
-                background: '#080808',
+                background: 'var(--bg)',
                 padding: i === 0 ? '0 36px 0 0' : i === 1 ? '0 36px' : '0 0 0 36px',
               }}
             >
@@ -89,7 +90,7 @@ export function HowItWorks() {
                     fontStyle: 'normal',
                     fontWeight: 400,
                     fontSize: '80px',
-                    color: '#1a1a1a',
+                    color: 'var(--border)',
                     lineHeight: 1,
                   }}
                 >
@@ -101,7 +102,7 @@ export function HowItWorks() {
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '22px',
-                    color: '#e5e5e5',
+                    color: 'var(--text-primary)',
                     fontWeight: 500,
                     marginTop: '16px',
                     marginBottom: '12px',
@@ -115,7 +116,7 @@ export function HowItWorks() {
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '14px',
-                    color: '#555',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.75,
                     margin: 0,
                   }}
@@ -135,7 +136,7 @@ export function HowItWorks() {
           }
           .how-it-works-v2 > div {
             padding: 32px 0 !important;
-            border-bottom: 1px solid #111 !important;
+            border-bottom: 1px solid var(--border) !important;
           }
         }
       `}</style>

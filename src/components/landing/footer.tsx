@@ -6,10 +6,11 @@ export function Footer() {
   return (
     <footer
       style={{
-        background: '#070709',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        background: 'var(--bg)',
+        borderTop: '1px solid var(--border)',
         paddingTop: '64px',
         paddingBottom: '40px',
+        transition: 'background 0.2s ease, border-color 0.2s ease',
       }}
     >
       <div
@@ -39,7 +40,7 @@ export function Footer() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '22px',
                 fontWeight: 700,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 letterSpacing: '-0.03em',
                 display: 'inline-block',
                 marginBottom: '12px',
@@ -51,7 +52,7 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '14px',
-                color: '#71717a',
+                color: 'var(--muted-foreground)',
                 lineHeight: 1.6,
                 margin: 0,
                 maxWidth: '260px',
@@ -259,7 +260,7 @@ export function Footer() {
         {/* Bottom Copyright and Legal Bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.04)',
+            borderTop: '1px solid var(--border)',
             paddingTop: '28px',
             display: 'flex',
             alignItems: 'center',
@@ -272,7 +273,7 @@ export function Footer() {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '13px',
-              color: '#52525b',
+              color: 'var(--muted-foreground)',
             }}
           >
             © 2026 Recall. All rights reserved.

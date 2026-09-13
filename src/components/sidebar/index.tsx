@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import { Settings, MessageSquare } from 'lucide-react';
 import { FeedbackModal } from '@/components/feedback-modal';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navItems = [
   {
@@ -51,7 +52,8 @@ export function Sidebar() {
         style={{
           width: 240,
           minWidth: 240,
-          background: '#111111',
+          background: 'var(--sidebar-bg)',
+          borderRight: '1px solid var(--sidebar-border)',
           height: '100vh',
           position: 'fixed',
           left: 0,
@@ -64,7 +66,7 @@ export function Sidebar() {
       >
         {/* Wordmark */}
         <Link href="/dashboard" style={{ textDecoration: 'none' }}>
-          <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 18, fontWeight: 600, color: '#ffffff', paddingLeft: 12, marginBottom: 32, letterSpacing: '-0.02em', cursor: 'pointer' }}>
+          <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 18, fontWeight: 600, color: 'var(--foreground)', paddingLeft: 12, marginBottom: 32, letterSpacing: '-0.02em', cursor: 'pointer' }}>
             recall<span style={{ color: '#F7981E' }}>.</span>
           </div>
         </Link>
@@ -85,13 +87,13 @@ export function Sidebar() {
                   borderRadius: 6,
                   fontSize: 13.5,
                   fontWeight: isActive ? 500 : 400,
-                  color: isActive ? '#ffffff' : '#666',
-                  background: isActive ? '#1e1e1e' : 'transparent',
+                  color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
+                  background: isActive ? 'var(--sidebar-accent)' : 'transparent',
                   textDecoration: 'none',
                   transition: 'color 0.15s, background 0.15s',
                 }}
               >
-                <span style={{ color: isActive ? '#fff' : '#555' }}>{item.icon}</span>
+                <span style={{ color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)' }}>{item.icon}</span>
                 {item.label}
               </Link>
             );
@@ -109,7 +111,7 @@ export function Sidebar() {
               borderRadius: 6,
               fontSize: 13.5,
               fontWeight: 400,
-              color: '#666',
+              color: 'var(--muted-foreground)',
               background: 'transparent',
               border: 'none',
               width: '100%',
@@ -118,29 +120,40 @@ export function Sidebar() {
               transition: 'color 0.15s, background 0.15s',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#ffffff';
-              e.currentTarget.style.background = '#1a1a1a';
+              e.currentTarget.style.color = 'var(--foreground)';
+              e.currentTarget.style.background = 'var(--sidebar-accent)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = '#666666';
+              e.currentTarget.style.color = 'var(--muted-foreground)';
               e.currentTarget.style.background = 'transparent';
             }}
           >
-            <MessageSquare size={16} style={{ color: '#555' }} />
+            <MessageSquare size={16} style={{ color: 'inherit' }} />
             <span>Feedback</span>
           </button>
+
+          {/* Theme Toggle Nav Item */}
+          <ThemeToggle variant="sidebar" />
         </nav>
 
         {/* User + Sign out */}
-        <div style={{ paddingLeft: 12, paddingRight: 12 }}>
+        <div style={{ paddingLeft: 12, paddingRight: 12, borderTop: '1px solid var(--sidebar-border)', paddingTop: 14 }}>
           {session?.user && (
             <div style={{ marginBottom: 10 }}>
-              <div style={{ fontSize: 12, color: '#666', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 6 }}>
+              <div style={{ fontSize: 12, color: 'var(--muted-foreground)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 6 }}>
                 {session.user.name || session.user.email}
               </div>
               <button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                style={{ background: 'none', border: '1px solid #222', borderRadius: 5, color: '#555', cursor: 'pointer', fontSize: 12, padding: '4px 10px', width: '100%', textAlign: 'left', transition: 'color 0.15s, border-color 0.15s' }}
+                style={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 5, color: 'var(--muted-foreground)', cursor: 'pointer', fontSize: 12, padding: '4px 10px', width: '100%', textAlign: 'left', transition: 'color 0.15s, border-color 0.15s, background 0.15s' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--foreground)';
+                  e.currentTarget.style.borderColor = 'var(--primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--muted-foreground)';
+                  e.currentTarget.style.borderColor = 'var(--border)';
+                }}
               >
                 Sign out
               </button>

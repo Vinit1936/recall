@@ -5,13 +5,13 @@ export { getTopicColor };
 export function getDifficultyStyle(difficulty: string): { bg: string; text: string; border: string } {
   switch (difficulty.toUpperCase()) {
     case 'EASY':
-      return { bg: '#1c3a1c', text: '#4ade80', border: '#2d5a2d' };
+      return { bg: 'var(--easy-bg)', text: 'var(--easy-text)', border: 'var(--easy-border)' };
     case 'MEDIUM':
-      return { bg: '#3a2a0d', text: '#fb923c', border: '#5a3d10' };
+      return { bg: 'var(--medium-bg)', text: 'var(--medium-text)', border: 'var(--medium-border)' };
     case 'HARD':
-      return { bg: '#3a0f0f', text: '#f87171', border: '#5a1a1a' };
+      return { bg: 'var(--hard-bg)', text: 'var(--hard-text)', border: 'var(--hard-border)' };
     default:
-      return { bg: '#1a1a1a', text: '#888888', border: '#2a2a2a' };
+      return { bg: 'var(--demo-surface-raised)', text: 'var(--demo-text-muted)', border: 'var(--demo-control-border)' };
   }
 }
 

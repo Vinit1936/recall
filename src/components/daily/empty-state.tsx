@@ -15,10 +15,10 @@ export function EmptyState() {
         textAlign: 'center',
       }}
     >
-      <div style={{ fontSize: 18, fontWeight: 600, color: '#fff' }}>
+      <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--foreground)' }}>
         ⌈ You&apos;re all caught up ⌋
       </div>
-      <div style={{ fontSize: 14, color: '#888', lineHeight: 1.6, marginTop: 4 }}>
+      <div style={{ fontSize: 14, color: 'var(--muted-foreground)', lineHeight: 1.6, marginTop: 4 }}>
         No problems due today. Come back tomorrow,
         <br />
         or add new problems from the table.
@@ -30,10 +30,10 @@ export function EmptyState() {
           display: 'inline-flex',
           alignItems: 'center',
           gap: 6,
-          background: 'none',
-          border: '1px solid #2a2a2a',
+          background: 'var(--card)',
+          border: '1px solid var(--border)',
           borderRadius: 6,
-          color: '#888',
+          color: 'var(--muted-foreground)',
           fontSize: 13,
           padding: '7px 16px',
           textDecoration: 'none',

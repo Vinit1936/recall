@@ -175,12 +175,12 @@ export function RevisionDemo() {
       style={{
         width: '100%',
         minHeight: '460px',
-        background: '#0a0a0b',
+        background: 'var(--demo-bg)',
         position: 'relative',
         overflow: 'hidden',
         fontFamily: 'var(--font-geist-sans), sans-serif',
         fontSize: '13px',
-        color: '#e5e5e5',
+        color: 'var(--demo-text)',
         padding: '24px 28px',
         userSelect: 'none',
       }}
@@ -189,10 +189,10 @@ export function RevisionDemo() {
 
       {/* Notion-style Page Header */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 12 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 600, color: '#ffffff', margin: 0, letterSpacing: '-0.01em' }}>
+        <h1 style={{ fontSize: 24, fontWeight: 600, color: 'var(--demo-text)', margin: 0, letterSpacing: '-0.01em' }}>
           Daily Revision
         </h1>
-        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: '#666666' }}>
+        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--demo-text-faint)' }}>
           Saturday, August 8
         </span>
       </div>
@@ -219,7 +219,7 @@ export function RevisionDemo() {
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: 34,
                   fontWeight: 700,
-                  color: '#ffffff',
+                  color: 'var(--demo-text)',
                   letterSpacing: '-0.03em',
                   lineHeight: '38px',
                 }}
@@ -228,29 +228,29 @@ export function RevisionDemo() {
               </motion.span>
             </AnimatePresence>
           </div>
-          <span style={{ fontSize: 17, fontWeight: 600, color: '#888888', letterSpacing: '-0.01em', lineHeight: 1, display: 'inline-flex', alignItems: 'center' }}>
+          <span style={{ fontSize: 17, fontWeight: 600, color: 'var(--demo-text-muted)', letterSpacing: '-0.01em', lineHeight: 1, display: 'inline-flex', alignItems: 'center' }}>
             day streak
           </span>
         </div>
 
         {/* Secondary metadata */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: '#777777' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: 'var(--demo-text-muted)' }}>
           <span>
-            <strong style={{ color: '#ffffff' }}>{dueCount}</strong> due today ({overdueCount} overdue)
+            <strong style={{ color: 'var(--demo-text)' }}>{dueCount}</strong> due today ({overdueCount} overdue)
           </span>
           <span>·</span>
           <span>
-            <strong style={{ color: '#ffffff' }}>20</strong> total problems
+            <strong style={{ color: 'var(--demo-text)' }}>20</strong> total problems
           </span>
           <span>·</span>
           <span>
-            <strong style={{ color: '#ffffff' }}>1</strong> mastered
+            <strong style={{ color: 'var(--demo-text)' }}>1</strong> mastered
           </span>
         </div>
       </div>
 
       {/* Main Table Structure */}
-      <div style={{ background: '#0a0a0b', border: '1px solid #18181a', borderRadius: '8px', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--demo-bg)', border: '1px solid var(--demo-border)', borderRadius: '8px', overflow: 'hidden' }}>
         {/* Table Column Headers */}
         <div
           style={{
@@ -258,10 +258,10 @@ export function RevisionDemo() {
             gridTemplateColumns: '60px minmax(140px, 1fr) 80px 100px 220px 32px',
             alignItems: 'center',
             padding: '8px 16px',
-            borderBottom: '1px solid #1e1e1e',
+            borderBottom: '1px solid var(--demo-border)',
             fontSize: 11,
             fontWeight: 600,
-            color: '#666666',
+            color: 'var(--demo-text-faint)',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
           }}
@@ -311,20 +311,20 @@ export function RevisionDemo() {
                       gridTemplateColumns: '60px minmax(140px, 1fr) 80px 100px 220px 32px',
                       alignItems: 'center',
                       padding: '0 16px',
-                      borderBottom: '1px solid #1c1c1e',
+                      borderBottom: '1px solid var(--demo-border-subtle)',
                       overflow: 'hidden',
                     }}
                   >
                     {/* Platform & Number */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                       <PlatformLogo platform="LEETCODE" size={18} padding={1} />
-                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: '#888888' }}>
+                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--demo-text-muted)' }}>
                         1850
                       </span>
                     </div>
 
                     {/* Title */}
-                    <div style={{ color: '#ececec', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
+                    <div style={{ color: 'var(--demo-text)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
                       Minimum Adjacent Swaps
                     </div>
 
@@ -367,9 +367,9 @@ export function RevisionDemo() {
                       <button
                         ref={r1CleanRef}
                         style={{
-                          background: row1Badge === 'CLEAN' ? 'rgba(74, 222, 128, 0.15)' : '#18181a',
-                          border: row1Badge === 'CLEAN' ? '1px solid #4ade80' : row1Hover === 'CLEAN' ? '1px solid #4ade80' : '1px solid #2a2a2e',
-                          color: row1Badge === 'CLEAN' || row1Hover === 'CLEAN' ? '#4ade80' : '#cccccc',
+                          background: row1Badge === 'CLEAN' ? 'rgba(74, 222, 128, 0.15)' : 'var(--demo-control)',
+                          border: row1Badge === 'CLEAN' ? '1px solid #4ade80' : row1Hover === 'CLEAN' ? '1px solid #4ade80' : '1px solid var(--demo-control-border)',
+                          color: row1Badge === 'CLEAN' || row1Hover === 'CLEAN' ? '#4ade80' : 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -381,9 +381,9 @@ export function RevisionDemo() {
                       </button>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -393,9 +393,9 @@ export function RevisionDemo() {
                       </button>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -406,7 +406,7 @@ export function RevisionDemo() {
                     </div>
 
                     {/* External Link */}
-                    <div style={{ textAlign: 'right', color: '#555555' }}>
+                    <div style={{ textAlign: 'right', color: 'var(--demo-text-faint)' }}>
                       <ExternalLink size={14} />
                     </div>
                   </motion.div>
@@ -424,20 +424,20 @@ export function RevisionDemo() {
                       gridTemplateColumns: '60px minmax(140px, 1fr) 80px 100px 220px 32px',
                       alignItems: 'center',
                       padding: '0 16px',
-                      borderBottom: '1px solid #1c1c1e',
+                      borderBottom: '1px solid var(--demo-border-subtle)',
                       overflow: 'hidden',
                     }}
                   >
                     {/* Platform & Number */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                       <PlatformLogo platform="LEETCODE" size={18} padding={1} />
-                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: '#888888' }}>
+                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--demo-text-muted)' }}>
                         55
                       </span>
                     </div>
 
                     {/* Title */}
-                    <div style={{ color: '#ececec', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
+                    <div style={{ color: 'var(--demo-text)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
                       Jump Game
                     </div>
 
@@ -479,9 +479,9 @@ export function RevisionDemo() {
                     <div style={{ display: 'flex', gap: 6 }}>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -492,9 +492,9 @@ export function RevisionDemo() {
                       <button
                         ref={r2ShakyRef}
                         style={{
-                          background: row2Badge === 'SHAKY' ? 'rgba(251, 146, 60, 0.15)' : '#18181a',
-                          border: row2Badge === 'SHAKY' ? '1px solid #fb923c' : row2Hover === 'SHAKY' ? '1px solid #fb923c' : '1px solid #2a2a2e',
-                          color: row2Badge === 'SHAKY' || row2Hover === 'SHAKY' ? '#fb923c' : '#cccccc',
+                          background: row2Badge === 'SHAKY' ? 'rgba(251, 146, 60, 0.15)' : 'var(--demo-control)',
+                          border: row2Badge === 'SHAKY' ? '1px solid #fb923c' : row2Hover === 'SHAKY' ? '1px solid #fb923c' : '1px solid var(--demo-control-border)',
+                          color: row2Badge === 'SHAKY' || row2Hover === 'SHAKY' ? '#fb923c' : 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -506,9 +506,9 @@ export function RevisionDemo() {
                       </button>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -519,7 +519,7 @@ export function RevisionDemo() {
                     </div>
 
                     {/* External Link */}
-                    <div style={{ textAlign: 'right', color: '#555555' }}>
+                    <div style={{ textAlign: 'right', color: 'var(--demo-text-faint)' }}>
                       <ExternalLink size={14} />
                     </div>
                   </motion.div>
@@ -537,20 +537,20 @@ export function RevisionDemo() {
                       gridTemplateColumns: '60px minmax(140px, 1fr) 80px 100px 220px 32px',
                       alignItems: 'center',
                       padding: '0 16px',
-                      borderBottom: '1px solid #1c1c1e',
+                      borderBottom: '1px solid var(--demo-border-subtle)',
                       overflow: 'hidden',
                     }}
                   >
                     {/* Platform & Number */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                       <PlatformLogo platform="CODEFORCES" size={18} padding={1} />
-                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: '#888888' }}>
+                      <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--demo-text-muted)' }}>
                         401
                       </span>
                     </div>
 
                     {/* Title */}
-                    <div style={{ color: '#ececec', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
+                    <div style={{ color: 'var(--demo-text)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', paddingRight: 8 }}>
                       Watermelon
                     </div>
 
@@ -592,9 +592,9 @@ export function RevisionDemo() {
                     <div style={{ display: 'flex', gap: 6 }}>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -604,9 +604,9 @@ export function RevisionDemo() {
                       </button>
                       <button
                         style={{
-                          background: '#18181a',
-                          border: '1px solid #2a2a2e',
-                          color: '#cccccc',
+                          background: 'var(--demo-control)',
+                          border: '1px solid var(--demo-control-border)',
+                          color: 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -617,9 +617,9 @@ export function RevisionDemo() {
                       <button
                         ref={r3StruggledRef}
                         style={{
-                          background: row3Badge === 'STRUGGLED' ? 'rgba(248, 113, 113, 0.15)' : '#18181a',
-                          border: row3Badge === 'STRUGGLED' ? '1px solid #f87171' : row3Hover === 'STRUGGLED' ? '1px solid #f87171' : '1px solid #2a2a2e',
-                          color: row3Badge === 'STRUGGLED' || row3Hover === 'STRUGGLED' ? '#f87171' : '#cccccc',
+                          background: row3Badge === 'STRUGGLED' ? 'rgba(248, 113, 113, 0.15)' : 'var(--demo-control)',
+                          border: row3Badge === 'STRUGGLED' ? '1px solid #f87171' : row3Hover === 'STRUGGLED' ? '1px solid #f87171' : '1px solid var(--demo-control-border)',
+                          color: row3Badge === 'STRUGGLED' || row3Hover === 'STRUGGLED' ? '#f87171' : 'var(--demo-text-muted)',
                           borderRadius: 6,
                           padding: '4px 10px',
                           fontSize: 12,
@@ -632,7 +632,7 @@ export function RevisionDemo() {
                     </div>
 
                     {/* External Link */}
-                    <div style={{ textAlign: 'right', color: '#555555' }}>
+                    <div style={{ textAlign: 'right', color: 'var(--demo-text-faint)' }}>
                       <ExternalLink size={14} />
                     </div>
                   </motion.div>
@@ -671,10 +671,10 @@ export function RevisionDemo() {
             >
               ✓
             </div>
-            <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', margin: '0 0 6px' }}>
+            <h3 style={{ fontSize: 18, fontWeight: 600, color: 'var(--demo-text)', margin: '0 0 6px' }}>
               All caught up for today!
             </h3>
-            <p style={{ fontSize: 13, color: '#777777', margin: 0 }}>
+            <p style={{ fontSize: 13, color: 'var(--demo-text-muted)', margin: 0 }}>
               Great job maintaining your daily revision streak.
             </p>
           </motion.div>

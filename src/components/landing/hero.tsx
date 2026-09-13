@@ -60,7 +60,7 @@ export function Hero({ TableDemo }: HeroProps) {
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '11px',
-                color: '#888',
+                color: 'var(--text-secondary)',
                 letterSpacing: '0.1em',
               }}
             >
@@ -80,14 +80,14 @@ export function Hero({ TableDemo }: HeroProps) {
                   fontSize: '64px',
                   lineHeight: 1.05,
                   letterSpacing: '-0.02em',
-                  color: '#f0f0f0',
+                  color: 'var(--text-primary)',
                   paddingBottom: '10px',
                 }}
               >
                 Never forget
               </span>
               {/* Editorial rule between lines */}
-              <div style={{ width: '100%', height: '1px', background: '#1e1e1e', marginBottom: '10px' }} />
+              <div style={{ width: '100%', height: '1px', background: 'var(--border)', marginBottom: '10px' }} />
               <span
                 style={{
                   display: 'block',
@@ -97,7 +97,7 @@ export function Hero({ TableDemo }: HeroProps) {
                   fontSize: '64px',
                   lineHeight: 1.05,
                   letterSpacing: '-0.02em',
-                  color: '#f0f0f0',
+                  color: 'var(--text-primary)',
                   paddingTop: '4px',
                 }}
               >
@@ -115,7 +115,7 @@ export function Hero({ TableDemo }: HeroProps) {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: '#555',
+              color: 'var(--text-secondary)',
               lineHeight: 1.7,
               maxWidth: '320px',
               margin: 0,
@@ -145,8 +145,8 @@ export function Hero({ TableDemo }: HeroProps) {
             <Link
               href="/auth/login"
               style={{
-                background: '#f0f0f0',
-                color: '#080808',
+                background: 'var(--text-primary)',
+                color: 'var(--bg)',
                 fontSize: '13px',
                 fontWeight: 600,
                 height: '40px',
@@ -161,11 +161,9 @@ export function Hero({ TableDemo }: HeroProps) {
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#ffffff';
                 e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#f0f0f0';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -269,8 +267,8 @@ export function Hero({ TableDemo }: HeroProps) {
       <div
         data-hero-stats
         style={{
-          borderTop: '1px solid #111',
-          borderBottom: '1px solid #111',
+          borderTop: '1px solid var(--border)',
+          borderBottom: '1px solid var(--border)',
           padding: '24px 0',
           overflow: 'hidden',
           position: 'relative',
@@ -315,7 +313,7 @@ export function Hero({ TableDemo }: HeroProps) {
                     fontFamily: 'var(--font-display), Georgia, serif',
                     fontStyle: 'italic',
                     fontSize: '34px',
-                    color: '#e5e5e5',
+                    color: 'var(--text-primary)',
                     lineHeight: 1,
                     whiteSpace: 'nowrap',
                   }}
@@ -326,7 +324,7 @@ export function Hero({ TableDemo }: HeroProps) {
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '10px',
-                    color: '#555',
+                    color: 'var(--text-secondary)',
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     whiteSpace: 'nowrap',
@@ -338,7 +336,7 @@ export function Hero({ TableDemo }: HeroProps) {
               <span
                 style={{
                   fontFamily: 'var(--font-geist-mono), monospace',
-                  color: '#262626',
+                  color: 'var(--border)',
                   fontSize: '24px',
                   userSelect: 'none',
                 }}

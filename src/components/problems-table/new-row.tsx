@@ -481,9 +481,9 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
   return (
     <>
       <tr data-new-row="true" style={{
-        background: '#141414',
-        borderBottom: '1px solid #1c1c1c',
-        borderLeft: '1px solid #3a3a3a',
+        background: 'var(--secondary)',
+        borderBottom: '1px solid var(--border)',
+        borderLeft: '2px solid var(--primary)',
         height: 44,
         outline: 'none',
       }}>
@@ -524,11 +524,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                     justifyContent: 'center',
                     width: 22,
                     height: 22,
-                    background: '#1e1e20',
+                    background: 'var(--card)',
                     borderRadius: 4,
-                    border: '1px solid #333338',
+                    border: '1px solid var(--border)',
                     cursor: 'pointer',
-                    color: '#888',
+                    color: 'var(--muted-foreground)',
                     fontSize: 14,
                     lineHeight: 1,
                     padding: 0,

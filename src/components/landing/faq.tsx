@@ -60,8 +60,8 @@ function FAQItem({
       itemScope
       itemType="https://schema.org/Question"
       style={{
-        borderTop: '1px solid #141414',
-        ...(isLast ? { borderBottom: '1px solid #141414' } : {}),
+        borderTop: '1px solid var(--border)',
+        ...(isLast ? { borderBottom: '1px solid var(--border)' } : {}),
       }}
     >
       <button
@@ -86,7 +86,7 @@ function FAQItem({
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '11px',
-              color: isOpen ? '#ff6b00' : '#444',
+              color: isOpen ? '#ff6b00' : 'var(--text-tertiary)',
               flexShrink: 0,
               transition: 'color 0.2s ease',
             }}
@@ -99,7 +99,7 @@ function FAQItem({
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: isOpen ? '#ffffff' : '#e0e0e0',
+              color: 'var(--text-primary)',
               fontWeight: 400,
               lineHeight: 1.45,
               transition: 'color 0.2s ease',
@@ -113,7 +113,7 @@ function FAQItem({
           style={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '15px',
-            color: isOpen ? '#ffffff' : '#444',
+            color: isOpen ? 'var(--text-primary)' : 'var(--text-tertiary)',
             flexShrink: 0,
             transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
             transition: 'transform 0.2s ease, color 0.2s ease',
@@ -143,7 +143,7 @@ function FAQItem({
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '14px',
-                color: '#777',
+                color: 'var(--text-secondary)',
                 lineHeight: 1.7,
                 paddingTop: '0',
                 paddingBottom: '18px',
@@ -188,7 +188,7 @@ export function FAQ() {
           style={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '10px',
-            color: '#888',
+            color: 'var(--text-secondary)',
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
             textAlign: 'center',
@@ -205,7 +205,7 @@ export function FAQ() {
             fontStyle: 'italic',
             fontWeight: 400,
             fontSize: 'clamp(32px, 3.5vw, 42px)',
-            color: '#f0f0f0',
+            color: 'var(--text-primary)',
             textAlign: 'center',
             margin: '0 0 36px',
             lineHeight: 1.15,
@@ -231,7 +231,8 @@ export function FAQ() {
 
       <style>{`
         .faq-button:hover .faq-q-text {
-          color: #ffffff !important;
+          color: var(--text-primary) !important;
+          opacity: 0.8;
         }
         @media (max-width: 768px) {
           #faq { padding: 60px 20px !important; }

@@ -6,10 +6,10 @@ export { getTopicColor };
 
 export function getDifficultyStyle(difficulty: string): { bg: string; text: string; border: string } {
   switch (difficulty) {
-    case 'EASY':   return { bg: '#1c3a1c', text: '#4ade80', border: '#2d5a2d' };
-    case 'MEDIUM': return { bg: '#3a2a0d', text: '#fb923c', border: '#5a3d10' };
-    case 'HARD':   return { bg: '#3a0f0f', text: '#f87171', border: '#5a1a1a' };
-    default:       return { bg: '#1a1a1a', text: '#888',    border: '#2a2a2a' };
+    case 'EASY':   return { bg: 'rgba(34, 197, 94, 0.14)', text: '#16a34a', border: 'rgba(34, 197, 94, 0.28)' };
+    case 'MEDIUM': return { bg: 'rgba(249, 115, 22, 0.14)', text: '#ea580c', border: 'rgba(249, 115, 22, 0.28)' };
+    case 'HARD':   return { bg: 'rgba(239, 68, 68, 0.14)', text: '#dc2626', border: 'rgba(239, 68, 68, 0.28)' };
+    default:       return { bg: 'var(--secondary)', text: 'var(--muted-foreground)', border: 'var(--border)' };
   }
 }
 
@@ -114,11 +114,11 @@ export function TopLevelPortal({
         top: pos?.top ?? -9999,
         left: pos?.left ?? -9999,
         zIndex: 99999,
-        background: '#1a1a1c',
-        border: '1px solid #2a2a2e',
+        background: 'var(--popover)',
+        border: '1px solid var(--border)',
         borderRadius: 8,
         padding: 6,
-        boxShadow: '0 12px 32px rgba(0,0,0,0.85)',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
         visibility: pos ? 'visible' : 'hidden',
       }}
     >
@@ -341,10 +341,10 @@ export function TopicPickerCell({
               }}
               placeholder="Search or add topic..."
               style={{
-                background: '#111',
-                border: '1px solid #2a2a2e',
+                background: 'var(--input-bg)',
+                border: '1px solid var(--input-border)',
                 borderRadius: 4,
-                color: '#fff',
+                color: 'var(--foreground)',
                 fontSize: 12,
                 padding: '5px 8px',
                 width: '100%',

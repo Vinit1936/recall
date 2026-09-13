@@ -14,7 +14,7 @@ export function FinalCTA() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        borderTop: '1px solid #111',
+        borderTop: '1px solid var(--border)',
         padding: '60px 40px 0',
       }}
     >
@@ -31,7 +31,8 @@ export function FinalCTA() {
           fontFamily: 'var(--font-geist-mono), monospace',
           fontWeight: 700,
           fontSize: 'clamp(90px, 12vw, 180px)',
-          color: 'rgba(255,255,255,0.075)',
+          color: 'var(--border)',
+          opacity: 0.6,
           pointerEvents: 'none',
           userSelect: 'none',
           letterSpacing: '-0.04em',
@@ -66,13 +67,13 @@ export function FinalCTA() {
           paddingBottom: '140px',
         }}
       >
-        {/* Flying White Shooting Star Line — Taller & Prominent */}
+        {/* Flying Shooting Star Line */}
         <div
           style={{
             position: 'relative',
             width: '1.5px',
             height: '80px',
-            background: 'rgba(255, 255, 255, 0.08)',
+            background: 'var(--border)',
             margin: '0 auto 32px',
             overflow: 'hidden',
             borderRadius: '2px',
@@ -92,8 +93,8 @@ export function FinalCTA() {
             style={{
               width: '100%',
               height: '36px',
-              background: 'linear-gradient(to bottom, transparent, #ffffff 75%, #ffffff)',
-              boxShadow: '0 0 10px rgba(255, 255, 255, 1), 0 0 18px rgba(255, 255, 255, 0.5)',
+              background: 'linear-gradient(to bottom, transparent, var(--text-primary) 75%, var(--text-primary))',
+              boxShadow: '0 0 10px var(--text-primary), 0 0 18px var(--text-primary)',
             }}
           />
         </div>
@@ -104,7 +105,7 @@ export function FinalCTA() {
             fontStyle: 'italic',
             fontWeight: 400,
             fontSize: 'clamp(40px, 5vw, 72px)',
-            color: '#f0f0f0',
+            color: 'var(--text-primary)',
             letterSpacing: '-0.02em',
             margin: 0,
             lineHeight: 1.1,
@@ -117,7 +118,7 @@ export function FinalCTA() {
           style={{
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '12px',
-            color: '#888',
+            color: 'var(--text-secondary)',
             letterSpacing: '0.08em',
             marginTop: '16px',
             textTransform: 'uppercase',
@@ -130,8 +131,8 @@ export function FinalCTA() {
           <Link
             href="/auth/login"
             style={{
-              background: '#f0f0f0',
-              color: '#080808',
+              background: 'var(--text-primary)',
+              color: 'var(--bg)',
               fontSize: '14px',
               fontWeight: 600,
               height: '44px',
@@ -145,11 +146,9 @@ export function FinalCTA() {
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#ffffff';
               e.currentTarget.style.transform = 'translateY(-1px)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#f0f0f0';
               e.currentTarget.style.transform = 'translateY(0)';
             }}
           >
@@ -164,16 +163,16 @@ export function FinalCTA() {
             marginTop: '20px',
           }}
         >
-          <span style={{ color: '#333' }}>Already have an account? </span>
+          <span style={{ color: 'var(--text-tertiary)' }}>Already have an account? </span>
           <Link
             href="/auth/login"
             style={{
-              color: '#555',
+              color: 'var(--text-secondary)',
               textDecoration: 'none',
               transition: 'color 0.12s ease',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#888')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#555')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
           >
             Sign in →
           </Link>

@@ -243,12 +243,12 @@ function InlineEditCell({
         title={displayText ? displayText : undefined}
         style={{
           fontSize: 13,
-          color: '#666',
+          color: 'var(--muted-foreground)',
           cursor: 'text',
           minHeight: 26,
           padding: '3px 6px',
           borderRadius: 4,
-          background: hovered ? '#1a1a1a' : 'transparent',
+          background: hovered ? 'var(--accent)' : 'transparent',
           opacity: saving ? 0.6 : 1,
           transition: 'background 0.15s ease, opacity 0.15s ease',
           display: 'flex',
@@ -272,7 +272,7 @@ function InlineEditCell({
         {hovered && (
           <Pencil
             size={12}
-            style={{ color: '#444', flexShrink: 0, marginLeft: 4 }}
+            style={{ color: 'var(--muted-foreground)', flexShrink: 0, marginLeft: 4 }}
           />
         )}
       </div>
@@ -287,11 +287,11 @@ function InlineEditCell({
             left: -4,
             width: 'max(100% + 8px, 240px)',
             zIndex: 100,
-            background: '#1a1a1c',
-            border: '1px solid #2a2a2e',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
             padding: '8px 10px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
             opacity: saving ? 0.6 : 1,
             transition: 'opacity 0.15s ease',
           }}
@@ -310,7 +310,7 @@ function InlineEditCell({
               background: 'transparent',
               border: 'none',
               outline: 'none',
-              color: '#fff',
+              color: 'var(--foreground)',
               fontSize: 13,
               fontFamily: 'inherit',
               lineHeight: '1.4',
@@ -320,7 +320,7 @@ function InlineEditCell({
               margin: 0,
               display: 'block',
               boxSizing: 'border-box',
-              caretColor: '#ffffff',
+              caretColor: 'var(--foreground)',
             }}
           />
         </div>
@@ -354,8 +354,8 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: isSelected ? '#1c1c1c' : hovered ? '#0f0f0f' : 'transparent',
-        borderBottom: '1px solid #1c1c1c',
+        background: isSelected ? 'var(--secondary)' : hovered ? 'var(--accent)' : 'transparent',
+        borderBottom: '1px solid var(--border)',
         height: 44,
         transition: 'background 0.1s',
       }}
@@ -383,7 +383,7 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
       <td data-cell="problem" style={{ width: 340, padding: '0 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, overflow: 'hidden' }}>
           {(problem.platform === 'LEETCODE' || problem.platform === 'CODEFORCES') && problem.problemNumber > 0 && (
-            <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: '#666', fontWeight: 400, flexShrink: 0 }}>
+            <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--muted-foreground)', fontWeight: 400, flexShrink: 0 }}>
               {problem.problemNumber}
             </span>
           )}
@@ -396,7 +396,7 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
               title={problem.title}
               style={{
                 fontSize: 14,
-                color: '#e5e5e5',
+                color: 'var(--foreground)',
                 fontWeight: 500,
                 textDecoration: hovered ? 'underline' : 'none',
                 cursor: 'pointer',
@@ -408,9 +408,9 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
               {problem.title}
             </a>
           ) : (
-            <span style={{ fontSize: 14, color: '#e5e5e5', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={problem.title}>
+            <span style={{ fontSize: 14, color: 'var(--foreground)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={problem.title}>
               {problem.title}
-              <span style={{ color: '#444', fontSize: 12, textDecoration: 'line-through', flexShrink: 0 }}>🔗</span>
+              <span style={{ color: 'var(--muted-foreground)', fontSize: 12, textDecoration: 'line-through', flexShrink: 0 }}>🔗</span>
             </span>
           )}
         </div>

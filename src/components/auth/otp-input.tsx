@@ -122,33 +122,33 @@ export function OtpInput({
             style={{
               width: '46px',
               height: '52px',
-              background: '#18181b',
+              background: 'var(--input-bg)',
               border: error
-                ? '1px solid #f87171'
+                ? '1px solid var(--error)'
                 : isFilled
-                ? '1px solid #52525b'
-                : '1px solid #27272a',
+                ? '1px solid var(--foreground)'
+                : '1px solid var(--input-border)',
               borderRadius: '8px',
-              color: '#ffffff',
+              color: 'var(--foreground)',
               fontSize: '22px',
               fontFamily: 'var(--font-geist-mono), monospace',
               fontWeight: 600,
               textAlign: 'center',
               outline: 'none',
               transition: 'border-color 0.15s, box-shadow 0.15s',
-              boxShadow: isFilled ? '0 0 0 1px rgba(255, 255, 255, 0.05)' : 'none',
+               boxShadow: isFilled ? '0 0 0 1px color-mix(in srgb, var(--foreground) 5%, transparent)' : 'none',
               cursor: disabled ? 'not-allowed' : 'text',
               opacity: disabled ? 0.6 : 1,
             }}
             onFocusCapture={(e) => {
               if (!error) {
-                e.currentTarget.style.borderColor = '#ffffff';
-                e.currentTarget.style.boxShadow = '0 0 0 2px rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.borderColor = 'var(--primary)';
+                e.currentTarget.style.boxShadow = '0 0 0 2px color-mix(in srgb, var(--primary) 10%, transparent)';
               }
             }}
             onBlurCapture={(e) => {
               if (!error) {
-                e.currentTarget.style.borderColor = isFilled ? '#52525b' : '#27272a';
+                e.currentTarget.style.borderColor = isFilled ? 'var(--foreground)' : 'var(--input-border)';
                 e.currentTarget.style.boxShadow = 'none';
               }
             }}
