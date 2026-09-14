@@ -19,9 +19,9 @@ type PlatformLogoProps = {
 };
 
 const LOGO_CONFIG: Record<string, { img: any; bg: string; padding: number }> = {
-  LEETCODE:   { img: LeetCodeImg,   bg: '#0F0F0F', padding: 3 },
-  CODEFORCES: { img: CodeforcesImg, bg: '#0F0F0F', padding: 3 },
-  GFG:        { img: GFGImg,        bg: '#0F0F0F', padding: 3 },
+  LEETCODE:   { img: LeetCodeImg,   bg: 'var(--accent)', padding: 3 },
+  CODEFORCES: { img: CodeforcesImg, bg: 'var(--accent)', padding: 3 },
+  GFG:        { img: GFGImg,        bg: 'var(--accent)', padding: 3 },
   HACKERRANK: { img: HackerRankImg, bg: 'transparent', padding: 0 },
   CODECHEF:   { img: CodeChefImg,   bg: '#f5f0eb', padding: 3 },
 };

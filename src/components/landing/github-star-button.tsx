@@ -57,9 +57,9 @@ export function GitHubStarButton() {
         height: '32px',
         padding: '0 10px',
         borderRadius: '8px',
-        background: isHovered ? 'rgba(255, 255, 255, 0.06)' : 'rgba(255, 255, 255, 0.02)',
-        border: `1px solid ${isHovered ? 'rgba(255, 255, 255, 0.22)' : 'rgba(255, 255, 255, 0.08)'}`,
-        color: isHovered ? '#ffffff' : '#888888',
+        background: isHovered ? 'var(--accent)' : 'var(--card)',
+        border: `1px solid ${isHovered ? 'var(--muted-foreground)' : 'var(--border)'}`,
+        color: isHovered ? 'var(--foreground)' : 'var(--muted-foreground)',
         fontSize: '12px',
         fontWeight: 500,
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -80,7 +80,7 @@ export function GitHubStarButton() {
         style={{
           display: 'block',
           flexShrink: 0,
-          color: isHovered ? '#ffffff' : '#888888',
+          color: 'currentColor',
           transition: 'color 0.15s ease',
         }}
       >
@@ -91,7 +91,7 @@ export function GitHubStarButton() {
       <span
         className="nav-github-label"
         style={{
-          color: isHovered ? '#ffffff' : '#888888',
+          color: 'currentColor',
           transition: 'color 0.15s ease',
         }}
       >
@@ -104,7 +104,7 @@ export function GitHubStarButton() {
           display: 'inline-block',
           width: '1px',
           height: '13px',
-          background: isHovered ? 'rgba(255, 255, 255, 0.18)' : 'rgba(255, 255, 255, 0.1)',
+          background: 'var(--border)',
           margin: '0 1px',
           transition: 'background 0.15s ease',
         }}
@@ -131,7 +131,7 @@ export function GitHubStarButton() {
             display: 'block',
             flexShrink: 0,
             transform: isHovered ? 'scale(1.18) rotate(6deg)' : 'scale(1)',
-            transition: 'transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)',
+            transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
             filter: isHovered
               ? 'drop-shadow(0 0 6px rgba(234, 179, 8, 0.65))'
               : 'drop-shadow(0 0 2.5px rgba(234, 179, 8, 0.35))',
@@ -145,7 +145,7 @@ export function GitHubStarButton() {
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '11px',
             fontWeight: 600,
-            color: isHovered ? '#ffffff' : '#e5e5e5',
+            color: isHovered ? 'var(--foreground)' : 'var(--muted-foreground)',
             letterSpacing: '-0.01em',
             transition: 'color 0.15s ease',
           }}

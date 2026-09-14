@@ -96,10 +96,10 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
       <div>
-        <h3 style={{ fontSize: 15, fontWeight: 500, color: '#fff', margin: 0, marginBottom: 4 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--foreground)', margin: 0, marginBottom: 4 }}>
           Upload Problem List
         </h3>
-        <p style={{ fontSize: 13, color: '#9ca3af', margin: 0 }}>
+        <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0 }}>
           Import problems from a CSV or Excel spreadsheet into your Recall tracker.
         </p>
       </div>
@@ -120,9 +120,9 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         style={{
-          border: `1px dashed ${isDragging ? '#888' : '#333'}`,
+          border: `1px dashed ${isDragging ? 'var(--info)' : 'var(--input-border)'}`,
           borderRadius: 6,
-          background: isDragging ? '#171717' : '#121214',
+          background: isDragging ? 'var(--accent)' : 'var(--input-bg)',
           padding: '44px 20px',
           display: 'flex',
           flexDirection: 'column',
@@ -133,10 +133,10 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
           transition: 'border-color 0.15s, background 0.15s',
         }}
         onMouseEnter={(e) => {
-          if (!isDragging) e.currentTarget.style.borderColor = '#4f4f56';
+          if (!isDragging) e.currentTarget.style.borderColor = 'var(--border)';
         }}
         onMouseLeave={(e) => {
-          if (!isDragging) e.currentTarget.style.borderColor = '#333';
+          if (!isDragging) e.currentTarget.style.borderColor = 'var(--input-border)';
         }}
       >
         <div
@@ -144,16 +144,16 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
             width: 40,
             height: 40,
             borderRadius: 6,
-            background: '#18181b',
-            border: '1px solid #2e2e32',
+            background: 'var(--muted)',
+            border: '1px solid var(--input-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#a1a1aa',
+            color: 'var(--muted-foreground)',
           }}
         >
           {isParsing ? (
-            <Loader2 size={18} className="animate-spin" style={{ color: '#aaa' }} />
+            <Loader2 size={18} className="animate-spin" style={{ color: 'var(--muted-foreground)' }} />
           ) : (
             <FileSpreadsheet size={18} />
           )}
@@ -161,17 +161,17 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
 
         {isParsing ? (
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 13, color: '#ccc' }}>Reading spreadsheet...</div>
+            <div style={{ fontSize: 13, color: 'var(--muted-foreground)' }}>Reading spreadsheet...</div>
           </div>
         ) : (
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 13, color: '#f4f4f5', fontWeight: 500 }}>
-              Click to select a file <span style={{ color: '#a1a1aa', fontWeight: 400 }}>or drag and drop</span>
+            <div style={{ fontSize: 13, color: 'var(--foreground)', fontWeight: 500 }}>
+              Click to select a file <span style={{ color: 'var(--muted-foreground)', fontWeight: 400 }}>or drag and drop</span>
             </div>
             <div
               style={{
                 fontSize: 11.5,
-                color: '#888',
+                color: 'var(--muted-foreground)',
                 marginTop: 4,
                 fontFamily: 'var(--font-geist-mono), monospace',
               }}
@@ -188,11 +188,11 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            background: '#1c1212',
-            border: '1px solid #381818',
+            background: 'var(--error-bg)',
+            border: '1px solid var(--error-border)',
             borderRadius: 6,
             padding: '8px 12px',
-            color: '#f87171',
+            color: 'var(--error)',
             fontSize: 12.5,
           }}
         >
@@ -208,21 +208,21 @@ export function FileUploadStep({ onFileParsed, onCancel }: FileUploadStepProps) 
           onClick={onCancel}
           style={{
             background: 'none',
-            border: '1px solid #333',
+            border: '1px solid var(--input-border)',
             borderRadius: 6,
-            color: '#d4d4d8',
+            color: 'var(--foreground)',
             fontSize: 13,
             padding: '6px 14px',
             cursor: 'pointer',
             transition: 'border-color 0.15s, color 0.15s',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#555';
-            e.currentTarget.style.color = '#fff';
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.color = 'var(--foreground)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = '#333';
-            e.currentTarget.style.color = '#d4d4d8';
+            e.currentTarget.style.borderColor = 'var(--input-border)';
+            e.currentTarget.style.color = 'var(--foreground)';
           }}
         >
           Cancel

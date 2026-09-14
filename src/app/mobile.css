@@ -1039,9 +1039,9 @@
     height: 24px !important;
     min-height: 24px !important;
     max-height: 24px !important;
-    border: 1px solid #27272a !important;
+    border: 1px solid var(--input-border) !important;
     border-radius: 4px !important;
-    background: #141416 !important;
+    background: var(--input-bg) !important;
     width: auto !important;
     flex: none !important;
   }

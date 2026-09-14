@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ExternalLink, Check } from 'lucide-react';
-import { getDifficultyStyle, getTopicColor, Pill } from '@/components/problems-table/columns';
+import { getDifficultyStyle } from '@/components/problems-table/columns';
+import { getTopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 type Confidence = 'CLEAN' | 'SHAKY' | 'STRUGGLED';
@@ -269,5 +271,4 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
     </div>
   );
 }
-
 

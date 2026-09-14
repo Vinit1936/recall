@@ -300,7 +300,7 @@ export default function SettingsPage() {
                   </button>
                 </div>
                 {savedMessage && (
-                  <div style={{ fontSize: 12, color: '#10b981', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <div style={{ fontSize: 12, color: 'var(--success)', marginTop: 6, display: 'flex', alignItems: 'center', gap: 4 }}>
                     <span>✓</span> {savedMessage}
                   </div>
                 )}
@@ -333,10 +333,10 @@ export default function SettingsPage() {
                   data-sign-out-btn
                   onClick={() => signOut({ callbackUrl: '/' })}
                   style={{
-                    background: 'rgba(239, 68, 68, 0.1)',
-                    border: '1px solid rgba(239, 68, 68, 0.25)',
+                    background: 'var(--error-bg)',
+                    border: '1px solid var(--error-border)',
                     borderRadius: 6,
-                    color: '#ef4444',
+                    color: 'var(--error)',
                     fontSize: 12,
                     fontWeight: 500,
                     padding: '8px 14px',
@@ -590,7 +590,7 @@ export default function SettingsPage() {
                   transition: 'background 0.15s',
                 }}
               >
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ color: '#38bdf8' }}>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--info)' }}>
                   <path d="M8 2v8M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   <path d="M2 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                 </svg>
@@ -670,7 +670,7 @@ export default function SettingsPage() {
                   transition: 'background 0.15s, border-color 0.15s',
                 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--info)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                   <polyline points="14 2 14 8 20 8"/>
                   <line x1="16" y1="13" x2="8" y2="13"/>
@@ -706,13 +706,13 @@ export default function SettingsPage() {
             bottom: 24,
             right: 24,
             zIndex: 1000,
-            background: '#1a1a1a',
-            border: '1px solid #333',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
-            color: '#fff',
+            color: 'var(--foreground)',
             fontSize: 13,
             padding: '10px 16px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+            boxShadow: 'var(--shadow-modal)',
           }}
         >
           {importToast}

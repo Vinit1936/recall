@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow, startOfDay } from 'date-fns';
-import { getDifficultyStyle, getTopicColor, Pill, DifficultyPickerCell, TopicPickerCell } from './columns';
+import { DifficultyPickerCell, TopicPickerCell } from './columns';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 import { useState, useRef, useEffect } from 'react';
@@ -21,8 +21,8 @@ export function StatusCell({ problem }: { problem: any }) {
   if (problem.status === 'RETIRED') {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#444', flexShrink: 0 }} />
-        <span data-status-label style={{ fontSize: 13, color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--muted-foreground)', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
       </div>
     );
   }
@@ -32,8 +32,8 @@ export function StatusCell({ problem }: { problem: any }) {
   if (!latestConfidence || problem.revisionCount === 0) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#555', flexShrink: 0 }} />
-        <span data-status-label style={{ fontSize: 13, color: '#666', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--muted-foreground)', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export function StatusCell({ problem }: { problem: any }) {
 // Next revision formatted date string helper
 function NextRevisionCell({ problem }: { problem: any }) {
   if (problem.status !== 'ACTIVE') {
-    return <span style={{ fontSize: 13, color: '#444', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
+    return <span style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
   }
   const date = new Date(problem.nextRevisionAt);
   const today = startOfDay(new Date());
@@ -73,7 +73,7 @@ function NextRevisionCell({ problem }: { problem: any }) {
   const diffDays = Math.round((revDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
   let text = '';
-  let color = '#888';
+  let color = 'var(--muted-foreground)';
   if (diffDays < 0) {
     text = `${Math.abs(diffDays)}d overdue`;
     color = '#f87171';
@@ -85,7 +85,7 @@ function NextRevisionCell({ problem }: { problem: any }) {
     color = '#a1a1aa';
   } else {
     text = `in ${diffDays}d`;
-    color = '#666';
+    color = 'var(--muted-foreground)';
   }
 
   return <span style={{ fontSize: 13, color, fontFamily: 'var(--font-geist-mono), monospace', fontVariantNumeric: 'tabular-nums' }}>{text}</span>;
@@ -106,7 +106,7 @@ function StarCell({ problem, onToggle }: { problem: any; onToggle: () => void })
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          background: hovered ? 'rgba(255, 255, 255, 0.05)' : 'none',
+          background: hovered ? 'var(--accent)' : 'none',
           border: 'none',
           cursor: 'pointer',
           width: 28,
@@ -122,8 +122,8 @@ function StarCell({ problem, onToggle }: { problem: any; onToggle: () => void })
       >
         <Bookmark
           size={15}
-          fill={isFav ? '#ffffff' : 'none'}
-          color={isFav ? '#ffffff' : hovered ? '#a1a1aa' : '#3f3f46'}
+          fill={isFav ? 'var(--foreground)' : 'none'}
+          color={isFav ? 'var(--foreground)' : 'var(--muted-foreground)'}
           style={{
             transition: 'transform 0.15s ease, color 0.15s ease, fill 0.15s ease',
             transform: hovered ? 'scale(1.15)' : 'scale(1)',
@@ -344,9 +344,6 @@ type ProblemRowProps = {
 
 export function ProblemRow({ problem, columns, isSelected, isHighlighted, onToggleSelect, onStarToggle, onDifficultySave, onTopicSave, onNotesSave, onCustomFieldSave }: ProblemRowProps) {
   const [hovered, setHovered] = useState(false);
-  const diffStyle = getDifficultyStyle(problem.difficulty);
-  const topicColor = getTopicColor(problem.topic);
-
   return (
     <tr
       id={`problem-row-${problem.id}`}
@@ -475,4 +472,3 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
     </tr>
   );
 }
-

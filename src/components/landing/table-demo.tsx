@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { PlatformLogo } from '@/lib/platforms/logos';
-import { getTopicColor, getDifficultyStyle } from './demo-styles';
+import { getDifficultyStyle } from './demo-styles';
+import { getTopicColor } from '@/lib/topic-colors';
 import { FakeCursor, CursorHandle } from './fake-cursor';
+import { Pill } from '@/components/ui/pill';
 
 const INITIAL_PROBLEMS = [
   { id: 1, platform: 'CODEFORCES', number: '187', title: 'Target Practice', difficulty: 'EASY', topic: 'implementation', status: 'Clean', notes: 'two pointer', statusColor: '#4ade80', textColor: '#4ade80' },
@@ -284,37 +286,17 @@ export function TableDemo() {
 
               {/* Difficulty */}
               <div>
-                <span
-                  style={{
-                    background: diff.bg,
-                    color: diff.text,
-                    border: `1px solid ${diff.border}`,
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                  }}
-                >
+                <Pill bg={diff.bg} text={diff.text} border={diff.border}>
                   {prob.difficulty.charAt(0) + prob.difficulty.slice(1).toLowerCase()}
-                </span>
+                </Pill>
               </div>
 
               {/* Topic */}
               <div>
                 {topic ? (
-                  <span
-                    style={{
-                      background: topic.bg,
-                      color: topic.text,
-                      border: `1px solid ${topic.border}`,
-                      borderRadius: '4px',
-                      padding: '2px 8px',
-                      fontSize: '11px',
-                      fontWeight: 500,
-                    }}
-                  >
+                  <Pill bg={topic.bg} text={topic.text} border={topic.border}>
                     {prob.topic}
-                  </span>
+                  </Pill>
                 ) : (
                   <span style={{ color: 'var(--demo-placeholder)', fontSize: '12px' }}>—</span>
                 )}
@@ -436,17 +418,11 @@ export function TableDemo() {
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  style={{
-                    background: 'var(--easy-bg)',
-                    color: 'var(--easy-text)',
-                    border: '1px solid var(--easy-border)',
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                  }}
+                  style={{ display: 'inline-block' }}
                 >
-                  Easy
+                  <Pill bg="var(--easy-bg)" text="var(--easy-text)" border="var(--easy-border)">
+                    Easy
+                  </Pill>
                 </motion.span>
               )}
             </div>
@@ -457,17 +433,15 @@ export function TableDemo() {
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  style={{
-                    background: getTopicColor('Linked List').bg,
-                    color: getTopicColor('Linked List').text,
-                    border: `1px solid ${getTopicColor('Linked List').border}`,
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 500,
-                  }}
+                  style={{ display: 'inline-block' }}
                 >
-                  Linked List
+                  <Pill
+                    bg={getTopicColor('Linked List').bg}
+                    text={getTopicColor('Linked List').text}
+                    border={getTopicColor('Linked List').border}
+                  >
+                    Linked List
+                  </Pill>
                 </motion.span>
               )}
             </div>

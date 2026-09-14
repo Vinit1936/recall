@@ -1,7 +1,3 @@
-import { getTopicColor } from '@/lib/topic-colors';
-
-export { getTopicColor };
-
 export function getDifficultyStyle(difficulty: string): { bg: string; text: string; border: string } {
   switch (difficulty.toUpperCase()) {
     case 'EASY':

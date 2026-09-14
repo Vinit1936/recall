@@ -69,7 +69,7 @@ export function Footer() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '15px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 margin: '0 0 20px 0',
                 letterSpacing: '-0.01em',
               }}
@@ -91,12 +91,12 @@ export function Footer() {
                     style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '14px',
-                      color: '#82828e',
+                      color: 'var(--muted-foreground)',
                       textDecoration: 'none',
                       transition: 'color 0.15s ease',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#82828e')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                   >
                     {item.label}
                   </Link>
@@ -112,7 +112,7 @@ export function Footer() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '15px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 margin: '0 0 20px 0',
                 letterSpacing: '-0.01em',
               }}
@@ -137,12 +137,12 @@ export function Footer() {
                       style={{
                         fontFamily: 'var(--font-geist-sans), sans-serif',
                         fontSize: '14px',
-                        color: '#82828e',
+                        color: 'var(--muted-foreground)',
                         textDecoration: 'none',
                         transition: 'color 0.15s ease',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#82828e')}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                     >
                       {item.label}
                     </a>
@@ -152,12 +152,12 @@ export function Footer() {
                       style={{
                         fontFamily: 'var(--font-geist-sans), sans-serif',
                         fontSize: '14px',
-                        color: '#82828e',
+                        color: 'var(--muted-foreground)',
                         textDecoration: 'none',
                         transition: 'color 0.15s ease',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#82828e')}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                     >
                       {item.label}
                     </Link>
@@ -174,7 +174,7 @@ export function Footer() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '15px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 margin: '0 0 20px 0',
                 letterSpacing: '-0.01em',
               }}
@@ -230,24 +230,24 @@ export function Footer() {
                     width: '38px',
                     height: '38px',
                     borderRadius: '8px',
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    background: 'var(--card)',
+                    border: '1px solid var(--border)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#a1a1aa',
+                    color: 'var(--muted-foreground)',
                     textDecoration: 'none',
                     transition: 'all 0.15s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.25)';
-                    e.currentTarget.style.color = '#ffffff';
+                    e.currentTarget.style.background = 'var(--accent)';
+                    e.currentTarget.style.borderColor = 'var(--muted-foreground)';
+                    e.currentTarget.style.color = 'var(--foreground)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                    e.currentTarget.style.color = '#a1a1aa';
+                    e.currentTarget.style.background = 'var(--card)';
+                    e.currentTarget.style.borderColor = 'var(--border)';
+                    e.currentTarget.style.color = 'var(--muted-foreground)';
                   }}
                 >
                   {s.icon}
@@ -285,12 +285,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: '#52525b',
+                color: 'var(--muted-foreground)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#52525b')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
             >
               Privacy Policy
             </Link>
@@ -299,12 +299,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: '#52525b',
+                color: 'var(--muted-foreground)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#52525b')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
             >
               Terms and Conditions
             </Link>
@@ -313,12 +313,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: '#52525b',
+                color: 'var(--muted-foreground)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#52525b')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
             >
               About Us
             </Link>
@@ -327,12 +327,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: '#52525b',
+                color: 'var(--muted-foreground)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#a1a1aa')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#52525b')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
             >
               Contact Us
             </Link>

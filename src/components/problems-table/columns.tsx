@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { getTopicColor } from '@/lib/topic-colors';
-
-export { getTopicColor };
+import { Pill } from '@/components/ui/pill';
 
 export function getDifficultyStyle(difficulty: string): { bg: string; text: string; border: string } {
   switch (difficulty) {
@@ -11,32 +10,6 @@ export function getDifficultyStyle(difficulty: string): { bg: string; text: stri
     case 'HARD':   return { bg: 'rgba(239, 68, 68, 0.14)', text: '#dc2626', border: 'rgba(239, 68, 68, 0.28)' };
     default:       return { bg: 'var(--secondary)', text: 'var(--muted-foreground)', border: 'var(--border)' };
   }
-}
-
-// Pill component — exact spec: border-radius 4px, border included
-export function Pill({ bg, text, border, children }: { bg: string; text: string; border?: string; children: React.ReactNode }) {
-  return (
-    <span
-      data-pill
-      style={{
-        background: bg,
-        color: text,
-        border: border ? `1px solid ${border}` : undefined,
-        borderRadius: 4,
-        padding: '2px 8px',
-        fontSize: 12,
-        fontWeight: 600,
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        maxWidth: 165,
-        display: 'inline-block',
-        verticalAlign: 'middle',
-      }}
-    >
-      {children}
-    </span>
-  );
 }
 
 // TopLevelPortal — renders any table pop up at root document.body level (zIndex: 99999)
@@ -200,7 +173,7 @@ export function DifficultyPickerCell({
                   onMouseEnter={() => setHoveredOpt(d)}
                   onMouseLeave={() => setHoveredOpt(null)}
                   style={{
-                    background: isHovered ? 'rgba(255, 255, 255, 0.08)' : 'none',
+                    background: isHovered ? 'var(--accent)' : 'none',
                     border: 'none',
                     borderRadius: 4,
                     padding: '6px 10px',
@@ -217,7 +190,7 @@ export function DifficultyPickerCell({
                   <Pill bg={st.bg} text={st.text} border={st.border}>
                     {d.charAt(0) + d.slice(1).toLowerCase()}
                   </Pill>
-                  {isSelected && <span style={{ color: '#ffffff', fontSize: 12, marginLeft: 8 }}>✓</span>}
+                  {isSelected && <span style={{ color: 'var(--foreground)', fontSize: 12, marginLeft: 8 }}>✓</span>}
                 </button>
               );
             })}
@@ -364,12 +337,12 @@ export function TopicPickerCell({
                   onMouseEnter={() => setHoveredOpt('__create__')}
                   onMouseLeave={() => setHoveredOpt(null)}
                   style={{
-                    background: hoveredOpt === '__create__' ? 'rgba(74, 222, 128, 0.12)' : 'none',
-                    border: '1 border-dashed rgba(74, 222, 128, 0.4)',
+                     background: hoveredOpt === '__create__' ? 'var(--success-bg)' : 'none',
+                     border: '1px dashed var(--success-border)',
                     borderRadius: 4,
                     padding: '6px 8px',
                     cursor: 'pointer',
-                    color: '#4ade80',
+                    color: 'var(--success)',
                     fontSize: 12,
                     textAlign: 'left',
                     outline: 'none',
@@ -394,7 +367,7 @@ export function TopicPickerCell({
                     onMouseEnter={() => setHoveredOpt(t)}
                     onMouseLeave={() => setHoveredOpt(null)}
                     style={{
-                      background: isHovered ? 'rgba(255, 255, 255, 0.08)' : 'none',
+                      background: isHovered ? 'var(--accent)' : 'none',
                       border: 'none',
                       borderRadius: 4,
                       padding: '5px 8px',
@@ -410,13 +383,13 @@ export function TopicPickerCell({
                     <Pill bg={tc.bg} text={tc.text} border={tc.border}>
                       {t}
                     </Pill>
-                    {isSelected && <span style={{ color: '#fff', fontSize: 12 }}>✓</span>}
+                    {isSelected && <span style={{ color: 'var(--foreground)', fontSize: 12 }}>✓</span>}
                   </button>
                 );
               })}
 
               {filtered.length === 0 && !showCreateOption && (
-                <div style={{ padding: 8, fontSize: 12, color: '#555', textAlign: 'center' }}>
+                <div style={{ padding: 8, fontSize: 12, color: 'var(--muted-foreground)', textAlign: 'center' }}>
                   No matching topics
                 </div>
               )}

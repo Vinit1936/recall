@@ -78,10 +78,10 @@ export default function DailyRevisionPage() {
             position: 'fixed',
             bottom: 24,
             right: 24,
-            background: '#1a1a1e',
-            border: '1px solid rgba(248, 113, 113, 0.4)',
+            background: 'var(--popover)',
+            border: '1px solid var(--error-border)',
             borderRadius: 6,
-            color: '#f87171',
+            color: 'var(--error)',
             fontSize: 13,
             fontWeight: 500,
             padding: '8px 16px',
@@ -95,10 +95,10 @@ export default function DailyRevisionPage() {
 
       {/* Notion-style Page Header */}
       <div data-daily-header style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 600, color: '#ffffff', margin: 0, letterSpacing: '-0.01em' }}>
+        <h1 style={{ fontSize: 24, fontWeight: 600, color: 'var(--foreground)', margin: 0, letterSpacing: '-0.01em' }}>
           Daily Revision
         </h1>
-        <span suppressHydrationWarning style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: '#666' }}>
+        <span suppressHydrationWarning style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--muted-foreground)' }}>
           {dateLabel}
         </span>
       </div>
@@ -116,11 +116,11 @@ export default function DailyRevisionPage() {
       {/* Hero Questions Table Area */}
       <AnimatePresence mode="wait">
         {isDailyLoading ? (
-          <div style={{ border: '1px solid #1e1e1e', borderRadius: 8, background: '#111112', overflow: 'hidden' }}>
+          <div style={{ border: '1px solid var(--border)', borderRadius: 8, background: 'var(--card)', overflow: 'hidden' }}>
             <NotionTableHeader />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} style={{ height: 48, borderBottom: '1px solid #1c1c1e', background: '#141416', opacity: 0.5 }} />
+                <div key={i} style={{ height: 48, borderBottom: '1px solid var(--border)', background: 'var(--accent)', opacity: 0.5 }} />
               ))}
             </div>
           </div>
@@ -137,9 +137,9 @@ export default function DailyRevisionPage() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{
-              border: '1px solid #1e1e1e',
+              border: '1px solid var(--border)',
               borderRadius: 8,
-              background: '#111112',
+              background: 'var(--card)',
               overflow: 'hidden',
               boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
             }}
@@ -152,11 +152,11 @@ export default function DailyRevisionPage() {
                 <div
                   style={{
                     padding: '7px 16px',
-                    background: '#131315',
-                    borderBottom: '1px solid #1c1c1e',
+                    background: 'var(--accent)',
+                    borderBottom: '1px solid var(--border)',
                     fontSize: 11,
                     fontWeight: 600,
-                    color: '#999',
+                    color: 'var(--muted-foreground)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     display: 'flex',
@@ -181,11 +181,11 @@ export default function DailyRevisionPage() {
                   <div
                     style={{
                       padding: '8px 16px',
-                      background: '#131416',
-                      borderBottom: '1px solid #1c1c1e',
+                      background: 'var(--accent)',
+                      borderBottom: '1px solid var(--border)',
                       fontSize: 11,
                       fontWeight: 600,
-                      color: '#888',
+                      color: 'var(--muted-foreground)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                     }}
@@ -209,5 +209,4 @@ export default function DailyRevisionPage() {
     </div>
   );
 }
-
 

@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Chrome } from './chrome';
+import { getTopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 
 const PROBLEMS = [
   {
@@ -10,7 +12,6 @@ const PROBLEMS = [
     diff: 'Hard',
     diffColor: { bg: 'var(--hard-bg)', text: 'var(--hard-text)', border: 'var(--hard-border)' },
     topic: 'Two Pointers',
-    topicColor: { bg: 'rgba(168, 85, 247, 0.12)', text: '#c084fc', border: 'rgba(168, 85, 247, 0.25)' },
     actionBtn: 'Clean',
     badgeText: '✓ Marked Clean',
     badgeColor: 'var(--easy-text)',
@@ -22,7 +23,6 @@ const PROBLEMS = [
     diff: 'Medium',
     diffColor: { bg: 'var(--medium-bg)', text: 'var(--medium-text)', border: 'var(--medium-border)' },
     topic: 'Hash Table',
-    topicColor: { bg: 'rgba(56, 189, 248, 0.12)', text: '#38bdf8', border: 'rgba(56, 189, 248, 0.25)' },
     actionBtn: 'Shaky',
     badgeText: '✓ Marked Shaky',
     badgeColor: 'var(--medium-text)',
@@ -99,6 +99,7 @@ export function RevisionDemoMobile() {
   }, [isInView, probIndex]);
 
   const currentProb = PROBLEMS[probIndex];
+  const topicColor = getTopicColor(currentProb.topic);
 
   return (
     <div ref={containerRef} style={{ width: '100%', maxWidth: '340px', margin: '0 auto' }}>
@@ -179,35 +180,13 @@ export function RevisionDemoMobile() {
 
             {/* Badges */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <span
-                style={{
-                  background: currentProb.diffColor.bg,
-                  color: currentProb.diffColor.text,
-                  border: `1px solid ${currentProb.diffColor.border}`,
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  padding: '2px 7px',
-                  borderRadius: '4px',
-                }}
-              >
+              <Pill bg={currentProb.diffColor.bg} text={currentProb.diffColor.text} border={currentProb.diffColor.border}>
                 {currentProb.diff}
-              </span>
+              </Pill>
 
-              <span
-                style={{
-                  background: currentProb.topicColor.bg,
-                  color: currentProb.topicColor.text,
-                  border: `1px solid ${currentProb.topicColor.border}`,
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  padding: '2px 7px',
-                  borderRadius: '4px',
-                }}
-              >
+              <Pill bg={topicColor.bg} text={topicColor.text} border={topicColor.border}>
                 {currentProb.topic}
-              </span>
+              </Pill>
             </div>
 
             {/* Buttons / Result Action Row */}

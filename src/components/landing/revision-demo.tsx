@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { PlatformLogo } from '@/lib/platforms/logos';
-import { getTopicColor, getDifficultyStyle, CONF_BUTTONS } from './demo-styles';
+import { getDifficultyStyle, CONF_BUTTONS } from './demo-styles';
+import { getTopicColor } from '@/lib/topic-colors';
 import { FakeCursor, CursorHandle } from './fake-cursor';
 import { ExternalLink } from 'lucide-react';
+import { Pill } from '@/components/ui/pill';
 
 const REVISION_PROBLEMS = [
   { id: 1, platform: 'LEETCODE', number: 1850, title: 'Minimum Adjacent Swaps', difficulty: 'MEDIUM', topic: 'String' },
@@ -330,36 +332,24 @@ export function RevisionDemo() {
 
                     {/* Difficulty */}
                     <div>
-                      <span
-                        style={{
-                          background: getDifficultyStyle('MEDIUM').bg,
-                          color: getDifficultyStyle('MEDIUM').text,
-                          border: `1px solid ${getDifficultyStyle('MEDIUM').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 600,
-                        }}
+                      <Pill
+                        bg={getDifficultyStyle('MEDIUM').bg}
+                        text={getDifficultyStyle('MEDIUM').text}
+                        border={getDifficultyStyle('MEDIUM').border}
                       >
                         Medium
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Topic */}
                     <div>
-                      <span
-                        style={{
-                          background: getTopicColor('String').bg,
-                          color: getTopicColor('String').text,
-                          border: `1px solid ${getTopicColor('String').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                        }}
+                      <Pill
+                        bg={getTopicColor('String').bg}
+                        text={getTopicColor('String').text}
+                        border={getTopicColor('String').border}
                       >
                         String
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Confidence Rating Buttons */}
@@ -443,36 +433,24 @@ export function RevisionDemo() {
 
                     {/* Difficulty */}
                     <div>
-                      <span
-                        style={{
-                          background: getDifficultyStyle('MEDIUM').bg,
-                          color: getDifficultyStyle('MEDIUM').text,
-                          border: `1px solid ${getDifficultyStyle('MEDIUM').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 600,
-                        }}
+                      <Pill
+                        bg={getDifficultyStyle('MEDIUM').bg}
+                        text={getDifficultyStyle('MEDIUM').text}
+                        border={getDifficultyStyle('MEDIUM').border}
                       >
                         Medium
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Topic */}
                     <div>
-                      <span
-                        style={{
-                          background: getTopicColor('General').bg,
-                          color: getTopicColor('General').text,
-                          border: `1px solid ${getTopicColor('General').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                        }}
+                      <Pill
+                        bg={getTopicColor('General').bg}
+                        text={getTopicColor('General').text}
+                        border={getTopicColor('General').border}
                       >
                         General
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Confidence Rating Buttons */}
@@ -556,36 +534,24 @@ export function RevisionDemo() {
 
                     {/* Difficulty */}
                     <div>
-                      <span
-                        style={{
-                          background: getDifficultyStyle('EASY').bg,
-                          color: getDifficultyStyle('EASY').text,
-                          border: `1px solid ${getDifficultyStyle('EASY').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 600,
-                        }}
+                      <Pill
+                        bg={getDifficultyStyle('EASY').bg}
+                        text={getDifficultyStyle('EASY').text}
+                        border={getDifficultyStyle('EASY').border}
                       >
                         Easy
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Topic */}
                     <div>
-                      <span
-                        style={{
-                          background: getTopicColor('brute force').bg,
-                          color: getTopicColor('brute force').text,
-                          border: `1px solid ${getTopicColor('brute force').border}`,
-                          borderRadius: '4px',
-                          padding: '2px 8px',
-                          fontSize: '11px',
-                          fontWeight: 500,
-                        }}
+                      <Pill
+                        bg={getTopicColor('brute force').bg}
+                        text={getTopicColor('brute force').text}
+                        border={getTopicColor('brute force').border}
                       >
                         brute force
-                      </span>
+                      </Pill>
                     </div>
 
                     {/* Confidence Rating Buttons */}
