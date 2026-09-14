@@ -13,7 +13,7 @@ const EXISTING_ROWS = [
     diff: 'Easy',
     diffStyle: { bg: 'var(--easy-bg)', text: 'var(--easy-text)', border: 'var(--easy-border)' },
     status: 'Clean',
-    statusColor: '#4ade80',
+    statusColor: 'var(--easy-text)',
   },
   {
     platform: 'CODEFORCES',
@@ -22,7 +22,7 @@ const EXISTING_ROWS = [
     diff: 'Easy',
     diffStyle: { bg: 'var(--easy-bg)', text: 'var(--easy-text)', border: 'var(--easy-border)' },
     status: 'Shaky',
-    statusColor: '#fb923c',
+    statusColor: 'var(--medium-text)',
   },
 ];
 
@@ -270,8 +270,8 @@ export function TableDemoMobile() {
                     gap: '8px',
                     padding: '7px 10px',
                     borderBottom: '1px solid var(--demo-border-subtle)',
-                    background: confirmed ? 'rgba(74, 222, 128, 0.08)' : step >= 2 ? 'var(--demo-control-active)' : 'var(--demo-surface)',
-                    boxShadow: confirmed ? 'inset 0 0 0 1px rgba(74, 222, 128, 0.3)' : 'none',
+                    background: confirmed ? 'var(--easy-bg)' : step >= 2 ? 'var(--demo-control-active)' : 'var(--demo-surface)',
+                    boxShadow: confirmed ? 'inset 0 0 0 1px var(--easy-border)' : 'none',
                     transition: 'background 0.3s ease, box-shadow 0.3s ease',
                     position: 'relative',
                   }}
@@ -388,8 +388,8 @@ export function TableDemoMobile() {
                         animate={{ opacity: 1 }}
                         style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
                       >
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80' }} />
-                        <span style={{ fontSize: '10px', color: '#4ade80', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--easy-text)' }} />
+                        <span style={{ fontSize: '10px', color: 'var(--easy-text)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                           Clean
                         </span>
                       </motion.div>

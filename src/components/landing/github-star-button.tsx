@@ -20,6 +20,17 @@ export function GitHubStarButton() {
 
   useEffect(() => {
     let mounted = true;
+    let cachedStars: number | null = null;
+
+    try {
+      const cachedValue = localStorage.getItem('recall_github_stars');
+      const parsedStars = cachedValue === null ? Number.NaN : Number(cachedValue);
+      if (Number.isFinite(parsedStars) && parsedStars >= 0) {
+        cachedStars = parsedStars;
+      }
+    } catch {
+      // The server fallback remains active when storage is unavailable.
+    }
 
     fetch('/api/github/stars')
       .then((res) => res.json())
@@ -32,7 +43,7 @@ export function GitHubStarButton() {
         }
       })
       .catch(() => {
-        // Fallback already active
+        if (mounted && cachedStars !== null) setStars(cachedStars);
       });
 
     return () => {

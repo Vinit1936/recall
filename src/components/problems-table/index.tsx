@@ -288,10 +288,10 @@ function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
               onClick={onImportClick}
               style={{
                 marginTop: 6,
-                background: '#18181b',
-                border: '1px solid #27272a',
+                background: 'var(--card)',
+                border: '1px solid var(--border)',
                 borderRadius: 6,
-                color: '#a1a1aa',
+                color: 'var(--muted-foreground)',
                 fontSize: 12.5,
                 padding: '7px 16px',
                 cursor: 'pointer',
@@ -301,12 +301,12 @@ function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
                 transition: 'color 0.15s, border-color 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#fff';
-                e.currentTarget.style.borderColor = '#3f3f46';
+                e.currentTarget.style.color = 'var(--foreground)';
+                e.currentTarget.style.borderColor = 'var(--muted-foreground)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#a1a1aa';
-                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.color = 'var(--muted-foreground)';
+                e.currentTarget.style.borderColor = 'var(--border)';
               }}
             >
               <Upload size={13} />
@@ -1018,10 +1018,10 @@ export function ProblemsTable() {
             onClick={() => setShowImportModal(true)}
             title="Import problems from CSV / Excel"
             style={{
-              background: '#161618',
-              border: '1px solid #27272a',
+              background: 'var(--card)',
+              border: '1px solid var(--border)',
               borderRadius: 6,
-              color: '#888',
+              color: 'var(--muted-foreground)',
               cursor: 'pointer',
               fontSize: 13,
               width: 32,
@@ -1032,8 +1032,8 @@ export function ProblemsTable() {
               transition: 'color 0.15s, border-color 0.15s',
               padding: 0,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#fff'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#27272a'; e.currentTarget.style.color = '#888'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--muted-foreground)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted-foreground)'; }}
           >
             <Upload size={14} />
           </button>

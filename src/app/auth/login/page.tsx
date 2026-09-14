@@ -123,7 +123,7 @@ function Input({
           </button>
         )}
       </div>
-      {error && <div style={{ fontSize: 12, color: '#f87171', marginTop: 4 }}>{error}</div>}
+      {error && <div style={{ fontSize: 12, color: 'var(--error)', marginTop: 4 }}>{error}</div>}
     </div>
   );
 }
@@ -728,7 +728,7 @@ function LoginContent() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#888888',
+                      color: 'var(--muted-foreground)',
                       fontSize: 13,
                       cursor: 'pointer',
                       display: 'inline-flex',
@@ -738,8 +738,8 @@ function LoginContent() {
                       marginBottom: 16,
                       transition: 'color 0.15s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                   >
                     ← Back to signup
                   </button>
@@ -748,15 +748,15 @@ function LoginContent() {
                     style={{
                       fontSize: 22,
                       fontWeight: 600,
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       letterSpacing: '-0.02em',
                       margin: '0 0 6px 0',
                     }}
                   >
                     Check your email
                   </h1>
-                  <p style={{ fontSize: 13, color: '#888888', margin: 0, lineHeight: 1.5 }}>
-                    We sent a 6-digit verification code to <strong style={{ color: '#ffffff' }}>{verifyEmail}</strong>. Enter it below to verify your account.
+                  <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0, lineHeight: 1.5 }}>
+                    We sent a 6-digit verification code to <strong style={{ color: 'var(--foreground)' }}>{verifyEmail}</strong>. Enter it below to verify your account.
                   </p>
                 </div>
 
@@ -764,9 +764,9 @@ function LoginContent() {
                   <div
                     style={{
                       fontSize: 13,
-                      color: '#f87171',
-                      background: 'rgba(248, 113, 113, 0.1)',
-                      border: '1px solid rgba(248, 113, 113, 0.2)',
+                      color: 'var(--error)',
+                      background: 'var(--error-bg)',
+                      border: '1px solid var(--error-border)',
                       borderRadius: 6,
                       padding: '10px 14px',
                       fontFamily: 'var(--font-geist-mono), monospace',
@@ -782,9 +782,9 @@ function LoginContent() {
                   <div
                     style={{
                       fontSize: 13,
-                      color: '#4ade80',
-                      background: 'rgba(74, 222, 128, 0.1)',
-                      border: '1px solid rgba(74, 222, 128, 0.2)',
+                      color: 'var(--success)',
+                      background: 'var(--success-bg)',
+                      border: '1px solid var(--success-border)',
                       borderRadius: 6,
                       padding: '10px 14px',
                       marginBottom: 16,
@@ -812,9 +812,9 @@ function LoginContent() {
                   Verify & Continue →
                 </PrimaryButton>
 
-                <div style={{ marginTop: 20, textAlign: 'center', fontSize: 13, color: '#71717a' }}>
+                <div style={{ marginTop: 20, textAlign: 'center', fontSize: 13, color: 'var(--muted-foreground)' }}>
                   {resendCooldown > 0 ? (
-                    <span>Resend code in <strong style={{ color: '#a1a1aa' }}>{resendCooldown}s</strong></span>
+                    <span>Resend code in <strong style={{ color: 'var(--foreground)' }}>{resendCooldown}s</strong></span>
                   ) : (
                     <span>
                       Didn&apos;t receive the code?{' '}
@@ -824,7 +824,7 @@ function LoginContent() {
                         style={{
                           background: 'none',
                           border: 'none',
-                          color: '#ffffff',
+                          color: 'var(--foreground)',
                           cursor: 'pointer',
                           fontSize: 13,
                           textDecoration: 'underline',
@@ -838,14 +838,14 @@ function LoginContent() {
                   )}
                 </div>
 
-                <div style={{ marginTop: 12, textAlign: 'center', fontSize: 12, color: '#52525b' }}>
+                <div style={{ marginTop: 12, textAlign: 'center', fontSize: 12, color: 'var(--muted-foreground)' }}>
                   Entered the wrong email?{' '}
                   <button
                     onClick={() => setMode('form')}
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#a1a1aa',
+                      color: 'var(--foreground)',
                       cursor: 'pointer',
                       fontSize: 12,
                       textDecoration: 'underline',
@@ -874,7 +874,7 @@ function LoginContent() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#888888',
+                      color: 'var(--muted-foreground)',
                       fontSize: 13,
                       cursor: 'pointer',
                       display: 'inline-flex',
@@ -884,8 +884,8 @@ function LoginContent() {
                       marginBottom: 16,
                       transition: 'color 0.15s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                   >
                     ← Back to sign in
                   </button>
@@ -894,14 +894,14 @@ function LoginContent() {
                     style={{
                       fontSize: 22,
                       fontWeight: 600,
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       letterSpacing: '-0.02em',
                       margin: '0 0 6px 0',
                     }}
                   >
                     Reset your password
                   </h1>
-                  <p style={{ fontSize: 13, color: '#888888', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0, lineHeight: 1.5 }}>
                     Enter your registered email address and we&apos;ll send you a 6-digit code to reset your password.
                   </p>
                 </div>
@@ -910,9 +910,9 @@ function LoginContent() {
                   <div
                     style={{
                       fontSize: 13,
-                      color: '#f87171',
-                      background: 'rgba(248, 113, 113, 0.1)',
-                      border: '1px solid rgba(248, 113, 113, 0.2)',
+                      color: 'var(--error)',
+                      background: 'var(--error-bg)',
+                      border: '1px solid var(--error-border)',
                       borderRadius: 6,
                       padding: '10px 14px',
                       marginBottom: 16,
@@ -939,7 +939,7 @@ function LoginContent() {
                   Send reset code →
                 </PrimaryButton>
 
-                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 12, color: '#71717a' }}>
+                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 12, color: 'var(--muted-foreground)' }}>
                   Remembered your password?{' '}
                   <button
                     onClick={() => {
@@ -949,7 +949,7 @@ function LoginContent() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       cursor: 'pointer',
                       fontSize: 12,
                       textDecoration: 'underline',
@@ -978,7 +978,7 @@ function LoginContent() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#888888',
+                      color: 'var(--muted-foreground)',
                       fontSize: 13,
                       cursor: 'pointer',
                       display: 'inline-flex',
@@ -988,8 +988,8 @@ function LoginContent() {
                       marginBottom: 16,
                       transition: 'color 0.15s',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
                   >
                     ← Change email
                   </button>
@@ -998,15 +998,15 @@ function LoginContent() {
                     style={{
                       fontSize: 22,
                       fontWeight: 600,
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       letterSpacing: '-0.02em',
                       margin: '0 0 6px 0',
                     }}
                   >
                     Set new password
                   </h1>
-                  <p style={{ fontSize: 13, color: '#888888', margin: 0, lineHeight: 1.5 }}>
-                    Enter the 6-digit code sent to <strong style={{ color: '#ffffff' }}>{forgotEmail}</strong> and choose a new password.
+                  <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0, lineHeight: 1.5 }}>
+                    Enter the 6-digit code sent to <strong style={{ color: 'var(--foreground)' }}>{forgotEmail}</strong> and choose a new password.
                   </p>
                 </div>
 
@@ -1014,9 +1014,9 @@ function LoginContent() {
                   <div
                     style={{
                       fontSize: 13,
-                      color: '#f87171',
-                      background: 'rgba(248, 113, 113, 0.1)',
-                      border: '1px solid rgba(248, 113, 113, 0.2)',
+                      color: 'var(--error)',
+                      background: 'var(--error-bg)',
+                      border: '1px solid var(--error-border)',
                       borderRadius: 6,
                       padding: '10px 14px',
                       marginBottom: 16,
@@ -1031,9 +1031,9 @@ function LoginContent() {
                   <div
                     style={{
                       fontSize: 13,
-                      color: '#4ade80',
-                      background: 'rgba(74, 222, 128, 0.1)',
-                      border: '1px solid rgba(74, 222, 128, 0.2)',
+                      color: 'var(--success)',
+                      background: 'var(--success-bg)',
+                      border: '1px solid var(--success-border)',
                       borderRadius: 6,
                       padding: '10px 14px',
                       marginBottom: 16,
@@ -1045,7 +1045,7 @@ function LoginContent() {
                 )}
 
                 <div style={{ marginBottom: 16 }}>
-                  <label style={{ display: 'block', fontSize: 13, color: '#888888', marginBottom: 8 }}>
+                  <label style={{ display: 'block', fontSize: 13, color: 'var(--muted-foreground)', marginBottom: 8 }}>
                     6-digit reset code
                   </label>
                   <OtpInput
@@ -1081,9 +1081,9 @@ function LoginContent() {
                   Reset password & sign in →
                 </PrimaryButton>
 
-                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 13, color: '#71717a' }}>
+                <div style={{ marginTop: 16, textAlign: 'center', fontSize: 13, color: 'var(--muted-foreground)' }}>
                   {forgotCooldown > 0 ? (
-                    <span>Resend code in <strong style={{ color: '#a1a1aa' }}>{forgotCooldown}s</strong></span>
+                    <span>Resend code in <strong style={{ color: 'var(--foreground)' }}>{forgotCooldown}s</strong></span>
                   ) : (
                     <span>
                       Didn&apos;t receive the code?{' '}
@@ -1093,7 +1093,7 @@ function LoginContent() {
                         style={{
                           background: 'none',
                           border: 'none',
-                          color: '#ffffff',
+                          color: 'var(--foreground)',
                           cursor: 'pointer',
                           fontSize: 13,
                           textDecoration: 'underline',
@@ -1196,9 +1196,9 @@ function LoginContent() {
                         <div
                           style={{
                             fontSize: 13,
-                            color: '#4ade80',
-                            background: 'rgba(74, 222, 128, 0.1)',
-                            border: '1px solid rgba(74, 222, 128, 0.2)',
+                            color: 'var(--success)',
+                            background: 'var(--success-bg)',
+                            border: '1px solid var(--success-border)',
                             borderRadius: 6,
                             padding: '10px 14px',
                             marginBottom: 16,
@@ -1212,9 +1212,9 @@ function LoginContent() {
                         <div
                           style={{
                             fontSize: 13,
-                            color: '#f87171',
-                            background: 'rgba(248, 113, 113, 0.1)',
-                            border: '1px solid rgba(248, 113, 113, 0.2)',
+                            color: 'var(--error)',
+                            background: 'var(--error-bg)',
+                            border: '1px solid var(--error-border)',
                             borderRadius: 6,
                             padding: '10px 14px',
                             marginBottom: 16,
@@ -1316,9 +1316,9 @@ function LoginContent() {
                         <div
                           style={{
                             fontSize: 13,
-                            color: '#f87171',
-                            background: 'rgba(248, 113, 113, 0.1)',
-                            border: '1px solid rgba(248, 113, 113, 0.2)',
+                            color: 'var(--error)',
+                            background: 'var(--error-bg)',
+                            border: '1px solid var(--error-border)',
                             borderRadius: 6,
                             padding: '10px 14px',
                             fontFamily: 'var(--font-geist-mono), monospace',
@@ -1348,9 +1348,9 @@ function LoginContent() {
                         loading={oauthLoading === 'github'}
                         disabled={isAnyLoading}
                       />
-                      <div style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: '#555' }}>
+                      <div style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: 'var(--muted-foreground)' }}>
                         Already have an account?{' '}
-                        <button onClick={() => setTab('signin')} style={{ background: 'none', border: 'none', color: '#888', cursor: 'pointer', fontSize: 13, textDecoration: 'underline' }}>Sign in</button>
+                        <button onClick={() => setTab('signin')} style={{ background: 'none', border: 'none', color: 'var(--foreground)', cursor: 'pointer', fontSize: 13, textDecoration: 'underline' }}>Sign in</button>
                       </div>
                     </motion.div>
                   )}
@@ -1366,7 +1366,7 @@ function LoginContent() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div style={{ background: '#09090b', minHeight: '100vh' }} />}>
+    <Suspense fallback={<div style={{ background: 'var(--background)', minHeight: '100vh' }} />}>
       <LoginContent />
     </Suspense>
   );

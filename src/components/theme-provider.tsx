@@ -46,6 +46,7 @@ function readStoredTheme(storageKey: string): Theme | null {
 
 function applyTheme(theme: Theme, disableTransitionOnChange: boolean) {
   const root = document.documentElement;
+  const themeColor = theme === 'dark' ? '#080808' : '#ffffff';
 
   if (disableTransitionOnChange) {
     root.classList.add('disable-transitions');
@@ -55,6 +56,9 @@ function applyTheme(theme: Theme, disableTransitionOnChange: boolean) {
   root.classList.toggle('light', theme === 'light');
   root.classList.toggle('dark', theme === 'dark');
   root.style.colorScheme = theme;
+  document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+    meta.content = themeColor;
+  });
 }
 
 export function ThemeProvider({

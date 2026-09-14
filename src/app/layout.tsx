@@ -18,19 +18,28 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://recallx.tech';
 
 const themeInitScript = `
   (function () {
+    var theme = 'dark';
     try {
-      var theme = localStorage.getItem('theme') || 'dark';
-      var isDark = theme !== 'light';
-      document.documentElement.classList.toggle('dark', isDark);
-      document.documentElement.classList.toggle('light', !isDark);
-      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+      var storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') theme = storedTheme;
     } catch (error) {}
+    var isDark = theme === 'dark';
+    var themeColor = isDark ? '#080808' : '#ffffff';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark);
+    document.documentElement.style.colorScheme = theme;
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+      meta.setAttribute('content', themeColor);
+    });
   })();
 `;
 
 export const viewport: Viewport = {
-  themeColor: '#080808',
-  colorScheme: 'dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#080808' },
+  ],
+  colorScheme: 'light dark',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,

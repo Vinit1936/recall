@@ -34,7 +34,7 @@ const FAQS = [
   },
   {
     q: 'Can I import my existing problem list?',
-    a: 'Direct CSV import is on the roadmap. Currently, you add problems manually via the inline row editor — type the problem number, press Enter, and the metadata fills in automatically for LeetCode problems. For other platforms, paste the URL. The process takes about 10 seconds per problem.',
+    a: 'Yes. Upload a CSV or Excel file from Settings or the dashboard, map its columns to Recall fields, and choose how imported problems should be scheduled for revision. Recall validates the rows before importing them and reports anything that needs attention.',
   },
 ];
 
