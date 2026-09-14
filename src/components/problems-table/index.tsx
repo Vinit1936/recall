@@ -1,6 +1,6 @@
 'use client';
 
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { TabBar, type TabKey } from './tab-bar';
@@ -8,7 +8,8 @@ import { Toolbar, type SortOrder } from './toolbar';
 import { ProblemRow } from './row';
 import { NewRow } from './new-row';
 import { CustomCheckbox } from '@/components/ui/custom-checkbox';
-import { Star, MoreVertical, Trash2, Download, Bookmark } from 'lucide-react';
+import { Star, MoreVertical, Trash2, Download, Bookmark, Upload } from 'lucide-react';
+import { ImportModal } from '@/components/import-modal';
 import { getTopicColor } from '@/lib/topic-colors';
 import { useMediaQuery } from '@/hooks/use-media-query';
 
@@ -273,7 +274,7 @@ function AddColumnPopover({ onSave, columns }: { onSave: (name: string) => void;
   );
 }
 
-function EmptyState() {
+function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
   return (
     <tr>
       <td colSpan={100}>
@@ -289,6 +290,36 @@ function EmptyState() {
             Add your first problem using the + New Problem button above,<br />
             or click + New row at the top of the table.
           </div>
+          {onImportClick && (
+            <button
+              onClick={onImportClick}
+              style={{
+                marginTop: 6,
+                background: '#18181b',
+                border: '1px solid #27272a',
+                borderRadius: 6,
+                color: '#a1a1aa',
+                fontSize: 12.5,
+                padding: '7px 16px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                transition: 'color 0.15s, border-color 0.15s',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#fff';
+                e.currentTarget.style.borderColor = '#3f3f46';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#a1a1aa';
+                e.currentTarget.style.borderColor = '#27272a';
+              }}
+            >
+              <Upload size={13} />
+              Import from CSV / Excel
+            </button>
+          )}
         </div>
       </td>
     </tr>
@@ -297,6 +328,8 @@ function EmptyState() {
 
 export function ProblemsTable() {
   const { data: allProblems, isLoading, mutate } = useSWR<any[]>('/api/problems', fetcher);
+  const { mutate: globalMutate } = useSWRConfig();
+  const [showImportModal, setShowImportModal] = useState(false);
   const { data: rawColumns, mutate: mutateColumns } = useSWR('/api/columns', fetcher);
   const rawColumnsList: any[] = Array.isArray(rawColumns) ? rawColumns : [];
 
@@ -804,6 +837,23 @@ export function ProblemsTable() {
     }
   }, [selectedIds, mutate]);
 
+  const handleImportComplete = useCallback(
+    (result: { imported: number; skipped: number; total: number; customColumnsCreated?: string[] }) => {
+      mutate();
+      mutateColumns();
+      globalMutate('/api/columns');
+      globalMutate((key: any) => typeof key === 'string' && key.startsWith('/api/problems'));
+      const colMsg =
+        result.customColumnsCreated && result.customColumnsCreated.length > 0
+          ? ` (+${result.customColumnsCreated.length} custom columns)`
+          : '';
+      showToast(
+        `Imported ${result.imported} problems${colMsg}${result.skipped > 0 ? ` (${result.skipped} skipped)` : ''}`
+      );
+    },
+    [mutate, mutateColumns, globalMutate]
+  );
+
   // CSV Export
   const handleExportCSV = useCallback(() => {
     if (!allProblems || allProblems.length === 0) {
@@ -971,6 +1021,31 @@ export function ProblemsTable() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
+            data-import-button
+            onClick={() => setShowImportModal(true)}
+            title="Import problems from CSV / Excel"
+            style={{
+              background: '#161618',
+              border: '1px solid #27272a',
+              borderRadius: 6,
+              color: '#888',
+              cursor: 'pointer',
+              fontSize: 13,
+              width: 32,
+              height: 32,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'color 0.15s, border-color 0.15s',
+              padding: 0,
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#fff'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#27272a'; e.currentTarget.style.color = '#888'; }}
+          >
+            <Upload size={14} />
+          </button>
+
+          <button
             data-download-button
             onClick={handleExportCSV}
             title="Export problems to CSV"
@@ -1041,7 +1116,7 @@ export function ProblemsTable() {
                 <SkeletonRow key={i} columns={COLUMN_COUNT} />
               ))
             ) : sorted.length === 0 && !showNewRow ? (
-              <EmptyState />
+              <EmptyState onImportClick={() => setShowImportModal(true)} />
             ) : activeTab === 'status' ? (
               renderByStatus()
             ) : activeTab === 'topic' ? (
@@ -1089,6 +1164,15 @@ export function ProblemsTable() {
           </div>
         )}
       </div>
+
+      {/* CSV / Excel Import modal */}
+      {showImportModal && (
+        <ImportModal
+          open={showImportModal}
+          onClose={() => setShowImportModal(false)}
+          onImportComplete={handleImportComplete}
+        />
+      )}
 
       {/* Delete confirmation modal */}
       {showDeleteModal && (

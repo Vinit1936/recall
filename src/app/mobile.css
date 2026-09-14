@@ -39,7 +39,7 @@
     min-width: 44px;
   }
 
-  p a, span a, td a, th a, [data-inline-link], [data-heatmap-container] *, [data-heatmap-inner] *, [data-new-row="true"] * {
+  p a, span a, td a, th a, [data-inline-link], [data-heatmap-container] *, [data-heatmap-inner] *, [data-new-row="true"] *, .import-modal-container button, .import-modal-container a {
     min-height: auto !important;
     min-width: auto !important;
   }
@@ -908,6 +908,176 @@
 
   [data-desktop-demo] {
     display: none !important;
+  }
+
+  /* ----------------------------------------------------
+     Import Modal — Mobile Only (max-width: 768px)
+  ---------------------------------------------------- */
+  .import-modal-overlay {
+    padding: 8px !important;
+  }
+
+  .import-modal-container {
+    max-height: 94vh !important;
+    width: 100% !important;
+    border-radius: 8px !important;
+    overflow-x: hidden !important;
+  }
+
+  .import-modal-header {
+    padding: 11px 14px !important;
+  }
+
+  .import-modal-breadcrumb {
+    font-size: 11.5px !important;
+  }
+
+  .import-modal-step-tag {
+    font-size: 10px !important;
+  }
+
+  .import-modal-body {
+    padding: 14px 12px !important;
+    gap: 12px !important;
+    overflow-x: hidden !important;
+  }
+
+  .import-dropzone {
+    padding: 26px 12px !important;
+  }
+
+  .column-mapping-tabs {
+    gap: 12px !important;
+  }
+
+  .column-mapping-item {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+  }
+
+  .column-mapping-left {
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .column-mapping-right {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .column-mapping-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 1 !important;
+  }
+
+  .strategy-card {
+    padding: 12px 10px !important;
+    gap: 10px !important;
+  }
+
+  .strategy-pace-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    padding: 8px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .strategy-pace-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .strategy-pace-controls {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+
+  .strategy-pace-presets {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: auto !important;
+    flex: none !important;
+  }
+
+  .strategy-pace-preset-btn {
+    min-height: 24px !important;
+    max-height: 24px !important;
+    min-width: 22px !important;
+    height: 24px !important;
+    padding: 0 7px !important;
+    font-size: 11px !important;
+    line-height: 22px !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: none !important;
+    width: auto !important;
+  }
+
+  .strategy-pace-stepper {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    max-height: 24px !important;
+    border: 1px solid #27272a !important;
+    border-radius: 4px !important;
+    background: #141416 !important;
+    width: auto !important;
+    flex: none !important;
+  }
+
+  .strategy-pace-stepper button {
+    min-height: 22px !important;
+    max-height: 22px !important;
+    min-width: 20px !important;
+    width: 20px !important;
+    height: 22px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    flex: none !important;
+  }
+
+  .strategy-pace-stepper span {
+    min-width: 20px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+    padding: 0 4px !important;
+    line-height: 22px !important;
+  }
+
+  .validation-card {
+    padding: 12px 12px !important;
+  }
+
+  .validation-ready-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
   }
 }
 

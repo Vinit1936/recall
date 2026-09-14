@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import { PlatformLogo } from '@/lib/platforms/logos';
+import { Upload } from 'lucide-react';
+import { ImportModal } from '@/components/import-modal';
 
 const PLATFORMS = [
   { id: 'LEETCODE', label: 'LeetCode' },
@@ -132,6 +134,8 @@ export default function SettingsPage() {
   const [savingName, setSavingName] = useState(false);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [importToast, setImportToast] = useState<string | null>(null);
 
   useEffect(() => {
     // Load local storage preferences
@@ -526,34 +530,61 @@ export default function SettingsPage() {
             </div>
 
             <p style={{ fontSize: 12.5, color: '#666', marginBottom: 18, lineHeight: 1.5 }}>
-              Download a complete JSON export of all your tracked problems, custom notes, revisions, and daily streak logs.
+              Import your existing problem list from CSV or Excel, or download a complete JSON export of all your tracked problems, custom notes, revisions, and daily streak logs.
             </p>
 
-            <button
-              data-export-btn
-              onClick={handleExportData}
-              style={{
-                background: '#19191c',
-                border: '1px solid #2a2a30',
-                borderRadius: 6,
-                color: '#fff',
-                fontSize: 12.5,
-                fontWeight: 500,
-                padding: '9px 18px',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-                transition: 'background 0.15s',
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ color: '#38bdf8' }}>
-                <path d="M8 2v8M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-              Export All Data (.json)
-            </button>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <button
+                data-import-btn
+                onClick={() => setShowImportModal(true)}
+                style={{
+                  background: '#19191c',
+                  border: '1px solid #2a2a30',
+                  borderRadius: 6,
+                  color: '#fff',
+                  fontSize: 12.5,
+                  fontWeight: 500,
+                  padding: '9px 18px',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                  transition: 'background 0.15s, border-color 0.15s',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#444')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#2a2a30')}
+              >
+                <Upload size={14} style={{ color: '#60a5fa' }} />
+                Import from CSV / Excel
+              </button>
+
+              <button
+                data-export-btn
+                onClick={handleExportData}
+                style={{
+                  background: '#19191c',
+                  border: '1px solid #2a2a30',
+                  borderRadius: 6,
+                  color: '#fff',
+                  fontSize: 12.5,
+                  fontWeight: 500,
+                  padding: '9px 18px',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                  transition: 'background 0.15s',
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ color: '#38bdf8' }}>
+                  <path d="M8 2v8M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                Export All Data (.json)
+              </button>
+            </div>
           </div>
 
           {/* Card 4: Feedback & Issues */}
@@ -654,6 +685,41 @@ export default function SettingsPage() {
               </a>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* CSV / Excel Import modal */}
+      {showImportModal && (
+        <ImportModal
+          open={showImportModal}
+          onClose={() => setShowImportModal(false)}
+          onImportComplete={(res) => {
+            setImportToast(
+              `Successfully imported ${res.imported} problems${res.skipped > 0 ? ` (${res.skipped} skipped)` : ''}`
+            );
+            setTimeout(() => setImportToast(null), 4000);
+          }}
+        />
+      )}
+
+      {/* Toast notification */}
+      {importToast && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 24,
+            right: 24,
+            zIndex: 1000,
+            background: '#1a1a1a',
+            border: '1px solid #333',
+            borderRadius: 6,
+            color: '#fff',
+            fontSize: 13,
+            padding: '10px 16px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
+          }}
+        >
+          {importToast}
         </div>
       )}
     </div>
