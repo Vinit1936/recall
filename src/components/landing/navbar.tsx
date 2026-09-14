@@ -141,7 +141,21 @@ export function Navbar() {
               e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
             }}
           >
-            <Play size={11} fill="currentColor" style={{ opacity: 0.85 }} />
+            {/* YouTube logo */}
+            <svg
+              width="16"
+              height="11"
+              viewBox="0 0 16 11"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M15.666 1.72a2.003 2.003 0 0 0-1.409-1.418C12.928 0 8 0 8 0S3.072 0 1.743.302A2.003 2.003 0 0 0 .334 1.72C0 3.058 0 5.5 0 5.5s0 2.441.334 3.78a2.003 2.003 0 0 0 1.41 1.418C3.072 11 8 11 8 11s4.928 0 6.257-.302a2.003 2.003 0 0 0 1.41-1.419C16 7.942 16 5.5 16 5.5s0-2.441-.334-3.78z"
+                fill="#FF0000"
+              />
+              <path d="M6.4 7.857 10.514 5.5 6.4 3.143v4.714z" fill="#fff" />
+            </svg>
             <span className="nav-howtouse-label">How to use</span>
           </a>
 
