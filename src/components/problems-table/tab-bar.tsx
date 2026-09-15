@@ -43,7 +43,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
           display: 'flex',
           alignItems: 'center',
           gap: 6,
-          borderBottom: '1px solid #1e1e1e',
+          borderBottom: '1px solid var(--border)',
           overflowX: 'auto',
           overflowY: 'hidden',
           scrollbarWidth: 'none',
@@ -69,8 +69,8 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
                 borderLeft: 'none',
                 borderRight: 'none',
                 borderBottom: 'none',
-                boxShadow: isActive ? 'inset 0 -2px 0 #ffffff' : 'none',
-                color: isActive ? '#ffffff' : '#555555',
+                boxShadow: isActive ? 'inset 0 -2px 0 var(--foreground)' : 'none',
+                color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
                 cursor: 'pointer',
                 fontSize: 14,
                 padding: '8px 10px',
@@ -82,10 +82,10 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
                 transition: 'color 0.15s, box-shadow 0.15s',
               }}
               onMouseEnter={(e) => {
-                if (!isActive) e.currentTarget.style.color = '#ffffff';
+                if (!isActive) e.currentTarget.style.color = 'var(--foreground)';
               }}
               onMouseLeave={(e) => {
-                if (!isActive) e.currentTarget.style.color = '#555555';
+                if (!isActive) e.currentTarget.style.color = 'var(--muted-foreground)';
               }}
             >
               <Bookmark size={15} fill={isActive ? 'currentColor' : 'none'} />
@@ -107,8 +107,8 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
               borderLeft: 'none',
               borderRight: 'none',
               borderBottom: 'none',
-              boxShadow: isActive ? 'inset 0 -2px 0 #ffffff' : 'none',
-              color: isActive ? '#fff' : '#555',
+              boxShadow: isActive ? 'inset 0 -2px 0 var(--foreground)' : 'none',
+              color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
               cursor: 'pointer',
               fontSize: 13,
               fontWeight: isActive ? 500 : 400,
@@ -125,9 +125,11 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
             }}
             onMouseEnter={(e) => {
               if (isPlatformTab && !isActive) e.currentTarget.style.opacity = '1';
+              if (!isActive) e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
               if (isPlatformTab && !isActive) e.currentTarget.style.opacity = '0.8';
+              if (!isActive) e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             {isPlatformTab ? (

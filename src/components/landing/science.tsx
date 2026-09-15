@@ -38,7 +38,7 @@ export function Science() {
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '10px',
-              color: '#888',
+              color: 'var(--text-secondary)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '24px',
@@ -56,13 +56,13 @@ export function Science() {
                 fontWeight: 400,
                 fontSize: '48px',
                 lineHeight: 1.1,
-                color: '#f0f0f0',
+                color: 'var(--text-primary)',
                 paddingBottom: '8px',
               }}
             >
               Why traditional
             </span>
-            <div style={{ width: '100%', height: '1px', background: '#1e1e1e', marginBottom: '8px' }} />
+            <div style={{ width: '100%', height: '1px', background: 'var(--border)', marginBottom: '8px' }} />
             <span
               style={{
                 display: 'block',
@@ -71,7 +71,7 @@ export function Science() {
                 fontWeight: 400,
                 fontSize: '48px',
                 lineHeight: 1.1,
-                color: '#f0f0f0',
+                color: 'var(--text-primary)',
                 paddingTop: '4px',
               }}
             >
@@ -83,7 +83,7 @@ export function Science() {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '14px',
-              color: '#555',
+              color: 'var(--text-secondary)',
               lineHeight: 1.8,
               marginTop: '24px',
               maxWidth: '380px',
@@ -117,7 +117,7 @@ export function Science() {
                   }}
                 >
                   <strong style={{ color: b.color, fontWeight: 700 }}>{b.bold}</strong>
-                  <span style={{ color: '#555' }}>{b.rest}</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>{b.rest}</span>
                 </span>
               </div>
             ))}

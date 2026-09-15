@@ -65,12 +65,12 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               position: 'relative',
               width: '100%',
               maxWidth: '480px',
-              background: '#121214',
-              border: '1px solid #222228',
+              background: 'var(--popover)',
+              border: '1px solid var(--border)',
               borderRadius: '16px',
               padding: '28px',
-              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05)',
-              color: '#ffffff',
+              boxShadow: '0 24px 48px rgba(0, 0, 0, 0.25)',
+              color: 'var(--foreground)',
               zIndex: 1,
             }}
           >
@@ -84,7 +84,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 right: '20px',
                 background: 'transparent',
                 border: 'none',
-                color: '#666',
+                color: 'var(--muted-foreground)',
                 cursor: 'pointer',
                 padding: '4px',
                 borderRadius: '6px',
@@ -94,11 +94,11 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 transition: 'color 0.15s, background 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#fff';
-                e.currentTarget.style.background = '#1e1e24';
+                e.currentTarget.style.color = 'var(--foreground)';
+                e.currentTarget.style.background = 'var(--accent)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#666';
+                e.currentTarget.style.color = 'var(--muted-foreground)';
                 e.currentTarget.style.background = 'transparent';
               }}
             >
@@ -122,12 +122,12 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               >
                 <MessageSquare size={16} />
               </div>
-              <h2 style={{ margin: 0, fontSize: '18px', fontWeight: 600, letterSpacing: '-0.02em', color: '#fff' }}>
+              <h2 style={{ margin: 0, fontSize: '18px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--foreground)' }}>
                 Feedback & Issues
               </h2>
             </div>
 
-            <p style={{ margin: '0 0 20px 0', fontSize: '13px', color: '#888', lineHeight: 1.5 }}>
+            <p style={{ margin: '0 0 20px 0', fontSize: '13px', color: 'var(--muted-foreground)', lineHeight: 1.5 }}>
               Help us improve recall. by reporting a bug or sharing a feature idea:
             </p>
 
@@ -144,23 +144,21 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   alignItems: 'flex-start',
                   gap: '14px',
                   padding: '16px',
-                  background: '#17171c',
-                  border: '1px solid #2f2f3a',
+                  background: 'var(--secondary)',
+                  border: '1px solid var(--border)',
                   borderRadius: '12px',
                   textDecoration: 'none',
-                  color: '#fff',
+                  color: 'var(--foreground)',
                   transition: 'all 0.15s ease',
                   cursor: 'pointer',
                   position: 'relative',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1e1e26';
-                  e.currentTarget.style.borderColor = '#454556';
+                  e.currentTarget.style.background = 'var(--accent)';
                   e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#17171c';
-                  e.currentTarget.style.borderColor = '#2f2f3a';
+                  e.currentTarget.style.background = 'var(--secondary)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -169,12 +167,12 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                     width: '38px',
                     height: '38px',
                     borderRadius: '8px',
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                    background: 'var(--card)',
+                    border: '1px solid var(--border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#ffffff',
+                    color: 'var(--foreground)',
                     flexShrink: 0,
                     marginTop: '2px',
                   }}
@@ -186,7 +184,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#ffffff' }}>Open GitHub Issue</span>
+                      <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--foreground)' }}>Open GitHub Issue</span>
                       <span
                         style={{
                           fontSize: '10px',
@@ -202,9 +200,9 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                         Recommended
                       </span>
                     </div>
-                    <ExternalLink size={13} style={{ color: '#888' }} />
+                    <ExternalLink size={13} style={{ color: 'var(--muted-foreground)' }} />
                   </div>
-                  <span style={{ fontSize: '12px', color: '#999', lineHeight: 1.4, display: 'block' }}>
+                  <span style={{ fontSize: '12px', color: 'var(--muted-foreground)', lineHeight: 1.4, display: 'block' }}>
                     Direct bug reports, feature requests, and transparent resolution tracking.
                   </span>
                 </div>
@@ -221,22 +219,20 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                   alignItems: 'flex-start',
                   gap: '14px',
                   padding: '14px 16px',
-                  background: '#141417',
-                  border: '1px solid #222228',
+                  background: 'var(--secondary)',
+                  border: '1px solid var(--border)',
                   borderRadius: '12px',
                   textDecoration: 'none',
-                  color: '#fff',
+                  color: 'var(--foreground)',
                   transition: 'all 0.15s ease',
                   cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#1a1a20';
-                  e.currentTarget.style.borderColor = '#30303c';
+                  e.currentTarget.style.background = 'var(--accent)';
                   e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#141417';
-                  e.currentTarget.style.borderColor = '#222228';
+                  e.currentTarget.style.background = 'var(--secondary)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
@@ -259,10 +255,10 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3px' }}>
-                    <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#e5e7eb' }}>Quick Feedback Form</span>
-                    <ExternalLink size={13} style={{ color: '#6b7280' }} />
+                    <span style={{ fontSize: '13.5px', fontWeight: 500, color: 'var(--foreground)' }}>Quick Feedback Form</span>
+                    <ExternalLink size={13} style={{ color: 'var(--muted-foreground)' }} />
                   </div>
-                  <span style={{ fontSize: '11.5px', color: '#777', lineHeight: 1.4, display: 'block' }}>
+                  <span style={{ fontSize: '11.5px', color: 'var(--muted-foreground)', lineHeight: 1.4, display: 'block' }}>
                     Fast 30-second form if you don't have a GitHub account.
                   </span>
                 </div>
@@ -271,7 +267,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
 
             {/* Footer note */}
             <div style={{ marginTop: '18px', textAlign: 'center' }}>
-              <span style={{ fontSize: '11px', color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <span style={{ fontSize: '11px', color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                 recall<span style={{ color: '#F7981E' }}>.</span> appreciates your feedback
               </span>
             </div>

@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useInView } from 'motion/react';
 import { PlatformLogo } from '@/lib/platforms/logos';
-import { getTopicColor, getDifficultyStyle } from './demo-styles';
+import { getDifficultyStyle } from './demo-styles';
+import { getTopicColor } from '@/lib/topic-colors';
 import { FakeCursor, CursorHandle } from './fake-cursor';
+import { Pill } from '@/components/ui/pill';
 
 const INITIAL_PROBLEMS = [
   { id: 1, platform: 'CODEFORCES', number: '187', title: 'Target Practice', difficulty: 'EASY', topic: 'implementation', status: 'Clean', notes: 'two pointer', statusColor: '#4ade80', textColor: '#4ade80' },
@@ -210,12 +212,12 @@ export function TableDemo() {
       style={{
         height: '480px',
         width: '100%',
-        background: '#0a0a0b',
+        background: 'var(--demo-bg)',
         position: 'relative',
         overflow: 'hidden',
         fontFamily: 'var(--font-geist-sans), sans-serif',
         fontSize: '13px',
-        color: '#e5e5e5',
+        color: 'var(--demo-text)',
         userSelect: 'none',
       }}
     >
@@ -229,11 +231,11 @@ export function TableDemo() {
           height: '34px',
           alignItems: 'center',
           padding: '0 16px',
-          background: '#0d0d0e',
-          borderBottom: '1px solid #18181a',
+          background: 'var(--demo-surface)',
+          borderBottom: '1px solid var(--demo-border)',
           fontSize: '11px',
           fontFamily: 'var(--font-geist-mono), monospace',
-          color: '#555555',
+          color: 'var(--demo-text-faint)',
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
         }}
@@ -261,8 +263,8 @@ export function TableDemo() {
                 height: '44px',
                 alignItems: 'center',
                 padding: '0 16px',
-                background: '#0a0a0b',
-                borderBottom: '1px solid #151517',
+                background: 'var(--demo-bg)',
+                borderBottom: '1px solid var(--demo-border-subtle)',
               }}
             >
               {/* Platform Logo */}
@@ -273,57 +275,37 @@ export function TableDemo() {
               {/* Number + Title */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
                 {prob.number && (
-                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', color: '#555555', fontSize: '12px' }}>
+                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', color: 'var(--demo-text-faint)', fontSize: '12px' }}>
                     {prob.number}
                   </span>
                 )}
-                <span style={{ color: '#ececec', fontWeight: 500, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                <span style={{ color: 'var(--demo-text)', fontWeight: 500, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
                   {prob.title}
                 </span>
               </div>
 
               {/* Difficulty */}
               <div>
-                <span
-                  style={{
-                    background: diff.bg,
-                    color: diff.text,
-                    border: `1px solid ${diff.border}`,
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                  }}
-                >
+                <Pill bg={diff.bg} text={diff.text} border={diff.border}>
                   {prob.difficulty.charAt(0) + prob.difficulty.slice(1).toLowerCase()}
-                </span>
+                </Pill>
               </div>
 
               {/* Topic */}
               <div>
                 {topic ? (
-                  <span
-                    style={{
-                      background: topic.bg,
-                      color: topic.text,
-                      border: `1px solid ${topic.border}`,
-                      borderRadius: '4px',
-                      padding: '2px 8px',
-                      fontSize: '11px',
-                      fontWeight: 500,
-                    }}
-                  >
+                  <Pill bg={topic.bg} text={topic.text} border={topic.border}>
                     {prob.topic}
-                  </span>
+                  </Pill>
                 ) : (
-                  <span style={{ color: '#333333', fontSize: '12px' }}>—</span>
+                  <span style={{ color: 'var(--demo-placeholder)', fontSize: '12px' }}>—</span>
                 )}
               </div>
 
               {/* Status */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: prob.statusColor }} />
-                <span style={{ fontSize: '12px', color: prob.textColor || '#888888', fontWeight: 500 }}>
+                <span style={{ fontSize: '12px', color: prob.textColor || 'var(--demo-text-muted)', fontWeight: 500 }}>
                   {prob.status}
                 </span>
               </div>
@@ -334,7 +316,7 @@ export function TableDemo() {
                   textAlign: 'right',
                   fontSize: '11.5px',
                   fontFamily: 'var(--font-geist-mono), monospace',
-                  color: '#888888',
+                  color: 'var(--demo-text-muted)',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
@@ -355,9 +337,9 @@ export function TableDemo() {
               height: '44px',
               alignItems: 'center',
               padding: '0 16px',
-              background: rowFinalized ? '#0a0a0b' : newRowActive ? '#121214' : '#0a0a0b',
-              borderBottom: '1px solid #151517',
-              borderLeft: newRowActive && !rowFinalized ? '2px solid #3a3a3a' : 'none',
+              background: rowFinalized ? 'var(--demo-bg)' : newRowActive ? 'var(--demo-surface-raised)' : 'var(--demo-bg)',
+              borderBottom: '1px solid var(--demo-border-subtle)',
+              borderLeft: newRowActive && !rowFinalized ? '2px solid var(--demo-control-border)' : 'none',
               position: 'relative',
             }}
           >
@@ -388,13 +370,13 @@ export function TableDemo() {
                   style={{
                     width: '24px',
                     height: '24px',
-                    background: '#1e1e1e',
-                    border: '1px solid #333333',
+                    background: 'var(--demo-control)',
+                    border: '1px solid var(--demo-control-border)',
                     borderRadius: '4px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#888888',
+                    color: 'var(--demo-text-muted)',
                     fontSize: '14px',
                     cursor: 'pointer',
                   }}
@@ -407,23 +389,23 @@ export function TableDemo() {
             {/* Title / Input area */}
             <div ref={inputCellRef} style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
               {!selectedPlatform ? (
-                <span style={{ fontSize: '13px', color: '#444444' }}>← Select a platform</span>
+                <span style={{ fontSize: '13px', color: 'var(--demo-placeholder)' }}>← Select a platform</span>
               ) : !autoFilled ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
-                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: inputValue ? '#ffffff' : '#555555' }}>
+                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: inputValue ? 'var(--demo-text)' : 'var(--demo-text-faint)' }}>
                     {inputValue || 'Problem number (e.g. 1)...'}
                     {isTypingNumber && (
-                      <span style={{ display: 'inline-block', width: '2px', height: '12px', background: '#ffffff', marginLeft: '2px' }} />
+                      <span style={{ display: 'inline-block', width: '2px', height: '12px', background: 'var(--demo-text)', marginLeft: '2px' }} />
                     )}
                   </span>
-                  {isLoading && <span style={{ color: '#555555', fontSize: '12px', letterSpacing: '2px' }}>...</span>}
+                  {isLoading && <span style={{ color: 'var(--demo-text-faint)', fontSize: '12px', letterSpacing: '2px' }}>...</span>}
                 </div>
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
-                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', color: '#555555', fontSize: '12px' }}>
+                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', color: 'var(--demo-text-faint)', fontSize: '12px' }}>
                     #234
                   </span>
-                  <span style={{ color: '#ececec', fontWeight: 500, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+                  <span style={{ color: 'var(--demo-text)', fontWeight: 500, textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
                     Palindrome Linked List
                   </span>
                 </div>
@@ -436,17 +418,11 @@ export function TableDemo() {
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  style={{
-                    background: '#1c3a1c',
-                    color: '#4ade80',
-                    border: '1px solid #2d5a2d',
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 600,
-                  }}
+                  style={{ display: 'inline-block' }}
                 >
-                  Easy
+                  <Pill bg="var(--easy-bg)" text="var(--easy-text)" border="var(--easy-border)">
+                    Easy
+                  </Pill>
                 </motion.span>
               )}
             </div>
@@ -457,17 +433,15 @@ export function TableDemo() {
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  style={{
-                    background: getTopicColor('Linked List').bg,
-                    color: getTopicColor('Linked List').text,
-                    border: `1px solid ${getTopicColor('Linked List').border}`,
-                    borderRadius: '4px',
-                    padding: '2px 8px',
-                    fontSize: '11px',
-                    fontWeight: 500,
-                  }}
+                  style={{ display: 'inline-block' }}
                 >
-                  Linked List
+                  <Pill
+                    bg={getTopicColor('Linked List').bg}
+                    text={getTopicColor('Linked List').text}
+                    border={getTopicColor('Linked List').border}
+                  >
+                    Linked List
+                  </Pill>
                 </motion.span>
               )}
             </div>
@@ -476,8 +450,8 @@ export function TableDemo() {
             <div>
               {autoFilled && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#666666' }} />
-                  <span style={{ fontSize: '12px', color: '#888888' }}>Not started</span>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--demo-text-faint)' }} />
+                  <span style={{ fontSize: '12px', color: 'var(--demo-text-muted)' }}>Not started</span>
                 </div>
               )}
             </div>
@@ -485,7 +459,7 @@ export function TableDemo() {
             {/* Revision / Notes */}
             <div ref={notesCellRef} style={{ textAlign: 'right' }}>
               {notesValue || isTypingNotes ? (
-                <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: '#aaaaaa' }}>
+                <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: 'var(--demo-text-muted)' }}>
                   {notesValue}
                 </span>
               ) : autoFilled ? (
@@ -508,8 +482,8 @@ export function TableDemo() {
                   left: '12px',
                   zIndex: 200,
                   width: '165px',
-                  background: '#161618',
-                  border: '1px solid #26262a',
+                  background: 'var(--demo-dropdown)',
+                  border: '1px solid var(--demo-dropdown-border)',
                   borderRadius: '8px',
                   padding: '6px',
                   boxShadow: '0 12px 32px rgba(0,0,0,0.85)',
@@ -530,8 +504,8 @@ export function TableDemo() {
                         gap: '10px',
                         padding: '6px 8px',
                         borderRadius: '4px',
-                        background: isHovered ? '#252528' : 'transparent',
-                        color: isHovered ? '#ffffff' : '#cccccc',
+                        background: isHovered ? 'var(--demo-surface-hover)' : 'transparent',
+                        color: isHovered ? 'var(--demo-text)' : 'var(--demo-text-muted)',
                         fontSize: '13px',
                         transition: 'background 0.1s ease',
                       }}

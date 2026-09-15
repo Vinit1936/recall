@@ -33,7 +33,7 @@ export function RevisionSection({ RevisionDemo }: RevisionSectionProps) {
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '10px',
-              color: '#888',
+              color: 'var(--text-secondary)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '24px',
@@ -51,7 +51,7 @@ export function RevisionSection({ RevisionDemo }: RevisionSectionProps) {
                 fontWeight: 400,
                 fontSize: '56px',
                 lineHeight: 1.1,
-                color: '#f0f0f0',
+                color: 'var(--text-primary)',
                 paddingBottom: '8px',
               }}
             >
@@ -62,7 +62,7 @@ export function RevisionSection({ RevisionDemo }: RevisionSectionProps) {
               style={{
                 width: '240px',
                 height: '1px',
-                background: '#1e1e1e',
+                background: 'var(--border)',
                 margin: '0 auto',
                 marginBottom: '8px',
               }}
@@ -75,7 +75,7 @@ export function RevisionSection({ RevisionDemo }: RevisionSectionProps) {
                 fontWeight: 400,
                 fontSize: '56px',
                 lineHeight: 1.1,
-                color: '#f0f0f0',
+                color: 'var(--text-primary)',
                 paddingTop: '4px',
               }}
             >
@@ -87,7 +87,7 @@ export function RevisionSection({ RevisionDemo }: RevisionSectionProps) {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: '#555',
+              color: 'var(--text-secondary)',
               textAlign: 'center',
               maxWidth: '400px',
               margin: '20px auto 48px',

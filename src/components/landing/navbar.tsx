@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Play } from 'lucide-react';
 import { GitHubStarButton } from './github-star-button';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -39,11 +40,12 @@ export function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: 'rgba(8,8,8,0.85)',
+        background: 'var(--nav-bg)',
         backdropFilter: 'blur(16px) saturate(160%)',
         WebkitBackdropFilter: 'blur(16px) saturate(160%)',
-        borderBottom: '1px solid rgba(255,255,255,0.04)',
+        borderBottom: '1px solid var(--nav-border)',
         height: '52px',
+        transition: 'background 0.2s ease, border-color 0.2s ease',
       }}
     >
       <div
@@ -67,7 +69,7 @@ export function Navbar() {
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '15px',
             fontWeight: 500,
-            color: '#f0f0f0',
+            color: 'var(--foreground)',
             letterSpacing: '-0.01em',
             cursor: 'pointer',
           }}
@@ -89,21 +91,21 @@ export function Navbar() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: '#555',
+                color: 'var(--muted-foreground)',
                 letterSpacing: '0.02em',
                 textDecoration: 'none',
                 transition: 'color 0.12s ease',
                 cursor: 'pointer',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#e5e5e5')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#555')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
             >
               {label}
             </a>
           ))}
         </div>
 
-        {/* Right — How to use + GitHub + Sign in */}
+        {/* Right — How to use + GitHub + ThemeToggle + Sign in */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <a
             data-nav-howtouse
@@ -113,9 +115,9 @@ export function Navbar() {
             aria-label="How to use Recall (Video Demo)"
             title="How to use Recall"
             style={{
-              border: '1px solid #222',
-              background: 'rgba(255, 255, 255, 0.02)',
-              color: '#888',
+              border: '1px solid var(--border)',
+              background: 'var(--card)',
+              color: 'var(--muted-foreground)',
               fontSize: '12px',
               fontWeight: 500,
               height: '32px',
@@ -131,14 +133,12 @@ export function Navbar() {
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#333';
-              e.currentTarget.style.color = '#e5e5e5';
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+              e.currentTarget.style.borderColor = 'var(--primary)';
+              e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#222';
-              e.currentTarget.style.color = '#888';
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             {/* YouTube logo */}
@@ -161,13 +161,15 @@ export function Navbar() {
 
           <GitHubStarButton />
 
+          <ThemeToggle variant="icon" />
+
           <Link
             data-nav-signin
             href="/auth/login"
             style={{
-              border: '1px solid #222',
+              border: '1px solid var(--border)',
               background: 'transparent',
-              color: '#888',
+              color: 'var(--muted-foreground)',
               fontSize: '12px',
               height: '32px',
               padding: '0 16px',
@@ -180,12 +182,12 @@ export function Navbar() {
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#333';
-              e.currentTarget.style.color = '#e5e5e5';
+              e.currentTarget.style.borderColor = 'var(--primary)';
+              e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#222';
-              e.currentTarget.style.color = '#888';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             Sign in

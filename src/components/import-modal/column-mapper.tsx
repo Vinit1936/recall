@@ -35,25 +35,25 @@ function getFieldBadge(field: RecallField) {
   if (field === 'skip') {
     return {
       tag: 'skip',
-      color: '#71717a',
+      color: 'var(--muted-foreground)',
       bg: 'transparent',
-      border: '#27272a',
+      border: 'var(--input-border)',
     };
   }
   if (typeof field === 'string' && field.startsWith('custom:')) {
     return {
       tag: '+ new column',
-      color: '#c4b5fd',
-      bg: 'rgba(167, 139, 250, 0.08)',
-      border: 'rgba(167, 139, 250, 0.25)',
+      color: 'var(--import-accent)',
+      bg: 'var(--import-accent-bg)',
+      border: 'var(--import-accent-border)',
     };
   }
   const found = STANDARD_FIELD_OPTIONS.find((f) => f.value === field);
   return {
     tag: found?.tag || field,
-    color: '#d1d5db',
-    bg: 'rgba(255, 255, 255, 0.05)',
-    border: 'rgba(255, 255, 255, 0.12)',
+    color: 'var(--foreground)',
+    bg: 'var(--muted)',
+    border: 'var(--border)',
   };
 }
 
@@ -125,15 +125,15 @@ export function ColumnMapperStep({
       {/* Top Header */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
         <div>
-          <h3 style={{ fontSize: 15, fontWeight: 500, color: '#fff', margin: 0, marginBottom: 4 }}>
+          <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--foreground)', margin: 0, marginBottom: 4 }}>
             Map Columns
           </h3>
-          <p style={{ fontSize: 13, color: '#9ca3af', margin: 0 }}>
+          <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0 }}>
             Match spreadsheet headers to standard problem fields or create custom columns.
           </p>
         </div>
-        <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: '#888' }}>
-          {parsedFile.totalRows} rows in <span style={{ color: '#d4d4d8' }}>{filename}</span>
+        <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--muted-foreground)' }}>
+          {parsedFile.totalRows} rows in <span style={{ color: 'var(--foreground)' }}>{filename}</span>
         </div>
       </div>
 
@@ -143,7 +143,7 @@ export function ColumnMapperStep({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          borderBottom: '1px solid #1c1c20',
+          borderBottom: '1px solid var(--border)',
           paddingBottom: 2,
         }}
       >
@@ -154,7 +154,7 @@ export function ColumnMapperStep({
             style={{
               background: 'none',
               border: 'none',
-              color: activeTab === 'mapping' ? '#fff' : '#888',
+              color: activeTab === 'mapping' ? 'var(--foreground)' : 'var(--muted-foreground)',
               fontSize: 13,
               fontWeight: activeTab === 'mapping' ? 500 : 400,
               cursor: 'pointer',
@@ -166,10 +166,10 @@ export function ColumnMapperStep({
               transition: 'color 0.15s',
             }}
             onMouseEnter={(e) => {
-              if (activeTab !== 'mapping') e.currentTarget.style.color = '#ccc';
+              if (activeTab !== 'mapping') e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
-              if (activeTab !== 'mapping') e.currentTarget.style.color = '#888';
+              if (activeTab !== 'mapping') e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             <span>Column Assignments</span>
@@ -179,14 +179,14 @@ export function ColumnMapperStep({
                 fontSize: 11,
                 padding: '1px 6px',
                 borderRadius: 4,
-                background: activeTab === 'mapping' ? '#222' : '#18181b',
-                color: activeTab === 'mapping' ? '#fff' : '#888',
+                background: activeTab === 'mapping' ? 'var(--accent)' : 'var(--muted)',
+                color: activeTab === 'mapping' ? 'var(--foreground)' : 'var(--muted-foreground)',
               }}
             >
               {parsedFile.headers.length}
             </span>
             {activeTab === 'mapping' && (
-              <div style={{ position: 'absolute', bottom: -3, left: 0, right: 0, height: 2, background: '#fff' }} />
+              <div style={{ position: 'absolute', bottom: -3, left: 0, right: 0, height: 2, background: 'var(--primary)' }} />
             )}
           </button>
 
@@ -196,7 +196,7 @@ export function ColumnMapperStep({
             style={{
               background: 'none',
               border: 'none',
-              color: activeTab === 'preview' ? '#fff' : '#888',
+              color: activeTab === 'preview' ? 'var(--foreground)' : 'var(--muted-foreground)',
               fontSize: 13,
               fontWeight: activeTab === 'preview' ? 500 : 400,
               cursor: 'pointer',
@@ -208,10 +208,10 @@ export function ColumnMapperStep({
               transition: 'color 0.15s',
             }}
             onMouseEnter={(e) => {
-              if (activeTab !== 'preview') e.currentTarget.style.color = '#ccc';
+              if (activeTab !== 'preview') e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
-              if (activeTab !== 'preview') e.currentTarget.style.color = '#888';
+              if (activeTab !== 'preview') e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             <Table size={13} style={{ opacity: 0.8 }} />
@@ -222,14 +222,14 @@ export function ColumnMapperStep({
                 fontSize: 11,
                 padding: '1px 6px',
                 borderRadius: 4,
-                background: activeTab === 'preview' ? '#222' : '#18181b',
-                color: activeTab === 'preview' ? '#fff' : '#888',
+                background: activeTab === 'preview' ? 'var(--accent)' : 'var(--muted)',
+                color: activeTab === 'preview' ? 'var(--foreground)' : 'var(--muted-foreground)',
               }}
             >
               {previewRows.length} rows
             </span>
             {activeTab === 'preview' && (
-              <div style={{ position: 'absolute', bottom: -3, left: 0, right: 0, height: 2, background: '#fff' }} />
+              <div style={{ position: 'absolute', bottom: -3, left: 0, right: 0, height: 2, background: 'var(--primary)' }} />
             )}
           </button>
         </div>
@@ -242,9 +242,9 @@ export function ColumnMapperStep({
                 onClick={handleMapAllUnmappedToCustom}
                 style={{
                   background: 'none',
-                  border: '1px solid rgba(167, 139, 250, 0.35)',
+                  border: '1px solid var(--import-accent-border)',
                   borderRadius: 4,
-                  color: '#c4b5fd',
+                  color: 'var(--import-accent)',
                   fontSize: 11,
                   padding: '3px 8px',
                   cursor: 'pointer',
@@ -265,14 +265,14 @@ export function ColumnMapperStep({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: '#888',
+                  color: 'var(--muted-foreground)',
                   fontSize: 11,
                   cursor: 'pointer',
                   fontFamily: 'var(--font-geist-mono), monospace',
                   transition: 'color 0.15s',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#d4d4d8'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--foreground)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted-foreground)'; }}
               >
                 Reset custom
               </button>
@@ -310,11 +310,11 @@ export function ColumnMapperStep({
                   justifyContent: 'space-between',
                   padding: '8px 12px',
                   borderRadius: 6,
-                  background: isCustom ? '#121016' : currentField === 'skip' ? '#0e0e10' : '#121214',
+                  background: isCustom ? 'var(--import-accent-bg)' : currentField === 'skip' ? 'var(--background)' : 'var(--card)',
                   border: `1px solid ${
                     isCustom
-                      ? 'rgba(167, 139, 250, 0.25)'
-                      : '#1c1c20'
+                      ? 'var(--import-accent-border)'
+                      : 'var(--border)'
                   }`,
                   gap: 12,
                   transition: 'border-color 0.15s, background 0.15s',
@@ -323,7 +323,7 @@ export function ColumnMapperStep({
                 {/* Left: Column Name, Badges & Sample */}
                 <div className="column-mapping-left" style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0, flex: 1, paddingRight: 12 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: 13, color: '#fff', fontWeight: 500 }}>{header}</span>
+                    <span style={{ fontSize: 13, color: 'var(--foreground)', fontWeight: 500 }}>{header}</span>
 
                     {isAuto && (
                       <span
@@ -333,8 +333,8 @@ export function ColumnMapperStep({
                           padding: '1px 5px',
                           borderRadius: 3,
                           background: 'transparent',
-                          border: '1px solid #333',
-                          color: '#a1a1aa',
+                          border: '1px solid var(--input-border)',
+                          color: 'var(--muted-foreground)',
                         }}
                       >
                         auto
@@ -363,16 +363,16 @@ export function ColumnMapperStep({
                         onClick={() => handleFieldChange(header, `custom:${header}` as RecallField)}
                         style={{
                           background: 'none',
-                          border: '1px dashed rgba(167, 139, 250, 0.35)',
+                          border: '1px dashed var(--import-accent-border)',
                           borderRadius: 3,
-                          color: '#c4b5fd',
+                          color: 'var(--import-accent)',
                           fontSize: 10,
                           padding: '1px 6px',
                           cursor: 'pointer',
                           fontFamily: 'var(--font-geist-mono), monospace',
                         }}
-                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#c4b5fd'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(167, 139, 250, 0.35)'; }}
+                        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--import-accent)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--import-accent-border)'; }}
                       >
                         + as column
                       </button>
@@ -390,15 +390,15 @@ export function ColumnMapperStep({
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      <span style={{ color: '#71717a' }}>sample: </span>
-                      <span style={{ color: '#d4d4d8' }}>&quot;{sampleVal}&quot;</span>
+                      <span style={{ color: 'var(--muted-foreground)' }}>sample: </span>
+                      <span style={{ color: 'var(--foreground)' }}>&quot;{sampleVal}&quot;</span>
                     </span>
                   )}
                 </div>
 
                 {/* Right: Fixed 220px Uniform Dropdown Column */}
                 <div className="column-mapping-right" style={{ display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
-                  <span style={{ fontSize: 11, color: '#71717a', fontFamily: 'var(--font-geist-mono), monospace', width: 12, textAlign: 'center' }}>
+                  <span style={{ fontSize: 11, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace', width: 12, textAlign: 'center' }}>
                     →
                   </span>
 
@@ -411,14 +411,14 @@ export function ColumnMapperStep({
                       minWidth: 220,
                       maxWidth: 220,
                       flexShrink: 0,
-                      background: isCustom ? '#181422' : '#161618',
+                      background: isCustom ? 'var(--import-accent-bg)' : 'var(--input-bg)',
                       border: `1px solid ${
                         isCustom
-                          ? '#6b21a8'
-                          : '#2e2e32'
+                          ? 'var(--import-accent)'
+                          : 'var(--input-border)'
                       }`,
                       borderRadius: 4,
-                      color: isCustom ? '#e9d5ff' : currentField === 'skip' ? '#888' : '#fff',
+                      color: isCustom ? 'var(--import-accent)' : currentField === 'skip' ? 'var(--muted-foreground)' : 'var(--foreground)',
                       fontSize: 12,
                       padding: '5px 8px',
                       outline: 'none',
@@ -477,14 +477,14 @@ export function ColumnMapperStep({
             overflowX: 'auto',
             overflowY: 'auto',
             borderRadius: 6,
-            border: '1px solid #1c1c1c',
-            background: '#0c0c0c',
+            border: '1px solid var(--border)',
+            background: 'var(--background)',
           }}
         >
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, textAlign: 'left' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #1c1c1c', height: 32, background: '#111' }}>
-                <th style={{ width: 36, padding: '0 8px', color: '#71717a', textAlign: 'center', borderRight: '1px solid #1c1c1c' }}>#</th>
+              <tr style={{ borderBottom: '1px solid var(--border)', height: 32, background: 'var(--card)' }}>
+                <th style={{ width: 36, padding: '0 8px', color: 'var(--muted-foreground)', textAlign: 'center', borderRight: '1px solid var(--border)' }}>#</th>
                 {parsedFile.headers.map((h, i) => {
                   const target = mapping[h] || 'skip';
                   const isCustom = typeof target === 'string' && target.startsWith('custom:');
@@ -499,14 +499,14 @@ export function ColumnMapperStep({
                         fontSize: 11,
                         textTransform: 'uppercase',
                         letterSpacing: '0.06em',
-                        color: isSkip ? '#71717a' : isCustom ? '#c4b5fd' : '#fff',
+                        color: isSkip ? 'var(--muted-foreground)' : isCustom ? 'var(--import-accent)' : 'var(--foreground)',
                         whiteSpace: 'nowrap',
                         fontWeight: 500,
-                        borderRight: i < parsedFile.headers.length - 1 ? '1px solid #1c1c1c' : 'none',
+                        borderRight: i < parsedFile.headers.length - 1 ? '1px solid var(--border)' : 'none',
                       }}
                     >
                       <div>{h}</div>
-                      <div style={{ fontSize: 9.5, color: isSkip ? '#71717a' : isCustom ? '#c4b5fd' : '#a1a1aa', textTransform: 'none' }}>
+                      <div style={{ fontSize: 9.5, color: isSkip ? 'var(--muted-foreground)' : isCustom ? 'var(--import-accent)' : 'var(--muted-foreground)', textTransform: 'none' }}>
                         {isSkip ? '— skip' : isCustom ? `✦ ${target.slice(7)}` : `→ ${target}`}
                       </div>
                     </th>
@@ -519,11 +519,11 @@ export function ColumnMapperStep({
                 <tr
                   key={rIdx}
                   style={{
-                    borderBottom: rIdx < previewRows.length - 1 ? '1px solid #161616' : 'none',
+                    borderBottom: rIdx < previewRows.length - 1 ? '1px solid var(--border-subtle)' : 'none',
                     height: 28,
                   }}
                 >
-                  <td style={{ textAlign: 'center', color: '#71717a', borderRight: '1px solid #1c1c1c', fontSize: 11, fontFamily: 'monospace' }}>
+                  <td style={{ textAlign: 'center', color: 'var(--muted-foreground)', borderRight: '1px solid var(--border)', fontSize: 11, fontFamily: 'monospace' }}>
                     {rIdx + 1}
                   </td>
                   {parsedFile.headers.map((h, cIdx) => {
@@ -533,14 +533,14 @@ export function ColumnMapperStep({
                         key={cIdx}
                         style={{
                           padding: '0 12px',
-                          color: val ? '#d4d4d8' : '#52525b',
+                          color: val ? 'var(--foreground)' : 'var(--muted-foreground)',
                           whiteSpace: 'nowrap',
                           maxWidth: 220,
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
                           fontFamily: 'var(--font-geist-mono), monospace',
                           fontSize: 11.5,
-                          borderRight: cIdx < parsedFile.headers.length - 1 ? '1px solid #161616' : 'none',
+                          borderRight: cIdx < parsedFile.headers.length - 1 ? '1px solid var(--border-subtle)' : 'none',
                         }}
                         title={val}
                       >
@@ -562,11 +562,11 @@ export function ColumnMapperStep({
             display: 'flex',
             alignItems: 'center',
             gap: 8,
-            background: '#1c1212',
-            border: '1px solid #381818',
+            background: 'var(--error-bg)',
+            border: '1px solid var(--error-border)',
             borderRadius: 6,
             padding: '8px 12px',
-            color: '#f87171',
+            color: 'var(--error)',
             fontSize: 12.5,
           }}
         >
@@ -583,14 +583,14 @@ export function ColumnMapperStep({
             gap: 8,
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: 11.5,
-            color: '#c4b5fd',
+            color: 'var(--import-accent)',
             padding: '7px 12px',
             borderRadius: 6,
-            background: 'rgba(167, 139, 250, 0.05)',
-            border: '1px solid rgba(167, 139, 250, 0.18)',
+            background: 'var(--import-accent-bg)',
+            border: '1px solid var(--import-accent-border)',
           }}
         >
-          <Sparkles size={13} style={{ color: '#c4b5fd', flexShrink: 0 }} />
+          <Sparkles size={13} style={{ color: 'var(--import-accent)', flexShrink: 0 }} />
           <span>
             {customColumnsCount} custom {customColumnsCount === 1 ? 'column' : 'columns'} will be created: {Array.from(customColumnsSet).join(', ')}
           </span>
@@ -604,9 +604,9 @@ export function ColumnMapperStep({
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid #333',
+            border: '1px solid var(--input-border)',
             borderRadius: 6,
-            color: '#d4d4d8',
+            color: 'var(--foreground)',
             fontSize: 13,
             padding: '6px 14px',
             cursor: 'pointer',
@@ -615,8 +615,8 @@ export function ColumnMapperStep({
             gap: 6,
             transition: 'border-color 0.15s, color 0.15s',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#555'; e.currentTarget.style.color = '#fff'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.color = '#d4d4d8'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--input-border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
         >
           <ArrowLeft size={13} />
           Back
@@ -627,10 +627,10 @@ export function ColumnMapperStep({
           disabled={!isTitleMapped}
           onClick={() => onMappingConfirmed(mapping)}
           style={{
-            background: isTitleMapped ? '#ffffff' : '#222',
+            background: isTitleMapped ? 'var(--primary)' : 'var(--muted)',
             border: 'none',
             borderRadius: 6,
-            color: isTitleMapped ? '#000000' : '#555',
+            color: isTitleMapped ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
             fontSize: 13,
             fontWeight: 500,
             padding: '6px 16px',

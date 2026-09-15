@@ -184,7 +184,7 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'rgba(0, 0, 0, 0.78)',
+              background: 'var(--overlay)',
               backdropFilter: 'blur(10px)',
               WebkitBackdropFilter: 'blur(10px)',
             }}
@@ -201,10 +201,10 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
               position: 'relative',
               width: '100%',
               maxWidth: step === 2 ? 820 : 580,
-              background: '#0f0f0f',
-              border: '1px solid #222222',
+              background: 'var(--popover)',
+              border: '1px solid var(--border)',
               borderRadius: 8,
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.8)',
+              boxShadow: 'var(--shadow-modal)',
               display: 'flex',
               flexDirection: 'column',
               overflow: 'hidden',
@@ -221,17 +221,17 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '14px 20px',
-                borderBottom: '1px solid #1c1c1c',
-                background: '#0f0f0f',
+                borderBottom: '1px solid var(--border)',
+                background: 'var(--popover)',
               }}
             >
               {/* Monospace Breadcrumb */}
               <div className="import-modal-breadcrumb" style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: '#71717a' }}>recall</span>
-                <span style={{ color: '#52525b', margin: '0 6px' }}>/</span>
-                <span style={{ color: '#a1a1aa' }}>import</span>
-                <span style={{ color: '#52525b', margin: '0 6px' }}>/</span>
-                <span style={{ color: '#fff', fontWeight: 500 }}>
+                <span style={{ color: 'var(--muted-foreground)' }}>recall</span>
+                <span style={{ color: 'var(--border)', margin: '0 6px' }}>/</span>
+                <span style={{ color: 'var(--muted-foreground)' }}>import</span>
+                <span style={{ color: 'var(--border)', margin: '0 6px' }}>/</span>
+                <span style={{ color: 'var(--foreground)', fontWeight: 500 }}>
                   {STEPS.find((s) => s.id === step)?.label}
                 </span>
               </div>
@@ -243,14 +243,14 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: 11,
-                    color: '#888',
+                    color: 'var(--muted-foreground)',
                     letterSpacing: '0.04em',
                   }}
                 >
                   STEP {step} / {STEPS.length}
                 </span>
 
-                <div style={{ width: 1, height: 12, background: '#2e2e32' }} />
+                <div style={{ width: 1, height: 12, background: 'var(--border)' }} />
 
                 <button
                   type="button"
@@ -260,7 +260,7 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#888',
+                    color: 'var(--muted-foreground)',
                     cursor: isImporting ? 'not-allowed' : 'pointer',
                     fontSize: 13,
                     padding: 2,
@@ -270,8 +270,8 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                     lineHeight: 1,
                     transition: 'color 0.15s',
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = '#888'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--foreground)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted-foreground)'; }}
                 >
                   <X size={15} />
                 </button>

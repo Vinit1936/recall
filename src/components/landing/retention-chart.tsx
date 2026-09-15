@@ -47,11 +47,12 @@ export function RetentionChart() {
     <div
       ref={containerRef}
       style={{
-        background: '#080808',
+        background: 'var(--surface)',
         padding: '24px 16px 16px',
         width: '100%',
         height: '100%',
         boxSizing: 'border-box',
+        transition: 'background 0.2s ease',
       }}
     >
       <svg
@@ -76,7 +77,7 @@ export function RetentionChart() {
           <text
             x="68"
             y="33"
-            fill="#666"
+            fill="var(--text-secondary)"
             fontSize="10"
             fontFamily="var(--font-geist-mono), monospace"
           >
@@ -88,13 +89,13 @@ export function RetentionChart() {
             y1="30"
             x2="220"
             y2="30"
-            stroke="#e5e5e5"
+            stroke="var(--text-primary)"
             strokeWidth="2"
           />
           <text
             x="228"
             y="33"
-            fill="#666"
+            fill="var(--text-secondary)"
             fontSize="10"
             fontFamily="var(--font-geist-mono), monospace"
           >
@@ -110,7 +111,7 @@ export function RetentionChart() {
             y1={y}
             x2="660"
             y2={y}
-            stroke="#111"
+            stroke="var(--border)"
             strokeWidth="1"
           />
         ))}
@@ -138,7 +139,7 @@ export function RetentionChart() {
           ref={spacedPathRef}
           d={spacedD}
           fill="none"
-          stroke="#e5e5e5"
+          stroke="var(--text-primary)"
           strokeWidth="2"
           strokeDasharray={`${spacedLength} ${spacedLength}`}
           strokeDashoffset={animated ? 0 : spacedLength}
@@ -157,7 +158,7 @@ export function RetentionChart() {
             cx={m.x}
             cy={m.dotY}
             r="5"
-            fill={m.dotColor}
+            fill={m.subColor || 'var(--text-primary)'}
             opacity={animated ? 1 : 0}
             style={{
               transition: animated ? `opacity 0.2s ease-out ${m.delay}s` : 'none',
@@ -172,7 +173,7 @@ export function RetentionChart() {
               x={m.x}
               y="300"
               textAnchor="middle"
-              fill="#444"
+              fill="var(--text-secondary)"
               fontSize="10"
               fontFamily="var(--font-geist-mono), monospace"
             >
@@ -182,7 +183,7 @@ export function RetentionChart() {
               x={m.x}
               y="315"
               textAnchor="middle"
-              fill={m.subColor || '#444'}
+              fill={m.subColor || 'var(--text-tertiary)'}
               fontSize="10"
               fontFamily="var(--font-geist-mono), monospace"
             >

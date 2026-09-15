@@ -47,10 +47,10 @@ function DropdownMenu({ label, children }: { label: string; children: React.Reac
       <button
         onClick={() => setOpen((o) => !o)}
         style={{
-          background: '#1a1a1a',
-          border: '1px solid #2a2a2a',
+          background: 'var(--card)',
+          border: '1px solid var(--border)',
           borderRadius: 6,
-          color: '#888',
+          color: 'var(--muted-foreground)',
           cursor: 'pointer',
           fontSize: 13,
           padding: '6px 12px',
@@ -71,13 +71,13 @@ function DropdownMenu({ label, children }: { label: string; children: React.Reac
             top: '100%',
             left: 0,
             marginTop: 4,
-            background: '#1a1a1a',
-            border: '1px solid #2a2a2e',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 8,
             padding: '6px',
             zIndex: 50,
             minWidth: 160,
-            boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
           }}
         >
           {children}
@@ -103,8 +103,8 @@ function CheckItem({ label, checked, onChange }: { label: string; checked: boole
         cursor: 'pointer',
         borderRadius: 5,
         fontSize: 13,
-        color: checked ? '#ffffff' : hovered ? '#e5e5e5' : '#aaa',
-        background: hovered ? '#252525' : 'transparent',
+        color: checked ? 'var(--foreground)' : hovered ? 'var(--foreground)' : 'var(--muted-foreground)',
+        background: hovered ? 'var(--accent)' : 'transparent',
         transition: 'background 0.15s, color 0.15s',
         userSelect: 'none',
       }}
@@ -169,7 +169,7 @@ export function Toolbar({
       <div data-table-toolbar style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         {/* Search */}
         <div data-search-container style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#555', pointerEvents: 'none' }}>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--muted-foreground)', pointerEvents: 'none' }}>
             <circle cx="6" cy="6" r="4.5" stroke="currentColor" strokeWidth="1.3"/>
             <path d="M10 10l2.5 2.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
           </svg>
@@ -180,10 +180,10 @@ export function Toolbar({
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search problems..."
             style={{
-              background: '#1a1a1a',
-              border: '1px solid #2a2a2a',
+              background: 'var(--input-bg)',
+              border: '1px solid var(--input-border)',
               borderRadius: 6,
-              color: '#fff',
+              color: 'var(--foreground)',
               fontSize: 13,
               padding: '6px 28px 6px 32px',
               outline: 'none',
@@ -196,12 +196,12 @@ export function Toolbar({
               right: 8,
               top: '50%',
               transform: 'translateY(-50%)',
-              background: '#242424',
-              border: '1px solid #333',
+              background: 'var(--secondary)',
+              border: '1px solid var(--border)',
               borderRadius: 4,
               padding: '1px 5px',
               fontSize: 10,
-              color: '#666',
+              color: 'var(--muted-foreground)',
               fontFamily: 'var(--font-geist-mono), monospace',
               pointerEvents: 'none',
               lineHeight: 1.2,
@@ -215,12 +215,12 @@ export function Toolbar({
         <div data-filter-sort-row style={{ display: 'contents' }}>
           {/* Filter dropdown */}
           <DropdownMenu label={difficultyFilter.length + statusFilter.length > 0 ? `Filters (${difficultyFilter.length + statusFilter.length})` : 'Filter'}>
-            <div style={{ padding: '2px 4px 6px', fontSize: 10, color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Difficulty</div>
+            <div style={{ padding: '2px 4px 6px', fontSize: 10, color: 'var(--muted-foreground)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Difficulty</div>
             {DIFFICULTIES.map((d) => (
               <CheckItem key={d} label={d} checked={difficultyFilter.includes(d)} onChange={() => toggleDifficulty(d)} />
             ))}
-            <div style={{ borderTop: '1px solid #2a2a2a', margin: '6px 0' }} />
-            <div style={{ padding: '2px 4px 6px', fontSize: 10, color: '#555', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Status</div>
+            <div style={{ borderTop: '1px solid var(--border)', margin: '6px 0' }} />
+            <div style={{ padding: '2px 4px 6px', fontSize: 10, color: 'var(--muted-foreground)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Status</div>
             {STATUSES.map((s) => (
               <CheckItem key={s} label={s} checked={statusFilter.includes(s)} onChange={() => toggleStatus(s)} />
             ))}
@@ -235,10 +235,10 @@ export function Toolbar({
                 style={{
                   display: 'block',
                   width: '100%',
-                  background: sort === opt.value ? '#252525' : 'none',
+                  background: sort === opt.value ? 'var(--secondary)' : 'none',
                   border: 'none',
                   borderRadius: 4,
-                  color: sort === opt.value ? '#fff' : '#ccc',
+                  color: sort === opt.value ? 'var(--foreground)' : 'var(--muted-foreground)',
                   cursor: 'pointer',
                   fontSize: 13,
                   padding: '5px 8px',
@@ -257,10 +257,10 @@ export function Toolbar({
           onClick={onSortOrderToggle}
           title={sortOrder === 'asc' ? 'Ascending Order (click for Descending)' : 'Descending Order (click for Ascending)'}
           style={{
-            background: '#1a1a1a',
-            border: '1px solid #2a2a2a',
+            background: 'var(--card)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
-            color: '#ccc',
+            color: 'var(--muted-foreground)',
             cursor: 'pointer',
             width: 30,
             height: 30,
@@ -272,12 +272,12 @@ export function Toolbar({
             flexShrink: 0,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#444';
-            e.currentTarget.style.color = '#fff';
+            e.currentTarget.style.borderColor = 'var(--primary)';
+            e.currentTarget.style.color = 'var(--foreground)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = '#2a2a2a';
-            e.currentTarget.style.color = '#ccc';
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.color = 'var(--muted-foreground)';
           }}
         >
           <ArrowUpDown
@@ -296,20 +296,20 @@ export function Toolbar({
           {activeFilters.map((f, i) => (
             <span key={i} style={{
               display: 'inline-flex', alignItems: 'center', gap: 4,
-              background: '#1a1a1a', border: '1px solid #2a2a2a',
-              borderRadius: 4, fontSize: 12, color: '#aaa',
+              background: 'var(--secondary)', border: '1px solid var(--border)',
+              borderRadius: 4, fontSize: 12, color: 'var(--foreground)',
               padding: '2px 6px',
             }}>
               {f.label}
               <button
                 onClick={f.remove}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#666', padding: 0, fontSize: 12, lineHeight: 1, display: 'flex', alignItems: 'center' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted-foreground)', padding: 0, fontSize: 12, lineHeight: 1, display: 'flex', alignItems: 'center' }}
               >×</button>
             </span>
           ))}
           <button
             onClick={() => { onDifficultyChange([]); onStatusChange([]); }}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#555', fontSize: 12, padding: 0 }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted-foreground)', fontSize: 12, padding: 0 }}
           >
             Clear all
           </button>

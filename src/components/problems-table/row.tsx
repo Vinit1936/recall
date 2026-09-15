@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow, startOfDay } from 'date-fns';
-import { getDifficultyStyle, getTopicColor, Pill, DifficultyPickerCell, TopicPickerCell } from './columns';
+import { DifficultyPickerCell, TopicPickerCell } from './columns';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 import { useState, useRef, useEffect } from 'react';
@@ -21,8 +21,8 @@ export function StatusCell({ problem }: { problem: any }) {
   if (problem.status === 'RETIRED') {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#444', flexShrink: 0 }} />
-        <span data-status-label style={{ fontSize: 13, color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--muted-foreground)', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>Retired</span>
       </div>
     );
   }
@@ -32,8 +32,8 @@ export function StatusCell({ problem }: { problem: any }) {
   if (!latestConfidence || problem.revisionCount === 0) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: '#555', flexShrink: 0 }} />
-        <span data-status-label style={{ fontSize: 13, color: '#666', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
+        <div data-status-dot style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--muted-foreground)', flexShrink: 0 }} />
+        <span data-status-label style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>Not started</span>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export function StatusCell({ problem }: { problem: any }) {
 // Next revision formatted date string helper
 function NextRevisionCell({ problem }: { problem: any }) {
   if (problem.status !== 'ACTIVE') {
-    return <span style={{ fontSize: 13, color: '#444', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
+    return <span style={{ fontSize: 13, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
   }
   const date = new Date(problem.nextRevisionAt);
   const today = startOfDay(new Date());
@@ -73,7 +73,7 @@ function NextRevisionCell({ problem }: { problem: any }) {
   const diffDays = Math.round((revDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
   let text = '';
-  let color = '#888';
+  let color = 'var(--muted-foreground)';
   if (diffDays < 0) {
     text = `${Math.abs(diffDays)}d overdue`;
     color = '#f87171';
@@ -85,7 +85,7 @@ function NextRevisionCell({ problem }: { problem: any }) {
     color = '#a1a1aa';
   } else {
     text = `in ${diffDays}d`;
-    color = '#666';
+    color = 'var(--muted-foreground)';
   }
 
   return <span style={{ fontSize: 13, color, fontFamily: 'var(--font-geist-mono), monospace', fontVariantNumeric: 'tabular-nums' }}>{text}</span>;
@@ -106,7 +106,7 @@ function StarCell({ problem, onToggle }: { problem: any; onToggle: () => void })
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          background: hovered ? 'rgba(255, 255, 255, 0.05)' : 'none',
+          background: hovered ? 'var(--accent)' : 'none',
           border: 'none',
           cursor: 'pointer',
           width: 28,
@@ -122,8 +122,8 @@ function StarCell({ problem, onToggle }: { problem: any; onToggle: () => void })
       >
         <Bookmark
           size={15}
-          fill={isFav ? '#ffffff' : 'none'}
-          color={isFav ? '#ffffff' : hovered ? '#a1a1aa' : '#3f3f46'}
+          fill={isFav ? 'var(--foreground)' : 'none'}
+          color={isFav ? 'var(--foreground)' : 'var(--muted-foreground)'}
           style={{
             transition: 'transform 0.15s ease, color 0.15s ease, fill 0.15s ease',
             transform: hovered ? 'scale(1.15)' : 'scale(1)',
@@ -243,12 +243,12 @@ function InlineEditCell({
         title={displayText ? displayText : undefined}
         style={{
           fontSize: 13,
-          color: '#666',
+          color: 'var(--muted-foreground)',
           cursor: 'text',
           minHeight: 26,
           padding: '3px 6px',
           borderRadius: 4,
-          background: hovered ? '#1a1a1a' : 'transparent',
+          background: hovered ? 'var(--accent)' : 'transparent',
           opacity: saving ? 0.6 : 1,
           transition: 'background 0.15s ease, opacity 0.15s ease',
           display: 'flex',
@@ -272,7 +272,7 @@ function InlineEditCell({
         {hovered && (
           <Pencil
             size={12}
-            style={{ color: '#444', flexShrink: 0, marginLeft: 4 }}
+            style={{ color: 'var(--muted-foreground)', flexShrink: 0, marginLeft: 4 }}
           />
         )}
       </div>
@@ -287,11 +287,11 @@ function InlineEditCell({
             left: -4,
             width: 'max(100% + 8px, 240px)',
             zIndex: 100,
-            background: '#1a1a1c',
-            border: '1px solid #2a2a2e',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
             padding: '8px 10px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
             opacity: saving ? 0.6 : 1,
             transition: 'opacity 0.15s ease',
           }}
@@ -310,7 +310,7 @@ function InlineEditCell({
               background: 'transparent',
               border: 'none',
               outline: 'none',
-              color: '#fff',
+              color: 'var(--foreground)',
               fontSize: 13,
               fontFamily: 'inherit',
               lineHeight: '1.4',
@@ -320,7 +320,7 @@ function InlineEditCell({
               margin: 0,
               display: 'block',
               boxSizing: 'border-box',
-              caretColor: '#ffffff',
+              caretColor: 'var(--foreground)',
             }}
           />
         </div>
@@ -344,9 +344,6 @@ type ProblemRowProps = {
 
 export function ProblemRow({ problem, columns, isSelected, isHighlighted, onToggleSelect, onStarToggle, onDifficultySave, onTopicSave, onNotesSave, onCustomFieldSave }: ProblemRowProps) {
   const [hovered, setHovered] = useState(false);
-  const diffStyle = getDifficultyStyle(problem.difficulty);
-  const topicColor = getTopicColor(problem.topic);
-
   return (
     <tr
       id={`problem-row-${problem.id}`}
@@ -354,8 +351,8 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: isSelected ? '#1c1c1c' : hovered ? '#0f0f0f' : 'transparent',
-        borderBottom: '1px solid #1c1c1c',
+        background: isSelected ? 'var(--secondary)' : hovered ? 'var(--accent)' : 'transparent',
+        borderBottom: '1px solid var(--border)',
         height: 44,
         transition: 'background 0.1s',
       }}
@@ -383,7 +380,7 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
       <td data-cell="problem" style={{ width: 340, padding: '0 16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, overflow: 'hidden' }}>
           {(problem.platform === 'LEETCODE' || problem.platform === 'CODEFORCES') && problem.problemNumber > 0 && (
-            <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: '#666', fontWeight: 400, flexShrink: 0 }}>
+            <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--muted-foreground)', fontWeight: 400, flexShrink: 0 }}>
               {problem.problemNumber}
             </span>
           )}
@@ -396,7 +393,7 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
               title={problem.title}
               style={{
                 fontSize: 14,
-                color: '#e5e5e5',
+                color: 'var(--foreground)',
                 fontWeight: 500,
                 textDecoration: hovered ? 'underline' : 'none',
                 cursor: 'pointer',
@@ -408,9 +405,9 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
               {problem.title}
             </a>
           ) : (
-            <span style={{ fontSize: 14, color: '#e5e5e5', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={problem.title}>
+            <span style={{ fontSize: 14, color: 'var(--foreground)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={problem.title}>
               {problem.title}
-              <span style={{ color: '#444', fontSize: 12, textDecoration: 'line-through', flexShrink: 0 }}>🔗</span>
+              <span style={{ color: 'var(--muted-foreground)', fontSize: 12, textDecoration: 'line-through', flexShrink: 0 }}>🔗</span>
             </span>
           )}
         </div>
@@ -475,4 +472,3 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
     </tr>
   );
 }
-
