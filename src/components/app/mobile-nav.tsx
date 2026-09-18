@@ -1,9 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'motion/react';
-import { ListFilter, Calendar, Settings } from 'lucide-react';
+import { ListFilter, Calendar, Settings, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/components/theme-provider';
 
 const navItems = [
   {
@@ -25,6 +27,14 @@ const navItems = [
 
 export function MobileNav() {
   const pathname = usePathname();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted ? resolvedTheme === 'dark' : true;
 
   return (
     <div
@@ -40,11 +50,11 @@ export function MobileNav() {
         justifyContent: 'center',
         padding: '6px',
         borderRadius: '24px',
-        background: 'rgba(18, 18, 20, 0.85)',
+        background: 'var(--nav-bg)',
         backdropFilter: 'blur(20px) saturate(180%)',
         WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
-        boxShadow: '0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        border: '1px solid var(--border)',
+        boxShadow: '0 16px 36px rgba(0, 0, 0, 0.25)',
         gap: '4px',
         width: 'max-content',
         maxWidth: 'calc(100vw - 32px)',
@@ -68,10 +78,10 @@ export function MobileNav() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '8px 20px',
+                padding: '8px 18px',
                 borderRadius: '18px',
                 position: 'relative',
-                color: isActive ? '#ffffff' : '#777777',
+                color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
                 transition: 'color 0.2s ease',
                 gap: '3px',
               }}
@@ -83,8 +93,8 @@ export function MobileNav() {
                     position: 'absolute',
                     inset: 0,
                     borderRadius: '18px',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.06)',
+                    background: 'var(--accent)',
+                    border: '1px solid var(--border)',
                     zIndex: 0,
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
@@ -92,7 +102,7 @@ export function MobileNav() {
               )}
 
               <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Icon size={18} color={isActive ? '#ffffff' : '#777777'} />
+                <Icon size={18} color="currentColor" />
               </div>
 
               <span
@@ -129,6 +139,45 @@ export function MobileNav() {
           </Link>
         );
       })}
+
+      {/* Quick Theme Toggle Button on Mobile Dock */}
+      <motion.button
+        type="button"
+        whileTap={{ scale: 0.92 }}
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '8px 14px',
+          borderRadius: '18px',
+          background: 'transparent',
+          border: 'none',
+          color: 'var(--muted-foreground)',
+          cursor: 'pointer',
+          gap: '3px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {isDark ? (
+            <Sun size={18} className="text-amber-400" />
+          ) : (
+            <Moon size={18} className="text-indigo-500" />
+          )}
+        </div>
+        <span
+          style={{
+            fontSize: '10px',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontWeight: 400,
+            letterSpacing: '0.02em',
+          }}
+        >
+          {isDark ? 'Light' : 'Dark'}
+        </span>
+      </motion.button>
     </div>
   );
 }

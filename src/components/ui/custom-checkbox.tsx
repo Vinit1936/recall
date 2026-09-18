@@ -43,15 +43,15 @@ export function CustomCheckbox({
         height: size,
         borderRadius: 4,
         border: checked
-          ? '1px solid #666666'
+          ? '1px solid var(--foreground)'
           : hovered
-          ? '1px solid #555555'
-          : '1px solid #333333',
+          ? '1px solid var(--muted-foreground)'
+          : '1px solid var(--border)',
         background: checked
-          ? '#242424'
+          ? 'var(--foreground)'
           : hovered
-          ? '#1a1a1a'
-          : '#121212',
+          ? 'var(--accent)'
+          : 'var(--card)',
         cursor: 'pointer',
         display: 'inline-flex',
         alignItems: 'center',
@@ -69,7 +69,7 @@ export function CustomCheckbox({
           height={size - 4}
           viewBox="0 0 12 12"
           fill="none"
-          stroke="#ffffff"
+          stroke="var(--background)"
           strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"

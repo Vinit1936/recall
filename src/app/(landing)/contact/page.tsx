@@ -40,7 +40,7 @@ export default function ContactPage() {
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '10px',
-              color: '#888',
+              color: 'var(--text-secondary)',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '16px',
@@ -56,7 +56,7 @@ export default function ContactPage() {
               fontStyle: 'italic',
               fontWeight: 400,
               fontSize: 'clamp(34px, 4vw, 46px)',
-              color: '#f0f0f0',
+              color: 'var(--text-primary)',
               lineHeight: 1.15,
               margin: '0 0 24px',
             }}
@@ -68,7 +68,7 @@ export default function ContactPage() {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: '#777',
+              color: 'var(--text-secondary)',
               lineHeight: 1.75,
               margin: '0 0 48px',
             }}
@@ -107,14 +107,14 @@ export default function ContactPage() {
               <div
                 key={c.num}
                 style={{
-                  borderTop: '1px solid #141414',
+                  borderTop: '1px solid var(--border)',
                   padding: '20px 0',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   flexWrap: 'wrap',
                   gap: '12px',
-                  ...(i === 3 ? { borderBottom: '1px solid #141414' } : {}),
+                  ...(i === 3 ? { borderBottom: '1px solid var(--border)' } : {}),
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     style={{
                       fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: '11px',
-                      color: '#444',
+                      color: 'var(--text-tertiary)',
                     }}
                   >
                     {c.num}
@@ -131,7 +131,7 @@ export default function ContactPage() {
                     style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '14px',
-                      color: '#e5e5e5',
+                      color: 'var(--text-primary)',
                     }}
                   >
                     {c.label}
@@ -145,12 +145,12 @@ export default function ContactPage() {
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '12px',
-                    color: '#888',
+                    color: 'var(--text-secondary)',
                     textDecoration: 'none',
                     transition: 'color 0.15s ease',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#888')}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
                 >
                   {c.value} ↗
                 </a>
@@ -164,7 +164,7 @@ export default function ContactPage() {
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '10px',
-                color: '#888',
+                color: 'var(--text-secondary)',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 marginBottom: '16px',
@@ -176,19 +176,19 @@ export default function ContactPage() {
             {submitted ? (
               <div
                 style={{
-                  borderTop: '1px solid #141414',
+                  borderTop: '1px solid var(--border)',
                   paddingTop: '20px',
                 }}
               >
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', color: '#e5e5e5', fontSize: '14px', margin: '0 0 12px 0' }}>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', color: 'var(--text-primary)', fontSize: '14px', margin: '0 0 12px 0' }}>
                   Email client opened with your message draft.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   style={{
-                    background: 'none',
-                    border: '1px solid #222',
-                    color: '#888',
+                    background: 'var(--card)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-secondary)',
                     padding: '8px 16px',
                     borderRadius: '6px',
                     fontSize: '12px',
@@ -208,7 +208,7 @@ export default function ContactPage() {
                         display: 'block',
                         fontFamily: 'var(--font-geist-mono), monospace',
                         fontSize: '11px',
-                        color: '#666',
+                        color: 'var(--text-secondary)',
                         marginBottom: '6px',
                       }}
                     >
@@ -222,10 +222,10 @@ export default function ContactPage() {
                       style={{
                         width: '100%',
                         padding: '10px 12px',
-                        background: '#0a0a0a',
-                        border: '1px solid #1c1c1c',
+                        background: 'var(--surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '6px',
-                        color: '#ffffff',
+                        color: 'var(--text-primary)',
                         fontSize: '13px',
                         outline: 'none',
                         boxSizing: 'border-box',
@@ -240,7 +240,7 @@ export default function ContactPage() {
                         display: 'block',
                         fontFamily: 'var(--font-geist-mono), monospace',
                         fontSize: '11px',
-                        color: '#666',
+                        color: 'var(--text-secondary)',
                         marginBottom: '6px',
                       }}
                     >
@@ -255,10 +255,10 @@ export default function ContactPage() {
                       style={{
                         width: '100%',
                         padding: '10px 12px',
-                        background: '#0a0a0a',
-                        border: '1px solid #1c1c1c',
+                        background: 'var(--surface)',
+                        border: '1px solid var(--border)',
                         borderRadius: '6px',
-                        color: '#ffffff',
+                        color: 'var(--text-primary)',
                         fontSize: '13px',
                         outline: 'none',
                         boxSizing: 'border-box',
@@ -274,7 +274,7 @@ export default function ContactPage() {
                       display: 'block',
                       fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: '11px',
-                      color: '#666',
+                      color: 'var(--text-secondary)',
                       marginBottom: '6px',
                     }}
                   >
@@ -289,10 +289,10 @@ export default function ContactPage() {
                     style={{
                       width: '100%',
                       padding: '10px 12px',
-                      background: '#0a0a0a',
-                      border: '1px solid #1c1c1c',
+                      background: 'var(--surface)',
+                      border: '1px solid var(--border)',
                       borderRadius: '6px',
-                      color: '#ffffff',
+                      color: 'var(--text-primary)',
                       fontSize: '13px',
                       outline: 'none',
                       boxSizing: 'border-box',
@@ -307,8 +307,8 @@ export default function ContactPage() {
                   style={{
                     alignSelf: 'flex-start',
                     padding: '10px 20px',
-                    background: '#ffffff',
-                    color: '#000000',
+                    background: 'var(--text-primary)',
+                    color: 'var(--bg)',
                     border: 'none',
                     borderRadius: '6px',
                     fontSize: '12px',
@@ -317,8 +317,6 @@ export default function ContactPage() {
                     fontFamily: 'var(--font-geist-mono), monospace',
                     transition: 'background 0.15s ease',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = '#e5e5e5')}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = '#ffffff')}
                 >
                   Send message →
                 </button>

@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ExternalLink, Check, ChevronRight, Sparkles, Layers, BookOpen } from 'lucide-react';
-import { getDifficultyStyle, getTopicColor, Pill } from '@/components/problems-table/columns';
+import { getDifficultyStyle } from '@/components/problems-table/columns';
+import { getTopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 type Confidence = 'CLEAN' | 'SHAKY' | 'STRUGGLED';

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { Eye, EyeOff } from 'lucide-react';
 import { OtpInput } from '@/components/auth/otp-input';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 type Tab = 'signin' | 'signup';
 type AuthMode = 'form' | 'verify' | 'forgot' | 'reset';
@@ -28,7 +29,7 @@ function Spinner() {
         display: 'inline-block',
         width: 14,
         height: 14,
-        border: '2px solid #888888',
+        border: '2px solid var(--muted-foreground)',
         borderTopColor: 'transparent',
         borderRadius: '50%',
         animation: 'spin 0.6s linear infinite',
@@ -59,7 +60,7 @@ function MobileInput({
   return (
     <div style={{ marginBottom: '16px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-        <label style={{ display: 'block', fontSize: '13px', color: '#888888' }}>{label}</label>
+        <label style={{ display: 'block', fontSize: '13px', color: 'var(--muted-foreground)' }}>{label}</label>
         {rightLabelAction}
       </div>
       <div style={{ position: 'relative' }}>
@@ -70,10 +71,10 @@ function MobileInput({
           placeholder={placeholder}
           style={{
             width: '100%',
-            background: '#1a1a1a',
-            border: '1px solid #2a2a2a',
+            background: 'var(--input-bg)',
+            border: '1px solid var(--input-border)',
             borderRadius: '8px',
-            color: '#ffffff',
+            color: 'var(--foreground)',
             fontSize: '16px',
             padding: isPassword ? '12px 42px 12px 14px' : '12px 14px',
             outline: 'none',
@@ -93,7 +94,7 @@ function MobileInput({
               border: 'none',
               padding: 4,
               cursor: 'pointer',
-              color: '#888888',
+                color: 'var(--muted-foreground)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -480,7 +481,7 @@ export function MobileAuth() {
       style={{
         minHeight: '100vh',
         width: '100%',
-        background: '#09090b',
+        background: 'var(--background)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -488,8 +489,14 @@ export function MobileAuth() {
         padding: '24px 16px',
         boxSizing: 'border-box',
         fontFamily: 'var(--font-geist-sans), sans-serif',
+        position: 'relative',
       }}
     >
+      {/* Top right theme toggle */}
+      <div style={{ position: 'absolute', top: 16, right: 16 }}>
+        <ThemeToggle variant="icon" />
+      </div>
+
       {/* Brand Logo & Tagline */}
       <div style={{ textAlign: 'center', marginBottom: '24px' }}>
         <Link href="/" style={{ textDecoration: 'none' }}>
@@ -498,14 +505,14 @@ export function MobileAuth() {
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: '24px',
               fontWeight: 600,
-              color: '#ffffff',
+                color: 'var(--foreground)',
               letterSpacing: '-0.02em',
             }}
           >
             recall<span style={{ color: '#ff6b00' }}>.</span>
           </span>
         </Link>
-        <p style={{ fontSize: '13px', color: '#888888', margin: '6px 0 0 0' }}>
+        <p style={{ fontSize: '13px', color: 'var(--muted-foreground)', margin: '6px 0 0 0' }}>
           Solve once. Remember forever.
         </p>
       </div>
@@ -515,12 +522,12 @@ export function MobileAuth() {
         style={{
           width: '100%',
           maxWidth: '380px',
-          background: '#131315',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: 'var(--card)',
+          border: '1px solid var(--border)',
           borderRadius: '20px',
           padding: '28px 20px',
           boxSizing: 'border-box',
-          boxShadow: '0 16px 36px rgba(0, 0, 0, 0.6)',
+          boxShadow: '0 16px 36px rgba(0, 0, 0, 0.1)',
         }}
       >
         {mode === 'verify' ? (
@@ -541,7 +548,7 @@ export function MobileAuth() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#888888',
+                color: 'var(--muted-foreground)',
                 fontSize: '13px',
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -558,25 +565,25 @@ export function MobileAuth() {
               style={{
                 fontSize: '20px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 letterSpacing: '-0.02em',
                 margin: '0 0 6px 0',
               }}
             >
               Verify your email
             </h2>
-            <p style={{ fontSize: '13px', color: '#888888', margin: '0 0 16px 0', lineHeight: 1.4 }}>
-              Code sent to <strong style={{ color: '#ffffff' }}>{verifyEmail}</strong>
+            <p style={{ fontSize: '13px', color: 'var(--muted-foreground)', margin: '0 0 16px 0', lineHeight: 1.4 }}>
+              Code sent to <strong style={{ color: 'var(--foreground)' }}>{verifyEmail}</strong>
             </p>
 
             {verifyError && (
               <div
                 style={{
-                  background: '#200e0e',
-                  border: '1px solid #481a1a',
+                  background: 'var(--error-bg)',
+                  border: '1px solid var(--error-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#f87171',
+                  color: 'var(--error)',
                   fontSize: '13px',
                   marginBottom: '16px',
                   lineHeight: 1.4,
@@ -589,11 +596,11 @@ export function MobileAuth() {
             {resendSuccess && (
               <div
                 style={{
-                  background: 'rgba(74, 222, 128, 0.1)',
-                  border: '1px solid rgba(74, 222, 128, 0.2)',
+                  background: 'var(--success-bg)',
+                  border: '1px solid var(--success-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#4ade80',
+                  color: 'var(--success)',
                   fontSize: '13px',
                   marginBottom: '16px',
                   lineHeight: 1.4,
@@ -618,8 +625,8 @@ export function MobileAuth() {
               style={{
                 width: '100%',
                 height: '44px',
-                background: otp.length === 6 && !verifyLoading ? '#ffffff' : '#2a2a2a',
-                color: otp.length === 6 && !verifyLoading ? '#000000' : '#888888',
+                background: otp.length === 6 && !verifyLoading ? 'var(--primary)' : 'var(--muted)',
+                color: otp.length === 6 && !verifyLoading ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
                 border: 'none',
                 borderRadius: '8px',
                 fontSize: '14px',
@@ -636,9 +643,9 @@ export function MobileAuth() {
               {verifyLoading ? <Spinner /> : 'Verify & Continue →'}
             </button>
 
-            <div style={{ textAlign: 'center', fontSize: '13px', color: '#71717a', marginBottom: '8px' }}>
+            <div style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>
               {resendCooldown > 0 ? (
-                <span>Resend in <strong style={{ color: '#a1a1aa' }}>{resendCooldown}s</strong></span>
+                <span>Resend in <strong style={{ color: 'var(--foreground)' }}>{resendCooldown}s</strong></span>
               ) : (
                 <span>
                   Didn&apos;t get the code?{' '}
@@ -648,7 +655,7 @@ export function MobileAuth() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       cursor: 'pointer',
                       fontSize: '13px',
                       textDecoration: 'underline',
@@ -661,13 +668,13 @@ export function MobileAuth() {
               )}
             </div>
 
-            <div style={{ textAlign: 'center', fontSize: '12px', color: '#52525b' }}>
+            <div style={{ textAlign: 'center', fontSize: '12px', color: 'var(--muted-foreground)' }}>
               <button
                 onClick={() => setMode('form')}
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: '#888888',
+                color: 'var(--muted-foreground)',
                   cursor: 'pointer',
                   fontSize: '12px',
                   textDecoration: 'underline',
@@ -695,7 +702,7 @@ export function MobileAuth() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#888888',
+                color: 'var(--muted-foreground)',
                 fontSize: '13px',
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -712,25 +719,25 @@ export function MobileAuth() {
               style={{
                 fontSize: '20px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 letterSpacing: '-0.02em',
                 margin: '0 0 6px 0',
               }}
             >
               Reset your password
             </h2>
-            <p style={{ fontSize: '13px', color: '#888888', margin: '0 0 16px 0', lineHeight: 1.4 }}>
+            <p style={{ fontSize: '13px', color: 'var(--muted-foreground)', margin: '0 0 16px 0', lineHeight: 1.4 }}>
               Enter your email and we&apos;ll send you a 6-digit code to reset your password.
             </p>
 
             {forgotError && (
               <div
                 style={{
-                  background: '#200e0e',
-                  border: '1px solid #481a1a',
+                  background: 'var(--error-bg)',
+                  border: '1px solid var(--error-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#f87171',
+                  color: 'var(--error)',
                   fontSize: '13px',
                   marginBottom: '16px',
                   lineHeight: 1.4,
@@ -754,8 +761,8 @@ export function MobileAuth() {
               style={{
                 width: '100%',
                 height: '44px',
-                background: forgotEmail.trim() && !forgotLoading ? '#ffffff' : '#2a2a2a',
-                color: forgotEmail.trim() && !forgotLoading ? '#000000' : '#888888',
+                background: forgotEmail.trim() && !forgotLoading ? 'var(--primary)' : 'var(--muted)',
+                color: forgotEmail.trim() && !forgotLoading ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
                 border: 'none',
                 borderRadius: '8px',
                 fontSize: '14px',
@@ -772,7 +779,7 @@ export function MobileAuth() {
               {forgotLoading ? <Spinner /> : 'Send reset code →'}
             </button>
 
-            <div style={{ textAlign: 'center', fontSize: '12px', color: '#71717a' }}>
+            <div style={{ textAlign: 'center', fontSize: '12px', color: 'var(--muted-foreground)' }}>
               Remembered your password?{' '}
               <button
                 onClick={() => {
@@ -782,7 +789,7 @@ export function MobileAuth() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: '#ffffff',
+                color: 'var(--foreground)',
                   cursor: 'pointer',
                   fontSize: '12px',
                   textDecoration: 'underline',
@@ -810,7 +817,7 @@ export function MobileAuth() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#888888',
+                color: 'var(--muted-foreground)',
                 fontSize: '13px',
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -827,25 +834,25 @@ export function MobileAuth() {
               style={{
                 fontSize: '20px',
                 fontWeight: 600,
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 letterSpacing: '-0.02em',
                 margin: '0 0 6px 0',
               }}
             >
               Set new password
             </h2>
-            <p style={{ fontSize: '13px', color: '#888888', margin: '0 0 16px 0', lineHeight: 1.4 }}>
-              Code sent to <strong style={{ color: '#ffffff' }}>{forgotEmail}</strong>
+            <p style={{ fontSize: '13px', color: 'var(--muted-foreground)', margin: '0 0 16px 0', lineHeight: 1.4 }}>
+              Code sent to <strong style={{ color: 'var(--foreground)' }}>{forgotEmail}</strong>
             </p>
 
             {resetError && (
               <div
                 style={{
-                  background: '#200e0e',
-                  border: '1px solid #481a1a',
+                  background: 'var(--error-bg)',
+                  border: '1px solid var(--error-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#f87171',
+                  color: 'var(--error)',
                   fontSize: '13px',
                   marginBottom: '16px',
                   lineHeight: 1.4,
@@ -858,11 +865,11 @@ export function MobileAuth() {
             {forgotSuccess && (
               <div
                 style={{
-                  background: 'rgba(74, 222, 128, 0.1)',
-                  border: '1px solid rgba(74, 222, 128, 0.2)',
+                  background: 'var(--success-bg)',
+                  border: '1px solid var(--success-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#4ade80',
+                  color: 'var(--success)',
                   fontSize: '13px',
                   marginBottom: '16px',
                   lineHeight: 1.4,
@@ -873,7 +880,7 @@ export function MobileAuth() {
             )}
 
             <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', fontSize: '13px', color: '#888888', marginBottom: '8px' }}>
+              <label style={{ display: 'block', fontSize: '13px', color: 'var(--muted-foreground)', marginBottom: '8px' }}>
                 6-digit reset code
               </label>
               <OtpInput
@@ -909,12 +916,12 @@ export function MobileAuth() {
                 height: '44px',
                 background:
                   resetOtp.length === 6 && resetNewPassword.length >= 8 && resetConfirmPassword && !resetLoading
-                    ? '#ffffff'
-                    : '#2a2a2a',
+                    ? 'var(--primary)'
+                    : 'var(--muted)',
                 color:
                   resetOtp.length === 6 && resetNewPassword.length >= 8 && resetConfirmPassword && !resetLoading
-                    ? '#000000'
-                    : '#888888',
+                    ? 'var(--primary-foreground)'
+                    : 'var(--muted-foreground)',
                 border: 'none',
                 borderRadius: '8px',
                 fontSize: '14px',
@@ -934,9 +941,9 @@ export function MobileAuth() {
               {resetLoading ? <Spinner /> : 'Reset password & sign in →'}
             </button>
 
-            <div style={{ textAlign: 'center', fontSize: '13px', color: '#71717a' }}>
+            <div style={{ textAlign: 'center', fontSize: '13px', color: 'var(--muted-foreground)' }}>
               {forgotCooldown > 0 ? (
-                <span>Resend in <strong style={{ color: '#a1a1aa' }}>{forgotCooldown}s</strong></span>
+                <span>Resend in <strong style={{ color: 'var(--foreground)' }}>{forgotCooldown}s</strong></span>
               ) : (
                 <span>
                   Didn&apos;t get the code?{' '}
@@ -946,7 +953,7 @@ export function MobileAuth() {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: '#ffffff',
+                      color: 'var(--foreground)',
                       cursor: 'pointer',
                       fontSize: '13px',
                       textDecoration: 'underline',
@@ -963,7 +970,7 @@ export function MobileAuth() {
           /* Mobile Standard Form View */
           <div>
             {/* Tab Switcher */}
-            <div style={{ display: 'flex', marginBottom: '24px', borderBottom: '1px solid #1e1e1e', position: 'relative' }}>
+            <div style={{ display: 'flex', marginBottom: '24px', borderBottom: '1px solid var(--border)', position: 'relative' }}>
               <button
                 onClick={() => setTab('signin')}
                 disabled={isAnyLoading}
@@ -975,7 +982,7 @@ export function MobileAuth() {
                   cursor: isAnyLoading ? 'not-allowed' : 'pointer',
                   fontSize: '15px',
                   fontWeight: 500,
-                  color: tab === 'signin' ? '#ffffff' : '#666666',
+                  color: tab === 'signin' ? 'var(--foreground)' : 'var(--muted-foreground)',
                   paddingBottom: '10px',
                   position: 'relative',
                 }}
@@ -990,7 +997,7 @@ export function MobileAuth() {
                       left: 0,
                       right: 0,
                       height: 2,
-                      background: '#ffffff',
+                      background: 'var(--foreground)',
                       borderRadius: 1,
                     }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
@@ -1009,7 +1016,7 @@ export function MobileAuth() {
                   cursor: isAnyLoading ? 'not-allowed' : 'pointer',
                   fontSize: '15px',
                   fontWeight: 500,
-                  color: tab === 'signup' ? '#ffffff' : '#666666',
+                  color: tab === 'signup' ? 'var(--foreground)' : 'var(--muted-foreground)',
                   paddingBottom: '10px',
                   position: 'relative',
                 }}
@@ -1024,7 +1031,7 @@ export function MobileAuth() {
                       left: 0,
                       right: 0,
                       height: 2,
-                      background: '#ffffff',
+                      background: 'var(--foreground)',
                       borderRadius: 1,
                     }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
@@ -1037,11 +1044,11 @@ export function MobileAuth() {
             {forgotSuccess && (
               <div
                 style={{
-                  background: 'rgba(74, 222, 128, 0.1)',
-                  border: '1px solid rgba(74, 222, 128, 0.2)',
+                  background: 'var(--success-bg)',
+                  border: '1px solid var(--success-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#4ade80',
+                  color: 'var(--success)',
                   fontSize: '13px',
                   marginBottom: '20px',
                   lineHeight: 1.4,
@@ -1055,11 +1062,11 @@ export function MobileAuth() {
             {currentError && (
               <div
                 style={{
-                  background: '#200e0e',
-                  border: '1px solid #481a1a',
+                  background: 'var(--error-bg)',
+                  border: '1px solid var(--error-border)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#f87171',
+                  color: 'var(--error)',
                   fontSize: '13px',
                   marginBottom: '20px',
                   lineHeight: 1.4,
@@ -1105,7 +1112,7 @@ export function MobileAuth() {
                         style={{
                           background: 'none',
                           border: 'none',
-                          color: '#a1a1aa',
+                color: 'var(--muted-foreground)',
                           fontSize: '12px',
                           cursor: 'pointer',
                           padding: 0,
@@ -1123,8 +1130,8 @@ export function MobileAuth() {
                     style={{
                       width: '100%',
                       height: '44px',
-                      background: isAnyLoading ? '#2a2a2a' : '#ffffff',
-                      color: isAnyLoading ? '#888888' : '#000000',
+                      background: isAnyLoading ? 'var(--muted)' : 'var(--primary)',
+                      color: isAnyLoading ? 'var(--muted-foreground)' : 'var(--primary-foreground)',
                       border: 'none',
                       borderRadius: '8px',
                       fontSize: '14px',
@@ -1153,7 +1160,7 @@ export function MobileAuth() {
                       style={{
                         background: 'none',
                         border: 'none',
-                        color: '#71717a',
+                        color: 'var(--muted-foreground)',
                         fontSize: '12px',
                         cursor: 'pointer',
                         textDecoration: 'underline',
@@ -1202,8 +1209,8 @@ export function MobileAuth() {
                     style={{
                       width: '100%',
                       height: '44px',
-                      background: isAnyLoading ? '#2a2a2a' : '#ffffff',
-                      color: isAnyLoading ? '#888888' : '#000000',
+                      background: isAnyLoading ? 'var(--muted)' : 'var(--primary)',
+                      color: isAnyLoading ? 'var(--muted-foreground)' : 'var(--primary-foreground)',
                       border: 'none',
                       borderRadius: '8px',
                       fontSize: '14px',
@@ -1224,9 +1231,9 @@ export function MobileAuth() {
 
             {/* Divider */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '16px 0' }}>
-              <div style={{ flex: 1, height: 1, background: '#1e1e1e' }} />
-              <span style={{ fontSize: 12, color: '#555555' }}>or</span>
-              <div style={{ flex: 1, height: 1, background: '#1e1e1e' }} />
+              <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
+              <span style={{ fontSize: 12, color: 'var(--muted-foreground)' }}>or</span>
+              <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
             </div>
 
             {/* OAuth Buttons */}
@@ -1237,9 +1244,9 @@ export function MobileAuth() {
                 width: '100%',
                 height: '44px',
                 background: 'transparent',
-                border: '1px solid #2a2a2a',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 fontSize: '14px',
                 cursor: isAnyLoading ? 'not-allowed' : 'pointer',
                 display: 'flex',
@@ -1269,9 +1276,9 @@ export function MobileAuth() {
                 width: '100%',
                 height: '44px',
                 background: 'transparent',
-                border: '1px solid #2a2a2a',
+                border: '1px solid var(--border)',
                 borderRadius: '8px',
-                color: '#ffffff',
+                color: 'var(--foreground)',
                 fontSize: '14px',
                 cursor: isAnyLoading ? 'not-allowed' : 'pointer',
                 display: 'flex',
@@ -1295,4 +1302,3 @@ export function MobileAuth() {
     </div>
   );
 }
-

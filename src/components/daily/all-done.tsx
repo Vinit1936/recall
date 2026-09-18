@@ -26,12 +26,12 @@ export function AllDone({ streak }: AllDoneProps) {
       <div style={{ fontSize: 48, color: '#4ade80', lineHeight: 1 }}>✓</div>
 
       {/* Title */}
-      <div style={{ fontSize: 20, fontWeight: 600, color: '#fff', marginTop: 4 }}>
+      <div style={{ fontSize: 20, fontWeight: 600, color: 'var(--foreground)', marginTop: 4 }}>
         All done for today
       </div>
 
       {/* Subtitle */}
-      <div style={{ fontSize: 14, color: '#888' }}>
+      <div style={{ fontSize: 14, color: 'var(--muted-foreground)' }}>
         Come back tomorrow to keep your streak alive.
       </div>
 
@@ -43,12 +43,12 @@ export function AllDone({ streak }: AllDoneProps) {
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: 16,
             fontWeight: 600,
-            color: '#fff',
+            color: 'var(--foreground)',
           }}
         >
           {streak}
         </span>
-        <span style={{ fontSize: 14, color: '#888' }}>day streak</span>
+        <span style={{ fontSize: 14, color: 'var(--muted-foreground)' }}>day streak</span>
       </div>
     </motion.div>
   );

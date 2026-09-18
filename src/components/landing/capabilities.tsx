@@ -59,7 +59,7 @@ export function Capabilities() {
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
             gap: '1px',
-            background: '#111',
+            background: 'var(--border)',
           }}
         >
           {CARDS.map((card, i) => (
@@ -75,7 +75,7 @@ export function Capabilities() {
               data-capability-card
               className="capability-card"
               style={{
-                background: '#080808',
+                background: 'var(--surface)',
                 padding: '48px 44px',
                 transition: 'background 0.2s ease',
               }}
@@ -94,7 +94,7 @@ export function Capabilities() {
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '10px',
-                    color: '#777',
+                    color: 'var(--text-secondary)',
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
                     transition: 'color 0.2s ease',
@@ -107,7 +107,7 @@ export function Capabilities() {
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '11px',
-                    color: '#333',
+                    color: 'var(--text-tertiary)',
                     transition: 'color 0.2s ease',
                   }}
                 >
@@ -121,7 +121,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '22px',
-                  color: '#e5e5e5',
+                  color: 'var(--text-primary)',
                   fontWeight: 500,
                   marginBottom: '14px',
                   lineHeight: 1.3,
@@ -138,7 +138,7 @@ export function Capabilities() {
                 style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '14px',
-                  color: '#555',
+                  color: 'var(--text-secondary)',
                   lineHeight: 1.75,
                   margin: 0,
                   transition: 'color 0.2s ease',
@@ -153,19 +153,10 @@ export function Capabilities() {
 
       <style>{`
         .capability-card:hover {
-          background: #0c0c0c !important;
+          filter: brightness(0.96);
         }
-        .capability-card:hover .card-title {
-          color: #ffffff !important;
-        }
-        .capability-card:hover .card-desc {
-          color: #888888 !important;
-        }
-        .capability-card:hover .card-category {
-          color: #999999 !important;
-        }
-        .capability-card:hover .card-num {
-          color: #666666 !important;
+        .dark .capability-card:hover {
+          filter: brightness(1.1);
         }
         @media (max-width: 768px) {
           #capabilities { padding: 0 24px 80px !important; }

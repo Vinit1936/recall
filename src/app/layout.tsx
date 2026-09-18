@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Analytics } from '@vercel/analytics/next';
+import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
@@ -15,9 +16,30 @@ const instrumentSerif = Instrument_Serif({
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://recallx.tech';
 
+const themeInitScript = `
+  (function () {
+    var theme = 'dark';
+    try {
+      var storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') theme = storedTheme;
+    } catch (error) {}
+    var isDark = theme === 'dark';
+    var themeColor = isDark ? '#080808' : '#ffffff';
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('light', !isDark);
+    document.documentElement.style.colorScheme = theme;
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+      meta.setAttribute('content', themeColor);
+    });
+  })();
+`;
+
 export const viewport: Viewport = {
-  themeColor: '#080808',
-  colorScheme: 'dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#080808' },
+  ],
+  colorScheme: 'light dark',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -318,8 +340,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`dark ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
           defer
           src="https://cloud.umami.is/script.js"
@@ -330,11 +353,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ background: '#0f0f0f', color: '#fff', minHeight: '100vh' }} suppressHydrationWarning>
-        <TooltipProvider>{children}</TooltipProvider>
+      <body className="min-h-screen bg-background text-foreground antialiased" suppressHydrationWarning>
+        <ThemeProvider defaultTheme="dark" disableTransitionOnChange>
+          <TooltipProvider>{children}</TooltipProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
   );
 }
-

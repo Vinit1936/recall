@@ -10,7 +10,8 @@ import { NewRow } from './new-row';
 import { CustomCheckbox } from '@/components/ui/custom-checkbox';
 import { Star, MoreVertical, Trash2, Download, Bookmark, Upload } from 'lucide-react';
 import { ImportModal } from '@/components/import-modal';
-import { getTopicColor } from '@/lib/topic-colors';
+import { getTopicColor, type TopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 import { useMediaQuery } from '@/hooks/use-media-query';
 
 import { fetcher } from '@/lib/fetcher';
@@ -46,9 +47,9 @@ function ColumnHeaderMenu({ col, onDelete }: { col: any; onDelete: (id: string) 
           setOpen((o) => !o);
         }}
         style={{
-          background: open ? 'rgba(255, 255, 255, 0.08)' : 'none',
+          background: open ? 'var(--accent)' : 'none',
           border: 'none',
-          color: open ? '#ffffff' : hovered ? '#888' : 'transparent',
+          color: open ? 'var(--foreground)' : hovered ? 'var(--muted-foreground)' : 'transparent',
           cursor: 'pointer',
           padding: '2px 4px',
           borderRadius: 4,
@@ -70,8 +71,8 @@ function ColumnHeaderMenu({ col, onDelete }: { col: any; onDelete: (id: string) 
             top: '100%',
             right: 0,
             marginTop: 4,
-            background: '#1a1a1c',
-            border: '1px solid #2a2a2e',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 6,
             padding: 4,
             zIndex: 100,
@@ -88,7 +89,7 @@ function ColumnHeaderMenu({ col, onDelete }: { col: any; onDelete: (id: string) 
             style={{
               background: 'none',
               border: 'none',
-              color: '#f87171',
+              color: 'var(--error)',
               cursor: 'pointer',
               fontSize: 12,
               padding: '6px 10px',
@@ -100,7 +101,7 @@ function ColumnHeaderMenu({ col, onDelete }: { col: any; onDelete: (id: string) 
               borderRadius: 4,
               transition: 'background 0.15s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#2e1212')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--error-bg)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = 'none')}
           >
             <Trash2 size={13} />
@@ -169,7 +170,7 @@ function sortProblems(problems: any[], sort: string, sortOrder: SortOrder = 'asc
 
 function SkeletonRow({ columns }: { columns: number }) {
   return (
-    <tr style={{ borderBottom: '1px solid #1c1c1c', height: 44 }}>
+    <tr style={{ borderBottom: '1px solid var(--border)', height: 44 }}>
       <td style={{ width: 36, padding: '0 4px', textAlign: 'center' }}><Skeleton className="h-4 w-4 mx-auto rounded" /></td>
       <td style={{ width: 40, padding: '0 4px', textAlign: 'center' }}><Skeleton className="h-6 w-6 mx-auto rounded" /></td>
       <td style={{ width: 320, padding: '0 12px' }}><Skeleton className="h-4 w-48 rounded" /></td>
@@ -190,7 +191,7 @@ function SkeletonRow({ columns }: { columns: number }) {
 function CollapsibleGroup({ title, count, topicColor, children }: {
   title: string;
   count: number;
-  topicColor?: { bg: string; text: string; border: string };
+  topicColor?: TopicColor;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(true);
@@ -198,31 +199,23 @@ function CollapsibleGroup({ title, count, topicColor, children }: {
     <>
       <tr
         onClick={() => setOpen((o) => !o)}
-        style={{ borderBottom: '1px solid #1c1c1c', height: 36, cursor: 'pointer', background: '#141414' }}
+        style={{ borderBottom: '1px solid var(--border)', height: 36, cursor: 'pointer', background: 'var(--secondary)' }}
       >
         <td colSpan={100} style={{ padding: '0 12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{
-              color: '#555',
+              color: 'var(--muted-foreground)',
               fontSize: 11,
               transition: 'transform 0.15s',
               display: 'inline-block',
               transform: open ? 'rotate(90deg)' : 'rotate(0deg)',
             }}>▶</span>
             {topicColor ? (
-              <span style={{
-                fontSize: 12,
-                fontWeight: 500,
-                color: topicColor.text,
-                background: topicColor.bg,
-                border: `1px solid ${topicColor.border}`,
-                borderRadius: 4,
-                padding: '2px 8px',
-              }}>{title}</span>
+              <Pill bg={topicColor.bg} text={topicColor.text} border={topicColor.border}>{title}</Pill>
             ) : (
-              <span style={{ fontSize: 12, color: '#888', fontWeight: 500, textTransform: 'uppercase', fontFamily: 'var(--font-geist-mono), monospace', letterSpacing: '0.06em' }}>{title}</span>
+              <span style={{ fontSize: 12, color: 'var(--muted-foreground)', fontWeight: 500, textTransform: 'uppercase', fontFamily: 'var(--font-geist-mono), monospace', letterSpacing: '0.06em' }}>{title}</span>
             )}
-            <span style={{ fontSize: 12, color: '#555', fontFamily: 'var(--font-geist-mono), monospace' }}>{count}</span>
+            <span style={{ fontSize: 12, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>{count}</span>
           </div>
         </td>
       </tr>
@@ -247,24 +240,24 @@ function AddColumnPopover({ onSave, columns }: { onSave: (name: string) => void;
     <div ref={ref} style={{ position: 'relative', display: 'inline-block' }}>
       <button
         onClick={() => setOpen((o) => !o)}
-        style={{ background: 'none', border: 'none', color: '#444', cursor: 'pointer', fontSize: 11, padding: '0 8px', display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.06em' }}
+        style={{ background: 'none', border: 'none', color: 'var(--muted-foreground)', cursor: 'pointer', fontSize: 11, padding: '0 8px', display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.06em' }}
       >
         + Add column
       </button>
       {open && (
-        <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: 6, background: '#1a1a1a', border: '1px solid #2a2a2a', borderRadius: 8, padding: 12, zIndex: 50, width: 200, boxShadow: '0 8px 24px rgba(0,0,0,0.4)' }}>
-          <div style={{ fontSize: 12, color: '#666', marginBottom: 8 }}>Column name</div>
+        <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: 6, background: 'var(--popover)', border: '1px solid var(--border)', borderRadius: 8, padding: 12, zIndex: 50, width: 200, boxShadow: '0 8px 24px rgba(0,0,0,0.18)' }}>
+          <div style={{ fontSize: 12, color: 'var(--muted-foreground)', marginBottom: 8 }}>Column name</div>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') submit(); if (e.key === 'Escape') setOpen(false); }}
             autoFocus
-            style={{ background: '#111', border: '1px solid #333', borderRadius: 4, color: '#fff', fontSize: 13, padding: '5px 8px', width: '100%', outline: 'none', marginBottom: 8 }}
+            style={{ background: 'var(--input-bg)', border: '1px solid var(--input-border)', borderRadius: 4, color: 'var(--foreground)', fontSize: 13, padding: '5px 8px', width: '100%', outline: 'none', marginBottom: 8 }}
             placeholder="e.g. Company"
           />
           <button
             onClick={submit}
-            style={{ background: '#222222', border: '1px solid #333', borderRadius: 4, color: '#ffffff', cursor: 'pointer', fontSize: 12, padding: '4px 12px', width: '100%' }}
+            style={{ background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 4, color: 'var(--foreground)', cursor: 'pointer', fontSize: 12, padding: '4px 12px', width: '100%' }}
           >
             Save
           </button>
@@ -279,14 +272,14 @@ function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
     <tr>
       <td colSpan={100}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '64px 0', gap: 12 }}>
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <rect x="4" y="4" width="40" height="40" rx="4" stroke="#333" strokeWidth="2"/>
-            <line x1="4" y1="16" x2="44" y2="16" stroke="#333" strokeWidth="2"/>
-            <line x1="4" y1="28" x2="44" y2="28" stroke="#333" strokeWidth="2"/>
-            <line x1="16" y1="4" x2="16" y2="44" stroke="#333" strokeWidth="2"/>
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ color: 'var(--border)' }}>
+            <rect x="4" y="4" width="40" height="40" rx="4" stroke="currentColor" strokeWidth="2"/>
+            <line x1="4" y1="16" x2="44" y2="16" stroke="currentColor" strokeWidth="2"/>
+            <line x1="4" y1="28" x2="44" y2="28" stroke="currentColor" strokeWidth="2"/>
+            <line x1="16" y1="4" x2="16" y2="44" stroke="currentColor" strokeWidth="2"/>
           </svg>
-          <div style={{ fontSize: 16, color: '#888', fontWeight: 500 }}>No problems yet</div>
-          <div style={{ fontSize: 13, color: '#555', lineHeight: 1.6, textAlign: 'center', maxWidth: 320 }}>
+          <div style={{ fontSize: 16, color: 'var(--foreground)', fontWeight: 500 }}>No problems yet</div>
+          <div style={{ fontSize: 13, color: 'var(--muted-foreground)', lineHeight: 1.6, textAlign: 'center', maxWidth: 320 }}>
             Add your first problem using the + New Problem button above,<br />
             or click + New row at the top of the table.
           </div>
@@ -295,10 +288,10 @@ function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
               onClick={onImportClick}
               style={{
                 marginTop: 6,
-                background: '#18181b',
-                border: '1px solid #27272a',
+                background: 'var(--card)',
+                border: '1px solid var(--border)',
                 borderRadius: 6,
-                color: '#a1a1aa',
+                color: 'var(--muted-foreground)',
                 fontSize: 12.5,
                 padding: '7px 16px',
                 cursor: 'pointer',
@@ -308,12 +301,12 @@ function EmptyState({ onImportClick }: { onImportClick?: () => void }) {
                 transition: 'color 0.15s, border-color 0.15s',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#fff';
-                e.currentTarget.style.borderColor = '#3f3f46';
+                e.currentTarget.style.color = 'var(--foreground)';
+                e.currentTarget.style.borderColor = 'var(--muted-foreground)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#a1a1aa';
-                e.currentTarget.style.borderColor = '#27272a';
+                e.currentTarget.style.color = 'var(--muted-foreground)';
+                e.currentTarget.style.borderColor = 'var(--border)';
               }}
             >
               <Upload size={13} />
@@ -666,9 +659,9 @@ export function ProblemsTable() {
   const COLUMN_COUNT = columns.length;
 
   // Table header
-  const TableHead = () => (
+  const renderTableHead = () => (
     <thead>
-      <tr style={{ borderBottom: '1px solid #1c1c1c', height: 36 }}>
+      <tr style={{ borderBottom: '1px solid var(--border)', height: 36, background: 'var(--secondary)' }}>
         <th data-cell="checkbox" style={{ width: 36, padding: '0 4px', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <CustomCheckbox
@@ -685,7 +678,7 @@ export function ProblemsTable() {
           { label: 'DIFFICULTY', width: 115, padding: '0 12px', dataCol: 'difficulty' },
           { label: 'TOPIC', width: 185, padding: '0 12px', dataCol: 'topic' },
           { label: 'STATUS', width: 140, padding: '0 12px', dataCol: 'status' },
-          { label: 'STAR', icon: <Bookmark size={13} strokeWidth={2} style={{ color: '#555' }} />, width: 44, center: true, padding: '0', dataCol: 'star' },
+          { label: 'STAR', icon: <Bookmark size={13} strokeWidth={2} style={{ color: 'var(--muted-foreground)' }} />, width: 44, center: true, padding: '0', dataCol: 'star' },
           { label: 'NEXT REVISION', width: 140, padding: '0 12px', dataCol: 'next-revision' },
           { label: 'NOTES', width: 190, padding: '0 12px', dataCol: 'notes' },
         ].map(({ label, icon, width, center, padding, dataCol }) => (
@@ -697,7 +690,7 @@ export function ProblemsTable() {
             fontFamily: 'var(--font-geist-mono), monospace',
             textTransform: 'uppercase',
             letterSpacing: '0.08em',
-            color: '#555',
+            color: 'var(--muted-foreground)',
             fontWeight: 500,
             whiteSpace: 'nowrap',
           }}>
@@ -711,7 +704,7 @@ export function ProblemsTable() {
           </th>
         ))}
         {columns.map((col) => (
-          <th key={col.id} data-col="custom" data-cell="custom" style={{ width: 140, padding: '0 8px', fontSize: 11, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#555', fontWeight: 500, whiteSpace: 'nowrap' }}>
+          <th key={col.id} data-col="custom" data-cell="custom" style={{ width: 140, padding: '0 8px', fontSize: 11, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--muted-foreground)', fontWeight: 500, whiteSpace: 'nowrap' }}>
             <ColumnHeaderMenu col={col} onDelete={handleDeleteColumn} />
           </th>
         ))}
@@ -890,8 +883,8 @@ export function ProblemsTable() {
       {toast && (
         <div style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 1000,
-          background: '#1a1a1a', border: '1px solid #333', borderRadius: 6,
-          color: '#fff', fontSize: 13, padding: '10px 16px',
+          background: 'var(--popover)', border: '1px solid var(--border)', borderRadius: 6,
+          color: 'var(--foreground)', fontSize: 13, padding: '10px 16px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
         }}>
           {toast}
@@ -908,8 +901,8 @@ export function ProblemsTable() {
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 900,
-            background: '#1a1a1c',
-            border: '1px solid #2a2a2e',
+            background: 'var(--popover)',
+            border: '1px solid var(--border)',
             borderRadius: 8,
             padding: '8px 16px',
             display: 'flex',
@@ -918,19 +911,19 @@ export function ProblemsTable() {
             boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
           }}
         >
-          <span data-selection-count style={{ fontSize: 13, color: '#ccc', fontFamily: 'var(--font-geist-mono), monospace' }}>
+          <span data-selection-count style={{ fontSize: 13, color: 'var(--foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
             <span className="hidden md:inline">{selectedIds.length} selected</span>
             <span className="inline md:hidden">{selectedIds.length} sel</span>
           </span>
-          <div data-selection-divider style={{ width: 1, height: 16, background: '#333', flexShrink: 0 }} />
+          <div data-selection-divider style={{ width: 1, height: 16, background: 'var(--border)', flexShrink: 0 }} />
 
           <div data-selection-actions style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <button
               data-selection-btn="mastered"
               onClick={() => handleBulkStatusChange('MASTERED')}
               style={{
-                background: '#1a2e1a', border: '1px solid #2d5a2d',
-                borderRadius: 4, color: '#4ade80', cursor: 'pointer',
+                background: 'var(--success-bg)', border: '1px solid var(--success-border)',
+                borderRadius: 4, color: 'var(--success)', cursor: 'pointer',
                 fontSize: 12, padding: '4px 8px', fontWeight: 500,
               }}
             >
@@ -941,8 +934,8 @@ export function ProblemsTable() {
               data-selection-btn="active"
               onClick={() => handleBulkStatusChange('ACTIVE')}
               style={{
-                background: '#252525', border: '1px solid #333',
-                borderRadius: 4, color: '#ccc', cursor: 'pointer',
+                background: 'var(--secondary)', border: '1px solid var(--border)',
+                borderRadius: 4, color: 'var(--foreground)', cursor: 'pointer',
                 fontSize: 12, padding: '4px 8px', fontWeight: 500,
               }}
             >
@@ -963,16 +956,16 @@ export function ProblemsTable() {
             </button>
           </div>
 
-          <div data-selection-divider style={{ width: 1, height: 16, background: '#333', flexShrink: 0 }} />
+          <div data-selection-divider style={{ width: 1, height: 16, background: 'var(--border)', flexShrink: 0 }} />
 
           <button
             data-selection-delete
             onClick={handleDeleteClick}
             style={{
-              background: '#2e1212',
-              border: '1px solid #4a1818',
+              background: 'var(--error-bg)',
+              border: '1px solid var(--error-border)',
               borderRadius: 4,
-              color: '#f87171',
+              color: 'var(--error)',
               cursor: 'pointer',
               fontSize: 13,
               padding: '4px 10px',
@@ -982,8 +975,8 @@ export function ProblemsTable() {
               transition: 'background 0.15s',
               flexShrink: 0,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#3e1616')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#2e1212')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--error-border)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--error-bg)')}
           >
             <Trash2 size={13} />
             <span className="hidden md:inline">Delete</span>
@@ -994,7 +987,7 @@ export function ProblemsTable() {
             style={{
               background: 'none',
               border: 'none',
-              color: '#666',
+              color: 'var(--muted-foreground)',
               cursor: 'pointer',
               fontSize: 13,
               padding: 0,
@@ -1014,9 +1007,9 @@ export function ProblemsTable() {
       {/* Page header */}
       <div data-page-header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <div data-breadcrumb style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 14 }}>
-          <span style={{ color: '#555' }}>recall</span>
-          <span style={{ color: '#333', margin: '0 8px' }}>/</span>
-          <span style={{ color: '#fff', fontWeight: 500 }}>All Problems</span>
+          <span style={{ color: 'var(--muted-foreground)' }}>recall</span>
+          <span style={{ color: 'var(--border)', margin: '0 8px' }}>/</span>
+          <span style={{ color: 'var(--foreground)', fontWeight: 500 }}>All Problems</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -1025,10 +1018,10 @@ export function ProblemsTable() {
             onClick={() => setShowImportModal(true)}
             title="Import problems from CSV / Excel"
             style={{
-              background: '#161618',
-              border: '1px solid #27272a',
+              background: 'var(--card)',
+              border: '1px solid var(--border)',
               borderRadius: 6,
-              color: '#888',
+              color: 'var(--muted-foreground)',
               cursor: 'pointer',
               fontSize: 13,
               width: 32,
@@ -1039,8 +1032,8 @@ export function ProblemsTable() {
               transition: 'color 0.15s, border-color 0.15s',
               padding: 0,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#fff'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#27272a'; e.currentTarget.style.color = '#888'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--muted-foreground)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted-foreground)'; }}
           >
             <Upload size={14} />
           </button>
@@ -1050,10 +1043,10 @@ export function ProblemsTable() {
             onClick={handleExportCSV}
             title="Export problems to CSV"
             style={{
-              background: '#161618',
-              border: '1px solid #27272a',
+              background: 'var(--card)',
+              border: '1px solid var(--border)',
               borderRadius: 6,
-              color: '#888',
+              color: 'var(--muted-foreground)',
               cursor: 'pointer',
               fontSize: 13,
               width: 32,
@@ -1064,8 +1057,8 @@ export function ProblemsTable() {
               transition: 'color 0.15s, border-color 0.15s',
               padding: 0,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#fff'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#27272a'; e.currentTarget.style.color = '#888'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted-foreground)'; }}
           >
             <Download size={14} />
           </button>
@@ -1074,7 +1067,19 @@ export function ProblemsTable() {
             data-new-problem-button
             id="new-problem-btn"
             onClick={() => setShowNewRow(true)}
-            style={{ background: 'none', border: '1px solid #2a2a2a', borderRadius: 6, color: '#fff', cursor: 'pointer', fontSize: 13, padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 6 }}
+            style={{
+              background: 'var(--primary)',
+              border: '1px solid var(--primary)',
+              borderRadius: 6,
+              color: 'var(--primary-foreground)',
+              cursor: 'pointer',
+              fontSize: 13,
+              padding: '6px 14px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              fontWeight: 500,
+            }}
           >
             <span style={{ fontSize: 16, lineHeight: 1 }}>+</span> New Problem
           </button>
@@ -1103,13 +1108,14 @@ export function ProblemsTable() {
           overflowX: 'auto',
           maxWidth: '100%',
           borderRadius: 8,
-          border: '1px solid #1c1c1c',
+          border: '1px solid var(--border)',
+          background: 'var(--card)',
         }}
         onMouseEnter={() => setTableHovered(true)}
         onMouseLeave={() => setTableHovered(false)}
       >
         <table data-problems-table style={{ width: '100%', minWidth: 1230 + COLUMN_COUNT * 140, borderCollapse: 'collapse', tableLayout: 'fixed' }}>
-          <TableHead />
+          {renderTableHead()}
           <tbody>
             {showSkeleton ? (
               Array.from({ length: 5 }).map((_, i) => (
@@ -1140,23 +1146,23 @@ export function ProblemsTable() {
             onClick={() => setShowNewRow(true)}
             style={{
               padding: '8px 12px',
-              borderTop: '1px solid #1c1c1c',
+              borderTop: '1px solid var(--border)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: 8,
               fontSize: 13,
-              color: '#555',
+              color: 'var(--muted-foreground)',
               transition: 'background 0.15s, color 0.15s',
-              background: '#0d0d0d',
+              background: 'var(--card)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#141414';
-              e.currentTarget.style.color = '#aaa';
+              e.currentTarget.style.background = 'var(--accent)';
+              e.currentTarget.style.color = 'var(--foreground)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#0d0d0d';
-              e.currentTarget.style.color = '#555';
+              e.currentTarget.style.background = 'var(--card)';
+              e.currentTarget.style.color = 'var(--muted-foreground)';
             }}
           >
             <span style={{ fontSize: 16, lineHeight: 1 }}>+</span>
@@ -1195,28 +1201,28 @@ export function ProblemsTable() {
             style={{
               width: '100%',
               maxWidth: 400,
-              background: '#161618',
-              border: '1px solid #28282c',
+              background: 'var(--popover)',
+              border: '1px solid var(--border)',
               borderRadius: 10,
               padding: 20,
               boxShadow: '0 20px 40px rgba(0,0,0,0.8)',
             }}
           >
-            <div style={{ fontSize: 16, fontWeight: 600, color: '#fff', marginBottom: 8 }}>
+            <div style={{ fontSize: 16, fontWeight: 600, color: 'var(--foreground)', marginBottom: 8 }}>
               Delete {selectedIds.length} {selectedIds.length === 1 ? 'problem' : 'problems'}?
             </div>
-            <div style={{ fontSize: 13, color: '#999', lineHeight: 1.5, marginBottom: 20 }}>
+            <div style={{ fontSize: 13, color: 'var(--muted-foreground)', lineHeight: 1.5, marginBottom: 20 }}>
               Are you sure you want to delete {selectedIds.length === 1 ? 'this problem' : `these ${selectedIds.length} selected problems`}? This action cannot be undone.
             </div>
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
               <button
                 onClick={() => setShowDeleteModal(false)}
                 style={{
-                  background: '#222226',
-                  border: '1px solid #333338',
+                  background: 'var(--secondary)',
+                  border: '1px solid var(--border)',
                   borderRadius: 6,
                   padding: '6px 14px',
-                  color: '#ccc',
+                  color: 'var(--foreground)',
                   fontSize: 13,
                   fontWeight: 500,
                   cursor: 'pointer',

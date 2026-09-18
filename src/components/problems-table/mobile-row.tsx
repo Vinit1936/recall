@@ -1,7 +1,9 @@
 'use client';
 
 import { PlatformLogo } from '@/lib/platforms/logos';
-import { getDifficultyStyle, getTopicColor, Pill } from './columns';
+import { getDifficultyStyle } from './columns';
+import { getTopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 import { StatusCell } from './row';
 import { Star } from 'lucide-react';
 

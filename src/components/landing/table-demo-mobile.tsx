@@ -11,18 +11,18 @@ const EXISTING_ROWS = [
     number: '1',
     title: 'Two Sum',
     diff: 'Easy',
-    diffStyle: { bg: '#1c3a1c', text: '#4ade80', border: '#2d5a2d' },
+    diffStyle: { bg: 'var(--easy-bg)', text: 'var(--easy-text)', border: 'var(--easy-border)' },
     status: 'Clean',
-    statusColor: '#4ade80',
+    statusColor: 'var(--easy-text)',
   },
   {
     platform: 'CODEFORCES',
     number: '187',
     title: 'Target Practice',
     diff: 'Easy',
-    diffStyle: { bg: '#1c3a1c', text: '#4ade80', border: '#2d5a2d' },
+    diffStyle: { bg: 'var(--easy-bg)', text: 'var(--easy-text)', border: 'var(--easy-border)' },
     status: 'Shaky',
-    statusColor: '#fb923c',
+    statusColor: 'var(--medium-text)',
   },
 ];
 
@@ -105,12 +105,12 @@ export function TableDemoMobile() {
         <div
           style={{
             height: '100%',
-            background: '#0a0a0b',
+            background: 'var(--demo-bg)',
             display: 'flex',
             flexDirection: 'column',
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '12px',
-            color: '#e5e5e5',
+            color: 'var(--demo-text)',
             userSelect: 'none',
             boxSizing: 'border-box',
           }}
@@ -122,8 +122,8 @@ export function TableDemoMobile() {
               alignItems: 'center',
               gap: '12px',
               padding: '8px 12px 0',
-              borderBottom: '1px solid #1a1a1e',
-              background: '#0a0a0b',
+              borderBottom: '1px solid var(--demo-border)',
+              background: 'var(--demo-bg)',
               overflowX: 'hidden',
             }}
           >
@@ -131,8 +131,8 @@ export function TableDemoMobile() {
               style={{
                 fontSize: '11px',
                 fontWeight: 500,
-                color: '#ffffff',
-                borderBottom: '2px solid #ffffff',
+                color: 'var(--demo-text)',
+                borderBottom: '2px solid var(--demo-text)',
                 paddingBottom: '6px',
                 whiteSpace: 'nowrap',
               }}
@@ -142,7 +142,7 @@ export function TableDemoMobile() {
             <div
               style={{
                 fontSize: '11px',
-                color: '#555555',
+                color: 'var(--demo-text-faint)',
                 paddingBottom: '6px',
                 whiteSpace: 'nowrap',
               }}
@@ -155,7 +155,7 @@ export function TableDemoMobile() {
                 alignItems: 'center',
                 gap: '4px',
                 fontSize: '11px',
-                color: '#555555',
+                color: 'var(--demo-text-faint)',
                 paddingBottom: '6px',
                 whiteSpace: 'nowrap',
               }}
@@ -175,13 +175,13 @@ export function TableDemoMobile() {
                 alignItems: 'center',
                 gap: '8px',
                 padding: '6px 10px',
-                borderBottom: '1px solid #16161a',
+                borderBottom: '1px solid var(--demo-border)',
                 fontSize: '10px',
                 fontFamily: 'var(--font-geist-mono), monospace',
-                color: '#555555',
+                color: 'var(--demo-text-faint)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.06em',
-                background: '#0d0d0f',
+                background: 'var(--demo-surface)',
               }}
             >
               <span style={{ textAlign: 'center' }}>PF</span>
@@ -201,7 +201,7 @@ export function TableDemoMobile() {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '8px 10px',
-                    borderBottom: '1px solid #141416',
+                    borderBottom: '1px solid var(--demo-border-subtle)',
                     fontSize: '12px',
                   }}
                 >
@@ -221,10 +221,10 @@ export function TableDemoMobile() {
                       gap: '4px',
                     }}
                   >
-                    <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: '#666' }}>
+                    <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: 'var(--demo-text-muted)' }}>
                       {row.number}
                     </span>
-                    <span style={{ fontWeight: 500, color: '#e5e5e5', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <span style={{ fontWeight: 500, color: 'var(--demo-text)', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {row.title}
                     </span>
                   </div>
@@ -269,9 +269,9 @@ export function TableDemoMobile() {
                     alignItems: 'center',
                     gap: '8px',
                     padding: '7px 10px',
-                    borderBottom: '1px solid #1c1c22',
-                    background: confirmed ? 'rgba(74, 222, 128, 0.08)' : step >= 2 ? '#131317' : '#0e0e11',
-                    boxShadow: confirmed ? 'inset 0 0 0 1px rgba(74, 222, 128, 0.3)' : 'none',
+                    borderBottom: '1px solid var(--demo-border-subtle)',
+                    background: confirmed ? 'var(--easy-bg)' : step >= 2 ? 'var(--demo-control-active)' : 'var(--demo-surface)',
+                    boxShadow: confirmed ? 'inset 0 0 0 1px var(--easy-border)' : 'none',
                     transition: 'background 0.3s ease, box-shadow 0.3s ease',
                     position: 'relative',
                   }}
@@ -298,13 +298,13 @@ export function TableDemoMobile() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '4px',
-                          background: step >= 2 ? '#1a1a20' : 'transparent',
-                          border: `1px solid ${step >= 2 ? '#33333a' : 'transparent'}`,
+                          background: step >= 2 ? 'var(--demo-control-active)' : 'transparent',
+                          border: `1px solid ${step >= 2 ? 'var(--demo-control-border)' : 'transparent'}`,
                           borderRadius: '4px',
                           padding: '1px 4px',
                         }}
                       >
-                        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: '#666' }}>
+                        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: 'var(--demo-text-muted)' }}>
                           #
                         </span>
                         <span
@@ -312,7 +312,7 @@ export function TableDemoMobile() {
                             fontFamily: 'var(--font-geist-mono), monospace',
                             fontSize: '11px',
                             fontWeight: 600,
-                            color: typedNumber ? '#ffffff' : '#444444',
+                            color: typedNumber ? 'var(--demo-text)' : 'var(--demo-placeholder)',
                           }}
                         >
                           {typedNumber || '___'}
@@ -342,13 +342,13 @@ export function TableDemoMobile() {
                       </div>
                     ) : (
                       <>
-                        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: '#666' }}>
+                        <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11px', color: 'var(--demo-text-muted)' }}>
                           234
                         </span>
                         <motion.span
                           initial={{ opacity: 0, x: -4 }}
                           animate={{ opacity: 1, x: 0 }}
-                          style={{ fontWeight: 500, color: '#ffffff', overflow: 'hidden', textOverflow: 'ellipsis' }}
+                          style={{ fontWeight: 500, color: 'var(--demo-text)', overflow: 'hidden', textOverflow: 'ellipsis' }}
                         >
                           Palindrome Linked...
                         </motion.span>
@@ -363,9 +363,9 @@ export function TableDemoMobile() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         style={{
-                          background: '#1c3a1c',
-                          color: '#4ade80',
-                          border: '1px solid #2d5a2d',
+                          background: 'var(--easy-bg)',
+                          color: 'var(--easy-text)',
+                          border: '1px solid var(--easy-border)',
                           fontSize: '9px',
                           fontWeight: 500,
                           fontFamily: 'var(--font-geist-mono), monospace',
@@ -376,7 +376,7 @@ export function TableDemoMobile() {
                         Easy
                       </motion.span>
                     ) : (
-                      <span style={{ color: '#333333', fontSize: '10px' }}>—</span>
+                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>—</span>
                     )}
                   </div>
 
@@ -388,13 +388,13 @@ export function TableDemoMobile() {
                         animate={{ opacity: 1 }}
                         style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
                       >
-                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80' }} />
-                        <span style={{ fontSize: '10px', color: '#4ade80', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                        <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--easy-text)' }} />
+                        <span style={{ fontSize: '10px', color: 'var(--easy-text)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                           Clean
                         </span>
                       </motion.div>
                     ) : (
-                      <span style={{ color: '#333333', fontSize: '10px' }}>—</span>
+                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>—</span>
                     )}
                   </div>
                 </motion.div>
@@ -411,14 +411,14 @@ export function TableDemoMobile() {
                   alignItems: 'center',
                   gap: '6px',
                   padding: '8px 12px',
-                  color: '#666666',
+                  color: 'var(--demo-text-muted)',
                   fontSize: '11px',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   cursor: 'pointer',
-                  borderTop: '1px solid #141416',
+                  borderTop: '1px solid var(--demo-border-subtle)',
                 }}
               >
-                <span style={{ fontSize: '12px', color: '#888' }}>+</span>
+                <span style={{ fontSize: '12px', color: 'var(--demo-text-muted)' }}>+</span>
                 <span>New problem</span>
               </motion.div>
             )}

@@ -44,36 +44,36 @@ export function StatsStrip({
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: 38,
             fontWeight: 700,
-            color: '#ffffff',
+            color: 'var(--foreground)',
             letterSpacing: '-0.03em',
             lineHeight: 1,
           }}
         >
           {displayStreak}
         </span>
-        <span style={{ fontSize: 18, fontWeight: 600, color: '#888', letterSpacing: '-0.01em' }}>
+        <span style={{ fontSize: 18, fontWeight: 600, color: 'var(--muted-foreground)', letterSpacing: '-0.01em' }}>
           {displayStreak === 1 ? 'day streak' : 'day streak'}
         </span>
       </div>
 
       {/* Clean secondary inline metadata */}
-      <div data-stats-strip style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: '#777' }}>
+      <div data-stats-strip style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 13, color: 'var(--muted-foreground)' }}>
         <span>
-          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: '#ececec' }}>
+          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: 'var(--foreground)' }}>
             {displayDue}
           </span>{' '}
-          due today {displayOverdue > 0 && <span style={{ color: '#666' }}>({displayOverdue} overdue)</span>}
+          due today {displayOverdue > 0 && <span style={{ color: 'var(--muted-foreground)' }}>({displayOverdue} overdue)</span>}
         </span>
-        <span style={{ color: '#333' }}>·</span>
+        <span style={{ color: 'var(--border)' }}>·</span>
         <span>
-          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: '#ececec' }}>
+          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: 'var(--foreground)' }}>
             {displayTotal}
           </span>{' '}
           total problems
         </span>
-        <span style={{ color: '#333' }}>·</span>
+        <span style={{ color: 'var(--border)' }}>·</span>
         <span>
-          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: '#ececec' }}>
+          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontWeight: 600, color: 'var(--foreground)' }}>
             {displayMastered}
           </span>{' '}
           mastered

@@ -3,27 +3,31 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Chrome } from './chrome';
+import { getTopicColor } from '@/lib/topic-colors';
+import { Pill } from '@/components/ui/pill';
 
 const PROBLEMS = [
   {
     title: 'Best Time to Buy and Sell Stock',
     diff: 'Hard',
-    diffColor: { bg: '#3a0f0f', text: '#f87171', border: '#5a1a1a' },
+    diffColor: { bg: 'var(--hard-bg)', text: 'var(--hard-text)', border: 'var(--hard-border)' },
     topic: 'Two Pointers',
-    topicColor: { bg: 'rgba(168, 85, 247, 0.12)', text: '#c084fc', border: 'rgba(168, 85, 247, 0.25)' },
     actionBtn: 'Clean',
     badgeText: '✓ Marked Clean',
-    badgeColor: '#4ade80',
+    badgeColor: 'var(--easy-text)',
+    badgeBackground: 'var(--easy-bg)',
+    badgeBorder: 'var(--easy-border)',
   },
   {
     title: 'Subarray Sum Equals K',
     diff: 'Medium',
-    diffColor: { bg: '#3a2a0d', text: '#fb923c', border: '#5a3d10' },
+    diffColor: { bg: 'var(--medium-bg)', text: 'var(--medium-text)', border: 'var(--medium-border)' },
     topic: 'Hash Table',
-    topicColor: { bg: 'rgba(56, 189, 248, 0.12)', text: '#38bdf8', border: 'rgba(56, 189, 248, 0.25)' },
     actionBtn: 'Shaky',
     badgeText: '✓ Marked Shaky',
-    badgeColor: '#fb923c',
+    badgeColor: 'var(--medium-text)',
+    badgeBackground: 'var(--medium-bg)',
+    badgeBorder: 'var(--medium-border)',
   },
 ];
 
@@ -95,6 +99,7 @@ export function RevisionDemoMobile() {
   }, [isInView, probIndex]);
 
   const currentProb = PROBLEMS[probIndex];
+  const topicColor = getTopicColor(currentProb.topic);
 
   return (
     <div ref={containerRef} style={{ width: '100%', maxWidth: '340px', margin: '0 auto' }}>
@@ -102,7 +107,7 @@ export function RevisionDemoMobile() {
         <div
           style={{
             height: '100%',
-            background: '#0a0a0b',
+            background: 'var(--demo-bg)',
             padding: '14px 16px',
             boxSizing: 'border-box',
             display: 'flex',
@@ -128,7 +133,7 @@ export function RevisionDemoMobile() {
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: '12px',
                   fontWeight: 600,
-                  color: '#ffffff',
+                  color: 'var(--demo-text)',
                 }}
               >
                 {streak} day streak
@@ -139,7 +144,7 @@ export function RevisionDemoMobile() {
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '10px',
-                color: '#666666',
+                color: 'var(--demo-text-faint)',
               }}
             >
               {probIndex === 0 ? '3 due today' : '2 due today'}
@@ -151,11 +156,11 @@ export function RevisionDemoMobile() {
             animate={{ opacity: cardOpacity }}
             transition={{ duration: 0.3 }}
             style={{
-              background: '#121214',
-              border: '1px solid #1e1e22',
+              background: 'var(--demo-surface)',
+              border: '1px solid var(--demo-border)',
               borderRadius: '12px',
               padding: '16px',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
             }}
           >
             {/* Title */}
@@ -163,7 +168,7 @@ export function RevisionDemoMobile() {
               style={{
                 fontSize: '14px',
                 fontWeight: 500,
-                color: '#f0f0f0',
+                color: 'var(--demo-text)',
                 marginBottom: '10px',
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -175,35 +180,13 @@ export function RevisionDemoMobile() {
 
             {/* Badges */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-              <span
-                style={{
-                  background: currentProb.diffColor.bg,
-                  color: currentProb.diffColor.text,
-                  border: `1px solid ${currentProb.diffColor.border}`,
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  padding: '2px 7px',
-                  borderRadius: '4px',
-                }}
-              >
+              <Pill bg={currentProb.diffColor.bg} text={currentProb.diffColor.text} border={currentProb.diffColor.border}>
                 {currentProb.diff}
-              </span>
+              </Pill>
 
-              <span
-                style={{
-                  background: currentProb.topicColor.bg,
-                  color: currentProb.topicColor.text,
-                  border: `1px solid ${currentProb.topicColor.border}`,
-                  fontSize: '10px',
-                  fontWeight: 500,
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  padding: '2px 7px',
-                  borderRadius: '4px',
-                }}
-              >
+              <Pill bg={topicColor.bg} text={topicColor.text} border={topicColor.border}>
                 {currentProb.topic}
-              </span>
+              </Pill>
             </div>
 
             {/* Buttons / Result Action Row */}
@@ -214,19 +197,19 @@ export function RevisionDemoMobile() {
                   const isHighlighted = isTarget && (btnState === 'highlight' || btnState === 'pressed');
                   const isPressed = isTarget && btnState === 'pressed';
 
-                  let btnBg = '#18181c';
-                  let btnBorder = '#2a2a2e';
-                  let btnColor = '#777';
+                  let btnBg = 'var(--demo-control)';
+                  let btnBorder = 'var(--demo-control-border)';
+                  let btnColor = 'var(--demo-text-muted)';
 
                   if (isHighlighted) {
                     if (btn === 'Clean') {
-                      btnBg = 'rgba(74, 222, 128, 0.15)';
-                      btnBorder = '#4ade80';
-                      btnColor = '#4ade80';
+                      btnBg = 'var(--easy-bg)';
+                      btnBorder = 'var(--easy-border)';
+                      btnColor = 'var(--easy-text)';
                     } else {
-                      btnBg = 'rgba(251, 146, 60, 0.15)';
-                      btnBorder = '#fb923c';
-                      btnColor = '#fb923c';
+                      btnBg = 'var(--medium-bg)';
+                      btnBorder = 'var(--medium-border)';
+                      btnColor = 'var(--medium-text)';
                     }
                   }
 
@@ -261,8 +244,8 @@ export function RevisionDemoMobile() {
                 animate={{ opacity: 1, scale: 1 }}
                 style={{
                   height: '38px',
-                  background: 'rgba(74, 222, 128, 0.1)',
-                  border: `1px solid ${currentProb.badgeColor}`,
+                  background: currentProb.badgeBackground,
+                  border: `1px solid ${currentProb.badgeBorder}`,
                   borderRadius: '6px',
                   color: currentProb.badgeColor,
                   fontSize: '12px',

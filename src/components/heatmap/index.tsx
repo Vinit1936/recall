@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, useEffect } from 'react';
+import { useTheme } from '@/components/theme-provider';
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 type ActivityEntry = { date: string; count: number };
@@ -9,13 +10,13 @@ type HeatmapProps = {
   activity: ActivityEntry[];
 };
 
-// LeetCode dark mode green color scale tuned for app dark UI
-function getColor(count: number): string {
-  if (count === 0) return '#1e1e20';
-  if (count === 1) return '#0e4429';
-  if (count <= 3) return '#006d32';
-  if (count <= 6) return '#26a641';
-  return '#39d353';
+// LeetCode green color scale adapted for dark and light UI
+function getColor(count: number, isDark: boolean): string {
+  if (count === 0) return isDark ? '#1e1e20' : '#ebedf0';
+  if (count === 1) return isDark ? '#0e4429' : '#9be9a8';
+  if (count <= 3) return isDark ? '#006d32' : '#40c463';
+  if (count <= 6) return isDark ? '#26a641' : '#30a14e';
+  return isDark ? '#39d353' : '#216e39';
 }
 
 function formatDate(dateStr: string): string {
@@ -28,10 +29,13 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 export function ContributionHeatmap({ activity }: HeatmapProps) {
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const isDark = mounted ? resolvedTheme === 'dark' : true;
 
   const { weeks, monthLabels, todayStr, totalSubmissions, totalActiveDays, maxStreak } = useMemo(() => {
     const today = new Date();
@@ -97,8 +101,8 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
       <div
         data-heatmap-wrapper
         style={{
-          background: '#111112',
-          border: '1px solid #1e1e1e',
+          background: 'var(--card)',
+          border: '1px solid var(--border)',
           borderRadius: 8,
           padding: '20px 24px',
         }}
@@ -114,28 +118,28 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
             gap: 12,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, fontSize: 14, color: '#aaa' }}>
-            <span style={{ fontSize: 20, fontWeight: 700, color: '#fff', fontFamily: 'var(--font-geist-mono), monospace' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, fontSize: 14, color: 'var(--muted-foreground)' }}>
+            <span style={{ fontSize: 20, fontWeight: 700, color: 'var(--foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
               0
             </span>
             <span>revisions in the past one year</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 13, color: '#aaa' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 13, color: 'var(--muted-foreground)' }}>
             <div>
               Total active days:{' '}
-              <strong style={{ color: '#fff', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <strong style={{ color: 'var(--foreground)', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
                 0
               </strong>
             </div>
             <div>
               Max streak:{' '}
-              <strong style={{ color: '#fff', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <strong style={{ color: 'var(--foreground)', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
                 0
               </strong>
             </div>
           </div>
         </div>
-        <div style={{ height: 120, background: '#141416', borderRadius: 6, opacity: 0.4 }} />
+        <div style={{ height: 120, background: 'var(--secondary)', borderRadius: 6, opacity: 0.4 }} />
       </div>
     );
   }
@@ -149,8 +153,8 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
       <div
         data-heatmap-wrapper
         style={{
-          background: '#111112',
-          border: '1px solid #1e1e1e',
+          background: 'var(--card)',
+          border: '1px solid var(--border)',
           borderRadius: 8,
           padding: '20px 24px',
         }}
@@ -168,24 +172,24 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
           }}
         >
           {/* Left: Total Submissions */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, fontSize: 14, color: '#aaa' }}>
-            <span style={{ fontSize: 20, fontWeight: 700, color: '#fff', fontFamily: 'var(--font-geist-mono), monospace' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, fontSize: 14, color: 'var(--muted-foreground)' }}>
+            <span style={{ fontSize: 20, fontWeight: 700, color: 'var(--foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
               {totalSubmissions}
             </span>
             <span>revisions in the past one year</span>
           </div>
 
           {/* Right: Total Active Days & Max Streak */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 13, color: '#aaa' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 13, color: 'var(--muted-foreground)' }}>
             <div>
               Total active days:{' '}
-              <strong style={{ color: '#fff', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <strong style={{ color: 'var(--foreground)', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
                 {totalActiveDays}
               </strong>
             </div>
             <div>
               Max streak:{' '}
-              <strong style={{ color: '#fff', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
+              <strong style={{ color: 'var(--foreground)', fontWeight: 600, fontFamily: 'var(--font-geist-mono), monospace' }}>
                 {maxStreak}
               </strong>
             </div>
@@ -202,7 +206,7 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
                 return (
                   <div key={wi} style={{ width: CELL + GAP, flexShrink: 0 }}>
                     {label && (
-                      <span style={{ fontSize: 11, color: '#777', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                      <span style={{ fontSize: 11, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                         {label.month}
                       </span>
                     )}
@@ -218,7 +222,7 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
                 {[0, 1, 2, 3, 4, 5, 6].map((d) => (
                   <div key={d} style={{ height: CELL, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
                     {[1, 3, 5].includes(d) && (
-                      <span style={{ fontSize: 10, color: '#666', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                      <span style={{ fontSize: 10, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                         {DAYS[d].slice(0, 3)}
                       </span>
                     )}
@@ -241,8 +245,8 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
                                 width: CELL,
                                 height: CELL,
                                 borderRadius: 2.5,
-                                background: isFuture ? 'transparent' : getColor(day.count),
-                                border: isToday ? '1px solid #fff' : '1px solid transparent',
+                                background: isFuture ? 'transparent' : getColor(day.count, isDark),
+                                border: isToday ? (isDark ? '1px solid #fff' : '1px solid #09090b') : '1px solid transparent',
                                 cursor: 'pointer',
                                 flexShrink: 0,
                                 transition: 'transform 0.1s ease',
@@ -254,13 +258,13 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
                           <TooltipContent
                             side="top"
                             style={{
-                              background: '#1c1c1f',
-                              border: '1px solid #2e2e34',
-                              color: '#fff',
+                              background: 'var(--popover)',
+                              border: '1px solid var(--border)',
+                              color: 'var(--popover-foreground)',
                               padding: '6px 12px',
                               borderRadius: 6,
                               fontSize: 12,
-                              boxShadow: '0 6px 18px rgba(0,0,0,0.5)',
+                              boxShadow: '0 6px 18px rgba(0,0,0,0.15)',
                               whiteSpace: 'nowrap',
                               display: 'flex',
                               alignItems: 'center',
@@ -270,13 +274,13 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
                             <span
                               style={{
                                 fontWeight: 600,
-                                color: day.count > 0 ? '#34d399' : '#888',
+                                color: day.count > 0 ? '#10b981' : 'var(--muted-foreground)',
                                 fontFamily: 'var(--font-geist-mono), monospace',
                               }}
                             >
                               {day.count === 0 ? 'No' : day.count} {day.count === 1 ? 'revision' : 'revisions'}
                             </span>
-                            <span style={{ color: '#777' }}>on {formatDate(day.date)}</span>
+                            <span style={{ color: 'var(--muted-foreground)' }}>on {formatDate(day.date)}</span>
                           </TooltipContent>
                         </Tooltip>
                       );
@@ -288,11 +292,11 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
 
             {/* Legend */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 6, marginTop: 14 }}>
-              <span style={{ fontSize: 11, color: '#777', fontFamily: 'var(--font-geist-mono), monospace' }}>Less</span>
+              <span style={{ fontSize: 11, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>Less</span>
               {[0, 1, 2, 4, 7].map((count) => (
-                <div key={count} style={{ width: CELL, height: CELL, borderRadius: 2.5, background: getColor(count) }} />
+                <div key={count} style={{ width: CELL, height: CELL, borderRadius: 2.5, background: getColor(count, isDark) }} />
               ))}
-              <span style={{ fontSize: 11, color: '#777', fontFamily: 'var(--font-geist-mono), monospace' }}>More</span>
+              <span style={{ fontSize: 11, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>More</span>
             </div>
           </div>
         </div>
@@ -300,4 +304,3 @@ export function ContributionHeatmap({ activity }: HeatmapProps) {
     </TooltipProvider>
   );
 }
-
