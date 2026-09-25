@@ -5,10 +5,10 @@ import { Pill } from '@/components/ui/pill';
 
 export function getDifficultyStyle(difficulty: string): { bg: string; text: string; border: string } {
   switch (difficulty) {
-    case 'EASY':   return { bg: 'rgba(34, 197, 94, 0.14)', text: '#16a34a', border: 'rgba(34, 197, 94, 0.28)' };
-    case 'MEDIUM': return { bg: 'rgba(249, 115, 22, 0.14)', text: '#ea580c', border: 'rgba(249, 115, 22, 0.28)' };
-    case 'HARD':   return { bg: 'rgba(239, 68, 68, 0.14)', text: '#dc2626', border: 'rgba(239, 68, 68, 0.28)' };
-    default:       return { bg: 'var(--secondary)', text: 'var(--muted-foreground)', border: 'var(--border)' };
+    case 'EASY':   return { bg: 'var(--easy-bg, #1c3a1c)', text: 'var(--easy-text, #4ade80)', border: 'var(--easy-border, #2d5a2d)' };
+    case 'MEDIUM': return { bg: 'var(--medium-bg, #3a2a0d)', text: 'var(--medium-text, #fb923c)', border: 'var(--medium-border, #5a3d10)' };
+    case 'HARD':   return { bg: 'var(--hard-bg, #3a0f0f)', text: 'var(--hard-text, #f87171)', border: 'var(--hard-border, #5a1a1a)' };
+    default:       return { bg: 'var(--secondary, #1a1a1a)', text: 'var(--text-dim, #888)', border: 'var(--border, #2a2a2a)' };
   }
 }
 
@@ -88,10 +88,10 @@ export function TopLevelPortal({
         left: pos?.left ?? -9999,
         zIndex: 99999,
         background: 'var(--popover)',
-        border: '1px solid var(--border)',
+        border: '1px solid var(--input-border)',
         borderRadius: 8,
         padding: 6,
-        boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
+        boxShadow: 'var(--shadow-modal)',
         visibility: pos ? 'visible' : 'hidden',
       }}
     >
@@ -173,7 +173,7 @@ export function DifficultyPickerCell({
                   onMouseEnter={() => setHoveredOpt(d)}
                   onMouseLeave={() => setHoveredOpt(null)}
                   style={{
-                    background: isHovered ? 'var(--accent)' : 'none',
+                    background: isHovered ? 'var(--dropdown-item-hover-bg, rgba(255, 255, 255, 0.08))' : 'none',
                     border: 'none',
                     borderRadius: 4,
                     padding: '6px 10px',
@@ -367,7 +367,7 @@ export function TopicPickerCell({
                     onMouseEnter={() => setHoveredOpt(t)}
                     onMouseLeave={() => setHoveredOpt(null)}
                     style={{
-                      background: isHovered ? 'var(--accent)' : 'none',
+                      background: isHovered ? 'var(--dropdown-item-hover-bg, rgba(255, 255, 255, 0.08))' : 'none',
                       border: 'none',
                       borderRadius: 4,
                       padding: '5px 8px',
@@ -389,7 +389,7 @@ export function TopicPickerCell({
               })}
 
               {filtered.length === 0 && !showCreateOption && (
-                <div style={{ padding: 8, fontSize: 12, color: 'var(--muted-foreground)', textAlign: 'center' }}>
+                <div style={{ padding: 8, fontSize: 12, color: 'var(--text-subtle)', textAlign: 'center' }}>
                   No matching topics
                 </div>
               )}

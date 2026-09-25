@@ -227,11 +227,11 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
             >
               {/* Monospace Breadcrumb */}
               <div className="import-modal-breadcrumb" style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, display: 'flex', alignItems: 'center' }}>
-                <span style={{ color: 'var(--muted-foreground)' }}>recall</span>
-                <span style={{ color: 'var(--border)', margin: '0 6px' }}>/</span>
-                <span style={{ color: 'var(--muted-foreground)' }}>import</span>
-                <span style={{ color: 'var(--border)', margin: '0 6px' }}>/</span>
-                <span style={{ color: 'var(--foreground)', fontWeight: 500 }}>
+                <span style={{ color: 'var(--text-subtle)' }}>recall</span>
+                <span style={{ color: 'var(--text-subtle)', margin: '0 6px', opacity: 0.6 }}>/</span>
+                <span style={{ color: 'var(--text-normal)' }}>import</span>
+                <span style={{ color: 'var(--text-subtle)', margin: '0 6px', opacity: 0.6 }}>/</span>
+                <span style={{ color: 'var(--text-strong)', fontWeight: 500 }}>
                   {STEPS.find((s) => s.id === step)?.label}
                 </span>
               </div>
@@ -243,14 +243,14 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: 11,
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--text-dim)',
                     letterSpacing: '0.04em',
                   }}
                 >
                   STEP {step} / {STEPS.length}
                 </span>
 
-                <div style={{ width: 1, height: 12, background: 'var(--border)' }} />
+                <div style={{ width: 1, height: 12, background: 'var(--input-border)' }} />
 
                 <button
                   type="button"
@@ -260,7 +260,7 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--text-dim)',
                     cursor: isImporting ? 'not-allowed' : 'pointer',
                     fontSize: 13,
                     padding: 2,
@@ -270,8 +270,8 @@ export function ImportModal({ open, onClose, onImportComplete }: ImportModalProp
                     lineHeight: 1,
                     transition: 'color 0.15s',
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--foreground)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted-foreground)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text-strong)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-dim)'; }}
                 >
                   <X size={15} />
                 </button>

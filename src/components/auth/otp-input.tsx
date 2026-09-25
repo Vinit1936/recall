@@ -122,33 +122,33 @@ export function OtpInput({
             style={{
               width: '46px',
               height: '52px',
-              background: 'var(--input-bg)',
+              background: 'var(--otp-bg)',
               border: error
-                ? '1px solid var(--error)'
+                ? '1px solid #f87171'
                 : isFilled
-                ? '1px solid var(--foreground)'
-                : '1px solid var(--input-border)',
+                ? '1px solid var(--otp-border-filled)'
+                : '1px solid var(--otp-border-unfilled)',
               borderRadius: '8px',
-              color: 'var(--foreground)',
+              color: 'var(--text-white)',
               fontSize: '22px',
               fontFamily: 'var(--font-geist-mono), monospace',
               fontWeight: 600,
               textAlign: 'center',
               outline: 'none',
               transition: 'border-color 0.15s, box-shadow 0.15s',
-               boxShadow: isFilled ? '0 0 0 1px color-mix(in srgb, var(--foreground) 5%, transparent)' : 'none',
+              boxShadow: isFilled ? '0 0 0 1px var(--otp-fill-ring)' : 'none',
               cursor: disabled ? 'not-allowed' : 'text',
               opacity: disabled ? 0.6 : 1,
             }}
             onFocusCapture={(e) => {
               if (!error) {
-                e.currentTarget.style.borderColor = 'var(--primary)';
-                e.currentTarget.style.boxShadow = '0 0 0 2px color-mix(in srgb, var(--primary) 10%, transparent)';
+                e.currentTarget.style.borderColor = 'var(--otp-focus-border)';
+                e.currentTarget.style.boxShadow = '0 0 0 2px var(--otp-focus-ring)';
               }
             }}
             onBlurCapture={(e) => {
               if (!error) {
-                e.currentTarget.style.borderColor = isFilled ? 'var(--foreground)' : 'var(--input-border)';
+                e.currentTarget.style.borderColor = isFilled ? 'var(--otp-border-filled)' : 'var(--otp-border-unfilled)';
                 e.currentTarget.style.boxShadow = 'none';
               }
             }}

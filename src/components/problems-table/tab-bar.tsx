@@ -43,7 +43,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
           display: 'flex',
           alignItems: 'center',
           gap: 6,
-          borderBottom: '1px solid var(--border)',
+          borderBottom: '1px solid var(--daily-card-border)',
           overflowX: 'auto',
           overflowY: 'hidden',
           scrollbarWidth: 'none',
@@ -70,7 +70,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
                 borderRight: 'none',
                 borderBottom: 'none',
                 boxShadow: isActive ? 'inset 0 -2px 0 var(--foreground)' : 'none',
-                color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
+                color: isActive ? 'var(--foreground)' : 'var(--text-subtle)',
                 cursor: 'pointer',
                 fontSize: 14,
                 padding: '8px 10px',
@@ -85,7 +85,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
                 if (!isActive) e.currentTarget.style.color = 'var(--foreground)';
               }}
               onMouseLeave={(e) => {
-                if (!isActive) e.currentTarget.style.color = 'var(--muted-foreground)';
+                if (!isActive) e.currentTarget.style.color = 'var(--text-subtle)';
               }}
             >
               <Bookmark size={15} fill={isActive ? 'currentColor' : 'none'} />
@@ -108,7 +108,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
               borderRight: 'none',
               borderBottom: 'none',
               boxShadow: isActive ? 'inset 0 -2px 0 var(--foreground)' : 'none',
-              color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
+              color: isActive ? 'var(--foreground)' : 'var(--text-subtle)',
               cursor: 'pointer',
               fontSize: 13,
               fontWeight: isActive ? 500 : 400,
@@ -129,7 +129,7 @@ export function TabBar({ activeTab, onChange }: TabBarProps) {
             }}
             onMouseLeave={(e) => {
               if (isPlatformTab && !isActive) e.currentTarget.style.opacity = '0.8';
-              if (!isActive) e.currentTarget.style.color = 'var(--muted-foreground)';
+              if (!isActive) e.currentTarget.style.color = 'var(--text-subtle)';
             }}
           >
             {isPlatformTab ? (

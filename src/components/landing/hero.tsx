@@ -115,7 +115,7 @@ export function Hero({ TableDemo }: HeroProps) {
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '15px',
-              color: 'var(--text-secondary)',
+              color: 'var(--text-tertiary)',
               lineHeight: 1.7,
               maxWidth: '320px',
               margin: 0,
@@ -161,9 +161,11 @@ export function Hero({ TableDemo }: HeroProps) {
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
+                e.currentTarget.style.opacity = '0.9';
                 e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.opacity = '1';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
@@ -267,8 +269,8 @@ export function Hero({ TableDemo }: HeroProps) {
       <div
         data-hero-stats
         style={{
-          borderTop: '1px solid var(--border)',
-          borderBottom: '1px solid var(--border)',
+          borderTop: '1px solid var(--border-subtle)',
+          borderBottom: '1px solid var(--border-subtle)',
           padding: '24px 0',
           overflow: 'hidden',
           position: 'relative',
@@ -324,7 +326,7 @@ export function Hero({ TableDemo }: HeroProps) {
                   style={{
                     fontFamily: 'var(--font-geist-mono), monospace',
                     fontSize: '10px',
-                    color: 'var(--text-secondary)',
+                    color: 'var(--text-tertiary)',
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     whiteSpace: 'nowrap',
@@ -336,7 +338,7 @@ export function Hero({ TableDemo }: HeroProps) {
               <span
                 style={{
                   fontFamily: 'var(--font-geist-mono), monospace',
-                  color: 'var(--border)',
+                  color: 'var(--text-disabled)',
                   fontSize: '24px',
                   userSelect: 'none',
                 }}

@@ -1039,9 +1039,9 @@
     height: 24px !important;
     min-height: 24px !important;
     max-height: 24px !important;
-    border: 1px solid var(--input-border) !important;
+    border: 1px solid var(--import-counter-border) !important;
     border-radius: 4px !important;
-    background: var(--input-bg) !important;
+    background: var(--import-counter-bg) !important;
     width: auto !important;
     flex: none !important;
   }

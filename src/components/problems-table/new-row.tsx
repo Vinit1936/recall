@@ -117,9 +117,9 @@ function NewRowFloatingCell({
         onMouseLeave={() => setHovered(false)}
         title={displayText || undefined}
         style={{
-          fontSize: 13, color: 'var(--muted-foreground)', cursor: 'text',
+          fontSize: 13, color: displayText ? 'var(--text-muted)' : 'var(--text-faint)', cursor: 'text',
           minHeight: 26, padding: '3px 6px', borderRadius: 4,
-          background: hovered ? 'var(--accent)' : 'transparent',
+          background: hovered ? 'var(--table-inline-edit-hover)' : 'transparent',
           transition: 'background 0.15s ease',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           width: '100%', boxSizing: 'border-box',
@@ -128,7 +128,7 @@ function NewRowFloatingCell({
         <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1, maxWidth: maxWidth - 24 }}>
           {truncated || placeholder}
         </span>
-        {hovered && <Pencil size={12} style={{ color: 'var(--muted-foreground)', flexShrink: 0, marginLeft: 4 }} />}
+        {hovered && <Pencil size={12} style={{ color: 'var(--text-faint)', flexShrink: 0, marginLeft: 4 }} />}
       </div>
       {editing && (
         <div
@@ -136,9 +136,9 @@ function NewRowFloatingCell({
           style={{
             position: 'absolute', top: -4, left: -4,
             width: 'max(100% + 8px, 240px)', zIndex: 100,
-            background: 'var(--popover)', border: '1px solid var(--border)',
+            background: 'var(--popover)', border: '1px solid var(--popover-border)',
             borderRadius: 6, padding: '8px 10px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
+            boxShadow: 'var(--shadow-modal)',
           }}
         >
           <textarea
@@ -150,9 +150,9 @@ function NewRowFloatingCell({
             placeholder={placeholder}
             style={{
               width: '100%', background: 'transparent', border: 'none', outline: 'none',
-              color: 'var(--foreground)', fontSize: 13, fontFamily: 'inherit', lineHeight: '1.4',
+              color: 'var(--text-strong)', fontSize: 13, fontFamily: 'inherit', lineHeight: '1.4',
               resize: 'none', overflow: 'hidden', padding: 0, margin: 0,
-              display: 'block', boxSizing: 'border-box', caretColor: 'var(--foreground)',
+              display: 'block', boxSizing: 'border-box', caretColor: 'var(--text-strong)',
             }}
           />
         </div>
@@ -475,9 +475,9 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
   return (
     <>
       <tr data-new-row="true" style={{
-        background: 'var(--secondary)',
-        borderBottom: '1px solid var(--border)',
-        borderLeft: '2px solid var(--primary)',
+        background: 'var(--new-row-bg)',
+        borderBottom: '1px solid var(--table-border)',
+        borderLeft: '1px solid var(--new-row-border-left)',
         height: 44,
         outline: 'none',
       }}>
@@ -518,11 +518,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                     justifyContent: 'center',
                     width: 22,
                     height: 22,
-                    background: 'var(--card)',
+                    background: 'var(--platform-btn-bg)',
                     borderRadius: 4,
-                    border: '1px solid var(--border)',
+                    border: '1px solid var(--platform-btn-border)',
                     cursor: 'pointer',
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--text-dim)',
                     fontSize: 14,
                     lineHeight: 1,
                     padding: 0,
@@ -548,11 +548,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                             cursor: 'pointer',
                             padding: '6px 8px',
                             borderRadius: 4,
-                            color: 'var(--foreground)',
+                            color: 'var(--text-normal)',
                             fontSize: 13,
                             textAlign: 'left',
                           }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--accent)')}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--dropdown-item-hover-bg)')}
                           onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                         >
                           <PlatformLogo platform={p.value} size={20} />
@@ -570,7 +570,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
         {/* Title / number area */}
         <td data-cell="problem" style={{ width: 340, padding: '0 16px', transition: 'background 0.4s', background: cellBg }}>
           {!platform ? (
-            <span style={{ fontSize: 13, color: 'var(--muted-foreground)' }}>← Select a platform</span>
+            <span style={{ fontSize: 13, color: 'var(--text-faint)' }}>← Select a platform</span>
           ) : isAutoSupported ? (
             !autoFill ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, width: '100%' }}>
@@ -581,7 +581,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                     alignItems: 'center',
                     flex: 1,
                     background: 'var(--input-bg)',
-                    border: '1px solid var(--input-border)',
+                    border: '1px solid var(--new-row-input-border)',
                     borderRadius: 6,
                     padding: '0 8px',
                     height: 30,
@@ -607,17 +607,17 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                     style={{
                       background: 'none',
                       border: 'none',
-                      color: 'var(--foreground)',
+                      color: 'var(--text-strong)',
                       fontFamily: 'var(--font-geist-mono), monospace',
                       fontSize: 13,
                       outline: 'none',
                       width: '100%',
                       padding: 0,
-                      caretColor: 'var(--foreground)',
+                      caretColor: 'var(--text-strong)',
                     }}
                   />
                   {loading ? (
-                    <span style={{ color: 'var(--muted-foreground)', display: 'inline-flex', alignItems: 'center', marginLeft: 4 }}>
+                    <span style={{ color: 'var(--text-dim)', display: 'inline-flex', alignItems: 'center', marginLeft: 4 }}>
                       <Loader2 size={13} className="animate-spin" />
                     </span>
                   ) : problemNumber.trim() ? (
@@ -627,8 +627,8 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                       data-new-row-submit
                       title="Search & Add Problem"
                       style={{
-                        background: 'var(--secondary)',
-                        border: '1px solid var(--border)',
+                        background: 'var(--new-row-submit-bg)',
+                        border: '1px solid var(--new-row-submit-border)',
                         borderRadius: 4,
                         color: 'var(--success)',
                         cursor: 'pointer',
@@ -652,10 +652,10 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                   data-new-row-cancel
                   title="Cancel"
                   style={{
-                    background: 'var(--secondary)',
-                    border: '1px solid var(--border)',
+                    background: 'var(--new-row-cancel-bg)',
+                    border: '1px solid var(--new-row-cancel-border)',
                     borderRadius: 6,
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--new-row-cancel-color)',
                     cursor: 'pointer',
                     width: 30,
                     height: 30,
@@ -678,7 +678,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                     ? (autoFill.code || (typeof autoFill.problemNumber === 'number' && autoFill.problemNumber > 0 ? String(autoFill.problemNumber) : (!isUrl ? problemNumber : null)))
                     : null;
                   return codeDisplay ? (
-                    <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--muted-foreground)', flexShrink: 0 }}>
+                    <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 13, color: 'var(--text-muted)', flexShrink: 0 }}>
                       {codeDisplay}
                     </span>
                   ) : null;
@@ -687,7 +687,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                   href={autoFill.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ fontSize: 14, color: 'var(--foreground)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}
+                  style={{ fontSize: 14, color: 'var(--text-strong)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none' }}
                   onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
                   onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
                 >
@@ -702,14 +702,14 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                 href={otherUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ fontSize: 14, color: 'var(--foreground)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none', display: 'block' }}
+                style={{ fontSize: 14, color: 'var(--text-strong)', fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textDecoration: 'none', display: 'block' }}
                 onMouseEnter={(e) => (e.currentTarget.style.textDecoration = 'underline')}
                 onMouseLeave={(e) => (e.currentTarget.style.textDecoration = 'none')}
               >
                 {otherTitle}
               </a>
             ) : (
-              <span style={{ fontSize: 13, color: 'var(--muted-foreground)' }}>Fill in URL and title below...</span>
+              <span style={{ fontSize: 13, color: 'var(--text-faint)' }}>Fill in URL and title below...</span>
             )
           )}
         </td>
@@ -735,11 +735,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
         </td>
 
         {/* Status */}
-        <td style={{ width: 140, padding: '0 12px', color: 'var(--muted-foreground)', fontSize: 13, fontFamily: 'var(--font-geist-mono), monospace' }}>—</td>
+        <td style={{ width: 140, padding: '0 12px', color: 'var(--text-subtle)', fontSize: 13, fontFamily: 'var(--font-geist-mono), monospace' }}>—</td>
         {/* Star */}
         <td data-col="star" style={{ width: 44, textAlign: 'center' }} />
         {/* Next Revision */}
-        <td data-col="next-revision" style={{ width: 140, padding: '0 12px', color: 'var(--muted-foreground)', fontSize: 13, fontFamily: 'var(--font-geist-mono), monospace' }}>—</td>
+        <td data-col="next-revision" style={{ width: 140, padding: '0 12px', color: 'var(--text-subtle)', fontSize: 13, fontFamily: 'var(--font-geist-mono), monospace' }}>—</td>
 
         {/* Notes */}
         <td data-col="notes" style={{ width: 190, padding: '0 12px', position: 'relative' }}>
@@ -777,10 +777,10 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
 
       {/* ── LeetCode / Codeforces: number/code not found → URL fallback ── */}
       {isAutoSupported && notFound && (
-        <tr data-new-row="true" style={{ background: 'var(--card)', borderBottom: '1px solid var(--border)', borderLeft: '1px solid var(--border)' }}>
+        <tr data-new-row="true" style={{ background: 'var(--new-row-bg)', borderBottom: '1px solid var(--table-border)', borderLeft: '1px solid var(--new-row-border-left)' }}>
           <td colSpan={9 + columns.length} style={{ padding: '8px 68px' }}>
             <div style={{ marginBottom: 8 }}>
-              <span style={{ fontSize: 12, color: 'var(--muted-foreground)' }}>
+              <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>
                 Problem &quot;{problemNumber}&quot; not found in dataset. Paste the URL to continue, or press Esc to cancel.
               </span>
             </div>
@@ -802,9 +802,9 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                 }
                 onKeyDown={(e) => e.key === 'Escape' && onCancel()}
                 style={{
-                  background: 'none', border: 'none', color: 'var(--foreground)',
+                  background: 'none', border: 'none', color: 'var(--text-strong)',
                   fontFamily: 'var(--font-geist-mono), monospace',
-                  fontSize: 12, padding: 0, outline: 'none', width: 380, caretColor: 'var(--foreground)',
+                  fontSize: 12, padding: 0, outline: 'none', width: 380, caretColor: 'var(--text-strong)',
                 }}
               />
               {lcUrl.trim() && (
@@ -828,11 +828,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
 
       {/* ── Other platforms: URL + Title inputs ── */}
       {isOther && (
-        <tr data-new-row="true" style={{ background: 'var(--card)', borderBottom: '1px solid var(--border)', borderLeft: '1px solid var(--border)' }}>
+        <tr data-new-row="true" style={{ background: 'var(--new-row-bg)', borderBottom: '1px solid var(--table-border)', borderLeft: '1px solid var(--new-row-border-left)' }}>
           <td colSpan={9 + columns.length} style={{ padding: '8px 68px' }}>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <span style={{ fontSize: 10, color: 'var(--muted-foreground)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>URL</span>
+                <span style={{ fontSize: 10, color: 'var(--text-subtle)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>URL</span>
                 <input
                   ref={otherUrlRef}
                   value={otherUrl}
@@ -844,14 +844,14 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                   }}
                   placeholder={`${PLATFORMS.find(p => p.value === platform)?.label} problem URL...`}
                   style={{
-                    background: 'none', border: 'none', color: 'var(--foreground)',
+                    background: 'none', border: 'none', color: 'var(--text-strong)',
                     fontFamily: 'var(--font-geist-mono), monospace',
-                    fontSize: 12, padding: 0, outline: 'none', width: 300, caretColor: 'var(--foreground)',
+                    fontSize: 12, padding: 0, outline: 'none', width: 300, caretColor: 'var(--text-strong)',
                   }}
                 />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <span style={{ fontSize: 10, color: 'var(--muted-foreground)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Title</span>
+                <span style={{ fontSize: 10, color: 'var(--text-subtle)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Title</span>
                 <input
                   ref={otherTitleRef}
                   value={otherTitle}
@@ -862,9 +862,9 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                   }}
                   placeholder="Problem title..."
                   style={{
-                    background: 'none', border: 'none', color: 'var(--foreground)',
+                    background: 'none', border: 'none', color: 'var(--text-strong)',
                     fontFamily: 'inherit', fontSize: 13, padding: 0,
-                    outline: 'none', width: 220, caretColor: 'var(--foreground)',
+                    outline: 'none', width: 220, caretColor: 'var(--text-strong)',
                   }}
                 />
               </div>
@@ -888,13 +888,13 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
 
       {/* ── Save / cancel hint ── */}
       {(autoFill || (isOther && (otherTitle || otherUrl))) && (
-        <tr data-new-row="true" style={{ background: 'var(--card)', borderBottom: '1px solid var(--border)', borderLeft: '1px solid var(--border)' }}>
+        <tr data-new-row="true" style={{ background: 'var(--new-row-bg)', borderBottom: '1px solid var(--table-border)', borderLeft: '1px solid var(--new-row-border-left)' }}>
           <td colSpan={9 + columns.length} style={{ padding: '4px 68px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ fontSize: 11, color: 'var(--muted-foreground)' }}>
-                <span className="hidden md:inline">Press <kbd style={{ background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 3, padding: '1px 5px', fontSize: 10, color: 'var(--muted-foreground)' }}>Enter</kbd> to save &nbsp;
-                <kbd style={{ background: 'var(--secondary)', border: '1px solid var(--border)', borderRadius: 3, padding: '1px 5px', fontSize: 10, color: 'var(--muted-foreground)' }}>Esc</kbd> to cancel</span>
-                {saving && <span style={{ color: 'var(--foreground)', marginLeft: 8 }}>saving...</span>}
+              <span style={{ fontSize: 11, color: 'var(--text-faint)' }}>
+                <span className="hidden md:inline">Press <kbd style={{ background: 'var(--kbd-bg)', border: '1px solid var(--kbd-border)', borderRadius: 3, padding: '1px 5px', fontSize: 10, color: 'var(--kbd-color)' }}>Enter</kbd> to save &nbsp;
+                <kbd style={{ background: 'var(--kbd-bg)', border: '1px solid var(--kbd-border)', borderRadius: 3, padding: '1px 5px', fontSize: 10, color: 'var(--kbd-color)' }}>Esc</kbd> to cancel</span>
+                {saving && <span style={{ color: 'var(--text-strong)', marginLeft: 8 }}>saving...</span>}
                 {error && !isOther && <span style={{ color: 'var(--error)', marginLeft: 8 }}>{error}</span>}
               </span>
               <div className="inline-flex md:hidden items-center gap-6">
@@ -913,7 +913,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
                   type="button"
                   onClick={onCancel}
                   style={{
-                    background: 'none', border: 'none', color: 'var(--muted-foreground)',
+                    background: 'none', border: 'none', color: 'var(--text-dim)',
                     cursor: 'pointer', padding: '2px 6px', fontSize: 11,
                   }}
                 >

@@ -31,7 +31,7 @@ export function AllDone({ streak }: AllDoneProps) {
       </div>
 
       {/* Subtitle */}
-      <div style={{ fontSize: 14, color: 'var(--muted-foreground)' }}>
+      <div style={{ fontSize: 14, color: 'var(--text-dim)' }}>
         Come back tomorrow to keep your streak alive.
       </div>
 
@@ -48,7 +48,7 @@ export function AllDone({ streak }: AllDoneProps) {
         >
           {streak}
         </span>
-        <span style={{ fontSize: 14, color: 'var(--muted-foreground)' }}>day streak</span>
+        <span style={{ fontSize: 14, color: 'var(--text-dim)' }}>day streak</span>
       </div>
     </motion.div>
   );

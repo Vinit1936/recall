@@ -5,13 +5,14 @@ import { useTheme } from '@/components/theme-provider';
 import { Sun, Moon } from 'lucide-react';
 
 interface ThemeToggleProps {
-  variant?: 'icon' | 'sidebar' | 'segmented';
+  variant?: 'icon' | 'sidebar' | 'segmented' | 'nav';
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const emptySubscribe = () => () => {};
 
-export function ThemeToggle({ variant = 'icon', className = '' }: ThemeToggleProps) {
+export function ThemeToggle({ variant = 'icon', className = '', style }: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = React.useSyncExternalStore(emptySubscribe, () => true, () => false);
 
@@ -70,7 +71,7 @@ export function ThemeToggle({ variant = 'icon', className = '' }: ThemeTogglePro
           borderRadius: 6,
           fontSize: 13.5,
           fontWeight: 400,
-          color: 'var(--muted-foreground)',
+          color: 'var(--text-muted)',
           background: 'transparent',
           border: 'none',
           width: '100%',
@@ -79,11 +80,11 @@ export function ThemeToggle({ variant = 'icon', className = '' }: ThemeTogglePro
           transition: 'color 0.15s, background 0.15s',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--foreground)';
-          e.currentTarget.style.background = 'var(--secondary)';
+          e.currentTarget.style.color = 'var(--sidebar-item-hover-color)';
+          e.currentTarget.style.background = 'var(--sidebar-item-hover-bg)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'var(--muted-foreground)';
+          e.currentTarget.style.color = 'var(--text-muted)';
           e.currentTarget.style.background = 'transparent';
         }}
       >
@@ -93,6 +94,53 @@ export function ThemeToggle({ variant = 'icon', className = '' }: ThemeTogglePro
           <Moon size={16} className="text-indigo-500" />
         )}
         <span>{isDark ? 'Light mode' : 'Dark mode'}</span>
+      </button>
+    );
+  }
+
+  if (variant === 'nav') {
+    return (
+      <button
+        type="button"
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        style={{
+          width: '32px',
+          height: '32px',
+          borderRadius: '8px',
+          border: '1px solid var(--landing-btn-border)',
+          background: 'var(--landing-btn-bg)',
+          color: 'var(--landing-btn-color)',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 0,
+          cursor: 'pointer',
+          transition: 'border-color 0.12s ease, color 0.12s ease, background 0.12s ease',
+          flexShrink: 0,
+          ...style,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'var(--landing-btn-hover-border)';
+          e.currentTarget.style.color = 'var(--landing-btn-hover-color)';
+          e.currentTarget.style.background = 'var(--landing-btn-hover-bg)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--landing-btn-border)';
+          e.currentTarget.style.color = 'var(--landing-btn-color)';
+          e.currentTarget.style.background = 'var(--landing-btn-bg)';
+        }}
+      >
+        {mounted ? (
+          isDark ? (
+            <Sun size={15} style={{ color: 'currentColor', transition: 'color 0.12s ease' }} />
+          ) : (
+            <Moon size={15} style={{ color: 'currentColor', transition: 'color 0.12s ease' }} />
+          )
+        ) : (
+          <span style={{ width: '15px', height: '15px' }} />
+        )}
       </button>
     );
   }

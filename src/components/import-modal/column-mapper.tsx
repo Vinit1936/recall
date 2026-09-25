@@ -583,14 +583,14 @@ export function ColumnMapperStep({
             gap: 8,
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: 11.5,
-            color: 'var(--import-accent)',
+            color: 'var(--import-banner-icon)',
             padding: '7px 12px',
             borderRadius: 6,
-            background: 'var(--import-accent-bg)',
-            border: '1px solid var(--import-accent-border)',
+            background: 'var(--import-banner-bg)',
+            border: '1px solid var(--import-banner-border)',
           }}
         >
-          <Sparkles size={13} style={{ color: 'var(--import-accent)', flexShrink: 0 }} />
+          <Sparkles size={13} style={{ color: 'var(--import-banner-icon)', flexShrink: 0 }} />
           <span>
             {customColumnsCount} custom {customColumnsCount === 1 ? 'column' : 'columns'} will be created: {Array.from(customColumnsSet).join(', ')}
           </span>
@@ -604,9 +604,9 @@ export function ColumnMapperStep({
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid var(--input-border)',
+            border: '1px solid var(--import-back-btn-border)',
             borderRadius: 6,
-            color: 'var(--foreground)',
+            color: 'var(--import-back-btn-color)',
             fontSize: 13,
             padding: '6px 14px',
             cursor: 'pointer',
@@ -615,8 +615,8 @@ export function ColumnMapperStep({
             gap: 6,
             transition: 'border-color 0.15s, color 0.15s',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--input-border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-hover-border)'; e.currentTarget.style.color = 'var(--text-white)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-border)'; e.currentTarget.style.color = 'var(--import-back-btn-color)'; }}
         >
           <ArrowLeft size={13} />
           Back
@@ -627,10 +627,10 @@ export function ColumnMapperStep({
           disabled={!isTitleMapped}
           onClick={() => onMappingConfirmed(mapping)}
           style={{
-            background: isTitleMapped ? 'var(--primary)' : 'var(--muted)',
+            background: isTitleMapped ? 'var(--primary)' : 'var(--import-submit-disabled-bg)',
             border: 'none',
             borderRadius: 6,
-            color: isTitleMapped ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
+            color: isTitleMapped ? 'var(--primary-foreground)' : 'var(--import-submit-disabled-color)',
             fontSize: 13,
             fontWeight: 500,
             padding: '6px 16px',

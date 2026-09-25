@@ -91,14 +91,14 @@ export function Navbar() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: 'var(--muted-foreground)',
+                color: 'var(--landing-nav-link)',
                 letterSpacing: '0.02em',
                 textDecoration: 'none',
                 transition: 'color 0.12s ease',
                 cursor: 'pointer',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--landing-nav-link-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--landing-nav-link)')}
             >
               {label}
             </a>
@@ -115,9 +115,9 @@ export function Navbar() {
             aria-label="How to use Recall (Video Demo)"
             title="How to use Recall"
             style={{
-              border: '1px solid var(--border)',
-              background: 'var(--card)',
-              color: 'var(--muted-foreground)',
+              border: '1px solid var(--landing-btn-border)',
+              background: 'var(--landing-btn-bg)',
+              color: 'var(--landing-btn-color)',
               fontSize: '12px',
               fontWeight: 500,
               height: '32px',
@@ -133,12 +133,14 @@ export function Navbar() {
               whiteSpace: 'nowrap',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.color = 'var(--foreground)';
+              e.currentTarget.style.borderColor = 'var(--landing-btn-hover-border)';
+              e.currentTarget.style.color = 'var(--landing-btn-hover-color)';
+              e.currentTarget.style.background = 'var(--landing-btn-hover-bg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border)';
-              e.currentTarget.style.color = 'var(--muted-foreground)';
+              e.currentTarget.style.borderColor = 'var(--landing-btn-border)';
+              e.currentTarget.style.color = 'var(--landing-btn-color)';
+              e.currentTarget.style.background = 'var(--landing-btn-bg)';
             }}
           >
             {/* YouTube logo */}
@@ -161,15 +163,15 @@ export function Navbar() {
 
           <GitHubStarButton />
 
-          <ThemeToggle variant="icon" />
+          <ThemeToggle variant="nav" />
 
           <Link
             data-nav-signin
             href="/auth/login"
             style={{
-              border: '1px solid var(--border)',
+              border: '1px solid var(--landing-btn-border)',
               background: 'transparent',
-              color: 'var(--muted-foreground)',
+              color: 'var(--landing-btn-color)',
               fontSize: '12px',
               height: '32px',
               padding: '0 16px',
@@ -182,12 +184,12 @@ export function Navbar() {
               cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-              e.currentTarget.style.color = 'var(--foreground)';
+              e.currentTarget.style.borderColor = 'var(--landing-btn-hover-border)';
+              e.currentTarget.style.color = 'var(--landing-btn-hover-color)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--border)';
-              e.currentTarget.style.color = 'var(--muted-foreground)';
+              e.currentTarget.style.borderColor = 'var(--landing-btn-border)';
+              e.currentTarget.style.color = 'var(--landing-btn-color)';
             }}
           >
             Sign in

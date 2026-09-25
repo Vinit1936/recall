@@ -22,16 +22,16 @@ function SettingsSkeleton() {
       <div
         data-settings-card
         style={{
-          background: 'var(--card)',
-          border: '1px solid var(--border)',
+          background: 'var(--settings-card-bg)',
+          border: '1px solid var(--settings-card-border)',
           borderRadius: 10,
           padding: 24,
-          boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+          boxShadow: 'var(--shadow-modal)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
-          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
-          <div style={{ width: 120, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
+          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
+          <div style={{ width: 120, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
         </div>
 
         <div data-settings-avatar-row style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
@@ -41,31 +41,31 @@ function SettingsSkeleton() {
               width: 52,
               height: 52,
               borderRadius: '50%',
-              background: 'var(--muted)',
-              border: '1px solid var(--border)',
+              background: 'var(--daily-row-skeleton)',
+              border: '1px solid var(--settings-card-border)',
             }}
             className="animate-pulse"
           />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <div style={{ width: 140, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
-            <div style={{ width: 200, height: 12, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
+            <div style={{ width: 140, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
+            <div style={{ width: 200, height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
           </div>
         </div>
 
         <div data-settings-form style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 420 }}>
           <div>
-            <div style={{ width: 80, height: 12, borderRadius: 4, background: 'var(--muted)', marginBottom: 8 }} className="animate-pulse" />
+            <div style={{ width: 80, height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)', marginBottom: 8 }} className="animate-pulse" />
             <div data-display-name-row style={{ display: 'flex', gap: 8 }}>
-              <div style={{ flex: 1, height: 36, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
-              <div style={{ width: 68, height: 36, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+              <div style={{ flex: 1, height: 36, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
+              <div style={{ width: 68, height: 36, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
             </div>
           </div>
           <div>
-            <div style={{ width: 90, height: 12, borderRadius: 4, background: 'var(--muted)', marginBottom: 8 }} className="animate-pulse" />
-            <div style={{ width: '100%', height: 36, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+            <div style={{ width: 90, height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)', marginBottom: 8 }} className="animate-pulse" />
+            <div style={{ width: '100%', height: 36, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
           </div>
           <div style={{ marginTop: 8 }}>
-            <div style={{ width: 140, height: 34, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+            <div style={{ width: 140, height: 34, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
           </div>
         </div>
       </div>
@@ -74,28 +74,28 @@ function SettingsSkeleton() {
       <div
         data-settings-card
         style={{
-          background: 'var(--card)',
-          border: '1px solid var(--border)',
+          background: 'var(--settings-card-bg)',
+          border: '1px solid var(--settings-card-border)',
           borderRadius: 10,
           padding: 24,
-          boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+          boxShadow: 'var(--shadow-modal)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
-          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
-          <div style={{ width: 100, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
+          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
+          <div style={{ width: 100, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
         </div>
 
         <div data-settings-form style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 420 }}>
           <div>
-            <div style={{ width: 140, height: 12, borderRadius: 4, background: 'var(--muted)', marginBottom: 8 }} className="animate-pulse" />
-            <div style={{ width: '100%', height: 38, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+            <div style={{ width: 140, height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)', marginBottom: 8 }} className="animate-pulse" />
+            <div style={{ width: '100%', height: 38, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
           </div>
           <div>
-            <div style={{ width: 120, height: 12, borderRadius: 4, background: 'var(--muted)', marginBottom: 8 }} className="animate-pulse" />
+            <div style={{ width: 120, height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)', marginBottom: 8 }} className="animate-pulse" />
             <div data-daily-target-grid style={{ display: 'flex', gap: 8 }}>
               {['1', '2', '3', '4'].map((i) => (
-                <div key={i} style={{ flex: 1, height: 34, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+                <div key={i} style={{ flex: 1, height: 34, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
               ))}
             </div>
           </div>
@@ -106,19 +106,19 @@ function SettingsSkeleton() {
       <div
         data-settings-card
         style={{
-          background: 'var(--card)',
-          border: '1px solid var(--border)',
+          background: 'var(--settings-card-bg)',
+          border: '1px solid var(--settings-card-border)',
           borderRadius: 10,
           padding: 24,
-          boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+          boxShadow: 'var(--shadow-modal)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
-          <div style={{ width: 150, height: 16, borderRadius: 4, background: 'var(--muted)' }} className="animate-pulse" />
+          <div style={{ width: 16, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
+          <div style={{ width: 150, height: 16, borderRadius: 4, background: 'var(--daily-row-skeleton)' }} className="animate-pulse" />
         </div>
-        <div style={{ width: '80%', height: 12, borderRadius: 4, background: 'var(--muted)', marginBottom: 18 }} className="animate-pulse" />
-        <div style={{ width: 170, height: 38, borderRadius: 6, background: 'var(--muted)', border: '1px solid var(--border)' }} className="animate-pulse" />
+        <div style={{ width: '80%', height: 12, borderRadius: 4, background: 'var(--daily-row-skeleton)', marginBottom: 18 }} className="animate-pulse" />
+        <div style={{ width: 170, height: 38, borderRadius: 6, background: 'var(--daily-row-skeleton)', border: '1px solid var(--settings-card-border)' }} className="animate-pulse" />
       </div>
     </div>
   );
@@ -201,10 +201,10 @@ export default function SettingsPage() {
     <div data-settings-container style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px' }}>
       {/* Header */}
       <div data-settings-header style={{ marginBottom: 36 }}>
-        <h1 style={{ fontSize: 24, fontWeight: 700, color: 'var(--foreground)', letterSpacing: '-0.02em', marginBottom: 6 }}>
+        <h1 style={{ fontSize: 24, fontWeight: 700, color: 'var(--text-strong)', letterSpacing: '-0.02em', marginBottom: 6 }}>
           Settings
         </h1>
-        <p style={{ fontSize: 13, color: 'var(--muted-foreground)' }}>
+        <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>
           Manage your account profile, system preferences, and data backups.
         </p>
       </div>
@@ -217,19 +217,19 @@ export default function SettingsPage() {
           <div
             data-settings-card
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--settings-card-bg)',
+              border: '1px solid var(--settings-card-border)',
               borderRadius: 10,
               padding: 24,
-              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              boxShadow: 'var(--shadow-modal)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--muted-foreground)' }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--text-dim)' }}>
                 <circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1.3" />
                 <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
               </svg>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--foreground)' }}>Account Profile</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-strong)' }}>Account Profile</div>
             </div>
 
             <div data-settings-avatar-row style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}>
@@ -239,28 +239,28 @@ export default function SettingsPage() {
                   width: 52,
                   height: 52,
                   borderRadius: '50%',
-                  background: 'var(--secondary)',
-                  border: '1px solid var(--border)',
+                  background: 'linear-gradient(135deg, #222226 0%, #18181b 100%)',
+                  border: '1px solid var(--settings-card-border)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: 20,
                   fontWeight: 700,
-                  color: 'var(--foreground)',
+                  color: 'var(--text-strong)',
                   fontFamily: 'var(--font-geist-mono), monospace',
                 }}
               >
                 {initial}
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--foreground)' }}>{name || 'User'}</div>
-                <div style={{ fontSize: 12, color: 'var(--muted-foreground)', marginTop: 2 }}>{email}</div>
+                <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-strong)' }}>{name || 'User'}</div>
+                <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>{email}</div>
               </div>
             </div>
 
             <div data-settings-form style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 420 }}>
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
                   Display Name
                 </label>
                 <div data-display-name-row style={{ display: 'flex', gap: 8 }}>
@@ -285,16 +285,18 @@ export default function SettingsPage() {
                     onClick={handleSaveName}
                     disabled={savingName}
                     style={{
-                      background: 'var(--primary)',
-                      border: '1px solid var(--primary)',
+                      background: 'var(--settings-action-btn-bg)',
+                      border: '1px solid var(--settings-action-btn-border)',
                       borderRadius: 6,
-                      color: 'var(--primary-foreground)',
+                      color: 'var(--settings-action-btn-color)',
                       fontSize: 12,
                       fontWeight: 500,
                       padding: '0 16px',
                       cursor: 'pointer',
                       transition: 'background 0.15s',
                     }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--settings-action-btn-hover-bg)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--settings-action-btn-bg)'; }}
                   >
                     {savingName ? 'Saving...' : 'Save'}
                   </button>
@@ -307,7 +309,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
                   Email Address
                 </label>
                 <input
@@ -317,12 +319,12 @@ export default function SettingsPage() {
                   disabled
                   style={{
                     width: '100%',
-                    background: 'var(--secondary)',
-                    border: '1px solid var(--border)',
+                    background: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
                     borderRadius: 6,
                     padding: '8px 12px',
                     fontSize: 13,
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--text-subtle)',
                     cursor: 'not-allowed',
                   }}
                 />
@@ -354,25 +356,25 @@ export default function SettingsPage() {
           <div
             data-settings-card
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--settings-card-bg)',
+              border: '1px solid var(--settings-card-border)',
               borderRadius: 10,
               padding: 24,
-              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              boxShadow: 'var(--shadow-modal)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--muted-foreground)' }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--text-dim)' }}>
                 <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.3" />
                 <path d="M5 6h6M5 10h4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
               </svg>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--foreground)' }}>Preferences</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-strong)' }}>Preferences</div>
             </div>
 
             <div data-settings-form style={{ display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 420 }}>
               {/* Custom Platform Dropdown */}
               <div style={{ position: 'relative' }}>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
                   Default Coding Platform
                 </label>
 
@@ -383,12 +385,12 @@ export default function SettingsPage() {
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   style={{
                     width: '100%',
-                    background: 'var(--card)',
-                    border: '1px solid var(--border)',
+                    background: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
                     borderRadius: 6,
                     padding: '8px 12px',
                     fontSize: 13,
-                    color: 'var(--foreground)',
+                    color: 'var(--text-strong)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -406,7 +408,7 @@ export default function SettingsPage() {
                     viewBox="0 0 16 16"
                     fill="none"
                     style={{
-                      color: 'var(--muted-foreground)',
+                      color: 'var(--text-dim)',
                       transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.15s ease',
                     }}
@@ -425,11 +427,11 @@ export default function SettingsPage() {
                       right: 0,
                       marginTop: 4,
                       background: 'var(--popover)',
-                      border: '1px solid var(--border)',
+                      border: '1px solid var(--popover-border)',
                       borderRadius: 8,
                       padding: 4,
                       zIndex: 30,
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                      boxShadow: 'var(--shadow-modal)',
                     }}
                   >
                     {PLATFORMS.map((plat) => {
@@ -445,11 +447,11 @@ export default function SettingsPage() {
                             padding: '8px 10px',
                             borderRadius: 6,
                             cursor: 'pointer',
-                            background: isSelected ? 'var(--secondary)' : 'transparent',
+                            background: isSelected ? 'var(--dropdown-item-hover-bg)' : 'transparent',
                             transition: 'background 0.1s',
                           }}
                           onMouseEnter={(e) => {
-                            if (!isSelected) e.currentTarget.style.background = 'var(--accent)';
+                            if (!isSelected) e.currentTarget.style.background = 'var(--dropdown-item-hover-bg)';
                           }}
                           onMouseLeave={(e) => {
                             if (!isSelected) e.currentTarget.style.background = 'transparent';
@@ -457,25 +459,25 @@ export default function SettingsPage() {
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                             <PlatformLogo platform={plat.id} size={18} padding={1} />
-                            <span style={{ fontSize: 13, color: isSelected ? 'var(--foreground)' : 'var(--muted-foreground)', fontWeight: isSelected ? 600 : 400 }}>
+                            <span style={{ fontSize: 13, color: isSelected ? 'var(--text-strong)' : 'var(--text-normal)', fontWeight: isSelected ? 600 : 400 }}>
                               {plat.label}
                             </span>
                           </div>
-                          {isSelected && <span style={{ fontSize: 12, color: '#10b981', fontWeight: 700 }}>✓</span>}
+                          {isSelected && <span style={{ fontSize: 12, color: 'var(--success)', fontWeight: 700 }}>✓</span>}
                         </div>
                       );
                     })}
                   </div>
                 )}
 
-                <span style={{ fontSize: 11, color: 'var(--muted-foreground)', marginTop: 6, display: 'block' }}>
+                <span style={{ fontSize: 11, color: 'var(--text-subtle)', marginTop: 6, display: 'block' }}>
                   Pre-selected platform when adding new problems.
                 </span>
               </div>
 
               {/* Daily Revision Goal */}
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
                   Daily Revision Goal
                 </label>
                 <div data-daily-target-grid style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -490,9 +492,9 @@ export default function SettingsPage() {
                           flex: 1,
                           padding: '7px 0',
                           borderRadius: 6,
-                          background: active ? 'var(--primary)' : 'var(--secondary)',
-                          border: active ? '1px solid var(--primary)' : '1px solid var(--border)',
-                          color: active ? 'var(--primary-foreground)' : 'var(--muted-foreground)',
+                          background: active ? 'var(--target-btn-active-bg)' : 'var(--target-btn-inactive-bg)',
+                          border: active ? '1px solid var(--target-btn-active-border)' : '1px solid var(--target-btn-inactive-border)',
+                          color: active ? 'var(--target-btn-active-color)' : 'var(--target-btn-inactive-color)',
                           fontSize: 13,
                           fontWeight: active ? 600 : 400,
                           cursor: 'pointer',
@@ -505,18 +507,18 @@ export default function SettingsPage() {
                     );
                   })}
                 </div>
-                <span style={{ fontSize: 11, color: 'var(--muted-foreground)', marginTop: 6, display: 'block' }}>
+                <span style={{ fontSize: 11, color: 'var(--text-subtle)', marginTop: 6, display: 'block' }}>
                   Target number of problem revisions per day.
                 </span>
               </div>
 
               {/* Interface Theme Preference */}
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
                   Interface Theme
                 </label>
                 <ThemeToggle variant="segmented" />
-                <span style={{ fontSize: 11, color: 'var(--muted-foreground)', marginTop: 6, display: 'block' }}>
+                <span style={{ fontSize: 11, color: 'var(--text-subtle)', marginTop: 6, display: 'block' }}>
                   Switch between light and dark mode across Recall.
                 </span>
               </div>
@@ -527,21 +529,21 @@ export default function SettingsPage() {
           <div
             data-settings-card
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--settings-card-bg)',
+              border: '1px solid var(--settings-card-border)',
               borderRadius: 10,
               padding: 24,
-              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              boxShadow: 'var(--shadow-modal)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--muted-foreground)' }}>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--text-dim)' }}>
                 <path d="M3 13h10M8 2v8M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--foreground)' }}>Data Backup & Export</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-strong)' }}>Data Backup & Export</div>
             </div>
 
-            <p style={{ fontSize: 12.5, color: 'var(--muted-foreground)', marginBottom: 18, lineHeight: 1.5 }}>
+            <p style={{ fontSize: 12.5, color: 'var(--text-muted)', marginBottom: 18, lineHeight: 1.5 }}>
               Import your existing problem list from CSV or Excel, or download a complete JSON export of all your tracked problems, custom notes, revisions, and daily streak logs.
             </p>
 
@@ -550,10 +552,10 @@ export default function SettingsPage() {
                 data-import-btn
                 onClick={() => setShowImportModal(true)}
                 style={{
-                  background: 'var(--secondary)',
-                  border: '1px solid var(--border)',
+                  background: 'var(--settings-action-btn-bg)',
+                  border: '1px solid var(--settings-action-btn-border)',
                   borderRadius: 6,
-                  color: 'var(--foreground)',
+                  color: 'var(--settings-action-btn-color)',
                   fontSize: 12.5,
                   fontWeight: 500,
                   padding: '9px 18px',
@@ -561,11 +563,11 @@ export default function SettingsPage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                  boxShadow: 'var(--shadow-modal)',
                   transition: 'background 0.15s, border-color 0.15s',
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--muted-foreground)')}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border)')}
+                onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--icon-btn-hover-border)')}
+                onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--settings-action-btn-border)')}
               >
                 <Upload size={14} style={{ color: 'var(--info)' }} />
                 Import from CSV / Excel
@@ -575,10 +577,10 @@ export default function SettingsPage() {
                 data-export-btn
                 onClick={handleExportData}
                 style={{
-                  background: 'var(--secondary)',
-                  border: '1px solid var(--border)',
+                  background: 'var(--settings-action-btn-bg)',
+                  border: '1px solid var(--settings-action-btn-border)',
                   borderRadius: 6,
-                  color: 'var(--foreground)',
+                  color: 'var(--settings-action-btn-color)',
                   fontSize: 12.5,
                   fontWeight: 500,
                   padding: '9px 18px',
@@ -586,9 +588,11 @@ export default function SettingsPage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                  boxShadow: 'var(--shadow-modal)',
                   transition: 'background 0.15s',
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--settings-action-btn-hover-bg)')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = 'var(--settings-action-btn-bg)')}
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ color: 'var(--info)' }}>
                   <path d="M8 2v8M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -603,21 +607,21 @@ export default function SettingsPage() {
           <div
             data-settings-card
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--settings-card-bg)',
+              border: '1px solid var(--settings-card-border)',
               borderRadius: 10,
               padding: 24,
-              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+              boxShadow: 'var(--shadow-modal)',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#F7981E' }}>
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
               </svg>
-              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--foreground)' }}>Feedback & Issues</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-strong)' }}>Feedback & Issues</div>
             </div>
 
-            <p style={{ fontSize: 12.5, color: 'var(--muted-foreground)', marginBottom: 18, lineHeight: 1.5 }}>
+            <p style={{ fontSize: 12.5, color: 'var(--text-muted)', marginBottom: 18, lineHeight: 1.5 }}>
               Help us improve recall. by reporting bugs, requesting new features, or sharing your interview prep feedback.
             </p>
 
@@ -627,10 +631,10 @@ export default function SettingsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  background: 'var(--secondary)',
-                  border: '1px solid var(--border)',
+                  background: 'var(--settings-action-btn-bg)',
+                  border: '1px solid var(--settings-action-btn-border)',
                   borderRadius: 6,
-                  color: 'var(--foreground)',
+                  color: 'var(--settings-action-btn-color)',
                   fontSize: 12.5,
                   fontWeight: 500,
                   padding: '9px 18px',
@@ -639,8 +643,16 @@ export default function SettingsPage() {
                   alignItems: 'center',
                   gap: 8,
                   textDecoration: 'none',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                  boxShadow: 'var(--shadow-modal)',
                   transition: 'background 0.15s, border-color 0.15s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--settings-action-btn-hover-bg)';
+                  e.currentTarget.style.borderColor = 'var(--settings-action-btn-hover-border)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'var(--settings-action-btn-bg)';
+                  e.currentTarget.style.borderColor = 'var(--settings-action-btn-border)';
                 }}
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style={{ color: 'currentColor' }}>
@@ -654,10 +666,10 @@ export default function SettingsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  background: 'var(--secondary)',
-                  border: '1px solid var(--border)',
+                  background: 'var(--settings-action-btn-bg)',
+                  border: '1px solid var(--settings-action-btn-border)',
                   borderRadius: 6,
-                  color: 'var(--foreground)',
+                  color: 'var(--settings-action-btn-color)',
                   fontSize: 12.5,
                   fontWeight: 500,
                   padding: '9px 18px',
@@ -666,8 +678,16 @@ export default function SettingsPage() {
                   alignItems: 'center',
                   gap: 8,
                   textDecoration: 'none',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                  boxShadow: 'var(--shadow-modal)',
                   transition: 'background 0.15s, border-color 0.15s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--settings-action-btn-hover-bg)';
+                  e.currentTarget.style.borderColor = 'var(--settings-action-btn-hover-border)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'var(--settings-action-btn-bg)';
+                  e.currentTarget.style.borderColor = 'var(--settings-action-btn-border)';
                 }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--info)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -707,9 +727,9 @@ export default function SettingsPage() {
             right: 24,
             zIndex: 1000,
             background: 'var(--popover)',
-            border: '1px solid var(--border)',
+            border: '1px solid var(--popover-border)',
             borderRadius: 6,
-            color: 'var(--foreground)',
+            color: 'var(--text-strong)',
             fontSize: 13,
             padding: '10px 16px',
             boxShadow: 'var(--shadow-modal)',

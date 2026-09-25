@@ -156,7 +156,20 @@ export function Capabilities() {
           filter: brightness(0.96);
         }
         .dark .capability-card:hover {
-          filter: brightness(1.1);
+          filter: none !important;
+          background: #0c0c0c !important;
+        }
+        .dark .capability-card:hover .card-title {
+          color: #ffffff !important;
+        }
+        .dark .capability-card:hover .card-desc {
+          color: #888888 !important;
+        }
+        .dark .capability-card:hover .card-category {
+          color: #999999 !important;
+        }
+        .dark .capability-card:hover .card-num {
+          color: #666666 !important;
         }
         @media (max-width: 768px) {
           #capabilities { padding: 0 24px 80px !important; }

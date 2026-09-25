@@ -230,24 +230,24 @@ export function Footer() {
                     width: '38px',
                     height: '38px',
                     borderRadius: '8px',
-                    background: 'var(--card)',
-                    border: '1px solid var(--border)',
+                    background: 'var(--footer-social-bg)',
+                    border: '1px solid var(--footer-social-border)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--muted-foreground)',
+                    color: 'var(--footer-social-color)',
                     textDecoration: 'none',
                     transition: 'all 0.15s ease',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'var(--accent)';
-                    e.currentTarget.style.borderColor = 'var(--muted-foreground)';
-                    e.currentTarget.style.color = 'var(--foreground)';
+                    e.currentTarget.style.background = 'var(--footer-social-hover-bg)';
+                    e.currentTarget.style.borderColor = 'var(--footer-social-hover-border)';
+                    e.currentTarget.style.color = 'var(--footer-social-hover-color)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'var(--card)';
-                    e.currentTarget.style.borderColor = 'var(--border)';
-                    e.currentTarget.style.color = 'var(--muted-foreground)';
+                    e.currentTarget.style.background = 'var(--footer-social-bg)';
+                    e.currentTarget.style.borderColor = 'var(--footer-social-border)';
+                    e.currentTarget.style.color = 'var(--footer-social-color)';
                   }}
                 >
                   {s.icon}
@@ -260,7 +260,7 @@ export function Footer() {
         {/* Bottom Copyright and Legal Bar */}
         <div
           style={{
-            borderTop: '1px solid var(--border)',
+            borderTop: '1px solid var(--footer-border)',
             paddingTop: '28px',
             display: 'flex',
             alignItems: 'center',
@@ -285,12 +285,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: 'var(--muted-foreground)',
+                color: 'var(--footer-link)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-link-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-link)')}
             >
               Privacy Policy
             </Link>
@@ -299,12 +299,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: 'var(--muted-foreground)',
+                color: 'var(--footer-link)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-link-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-link)')}
             >
               Terms and Conditions
             </Link>
@@ -313,12 +313,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: 'var(--muted-foreground)',
+                color: 'var(--footer-link)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-link-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-link)')}
             >
               About Us
             </Link>
@@ -327,12 +327,12 @@ export function Footer() {
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '13px',
-                color: 'var(--muted-foreground)',
+                color: 'var(--footer-link)',
                 textDecoration: 'none',
                 transition: 'color 0.15s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--footer-link-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--footer-link)')}
             >
               Contact Us
             </Link>

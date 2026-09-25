@@ -124,7 +124,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
            --demo-dropdown-border: #d4d4d8;
          }
          .dark {
-          --bg: #080808;
+          --bg: #000000;
           --surface: #0f0f0f;
           --border: #1a1a1a;
           --border-subtle: #111111;
@@ -138,32 +138,34 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
           --medium-bg: #3a2a0d;
           --medium-text: #fb923c;
           --medium-border: #5a3d10;
-           --hard-bg: #3a0f0f;
-           --hard-text: #f87171;
-           --hard-border: #5a1a1a;
-           --demo-bg: #0a0a0b;
-           --demo-surface: #0d0d0e;
-           --demo-surface-raised: #161618;
-           --demo-surface-hover: #252528;
-           --demo-border: #18181a;
-           --demo-border-subtle: #151517;
-           --demo-text: #ececec;
-           --demo-text-muted: #888888;
-           --demo-text-faint: #555555;
-           --demo-placeholder: #444444;
-           --demo-control: #1e1e1e;
-           --demo-control-active: #1a1a20;
-           --demo-control-border: #33333a;
-           --demo-dropdown: #161618;
-           --demo-dropdown-border: #26262a;
+          --hard-bg: #3a0f0f;
+          --hard-text: #f87171;
+          --hard-border: #5a1a1a;
+          --demo-bg: #0a0a0b;
+          --demo-surface: #0d0d0e;
+          --demo-surface-raised: #121214;
+          --demo-surface-hover: #252528;
+          --demo-border: #18181a;
+          --demo-border-subtle: #151517;
+          --demo-text: #ececec;
+          --demo-text-muted: #888888;
+          --demo-text-faint: #555555;
+          --demo-placeholder: #444444;
+          --demo-control: #1e1e1e;
+          --demo-control-active: #1a1a20;
+          --demo-control-border: #333333;
+          --demo-dropdown: #161618;
+          --demo-dropdown-border: #26262a;
          }
         * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
         html { scroll-behavior: auto; }
         body { background: var(--bg); color: var(--text-primary); margin: 0; overflow-x: hidden; }
         ::selection { background: rgba(247, 152, 30, 0.2); }
+        .dark ::selection { background: rgba(255, 255, 255, 0.08); }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+        .dark ::-webkit-scrollbar-thumb { background: #1e1e1e; border-radius: 2px; }
       `}</style>
       {children}
     </div>

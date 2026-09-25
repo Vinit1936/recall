@@ -98,8 +98,8 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
         alignItems: 'center',
         height: 48,
         padding: '0 16px',
-        background: done ? 'var(--secondary)' : hovered ? 'var(--accent)' : 'var(--card)',
-        borderBottom: '1px solid var(--border)',
+        background: done ? 'var(--bottom-bar-bg)' : hovered ? 'var(--input-bg)' : 'var(--daily-card-bg)',
+        borderBottom: '1px solid var(--table-border)',
         transition: 'background 0.12s ease',
       }}
     >
@@ -107,7 +107,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
       <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
         <PlatformLogo platform={problem.platform ?? 'LEETCODE'} size={19} padding={1} />
         {(problem.platform === 'LEETCODE' || problem.platform === 'CODEFORCES') && (problem.problemNumber ?? 0) > 0 && (
-          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--muted-foreground)' }}>
+          <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--text-dim)' }}>
             {problem.problemNumber}
           </span>
         )}
@@ -124,7 +124,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
             style={{
               fontSize: 13.5,
               fontWeight: done ? 400 : 500,
-              color: done ? 'var(--muted-foreground)' : 'var(--foreground)',
+              color: done ? 'var(--text-subtle)' : 'var(--text-strong)',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
@@ -140,7 +140,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
             style={{
               fontSize: 13.5,
               fontWeight: done ? 400 : 500,
-              color: done ? 'var(--muted-foreground)' : 'var(--foreground)',
+              color: done ? 'var(--text-subtle)' : 'var(--text-strong)',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
@@ -206,10 +206,10 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
                     onClick={() => handleConfidence(conf)}
                     disabled={loadingConf !== null}
                     style={{
-                      background: 'var(--secondary)',
-                      border: '1px solid var(--border)',
+                      background: 'var(--popover)',
+                      border: '1px solid var(--input-border)',
                       borderRadius: 6,
-                      color: loadingConf === conf ? 'var(--muted-foreground)' : 'var(--foreground)',
+                      color: loadingConf === conf ? 'var(--text-subtle)' : 'var(--text-normal)',
                       cursor: loadingConf !== null ? 'not-allowed' : 'pointer',
                       fontSize: 12,
                       fontWeight: 500,
@@ -217,7 +217,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: 4,
-                      boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
+                      boxShadow: 'var(--shadow-popover)',
                       transition: 'all 0.12s ease-in-out',
                     }}
                     onMouseEnter={(e) => {
@@ -229,9 +229,9 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
                     }}
                     onMouseLeave={(e) => {
                       if (loadingConf === null) {
-                        e.currentTarget.style.background = 'var(--secondary)';
-                        e.currentTarget.style.borderColor = 'var(--border)';
-                        e.currentTarget.style.color = 'var(--foreground)';
+                        e.currentTarget.style.background = 'var(--popover)';
+                        e.currentTarget.style.borderColor = 'var(--input-border)';
+                        e.currentTarget.style.color = 'var(--text-normal)';
                       }
                     }}
                   >
@@ -253,7 +253,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
             rel="noopener noreferrer"
             title="Open problem in new tab"
             style={{
-              color: 'var(--muted-foreground)',
+              color: 'var(--text-subtle)',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -262,7 +262,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
               transition: 'color 0.12s',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-subtle)')}
           >
             <ExternalLink size={14} />
           </a>

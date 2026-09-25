@@ -199,12 +199,12 @@ function CollapsibleGroup({ title, count, topicColor, children }: {
     <>
       <tr
         onClick={() => setOpen((o) => !o)}
-        style={{ borderBottom: '1px solid var(--border)', height: 36, cursor: 'pointer', background: 'var(--secondary)' }}
+        style={{ borderBottom: '1px solid var(--table-border)', height: 36, cursor: 'pointer', background: 'var(--table-group-bg)' }}
       >
         <td colSpan={100} style={{ padding: '0 12px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{
-              color: 'var(--muted-foreground)',
+              color: 'var(--text-subtle)',
               fontSize: 11,
               transition: 'transform 0.15s',
               display: 'inline-block',
@@ -213,9 +213,9 @@ function CollapsibleGroup({ title, count, topicColor, children }: {
             {topicColor ? (
               <Pill bg={topicColor.bg} text={topicColor.text} border={topicColor.border}>{title}</Pill>
             ) : (
-              <span style={{ fontSize: 12, color: 'var(--muted-foreground)', fontWeight: 500, textTransform: 'uppercase', fontFamily: 'var(--font-geist-mono), monospace', letterSpacing: '0.06em' }}>{title}</span>
+              <span style={{ fontSize: 12, color: 'var(--text-dim)', fontWeight: 500, textTransform: 'uppercase', fontFamily: 'var(--font-geist-mono), monospace', letterSpacing: '0.06em' }}>{title}</span>
             )}
-            <span style={{ fontSize: 12, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>{count}</span>
+            <span style={{ fontSize: 12, color: 'var(--text-subtle)', fontFamily: 'var(--font-geist-mono), monospace' }}>{count}</span>
           </div>
         </td>
       </tr>
@@ -240,13 +240,13 @@ function AddColumnPopover({ onSave, columns }: { onSave: (name: string) => void;
     <div ref={ref} style={{ position: 'relative', display: 'inline-block' }}>
       <button
         onClick={() => setOpen((o) => !o)}
-        style={{ background: 'none', border: 'none', color: 'var(--muted-foreground)', cursor: 'pointer', fontSize: 11, padding: '0 8px', display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.06em' }}
+        style={{ background: 'none', border: 'none', color: 'var(--text-faint)', cursor: 'pointer', fontSize: 11, padding: '0 8px', display: 'flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-geist-mono), monospace', textTransform: 'uppercase', letterSpacing: '0.06em' }}
       >
         + Add column
       </button>
       {open && (
-        <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: 6, background: 'var(--popover)', border: '1px solid var(--border)', borderRadius: 8, padding: 12, zIndex: 50, width: 200, boxShadow: '0 8px 24px rgba(0,0,0,0.18)' }}>
-          <div style={{ fontSize: 12, color: 'var(--muted-foreground)', marginBottom: 8 }}>Column name</div>
+        <div style={{ position: 'absolute', top: '100%', left: 0, marginTop: 6, background: 'var(--popover)', border: '1px solid var(--input-border)', borderRadius: 8, padding: 12, zIndex: 50, width: 200, boxShadow: 'var(--shadow-popover)' }}>
+          <div style={{ fontSize: 12, color: 'var(--text-muted)', marginBottom: 8 }}>Column name</div>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -1007,8 +1007,8 @@ export function ProblemsTable() {
       {/* Page header */}
       <div data-page-header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
         <div data-breadcrumb style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 14 }}>
-          <span style={{ color: 'var(--muted-foreground)' }}>recall</span>
-          <span style={{ color: 'var(--border)', margin: '0 8px' }}>/</span>
+          <span style={{ color: 'var(--text-subtle)' }}>recall</span>
+          <span style={{ color: 'var(--text-faint)', margin: '0 8px' }}>/</span>
           <span style={{ color: 'var(--foreground)', fontWeight: 500 }}>All Problems</span>
         </div>
 
@@ -1018,10 +1018,10 @@ export function ProblemsTable() {
             onClick={() => setShowImportModal(true)}
             title="Import problems from CSV / Excel"
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--icon-btn-bg)',
+              border: '1px solid var(--icon-btn-border)',
               borderRadius: 6,
-              color: 'var(--muted-foreground)',
+              color: 'var(--icon-btn-color)',
               cursor: 'pointer',
               fontSize: 13,
               width: 32,
@@ -1032,8 +1032,8 @@ export function ProblemsTable() {
               transition: 'color 0.15s, border-color 0.15s',
               padding: 0,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--muted-foreground)'; e.currentTarget.style.color = 'var(--foreground)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted-foreground)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--icon-btn-hover-border)'; e.currentTarget.style.color = 'var(--icon-btn-hover-color)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--icon-btn-border)'; e.currentTarget.style.color = 'var(--icon-btn-color)'; }}
           >
             <Upload size={14} />
           </button>
@@ -1043,10 +1043,10 @@ export function ProblemsTable() {
             onClick={handleExportCSV}
             title="Export problems to CSV"
             style={{
-              background: 'var(--card)',
-              border: '1px solid var(--border)',
+              background: 'var(--icon-btn-bg)',
+              border: '1px solid var(--icon-btn-border)',
               borderRadius: 6,
-              color: 'var(--muted-foreground)',
+              color: 'var(--icon-btn-color)',
               cursor: 'pointer',
               fontSize: 13,
               width: 32,
@@ -1057,8 +1057,8 @@ export function ProblemsTable() {
               transition: 'color 0.15s, border-color 0.15s',
               padding: 0,
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--primary)'; e.currentTarget.style.color = 'var(--foreground)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted-foreground)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--icon-btn-hover-border)'; e.currentTarget.style.color = 'var(--icon-btn-hover-color)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--icon-btn-border)'; e.currentTarget.style.color = 'var(--icon-btn-color)'; }}
           >
             <Download size={14} />
           </button>
@@ -1068,10 +1068,10 @@ export function ProblemsTable() {
             id="new-problem-btn"
             onClick={() => setShowNewRow(true)}
             style={{
-              background: 'var(--primary)',
-              border: '1px solid var(--primary)',
+              background: 'var(--new-problem-btn-bg)',
+              border: '1px solid var(--new-problem-btn-border)',
               borderRadius: 6,
-              color: 'var(--primary-foreground)',
+              color: 'var(--new-problem-btn-color)',
               cursor: 'pointer',
               fontSize: 13,
               padding: '6px 14px',
@@ -1108,7 +1108,7 @@ export function ProblemsTable() {
           overflowX: 'auto',
           maxWidth: '100%',
           borderRadius: 8,
-          border: '1px solid var(--border)',
+          border: '1px solid var(--table-border)',
           background: 'var(--card)',
         }}
         onMouseEnter={() => setTableHovered(true)}
@@ -1146,23 +1146,23 @@ export function ProblemsTable() {
             onClick={() => setShowNewRow(true)}
             style={{
               padding: '8px 12px',
-              borderTop: '1px solid var(--border)',
+              borderTop: '1px solid var(--table-border)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: 8,
               fontSize: 13,
-              color: 'var(--muted-foreground)',
+              color: 'var(--bottom-bar-color)',
               transition: 'background 0.15s, color 0.15s',
-              background: 'var(--card)',
+              background: 'var(--bottom-bar-bg)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--accent)';
-              e.currentTarget.style.color = 'var(--foreground)';
+              e.currentTarget.style.background = 'var(--bottom-bar-hover-bg)';
+              e.currentTarget.style.color = 'var(--bottom-bar-hover-color)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'var(--card)';
-              e.currentTarget.style.color = 'var(--muted-foreground)';
+              e.currentTarget.style.background = 'var(--bottom-bar-bg)';
+              e.currentTarget.style.color = 'var(--bottom-bar-color)';
             }}
           >
             <span style={{ fontSize: 16, lineHeight: 1 }}>+</span>

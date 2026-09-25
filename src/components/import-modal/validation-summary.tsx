@@ -123,10 +123,10 @@ export function ValidationSummaryStep({
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
       {/* Header */}
       <div>
-        <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--foreground)', margin: 0, marginBottom: 4 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--text-white)', margin: 0, marginBottom: 4 }}>
           Review Import Summary
         </h3>
-        <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0 }}>
+        <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>
           Verify rows and columns before saving to your database.
         </p>
       </div>
@@ -135,8 +135,8 @@ export function ValidationSummaryStep({
       <div
         className="validation-card"
         style={{
-          background: 'var(--card)',
-          border: '1px solid var(--border)',
+          background: 'var(--import-card-active-bg)',
+          border: '1px solid var(--import-card-inactive-border)',
           borderRadius: 6,
           padding: '14px 16px',
           display: 'flex',
@@ -147,18 +147,18 @@ export function ValidationSummaryStep({
         {/* Ready Row */}
         <div className="validation-ready-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <div>
-            <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--foreground)' }}>
+            <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-white)' }}>
               {result.valid.length.toLocaleString()} {result.valid.length === 1 ? 'problem' : 'problems'} ready to import
             </div>
-            <div style={{ fontSize: 12, color: 'var(--muted-foreground)', marginTop: 2 }}>
-              Schedule: <span style={{ color: 'var(--foreground)' }}>{strategyLabel}</span>
+            <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 2 }}>
+              Schedule: <span style={{ color: 'var(--text-white)' }}>{strategyLabel}</span>
             </div>
           </div>
           <span
             style={{
               fontFamily: 'var(--font-geist-mono), monospace',
               fontSize: 11,
-              color: 'var(--muted-foreground)',
+              color: 'var(--text-dim)',
             }}
           >
             VALIDATED
@@ -167,8 +167,8 @@ export function ValidationSummaryStep({
 
         {/* Custom Columns */}
         {result.customColumns && result.customColumns.length > 0 && (
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 10 }}>
-            <div style={{ fontSize: 12, color: 'var(--muted-foreground)', marginBottom: 6 }}>
+          <div style={{ borderTop: '1px solid var(--import-collapsible-border)', paddingTop: 10 }}>
+            <div style={{ fontSize: 12, color: 'var(--text-normal)', marginBottom: 6 }}>
               {result.customColumns.length} custom {result.customColumns.length === 1 ? 'column' : 'columns'} will be created:
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
@@ -180,9 +180,9 @@ export function ValidationSummaryStep({
                     fontSize: 11,
                     padding: '2px 6px',
                     borderRadius: 4,
-                    background: 'var(--muted)',
-                    border: '1px solid var(--input-border)',
-                    color: 'var(--foreground)',
+                    background: 'var(--import-counter-bg)',
+                    border: '1px solid var(--import-counter-border)',
+                    color: 'var(--text-normal)',
                   }}
                 >
                   {col}
@@ -194,7 +194,7 @@ export function ValidationSummaryStep({
 
         {/* Warnings Collapsible */}
         {result.warnings.length > 0 && (
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 10 }}>
+          <div style={{ borderTop: '1px solid var(--import-collapsible-border)', paddingTop: 10 }}>
             <div
               onClick={() => setWarningsOpen(!warningsOpen)}
               style={{
@@ -205,10 +205,10 @@ export function ValidationSummaryStep({
                 userSelect: 'none',
               }}
             >
-              <span style={{ fontSize: 12, color: 'var(--muted-foreground)' }}>
+              <span style={{ fontSize: 12, color: 'var(--text-normal)' }}>
                 {result.warnings.length} warnings (resolved with defaults)
               </span>
-              <span style={{ fontSize: 11, color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: 2 }}>
+              <span style={{ fontSize: 11, color: 'var(--text-dim)', display: 'flex', alignItems: 'center', gap: 2 }}>
                 {warningsOpen ? 'hide' : 'show'}
                 {warningsOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
               </span>
@@ -217,7 +217,7 @@ export function ValidationSummaryStep({
             {warningsOpen && (
               <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 4, maxHeight: 100, overflowY: 'auto' }}>
                 {Object.entries(warningCounts).map(([msg, count], i) => (
-                  <div key={i} style={{ fontSize: 11.5, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                  <div key={i} style={{ fontSize: 11.5, color: 'var(--text-normal)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                     • {count}x: {msg}
                   </div>
                 ))}
@@ -228,7 +228,7 @@ export function ValidationSummaryStep({
 
         {/* Skipped Collapsible */}
         {result.skipped.length > 0 && (
-          <div style={{ borderTop: '1px solid var(--border)', paddingTop: 10 }}>
+          <div style={{ borderTop: '1px solid var(--import-collapsible-border)', paddingTop: 10 }}>
             <div
               onClick={() => setSkippedOpen(!skippedOpen)}
               style={{
@@ -239,10 +239,10 @@ export function ValidationSummaryStep({
                 userSelect: 'none',
               }}
             >
-              <span style={{ fontSize: 12, color: 'var(--muted-foreground)' }}>
+              <span style={{ fontSize: 12, color: 'var(--text-normal)' }}>
                 {result.skipped.length} problems will be skipped
               </span>
-              <span style={{ fontSize: 11, color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: 2 }}>
+              <span style={{ fontSize: 11, color: 'var(--text-dim)', display: 'flex', alignItems: 'center', gap: 2 }}>
                 {skippedOpen ? 'hide' : 'show'}
                 {skippedOpen ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
               </span>
@@ -251,7 +251,7 @@ export function ValidationSummaryStep({
             {skippedOpen && (
               <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 4, maxHeight: 100, overflowY: 'auto' }}>
                 {result.skipped.map((s, i) => (
-                  <div key={i} style={{ fontSize: 11.5, color: 'var(--muted-foreground)', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                  <div key={i} style={{ fontSize: 11.5, color: 'var(--text-normal)', fontFamily: 'var(--font-geist-mono), monospace' }}>
                     • Row {s.row}: {s.reason.replace(/^Row \d+:\s*/, '')}
                   </div>
                 ))}
@@ -262,7 +262,7 @@ export function ValidationSummaryStep({
       </div>
 
       {importError && (
-        <div style={{ fontSize: 12.5, color: 'var(--error)', padding: '6px 10px', borderRadius: 4, background: 'var(--error-bg)', border: '1px solid var(--error-border)' }}>
+        <div style={{ fontSize: 12.5, color: 'var(--import-error-color)', padding: '6px 10px', borderRadius: 4, background: 'var(--import-error-bg)', border: '1px solid var(--import-error-border)' }}>
           {importError}
         </div>
       )}
@@ -275,9 +275,9 @@ export function ValidationSummaryStep({
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid var(--input-border)',
+            border: '1px solid var(--import-back-btn-border)',
             borderRadius: 6,
-            color: 'var(--foreground)',
+            color: 'var(--import-back-btn-color)',
             fontSize: 13,
             padding: '6px 14px',
             cursor: isImporting ? 'not-allowed' : 'pointer',
@@ -286,8 +286,8 @@ export function ValidationSummaryStep({
             gap: 6,
             transition: 'border-color 0.15s, color 0.15s',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--input-border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-hover-border)'; e.currentTarget.style.color = 'var(--text-white)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-border)'; e.currentTarget.style.color = 'var(--import-back-btn-color)'; }}
         >
           <ArrowLeft size={13} />
           Back

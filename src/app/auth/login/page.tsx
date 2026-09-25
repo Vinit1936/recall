@@ -71,7 +71,7 @@ function Input({
   return (
     <div style={{ marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-        <label style={{ display: 'block', fontSize: 13, color: 'var(--muted-foreground)' }}>{label}</label>
+        <label style={{ display: 'block', fontSize: 13, color: 'var(--text-dim)' }}>{label}</label>
         {rightLabelAction}
       </div>
       <div style={{ position: 'relative' }}>
@@ -85,7 +85,7 @@ function Input({
           style={{
             width: '100%',
             background: 'var(--input-bg)',
-            border: `1px solid ${focused ? 'var(--primary)' : 'var(--input-border)'}`,
+            border: `1px solid ${focused ? 'var(--input-focus-border)' : 'var(--input-border)'}`,
             borderRadius: 6,
             color: 'var(--foreground)',
             fontSize: 14,
@@ -108,7 +108,7 @@ function Input({
               border: 'none',
               padding: 4,
               cursor: 'pointer',
-              color: 'var(--muted-foreground)',
+              color: 'var(--text-dim)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -117,7 +117,7 @@ function Input({
             tabIndex={-1}
             aria-label={showPassword ? 'Hide password' : 'Show password'}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--foreground)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--muted-foreground)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
           >
             {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
           </button>
@@ -135,8 +135,8 @@ function PrimaryButton({ children, onClick, loading, disabled }: { children: Rea
       disabled={loading || disabled}
       style={{
         width: '100%',
-        background: loading || disabled ? 'var(--muted)' : 'var(--primary)',
-        color: loading || disabled ? 'var(--muted-foreground)' : 'var(--primary-foreground)',
+        background: loading || disabled ? 'var(--input-border)' : 'var(--primary)',
+        color: loading || disabled ? 'var(--text-dim)' : 'var(--primary-foreground)',
         borderWidth: 0,
         outline: 'none',
         borderRadius: 6,
@@ -152,7 +152,7 @@ function PrimaryButton({ children, onClick, loading, disabled }: { children: Rea
         marginBottom: 8,
       }}
     >
-      {loading ? <Spinner color="var(--muted-foreground)" /> : children}
+      {loading ? <Spinner color="var(--text-dim)" /> : children}
     </button>
   );
 }
@@ -168,10 +168,10 @@ function OAuthButton({ provider, label, onClick, loading, disabled }: { provider
         background: 'transparent',
         borderWidth: 1,
         borderStyle: 'solid',
-        borderColor: 'var(--border)',
+        borderColor: 'var(--input-border)',
         outline: 'none',
         borderRadius: 6,
-        color: loading || disabled ? 'var(--muted-foreground)' : 'var(--foreground)',
+        color: loading || disabled ? 'var(--text-muted)' : 'var(--foreground)',
         fontSize: 14,
         padding: '10px 0',
         cursor: loading || disabled ? 'not-allowed' : 'pointer',

@@ -68,18 +68,17 @@ export function GitHubStarButton() {
         height: '32px',
         padding: '0 10px',
         borderRadius: '8px',
-        background: isHovered ? 'var(--accent)' : 'var(--card)',
-        border: `1px solid ${isHovered ? 'var(--muted-foreground)' : 'var(--border)'}`,
-        color: isHovered ? 'var(--foreground)' : 'var(--muted-foreground)',
+        background: isHovered ? 'var(--github-star-hover-bg)' : 'var(--github-star-bg)',
+        border: `1px solid ${isHovered ? 'var(--github-star-hover-border)' : 'var(--github-star-border)'}`,
+        color: isHovered ? 'var(--github-star-hover-color)' : 'var(--github-star-color)',
         fontSize: '12px',
         fontWeight: 500,
         fontFamily: 'var(--font-geist-sans), sans-serif',
         textDecoration: 'none',
-        transition: 'all 0.18s cubic-bezier(0.16, 1, 0.3, 1)',
-        transform: isHovered ? 'translateY(-1px)' : 'translateY(0)',
+        transition: 'border-color 0.15s ease, background 0.15s ease, color 0.15s ease',
         cursor: 'pointer',
-        boxShadow: isHovered ? '0 4px 12px rgba(0, 0, 0, 0.3)' : 'none',
         whiteSpace: 'nowrap',
+        userSelect: 'none',
       }}
     >
       {/* GitHub Octocat Icon */}
@@ -91,7 +90,7 @@ export function GitHubStarButton() {
         style={{
           display: 'block',
           flexShrink: 0,
-          color: 'currentColor',
+          color: isHovered ? 'var(--github-star-hover-color)' : 'var(--github-star-color)',
           transition: 'color 0.15s ease',
         }}
       >
@@ -102,7 +101,7 @@ export function GitHubStarButton() {
       <span
         className="nav-github-label"
         style={{
-          color: 'currentColor',
+          color: isHovered ? 'var(--github-star-hover-color)' : 'var(--github-star-color)',
           transition: 'color 0.15s ease',
         }}
       >
@@ -115,7 +114,7 @@ export function GitHubStarButton() {
           display: 'inline-block',
           width: '1px',
           height: '13px',
-          background: 'var(--border)',
+          background: isHovered ? 'var(--github-star-hover-divider)' : 'var(--github-star-divider)',
           margin: '0 1px',
           transition: 'background 0.15s ease',
         }}
@@ -142,7 +141,7 @@ export function GitHubStarButton() {
             display: 'block',
             flexShrink: 0,
             transform: isHovered ? 'scale(1.18) rotate(6deg)' : 'scale(1)',
-            transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)',
             filter: isHovered
               ? 'drop-shadow(0 0 6px rgba(234, 179, 8, 0.65))'
               : 'drop-shadow(0 0 2.5px rgba(234, 179, 8, 0.35))',
@@ -156,7 +155,7 @@ export function GitHubStarButton() {
             fontFamily: 'var(--font-geist-mono), monospace',
             fontSize: '11px',
             fontWeight: 600,
-            color: isHovered ? 'var(--foreground)' : 'var(--muted-foreground)',
+            color: isHovered ? 'var(--github-star-hover-count)' : 'var(--github-star-count)',
             letterSpacing: '-0.01em',
             transition: 'color 0.15s ease',
           }}

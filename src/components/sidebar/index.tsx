@@ -87,13 +87,25 @@ export function Sidebar() {
                   borderRadius: 6,
                   fontSize: 13.5,
                   fontWeight: isActive ? 500 : 400,
-                  color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)',
-                  background: isActive ? 'var(--sidebar-accent)' : 'transparent',
+                  color: isActive ? 'var(--sidebar-item-active-color)' : 'var(--text-muted)',
+                  background: isActive ? 'var(--sidebar-item-active-bg)' : 'transparent',
                   textDecoration: 'none',
                   transition: 'color 0.15s, background 0.15s',
                 }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.color = 'var(--sidebar-item-hover-color)';
+                    e.currentTarget.style.background = 'var(--sidebar-item-hover-bg)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.color = 'var(--text-muted)';
+                    e.currentTarget.style.background = 'transparent';
+                  }
+                }}
               >
-                <span style={{ color: isActive ? 'var(--foreground)' : 'var(--muted-foreground)' }}>{item.icon}</span>
+                <span style={{ color: isActive ? 'var(--sidebar-item-active-color)' : 'var(--text-subtle)' }}>{item.icon}</span>
                 {item.label}
               </Link>
             );
@@ -111,7 +123,7 @@ export function Sidebar() {
               borderRadius: 6,
               fontSize: 13.5,
               fontWeight: 400,
-              color: 'var(--muted-foreground)',
+              color: 'var(--text-muted)',
               background: 'transparent',
               border: 'none',
               width: '100%',
@@ -120,15 +132,15 @@ export function Sidebar() {
               transition: 'color 0.15s, background 0.15s',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--foreground)';
-              e.currentTarget.style.background = 'var(--sidebar-accent)';
+              e.currentTarget.style.color = 'var(--sidebar-item-hover-color)';
+              e.currentTarget.style.background = 'var(--sidebar-item-hover-bg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--muted-foreground)';
+              e.currentTarget.style.color = 'var(--text-muted)';
               e.currentTarget.style.background = 'transparent';
             }}
           >
-            <MessageSquare size={16} style={{ color: 'inherit' }} />
+            <MessageSquare size={16} style={{ color: 'var(--text-subtle)' }} />
             <span>Feedback</span>
           </button>
 
@@ -137,22 +149,22 @@ export function Sidebar() {
         </nav>
 
         {/* User + Sign out */}
-        <div style={{ paddingLeft: 12, paddingRight: 12, borderTop: '1px solid var(--sidebar-border)', paddingTop: 14 }}>
+        <div style={{ paddingLeft: 12, paddingRight: 12, borderTop: '1px solid var(--sidebar-user-border)', paddingTop: 14 }}>
           {session?.user && (
             <div style={{ marginBottom: 10 }}>
-              <div style={{ fontSize: 12, color: 'var(--muted-foreground)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 6 }}>
+              <div style={{ fontSize: 12, color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 6 }}>
                 {session.user.name || session.user.email}
               </div>
               <button
                 onClick={() => signOut({ callbackUrl: '/' })}
-                style={{ background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 5, color: 'var(--muted-foreground)', cursor: 'pointer', fontSize: 12, padding: '4px 10px', width: '100%', textAlign: 'left', transition: 'color 0.15s, border-color 0.15s, background 0.15s' }}
+                style={{ background: 'var(--sidebar-signout-bg)', border: '1px solid var(--sidebar-signout-border)', borderRadius: 5, color: 'var(--sidebar-signout-color)', cursor: 'pointer', fontSize: 12, padding: '4px 10px', width: '100%', textAlign: 'left', transition: 'color 0.15s, border-color 0.15s, background 0.15s' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = 'var(--foreground)';
-                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.borderColor = 'var(--input-focus-border)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--muted-foreground)';
-                  e.currentTarget.style.borderColor = 'var(--border)';
+                  e.currentTarget.style.color = 'var(--sidebar-signout-color)';
+                  e.currentTarget.style.borderColor = 'var(--sidebar-signout-border)';
                 }}
               >
                 Sign out

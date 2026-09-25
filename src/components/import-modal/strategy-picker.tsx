@@ -29,10 +29,10 @@ export function StrategyPickerStep({
     <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
       {/* Header */}
       <div>
-        <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--foreground)', margin: 0, marginBottom: 4 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 500, color: 'var(--text-white)', margin: 0, marginBottom: 4 }}>
           Revision Schedule
         </h3>
-        <p style={{ fontSize: 13, color: 'var(--muted-foreground)', margin: 0 }}>
+        <p style={{ fontSize: 13, color: 'var(--text-dim)', margin: 0 }}>
           Determine how these {totalProblems.toLocaleString()} problems enter your spaced repetition rotation.
         </p>
       </div>
@@ -44,8 +44,8 @@ export function StrategyPickerStep({
           className="strategy-card"
           onClick={() => onStrategyChange('staggered')}
           style={{
-            background: strategy === 'staggered' ? 'var(--card)' : 'var(--background)',
-            border: `1px solid ${strategy === 'staggered' ? 'var(--border)' : 'var(--input-border)'}`,
+            background: strategy === 'staggered' ? 'var(--import-card-active-bg)' : 'var(--import-card-inactive-bg)',
+            border: `1px solid ${strategy === 'staggered' ? 'var(--import-card-active-border)' : 'var(--import-card-inactive-border)'}`,
             borderRadius: 6,
             padding: '14px 16px',
             cursor: 'pointer',
@@ -60,7 +60,7 @@ export function StrategyPickerStep({
               width: 16,
               height: 16,
               borderRadius: 8,
-              border: `1px solid ${strategy === 'staggered' ? 'var(--foreground)' : 'var(--muted-foreground)'}`,
+              border: `1px solid ${strategy === 'staggered' ? 'var(--text-white)' : 'var(--text-subtle)'}`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -69,19 +69,19 @@ export function StrategyPickerStep({
             }}
           >
             {strategy === 'staggered' && (
-              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--foreground)' }} />
+              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--text-white)' }} />
             )}
           </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--foreground)' }}>Spread out</span>
+              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--text-white)' }}>Spread out</span>
               <span
                 style={{
                   fontFamily: 'var(--font-geist-mono), monospace',
                   fontSize: 10,
-                  color: 'var(--muted-foreground)',
-                  border: '1px solid var(--input-border)',
+                  color: 'var(--text-dim)',
+                  border: '1px solid var(--import-card-inactive-border)',
                   padding: '1px 5px',
                   borderRadius: 4,
                 }}
@@ -89,8 +89,8 @@ export function StrategyPickerStep({
                 RECOMMENDED
               </span>
             </div>
-            <p style={{ fontSize: 12.5, color: 'var(--muted-foreground)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
-              Revisions are staggered across the next <strong style={{ color: 'var(--foreground)' }}>~{staggeredDays} {staggeredDays === 1 ? 'day' : 'days'}</strong> so you get ~{safePace} problems/day instead of everything hitting at once.
+            <p style={{ fontSize: 12.5, color: 'var(--text-dim)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
+              Revisions are staggered across the next <strong style={{ color: 'var(--text-white)' }}>~{staggeredDays} {staggeredDays === 1 ? 'day' : 'days'}</strong> so you get ~{safePace} problems/day instead of everything hitting at once.
             </p>
 
             {/* Daily Pace Selector */}
@@ -101,8 +101,8 @@ export function StrategyPickerStep({
                 style={{
                   marginTop: 10,
                   padding: '8px 12px',
-                  background: 'var(--input-bg)',
-                  border: '1px solid var(--input-border)',
+                  background: 'var(--import-counter-bg)',
+                  border: '1px solid var(--import-counter-border)',
                   borderRadius: 4,
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -112,8 +112,8 @@ export function StrategyPickerStep({
                 }}
               >
                 <div className="strategy-pace-label" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span style={{ fontSize: 12, color: 'var(--muted-foreground)' }}>Daily pace:</span>
-                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--foreground)' }}>
+                  <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>Daily pace:</span>
+                  <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 12, color: 'var(--text-white)' }}>
                     {safePace} problems/day
                   </span>
                 </div>
@@ -128,9 +128,9 @@ export function StrategyPickerStep({
                         type="button"
                         onClick={() => onDailyPaceChange(preset)}
                         style={{
-                          background: safePace === preset ? 'var(--accent)' : 'none',
-                          color: safePace === preset ? 'var(--foreground)' : 'var(--muted-foreground)',
-                          border: `1px solid ${safePace === preset ? 'var(--border)' : 'var(--input-border)'}`,
+                          background: safePace === preset ? 'var(--import-card-active-border)' : 'none',
+                          color: safePace === preset ? 'var(--text-white)' : 'var(--text-normal)',
+                          border: `1px solid ${safePace === preset ? 'var(--import-card-active-border)' : 'var(--import-counter-border)'}`,
                           borderRadius: 4,
                           padding: '2px 6px',
                           fontSize: 11,
@@ -149,9 +149,9 @@ export function StrategyPickerStep({
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      border: '1px solid var(--input-border)',
+                      border: '1px solid var(--import-counter-border)',
                       borderRadius: 4,
-                      background: 'var(--input-bg)',
+                      background: 'var(--import-counter-bg)',
                     }}
                   >
                     <button
@@ -161,7 +161,7 @@ export function StrategyPickerStep({
                       style={{
                         background: 'transparent',
                         border: 'none',
-                        color: safePace <= 1 ? 'var(--muted)' : 'var(--muted-foreground)',
+                        color: safePace <= 1 ? 'var(--text-faint)' : 'var(--text-normal)',
                         padding: '2px 6px',
                         fontSize: 12,
                         cursor: safePace <= 1 ? 'not-allowed' : 'pointer',
@@ -173,7 +173,7 @@ export function StrategyPickerStep({
                       style={{
                         fontFamily: 'var(--font-geist-mono), monospace',
                         fontSize: 11.5,
-                        color: 'var(--foreground)',
+                        color: 'var(--text-white)',
                         padding: '0 4px',
                         minWidth: 20,
                         textAlign: 'center',
@@ -188,7 +188,7 @@ export function StrategyPickerStep({
                       style={{
                         background: 'transparent',
                         border: 'none',
-                        color: safePace >= 100 ? 'var(--muted)' : 'var(--muted-foreground)',
+                        color: safePace >= 100 ? 'var(--text-faint)' : 'var(--text-normal)',
                         padding: '2px 6px',
                         fontSize: 12,
                         cursor: safePace >= 100 ? 'not-allowed' : 'pointer',
@@ -208,8 +208,8 @@ export function StrategyPickerStep({
           className="strategy-card"
           onClick={() => onStrategyChange('fresh')}
           style={{
-            background: strategy === 'fresh' ? 'var(--card)' : 'var(--background)',
-            border: `1px solid ${strategy === 'fresh' ? 'var(--border)' : 'var(--input-border)'}`,
+            background: strategy === 'fresh' ? 'var(--import-card-active-bg)' : 'var(--import-card-inactive-bg)',
+            border: `1px solid ${strategy === 'fresh' ? 'var(--import-card-active-border)' : 'var(--import-card-inactive-border)'}`,
             borderRadius: 6,
             padding: '14px 16px',
             cursor: 'pointer',
@@ -224,7 +224,7 @@ export function StrategyPickerStep({
               width: 16,
               height: 16,
               borderRadius: 8,
-              border: `1px solid ${strategy === 'fresh' ? 'var(--foreground)' : 'var(--muted-foreground)'}`,
+              border: `1px solid ${strategy === 'fresh' ? 'var(--text-white)' : 'var(--text-subtle)'}`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -233,16 +233,16 @@ export function StrategyPickerStep({
             }}
           >
             {strategy === 'fresh' && (
-              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--foreground)' }} />
+              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--text-white)' }} />
             )}
           </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--foreground)' }}>Start fresh</span>
+              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--text-white)' }}>Start fresh</span>
             </div>
-            <p style={{ fontSize: 12.5, color: 'var(--muted-foreground)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
-              All {totalProblems} problems start at Step 0 and get their first revision in <strong style={{ color: 'var(--foreground)' }}>3 days</strong>, just like newly added problems.
+            <p style={{ fontSize: 12.5, color: 'var(--text-dim)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
+              All {totalProblems} problems start at Step 0 and get their first revision in <strong style={{ color: 'var(--text-white)' }}>3 days</strong>, just like newly added problems.
             </p>
           </div>
         </div>
@@ -252,8 +252,8 @@ export function StrategyPickerStep({
           className="strategy-card"
           onClick={() => onStrategyChange('archive')}
           style={{
-            background: strategy === 'archive' ? 'var(--card)' : 'var(--background)',
-            border: `1px solid ${strategy === 'archive' ? 'var(--border)' : 'var(--input-border)'}`,
+            background: strategy === 'archive' ? 'var(--import-card-active-bg)' : 'var(--import-card-inactive-bg)',
+            border: `1px solid ${strategy === 'archive' ? 'var(--import-card-active-border)' : 'var(--import-card-inactive-border)'}`,
             borderRadius: 6,
             padding: '14px 16px',
             cursor: 'pointer',
@@ -268,7 +268,7 @@ export function StrategyPickerStep({
               width: 16,
               height: 16,
               borderRadius: 8,
-              border: `1px solid ${strategy === 'archive' ? 'var(--foreground)' : 'var(--muted-foreground)'}`,
+              border: `1px solid ${strategy === 'archive' ? 'var(--text-white)' : 'var(--text-subtle)'}`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -277,16 +277,16 @@ export function StrategyPickerStep({
             }}
           >
             {strategy === 'archive' && (
-              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--foreground)' }} />
+              <div style={{ width: 6, height: 6, borderRadius: 3, background: 'var(--text-white)' }} />
             )}
           </div>
 
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--foreground)' }}>No revisions</span>
+              <span style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--text-white)' }}>No revisions</span>
             </div>
-            <p style={{ fontSize: 12.5, color: 'var(--muted-foreground)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
-              Problems are imported as <strong style={{ color: 'var(--foreground)' }}>Mastered</strong>. They stay stored in your archive and will not appear in daily review queues unless reactivated.
+            <p style={{ fontSize: 12.5, color: 'var(--text-dim)', margin: 0, marginTop: 4, lineHeight: 1.5 }}>
+              Problems are imported as <strong style={{ color: 'var(--text-white)' }}>Mastered</strong>. They stay stored in your archive and will not appear in daily review queues unless reactivated.
             </p>
           </div>
         </div>
@@ -299,9 +299,9 @@ export function StrategyPickerStep({
           onClick={onBack}
           style={{
             background: 'none',
-            border: '1px solid var(--input-border)',
+            border: '1px solid var(--import-back-btn-border)',
             borderRadius: 6,
-            color: 'var(--foreground)',
+            color: 'var(--import-back-btn-color)',
             fontSize: 13,
             padding: '6px 14px',
             cursor: 'pointer',
@@ -310,8 +310,8 @@ export function StrategyPickerStep({
             gap: 6,
             transition: 'border-color 0.15s, color 0.15s',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--input-border)'; e.currentTarget.style.color = 'var(--foreground)'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-hover-border)'; e.currentTarget.style.color = 'var(--text-white)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--import-back-btn-border)'; e.currentTarget.style.color = 'var(--import-back-btn-color)'; }}
         >
           <ArrowLeft size={13} />
           Back
