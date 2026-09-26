@@ -1,32 +1,68 @@
 import * as React from 'react';
 
 // @ts-ignore
-import LeetCodeImg from '../../../utils/LeetCode.png';
-// @ts-ignore
-import CodeforcesImg from '../../../utils/Codeforces.png';
-// @ts-ignore
-import GFGImg from '../../../utils/gfg.png';
-// @ts-ignore
 import HackerRankImg from '../../../utils/HackerRank.png';
-// @ts-ignore
-import CodeChefImg from '../../../utils/CodeChef.png';
 
-type PlatformLogoProps = {
+export type PlatformLogoProps = {
   platform: string;
   size?: number;
   padding?: number;
   borderRadius?: number | string;
+  background?: string;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
-const LOGO_CONFIG: Record<string, { img: any; bg: string; padding: number }> = {
-  LEETCODE:   { img: LeetCodeImg,   bg: 'var(--accent)', padding: 3 },
-  CODEFORCES: { img: CodeforcesImg, bg: 'var(--accent)', padding: 3 },
-  GFG:        { img: GFGImg,        bg: 'var(--accent)', padding: 3 },
-  HACKERRANK: { img: HackerRankImg, bg: 'transparent', padding: 0 },
-  CODECHEF:   { img: CodeChefImg,   bg: '#f5f0eb', padding: 3 },
+type LogoConfigItem = {
+  light: string;
+  dark: string;
+  fallbackLight?: string;
+  fallbackDark?: string;
+  hasThemeVariant: boolean;
+  opacity?: number;
 };
 
-function normalizePlatform(platform: string = ''): string {
+const hackerRankSrc = typeof HackerRankImg === 'string' ? HackerRankImg : HackerRankImg?.src || '/HackerRank.png';
+
+const LOGO_CONFIG: Record<string, LogoConfigItem> = {
+  LEETCODE: {
+    light: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/leetcode.svg',
+    dark: 'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/leetcode-dark.svg',
+    fallbackLight: '/leetcode.svg',
+    fallbackDark: '/leetcode-dark.svg',
+    hasThemeVariant: true,
+  },
+  CODEFORCES: {
+    light: '/codeforces.svg',
+    dark: '/codeforces.svg',
+    fallbackLight: '/codeforces.svg',
+    fallbackDark: '/codeforces.svg',
+    hasThemeVariant: false,
+  },
+  GFG: {
+    light: 'https://cdn.simpleicons.org/geeksforgeeks/2F8D46',
+    dark: 'https://cdn.simpleicons.org/geeksforgeeks/2F8D46',
+    fallbackLight: '/gfg.svg',
+    fallbackDark: '/gfg.svg',
+    hasThemeVariant: false,
+  },
+  HACKERRANK: {
+    light: hackerRankSrc,
+    dark: hackerRankSrc,
+    fallbackLight: '/HackerRank.png',
+    fallbackDark: '/HackerRank.png',
+    hasThemeVariant: false,
+  },
+  CODECHEF: {
+    light: 'https://cdn.simpleicons.org/codechef/000000',
+    dark: 'https://cdn.simpleicons.org/codechef/FFFFFF',
+    fallbackLight: '/codechef.svg',
+    fallbackDark: '/codechef-dark.svg',
+    hasThemeVariant: true,
+  },
+};
+
+export function normalizePlatform(platform: string = ''): string {
   const p = (platform || '').trim().toUpperCase();
   if (p === 'GEEKSFORGEEKS' || p === 'GEEKS_FOR_GEEKS') return 'GFG';
   if (p === 'HACKER_RANK') return 'HACKERRANK';
@@ -38,44 +74,71 @@ function normalizePlatform(platform: string = ''): string {
 
 export function PlatformLogo({
   platform = 'LEETCODE',
-  size = 24,
-  padding,
+  size = 20,
+  padding = 0,
   borderRadius = 4,
+  background = 'transparent',
+  className = '',
+  style,
 }: PlatformLogoProps) {
   const key = normalizePlatform(platform);
   const cfg = LOGO_CONFIG[key] || LOGO_CONFIG['LEETCODE'];
-
-  const pad = padding ?? cfg.padding;
-  const src = typeof cfg.img === 'string' ? cfg.img : cfg.img?.src;
   const br = borderRadius ?? 4;
+
+  const imgOpacity = cfg.opacity ?? 1;
 
   return (
     <span
+      className={`inline-flex items-center justify-center shrink-0 select-none overflow-hidden ${className}`}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         width: size,
         height: size,
-        background: cfg.bg,
+        background,
         borderRadius: br,
-        padding: pad,
-        flexShrink: 0,
+        padding,
         boxSizing: 'border-box',
-        overflow: 'hidden',
+        ...style,
       }}
       title={platform}
     >
-      <img
-        src={src}
-        alt={platform}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-          borderRadius: typeof br === 'number' ? `${Math.max(0, br - 1)}px` : br,
-        }}
-      />
+      {cfg.hasThemeVariant ? (
+        <>
+          <img
+            src={cfg.light}
+            alt={platform}
+            style={imgOpacity !== 1 ? { opacity: imgOpacity } : undefined}
+            className="platform-logo-light block w-full h-full object-contain pointer-events-none"
+            onError={(e) => {
+              if (cfg.fallbackLight && !e.currentTarget.src.endsWith(cfg.fallbackLight)) {
+                e.currentTarget.src = cfg.fallbackLight;
+              }
+            }}
+          />
+          <img
+            src={cfg.dark}
+            alt={platform}
+            style={imgOpacity !== 1 ? { opacity: imgOpacity } : undefined}
+            className="platform-logo-dark hidden w-full h-full object-contain pointer-events-none"
+            onError={(e) => {
+              if (cfg.fallbackDark && !e.currentTarget.src.endsWith(cfg.fallbackDark)) {
+                e.currentTarget.src = cfg.fallbackDark;
+              }
+            }}
+          />
+        </>
+      ) : (
+        <img
+          src={cfg.light}
+          alt={platform}
+          style={imgOpacity !== 1 ? { opacity: imgOpacity } : undefined}
+          className="block w-full h-full object-contain pointer-events-none"
+          onError={(e) => {
+            if (cfg.fallbackLight && !e.currentTarget.src.endsWith(cfg.fallbackLight)) {
+              e.currentTarget.src = cfg.fallbackLight;
+            }
+          }}
+        />
+      )}
     </span>
   );
 }

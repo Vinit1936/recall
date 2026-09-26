@@ -331,6 +331,18 @@ html, body {
   transition: none !important;
 }
 
+/* Platform Logos Theme Switching */
+.platform-logo-dark {
+  display: none !important;
+}
+.dark .platform-logo-dark {
+  display: block !important;
+}
+.dark .platform-logo-light {
+  display: none !important;
+}
+
+
 @keyframes rowHighlight {
   0%, 70% {
     background-color: rgba(247, 152, 30, 0.12);
