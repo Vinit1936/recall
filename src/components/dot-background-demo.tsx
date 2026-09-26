@@ -9,7 +9,7 @@ export function DotBackground({
   className?: string;
 }) {
   return (
-    <div className={cn("relative min-h-screen w-full bg-background dark:bg-black text-foreground dark:text-[#f0f0f0] transition-colors", className)}>
+    <div className={cn("relative min-h-screen w-full bg-[var(--bg,#fcfcfb)] dark:bg-[var(--bg,#0a0a0a)] text-foreground dark:text-[#f0f0f0] transition-colors", className)}>
       <div
         className={cn(
           "pointer-events-none fixed inset-0 h-full w-full z-0",
@@ -19,7 +19,7 @@ export function DotBackground({
         )}
       />
       {/* Radial gradient for the container to give a faded look */}
-      <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center bg-background dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] transition-colors" />
+      <div className="pointer-events-none fixed inset-0 z-0 flex items-center justify-center bg-[var(--bg,#fcfcfb)] dark:bg-[var(--bg,#0a0a0a)] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] transition-colors" />
       <div className="relative z-10">{children}</div>
     </div>
   );

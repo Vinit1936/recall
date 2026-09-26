@@ -51,9 +51,9 @@ export function Science() {
             <span
               style={{
                 display: 'block',
-                fontFamily: 'var(--font-display), Georgia, serif',
-                fontStyle: 'italic',
-                fontWeight: 400,
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 300,
                 fontSize: '48px',
                 lineHeight: 1.1,
                 color: 'var(--text-primary)',
@@ -66,9 +66,9 @@ export function Science() {
             <span
               style={{
                 display: 'block',
-                fontFamily: 'var(--font-display), Georgia, serif',
-                fontStyle: 'italic',
-                fontWeight: 400,
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 300,
                 fontSize: '48px',
                 lineHeight: 1.1,
                 color: 'var(--text-primary)',
@@ -91,7 +91,7 @@ export function Science() {
             }}
           >
             Hermann Ebbinghaus proved memory decays exponentially after you learn something. Without timely
-            revision, 90% is lost within a week. Spaced repetition interrupts the decay curve — each review
+            revision, 90% is lost within a week. Spaced repetition interrupts the decay curve. Each review
             resets the clock before the concept fades.
           </p>
 

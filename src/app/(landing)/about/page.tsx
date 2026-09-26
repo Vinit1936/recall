@@ -5,7 +5,7 @@ import { Footer } from '@/components/landing/footer';
 import DotBackgroundDemo from '@/components/dot-background-demo';
 
 export const metadata: Metadata = {
-  title: 'About Us — The Science of Retaining Every Algorithm',
+  title: 'About Us | The Science of Retaining Every Algorithm',
   description:
     'Discover how Recall solves the algorithmic forgetting curve with intelligent spaced repetition for LeetCode and DSA problems.',
   keywords: [
@@ -31,7 +31,7 @@ const SECTIONS = [
   {
     num: '03',
     title: 'Frictionless multi-platform support',
-    desc: 'Recall connects seamlessly with LeetCode (2,800+ problem dataset for instant autofill), Codeforces, GeeksForGeeks, HackerRank, and CodeChef. Simply enter the problem number or URL — title, difficulty, and topics fill automatically with zero manual overhead.',
+    desc: 'Recall connects seamlessly with LeetCode (2,800+ problem dataset for instant autofill), Codeforces, GeeksForGeeks, HackerRank, and CodeChef. Simply enter the problem number or URL: title, difficulty, and topics fill automatically with zero manual overhead.',
   },
   {
     num: '04',
@@ -69,9 +69,9 @@ export default function AboutPage() {
           {/* Heading */}
           <h1
             style={{
-              fontFamily: 'var(--font-display), Georgia, serif',
-              fontStyle: 'italic',
-              fontWeight: 400,
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontStyle: 'normal',
+              fontWeight: 300,
               fontSize: 'clamp(34px, 4vw, 46px)',
               color: 'var(--text-primary)',
               lineHeight: 1.15,

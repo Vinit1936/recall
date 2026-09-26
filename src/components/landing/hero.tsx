@@ -21,23 +21,23 @@ interface HeroProps {
 }
 
 export function Hero({ TableDemo }: HeroProps) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery('(max-width: 1024px)');
 
   return (
-    <section style={{ position: 'relative' }}>
+    <section style={{ position: 'relative', overflowX: 'clip', width: '100%' }}>
       {/* Main grid */}
       <div
         data-hero-grid
         className="hero-v2-grid"
         style={{
-          minHeight: '100vh',
+          minHeight: 'calc(100vh - 52px)',
           paddingTop: '52px',
+          paddingLeft: 'max(28px, calc((100vw - 1640px) / 2))',
+          paddingRight: 0,
           display: 'grid',
-          gridTemplateColumns: '420px 1fr',
-          gap: 0,
-          maxWidth: 'clamp(1280px, 92vw, 1800px)',
-          margin: '0 auto',
-          paddingLeft: '40px',
+          gridTemplateColumns: 'minmax(390px, 430px) 1fr',
+          gap: '40px',
+          width: '100%',
           alignItems: 'center',
           boxSizing: 'border-box',
         }}
@@ -46,62 +46,49 @@ export function Hero({ TableDemo }: HeroProps) {
         <div
           data-hero-left
           style={{
-            paddingRight: '48px',
-            paddingTop: '80px',
-            paddingBottom: '80px',
             display: 'flex',
             flexDirection: 'column',
-            gap: 0,
+            justifyContent: 'center',
+            paddingTop: isMobile ? '24px' : '110px',
+            paddingBottom: '24px',
+            transform: 'translateX(-8px)',
           }}
         >
           {/* Label */}
-          <motion.div custom={0} initial="hidden" animate="visible" variants={itemVariants} style={{ marginBottom: '20px' }}>
+          <motion.div custom={0} initial="hidden" animate="visible" variants={itemVariants} style={{ marginBottom: '16px' }}>
             <span
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
                 fontSize: '11px',
                 color: 'var(--text-secondary)',
-                letterSpacing: '0.1em',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
               }}
             >
               Spaced repetition for DSA
             </span>
           </motion.div>
 
-          {/* Headline */}
-          <motion.div custom={1} initial="hidden" animate="visible" variants={itemVariants} style={{ marginBottom: '24px' }}>
+          {/* Headline — lightweight (300), confident hero size fitting strictly in 2 lines */}
+          <motion.div custom={1} initial="hidden" animate="visible" variants={itemVariants} style={{ marginBottom: '18px' }}>
             <h1 data-hero-title style={{ margin: 0, padding: 0 }}>
               <span
                 style={{
                   display: 'block',
-                  fontFamily: 'var(--font-display), Georgia, serif',
-                  fontStyle: 'italic',
-                  fontWeight: 400,
-                  fontSize: '64px',
-                  lineHeight: 1.05,
-                  letterSpacing: '-0.02em',
-                  color: 'var(--text-primary)',
-                  paddingBottom: '10px',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontStyle: 'normal',
+                  fontWeight: 300,
+                  fontSize: 'clamp(32px, 3.2vw, 42px)',
+                  lineHeight: 1.12,
+                  letterSpacing: '-0.025em',
                 }}
               >
-                Never forget
-              </span>
-              {/* Editorial rule between lines */}
-              <div style={{ width: '100%', height: '1px', background: 'var(--border)', marginBottom: '10px' }} />
-              <span
-                style={{
-                  display: 'block',
-                  fontFamily: 'var(--font-display), Georgia, serif',
-                  fontStyle: 'italic',
-                  fontWeight: 400,
-                  fontSize: '64px',
-                  lineHeight: 1.05,
-                  letterSpacing: '-0.02em',
-                  color: 'var(--text-primary)',
-                  paddingTop: '4px',
-                }}
-              >
-                what you solved.
+                <span style={{ color: 'var(--text-primary)', display: 'block' }}>
+                  Turn solved problems
+                </span>
+                <span style={{ color: 'var(--hero-muted-text, #71717a)', display: 'block' }}>
+                  into lasting intuition.
+                </span>
               </span>
             </h1>
           </motion.div>
@@ -114,17 +101,16 @@ export function Hero({ TableDemo }: HeroProps) {
             variants={itemVariants}
             style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '15px',
-              color: 'var(--text-tertiary)',
-              lineHeight: 1.7,
-              maxWidth: '320px',
+              fontSize: '14.5px',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.6,
+              letterSpacing: '-0.01em',
+              maxWidth: '420px',
               margin: 0,
-              marginBottom: '40px',
+              marginBottom: '28px',
             }}
           >
-            Recall schedules your DSA revision automatically.
-            <br />
-            Solve once. Remember forever.
+            You solve a problem today and forget it next week. Recall reminds you to revisit questions right before you forget them, so you remember patterns in your interviews.
           </motion.p>
 
           {/* CTA buttons */}
@@ -135,11 +121,11 @@ export function Hero({ TableDemo }: HeroProps) {
             animate="visible"
             variants={itemVariants}
             style={{
-              marginTop: '40px',
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
               flexWrap: 'wrap',
+              marginBottom: '16px',
             }}
           >
             <Link
@@ -215,14 +201,13 @@ export function Hero({ TableDemo }: HeroProps) {
             initial="hidden"
             animate="visible"
             variants={itemVariants}
-            style={{ marginTop: '32px' }}
           >
             <span
               style={{
                 fontFamily: 'var(--font-geist-mono), monospace',
-                fontSize: '10px',
-                color: '#2a2a2a',
-                letterSpacing: '0.05em',
+                fontSize: '11px',
+                color: 'var(--text-tertiary)',
+                letterSpacing: '0.04em',
               }}
             >
               Built by a student, for students grinding DSA
@@ -237,16 +222,18 @@ export function Hero({ TableDemo }: HeroProps) {
           )}
         </div>
 
-        {/* Right column — demo bleeds right edge */}
+        {/* Right column — demo bleeds off right edge of screen */}
         <div
           data-hero-right
           className="hero-v2-right"
           style={{
-            height: '100vh',
-            paddingTop: '52px',
             display: 'flex',
             alignItems: 'center',
-            paddingLeft: '40px',
+            justifyContent: 'flex-start',
+            width: '100%',
+            paddingTop: '64px',
+            paddingBottom: '32px',
+            overflow: 'visible',
           }}
         >
           {!isMobile && (
@@ -255,9 +242,13 @@ export function Hero({ TableDemo }: HeroProps) {
               initial={{ opacity: 0, x: 40, scale: 0.97 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const, delay: 0.5 }}
-              style={{ width: '100%', marginRight: '-40px' }}
+              style={{
+                width: 'max(980px, calc(100% + 140px))',
+                minWidth: '920px',
+                flexShrink: 0,
+              }}
             >
-              <Chrome url="recallx.tech" height={480}>
+              <Chrome url="recallx.tech" height={530}>
                 <TableDemo />
               </Chrome>
             </motion.div>
@@ -265,100 +256,26 @@ export function Hero({ TableDemo }: HeroProps) {
         </div>
       </div>
 
-      {/* Stats bar — Horizontally moving ticker with latest capabilities */}
-      <div
-        data-hero-stats
-        style={{
-          borderTop: '1px solid var(--border-subtle)',
-          borderBottom: '1px solid var(--border-subtle)',
-          padding: '24px 0',
-          overflow: 'hidden',
-          position: 'relative',
-          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-        }}
-      >
-        <motion.div
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ repeat: Infinity, ease: 'linear', duration: 35 }}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '56px',
-            width: 'max-content',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          {[
-            { number: '3,400+', label: 'LeetCode problems indexed' },
-            { number: '5 platforms', label: 'LeetCode, Codeforces, GFG & more' },
-            { number: '+3 → +30 days', label: 'Automatic revision schedule' },
-            { number: '3 confidence levels', label: 'Clean, Shaky, Struggled' },
-            { number: 'Smart auto-fill', label: 'Instant title & topic import' },
-            { number: 'Daily revision queue', label: 'Never miss a problem review' },
-            { number: 'Streak tracking', label: 'Heatmaps & activity logs' },
-            { number: '100% free', label: 'No credit card required' },
-            // Repeated for infinite seamless loop
-            { number: '3,400+', label: 'LeetCode problems indexed' },
-            { number: '5 platforms', label: 'LeetCode, Codeforces, GFG & more' },
-            { number: '+3 → +30 days', label: 'Automatic revision schedule' },
-            { number: '3 confidence levels', label: 'Clean, Shaky, Struggled' },
-            { number: 'Smart auto-fill', label: 'Instant title & topic import' },
-            { number: 'Daily revision queue', label: 'Never miss a problem review' },
-            { number: 'Streak tracking', label: 'Heatmaps & activity logs' },
-            { number: '100% free', label: 'No credit card required' },
-          ].map((item, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '56px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-display), Georgia, serif',
-                    fontStyle: 'italic',
-                    fontSize: '34px',
-                    color: 'var(--text-primary)',
-                    lineHeight: 1,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {item.number}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-geist-mono), monospace',
-                    fontSize: '10px',
-                    color: 'var(--text-tertiary)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {item.label}
-                </div>
-              </div>
-              <span
-                style={{
-                  fontFamily: 'var(--font-geist-mono), monospace',
-                  color: 'var(--text-disabled)',
-                  fontSize: '24px',
-                  userSelect: 'none',
-                }}
-              >
-                ·
-              </span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
+
 
       <style>{`
-        @media (max-width: 768px) {
+        :root {
+          --hero-muted-text: #71717a;
+        }
+        .dark {
+          --hero-muted-text: #8e8e8e;
+        }
+        @media (max-width: 1024px) {
           .hero-v2-grid {
             grid-template-columns: 1fr !important;
-            padding-left: 0 !important;
+            gap: 32px !important;
+            padding: 72px 24px 40px !important;
+            min-height: auto !important;
           }
           .hero-v2-right { display: none !important; }
-          .hero-v2-grid > div:first-child {
-            padding: 80px 24px 40px !important;
+          div[data-hero-left] {
+            transform: none !important;
+            padding-top: 16px !important;
           }
         }
       `}</style>

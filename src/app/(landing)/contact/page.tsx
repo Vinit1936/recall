@@ -52,9 +52,9 @@ export default function ContactPage() {
           {/* Heading */}
           <h1
             style={{
-              fontFamily: 'var(--font-display), Georgia, serif',
-              fontStyle: 'italic',
-              fontWeight: 400,
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontStyle: 'normal',
+              fontWeight: 300,
               fontSize: 'clamp(34px, 4vw, 46px)',
               color: 'var(--text-primary)',
               lineHeight: 1.15,

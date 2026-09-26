@@ -101,9 +101,9 @@ export function FinalCTA() {
 
         <h2
           style={{
-            fontFamily: 'var(--font-display), Georgia, serif',
-            fontStyle: 'italic',
-            fontWeight: 400,
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontStyle: 'normal',
+            fontWeight: 300,
             fontSize: 'clamp(40px, 5vw, 72px)',
             color: 'var(--text-primary)',
             letterSpacing: '-0.02em',

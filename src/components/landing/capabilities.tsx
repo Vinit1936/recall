@@ -14,13 +14,13 @@ const CARDS = [
     num: '02',
     category: 'Automation',
     title: 'Multi-Platform Sync',
-    desc: 'Instant title, difficulty, and topic extraction for LeetCode (3,400+ problems indexed), Codeforces, HackerRank, GFG, and CodeChef. Type the ID — everything fills in.',
+    desc: 'Instant title, difficulty, and topic extraction for LeetCode (3,400+ problems indexed), Codeforces, HackerRank, GFG, and CodeChef. Type the ID, and everything fills in.',
   },
   {
     num: '03',
     category: 'Flexibility',
     title: 'Custom Columns',
-    desc: 'Add custom columns to your tracker — Approach Summary, Time Complexity, Companies Asked, Pattern — anything you need. Stored per-problem, visible everywhere.',
+    desc: 'Add custom columns to your tracker (Approach Summary, Time Complexity, Companies Asked, Pattern) or anything you need. Stored per-problem, visible everywhere.',
   },
   {
     num: '04',

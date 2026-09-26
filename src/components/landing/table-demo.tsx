@@ -9,11 +9,11 @@ import { FakeCursor, CursorHandle } from './fake-cursor';
 import { Pill } from '@/components/ui/pill';
 
 const INITIAL_PROBLEMS = [
-  { id: 1, platform: 'CODEFORCES', number: '187', title: 'Target Practice', difficulty: 'EASY', topic: 'implementation', status: 'Clean', notes: 'two pointer', statusColor: '#4ade80', textColor: '#4ade80' },
-  { id: 2, platform: 'CODECHEF', number: '21', title: 'Triple Xor', difficulty: 'EASY', topic: 'Bitwise', status: 'Shaky', notes: 'bit manip', statusColor: '#fb923c', textColor: '#fb923c' },
-  { id: 3, platform: 'HACKERRANK', number: '474', title: 'Luck Balance', difficulty: 'EASY', topic: 'Greedy', status: 'Struggled', notes: 'sorting', statusColor: '#f87171', textColor: '#f87171' },
-  { id: 4, platform: 'GFG', number: '170', title: 'Nth Fibonacci', difficulty: 'MEDIUM', topic: 'DP', status: 'Mastered', notes: 'dp memo', statusColor: '#a855f7', textColor: '#c084fc' },
-  { id: 5, platform: 'LEETCODE', number: '66', title: 'Plus One', difficulty: 'EASY', topic: 'Array', status: 'Clean', notes: 'math carry', statusColor: '#4ade80', textColor: '#4ade80' },
+  { id: 1, platform: 'CODEFORCES', number: '187', title: 'Target Practice', difficulty: 'EASY', topic: 'implementation', status: 'Clean', nextReview: 'In 7 days', notes: 'two pointer', statusColor: '#4ade80', textColor: '#4ade80' },
+  { id: 2, platform: 'CODECHEF', number: '21', title: 'Triple Xor', difficulty: 'EASY', topic: 'Bitwise', status: 'Shaky', nextReview: 'Tomorrow', notes: 'bit manip', statusColor: '#fb923c', textColor: '#fb923c' },
+  { id: 3, platform: 'HACKERRANK', number: '474', title: 'Luck Balance', difficulty: 'EASY', topic: 'Greedy', status: 'Struggled', nextReview: 'Tomorrow', notes: 'sorting', statusColor: '#f87171', textColor: '#f87171' },
+  { id: 4, platform: 'GFG', number: '170', title: 'Nth Fibonacci', difficulty: 'MEDIUM', topic: 'DP', status: 'Mastered', nextReview: 'Mastered', notes: 'dp memo', statusColor: '#a855f7', textColor: '#c084fc' },
+  { id: 5, platform: 'LEETCODE', number: '66', title: 'Plus One', difficulty: 'EASY', topic: 'Array', status: 'Clean', nextReview: 'In 14 days', notes: 'math carry', statusColor: '#4ade80', textColor: '#4ade80' },
 ];
 
 const PLATFORMS_LIST = [
@@ -52,13 +52,13 @@ export function TableDemo() {
   const [isTypingNotes, setIsTypingNotes] = useState(false);
   const [rowFinalized, setRowFinalized] = useState(false);
 
-  const getRelativePos = (el: HTMLElement | null) => {
+  const getElementPos = (el: HTMLElement | null, offsetX?: number) => {
     if (!el || !containerRef.current) return { x: 40, y: 350 };
     const cBox = containerRef.current.getBoundingClientRect();
     const eBox = el.getBoundingClientRect();
     return {
-      x: eBox.left - cBox.left + eBox.width / 2 + 25,
-      y: eBox.top - cBox.top + eBox.height / 2 + 25,
+      x: eBox.left - cBox.left + (offsetX !== undefined ? offsetX : eBox.width / 2),
+      y: eBox.top - cBox.top + eBox.height / 2,
     };
   };
 
@@ -92,29 +92,29 @@ export function TableDemo() {
       if (isCancelled) return;
 
       // t=800ms: cursor fades in near "+ Select a platform"
-      const trigPos = getRelativePos(newRowTriggerRef.current);
-      cursorRef.current?.moveTo(trigPos.x + 30, trigPos.y + 40, 0);
+      const trigPos = getElementPos(newRowTriggerRef.current);
+      cursorRef.current?.moveTo(trigPos.x + 20, trigPos.y + 30, 0);
       cursorRef.current?.show();
       await sleep(300);
       if (isCancelled) return;
 
       // t=1100ms: move cursor to + platform trigger
       await cursorRef.current?.moveTo(trigPos.x, trigPos.y, 0.4);
-      await sleep(300);
+      await sleep(250);
       if (isCancelled) return;
 
       // t=1500ms: click + platform trigger -> dropdown opens
       await cursorRef.current?.click();
       setDropdownOpen(true);
       setNewRowActive(true);
-      await sleep(400);
+      await sleep(350);
       if (isCancelled) return;
 
       // t=1900ms: move cursor to LeetCode option in dropdown
-      const lcPos = getRelativePos(leetCodeOptionRef.current);
+      const lcPos = getElementPos(leetCodeOptionRef.current, 60);
       await cursorRef.current?.moveTo(lcPos.x, lcPos.y, 0.35);
       setHoveredPlatform('LEETCODE');
-      await sleep(350);
+      await sleep(300);
       if (isCancelled) return;
 
       // t=2300ms: click LeetCode option -> dropdown closes, LC logo appears
@@ -122,13 +122,13 @@ export function TableDemo() {
       setHoveredPlatform(null);
       setDropdownOpen(false);
       setSelectedPlatform('LEETCODE');
-      await sleep(400);
+      await sleep(350);
       if (isCancelled) return;
 
       // t=2700ms: move cursor to input cell
-      const inputPos = getRelativePos(inputCellRef.current);
-      await cursorRef.current?.moveTo(inputPos.x + 20, inputPos.y, 0.3);
-      await sleep(300);
+      const inputPos = getElementPos(inputCellRef.current, 32);
+      await cursorRef.current?.moveTo(inputPos.x, inputPos.y, 0.35);
+      await sleep(250);
       if (isCancelled) return;
 
       // t=3000ms: click input cell -> text cursor blinks
@@ -138,11 +138,11 @@ export function TableDemo() {
 
       // Type "234"
       setInputValue('2');
-      await sleep(150);
+      await sleep(140);
       setInputValue('23');
-      await sleep(150);
+      await sleep(140);
       setInputValue('234');
-      await sleep(150);
+      await sleep(140);
 
       // t=3600ms: loading dots appear
       setIsTypingNumber(false);
@@ -154,14 +154,14 @@ export function TableDemo() {
       setIsLoading(false);
       setAutoFilled(true);
       setGreenFlash(true);
-      await sleep(650);
+      await sleep(550);
       setGreenFlash(false);
       if (isCancelled) return;
 
       // t=4800ms: move cursor to Notes cell
-      const notesPos = getRelativePos(notesCellRef.current);
-      await cursorRef.current?.moveTo(notesPos.x, notesPos.y, 0.4);
-      await sleep(400);
+      const notesPos = getElementPos(notesCellRef.current, 18);
+      await cursorRef.current?.moveTo(notesPos.x, notesPos.y, 0.45);
+      await sleep(300);
       if (isCancelled) return;
 
       // t=5300ms: click notes cell -> type "two pointer"
@@ -173,24 +173,24 @@ export function TableDemo() {
       for (let i = 1; i <= noteText.length; i++) {
         if (isCancelled) return;
         setNotesValue(noteText.slice(0, i));
-        await sleep(140);
+        await sleep(110);
       }
       setIsTypingNotes(false);
-      await sleep(500);
+      await sleep(450);
       if (isCancelled) return;
 
       // t=7500ms: cursor moves away, row finalizes
       setRowFinalized(true);
-      const awayPos = { x: notesPos.x + 100, y: notesPos.y + 40 };
+      const awayPos = { x: notesPos.x + 50, y: notesPos.y + 35 };
       await cursorRef.current?.moveTo(awayPos.x, awayPos.y, 0.4);
-      await sleep(400);
+      await sleep(350);
 
       // t=8000ms: cursor fades out
       cursorRef.current?.hide();
-      await sleep(1200);
+      await sleep(1600);
       if (isCancelled) return;
 
-      // t=9200ms: new row resets and sequence loops
+      // t=9800ms: new row resets and sequence loops
       resetAll();
       await sleep(600);
 
@@ -219,6 +219,7 @@ export function TableDemo() {
         fontSize: '13px',
         color: 'var(--demo-text)',
         userSelect: 'none',
+        minHeight: '520px',
       }}
     >
       <FakeCursor ref={cursorRef} />
@@ -227,7 +228,7 @@ export function TableDemo() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '40px minmax(220px, 1fr) 85px 120px 110px 80px',
+          gridTemplateColumns: '42px 225px 80px 125px 110px 115px minmax(135px, 1fr)',
           height: '34px',
           alignItems: 'center',
           padding: '0 16px',
@@ -245,7 +246,8 @@ export function TableDemo() {
         <div>Diff</div>
         <div>Topic</div>
         <div>Status</div>
-        <div style={{ textAlign: 'right' }}>Revision</div>
+        <div>Next Review</div>
+        <div style={{ paddingLeft: '8px' }}>Notes</div>
       </div>
 
       {/* Rows List */}
@@ -259,7 +261,7 @@ export function TableDemo() {
               key={prob.id}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '40px minmax(220px, 1fr) 85px 120px 110px 80px',
+                gridTemplateColumns: '42px 225px 80px 125px 110px 115px minmax(135px, 1fr)',
                 height: '44px',
                 alignItems: 'center',
                 padding: '0 16px',
@@ -298,7 +300,7 @@ export function TableDemo() {
                     {prob.topic}
                   </Pill>
                 ) : (
-                  <span style={{ color: 'var(--demo-placeholder)', fontSize: '12px' }}>—</span>
+                  <span style={{ color: 'var(--demo-placeholder)', fontSize: '12px' }}>-</span>
                 )}
               </div>
 
@@ -310,10 +312,23 @@ export function TableDemo() {
                 </span>
               </div>
 
+              {/* Next Review */}
+              <div>
+                <span
+                  style={{
+                    fontSize: '11.5px',
+                    fontFamily: 'var(--font-geist-mono), monospace',
+                    color: prob.nextReview === 'Tomorrow' ? '#fb923c' : prob.nextReview === 'Mastered' ? 'var(--text-tertiary)' : 'var(--demo-text-muted)',
+                  }}
+                >
+                  {prob.nextReview}
+                </span>
+              </div>
+
               {/* Notes */}
               <div
                 style={{
-                  textAlign: 'right',
+                  paddingLeft: '8px',
                   fontSize: '11.5px',
                   fontFamily: 'var(--font-geist-mono), monospace',
                   color: 'var(--demo-text-muted)',
@@ -322,7 +337,7 @@ export function TableDemo() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                {prob.notes || '—'}
+                {prob.notes || '-'}
               </div>
             </div>
           );
@@ -333,7 +348,7 @@ export function TableDemo() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '40px minmax(220px, 1fr) 85px 120px 110px 80px',
+              gridTemplateColumns: '42px 225px 80px 125px 110px 115px minmax(135px, 1fr)',
               height: '44px',
               alignItems: 'center',
               padding: '0 16px',
@@ -395,7 +410,11 @@ export function TableDemo() {
                   <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '13px', color: inputValue ? 'var(--demo-text)' : 'var(--demo-text-faint)' }}>
                     {inputValue || 'Problem number (e.g. 1)...'}
                     {isTypingNumber && (
-                      <span style={{ display: 'inline-block', width: '2px', height: '12px', background: 'var(--demo-text)', marginLeft: '2px' }} />
+                      <motion.span
+                        animate={{ opacity: [1, 0, 1] }}
+                        transition={{ repeat: Infinity, duration: 0.8 }}
+                        style={{ display: 'inline-block', width: '2px', height: '12px', background: 'var(--demo-text)', marginLeft: '2px', verticalAlign: 'middle' }}
+                      />
                     )}
                   </span>
                   {isLoading && <span style={{ color: 'var(--demo-text-faint)', fontSize: '12px', letterSpacing: '2px' }}>...</span>}
@@ -456,14 +475,30 @@ export function TableDemo() {
               )}
             </div>
 
-            {/* Revision / Notes */}
-            <div ref={notesCellRef} style={{ textAlign: 'right' }}>
+            {/* Next Review */}
+            <div>
+              {autoFilled && (
+                <span style={{ fontSize: '11.5px', fontFamily: 'var(--font-geist-mono), monospace', color: '#fb923c' }}>
+                  In 3 days
+                </span>
+              )}
+            </div>
+
+            {/* Notes */}
+            <div ref={notesCellRef} style={{ paddingLeft: '8px' }}>
               {notesValue || isTypingNotes ? (
-                <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '12px', color: 'var(--demo-text-muted)' }}>
+                <span style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: '11.5px', color: 'var(--demo-text)' }}>
                   {notesValue}
+                  {isTypingNotes && (
+                    <motion.span
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{ repeat: Infinity, duration: 0.8 }}
+                      style={{ display: 'inline-block', width: '2px', height: '11px', background: 'var(--demo-text)', marginLeft: '2px', verticalAlign: 'middle' }}
+                    />
+                  )}
                 </span>
               ) : autoFilled ? (
-                <span style={{ fontSize: '12px', fontFamily: 'var(--font-geist-mono), monospace', color: '#f87171' }}>1d</span>
+                <span style={{ fontSize: '11.5px', fontFamily: 'var(--font-geist-mono), monospace', color: 'var(--demo-text-faint)' }}>-</span>
               ) : null}
             </div>
           </div>

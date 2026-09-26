@@ -4,7 +4,7 @@ import { Footer } from '@/components/landing/footer';
 import DotBackgroundDemo from '@/components/dot-background-demo';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — How We Protect Your Data',
+  title: 'Privacy Policy | How We Protect Your Data',
   description:
     'Read the Recall Privacy Policy. Learn how we handle your problem tracking data, authentication, platform handles, and guarantee your data privacy.',
   keywords: ['Recall privacy policy', 'data security', 'spaced repetition privacy', 'LeetCode tracker privacy'],
@@ -67,9 +67,9 @@ export default function PrivacyPolicyPage() {
           {/* Heading */}
           <h1
             style={{
-              fontFamily: 'var(--font-display), Georgia, serif',
-              fontStyle: 'italic',
-              fontWeight: 400,
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontStyle: 'normal',
+              fontWeight: 300,
               fontSize: 'clamp(34px, 4vw, 46px)',
               color: 'var(--text-primary)',
               lineHeight: 1.15,

@@ -376,7 +376,7 @@ export function TableDemoMobile() {
                         Easy
                       </motion.span>
                     ) : (
-                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>—</span>
+                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>-</span>
                     )}
                   </div>
 
@@ -394,7 +394,7 @@ export function TableDemoMobile() {
                         </span>
                       </motion.div>
                     ) : (
-                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>—</span>
+                      <span style={{ color: 'var(--demo-placeholder)', fontSize: '10px' }}>-</span>
                     )}
                   </div>
                 </motion.div>

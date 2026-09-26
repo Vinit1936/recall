@@ -4,7 +4,7 @@ import { Footer } from '@/components/landing/footer';
 import DotBackgroundDemo from '@/components/dot-background-demo';
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions — User Agreement',
+  title: 'Terms and Conditions | User Agreement',
   description:
     'Review the Terms and Conditions of Recall. Read our user agreement, acceptable use guidelines, and platform service terms.',
   keywords: ['Recall terms of service', 'Recall terms and conditions', 'user agreement'],
@@ -67,9 +67,9 @@ export default function TermsPage() {
           {/* Heading */}
           <h1
             style={{
-              fontFamily: 'var(--font-display), Georgia, serif',
-              fontStyle: 'italic',
-              fontWeight: 400,
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontStyle: 'normal',
+              fontWeight: 300,
               fontSize: 'clamp(34px, 4vw, 46px)',
               color: 'var(--text-primary)',
               lineHeight: 1.15,

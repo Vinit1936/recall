@@ -11,10 +11,10 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    absolute: 'Recall — Never Forget What You Solved',
+    absolute: 'Recall | Turn Solved Problems Into Lasting Intuition',
   },
   description:
-    'Automated spaced repetition queue for LeetCode, Codeforces, GFG, HackerRank, and CodeChef. Never forget what you solved.',
+    'Automated spaced repetition queue for LeetCode, Codeforces, and DSA. Revisit questions right before you forget them, so you remember patterns in your interviews.',
   keywords: [
     'DSA revision',
     'spaced repetition',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://recallx.tech',
     siteName: 'Recall',
-    title: 'Recall — Never Forget What You Solved',
+    title: 'Recall | Turn Solved Problems Into Lasting Intuition',
     description:
       'Automated spaced repetition queue for LeetCode, Codeforces, GFG, HackerRank, and CodeChef.',
     images: [
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
         url: 'https://recallx.tech/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Recall — Never Forget What You Solved',
+        alt: 'Recall | Turn Solved Problems Into Lasting Intuition',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Recall — Never Forget What You Solved',
+    title: 'Recall | Turn Solved Problems Into Lasting Intuition',
     description:
       'Automated spaced repetition queue for LeetCode, Codeforces, GFG, HackerRank, and CodeChef.',
     images: ['https://recallx.tech/og-image.png'],
@@ -90,8 +90,10 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
     >
       <style>{`
         :root {
-          --bg: #ffffff;
+          --bg: #fcfcfb;
+          --background: #fcfcfb;
           --surface: #ffffff;
+          --nav-bg: rgba(252, 252, 251, 0.85);
           --border: #e4e4e7;
           --border-subtle: #f4f4f5;
           --text-primary: #09090b;
@@ -124,8 +126,10 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
            --demo-dropdown-border: #d4d4d8;
          }
          .dark {
-          --bg: #000000;
+          --bg: #0a0a0a;
+          --background: #0a0a0a;
           --surface: #0f0f0f;
+          --nav-bg: rgba(10, 10, 10, 0.85);
           --border: #1a1a1a;
           --border-subtle: #111111;
           --text-primary: #f0f0f0;
@@ -141,21 +145,21 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
           --hard-bg: #3a0f0f;
           --hard-text: #f87171;
           --hard-border: #5a1a1a;
-          --demo-bg: #0a0a0b;
-          --demo-surface: #0d0d0e;
-          --demo-surface-raised: #121214;
-          --demo-surface-hover: #252528;
-          --demo-border: #18181a;
-          --demo-border-subtle: #151517;
-          --demo-text: #ececec;
-          --demo-text-muted: #888888;
-          --demo-text-faint: #555555;
-          --demo-placeholder: #444444;
-          --demo-control: #1e1e1e;
-          --demo-control-active: #1a1a20;
-          --demo-control-border: #333333;
-          --demo-dropdown: #161618;
-          --demo-dropdown-border: #26262a;
+          --demo-bg: #121214;
+          --demo-surface: #18181b;
+          --demo-surface-raised: #1c1c20;
+          --demo-surface-hover: #27272a;
+          --demo-border: #27272a;
+          --demo-border-subtle: #1f1f23;
+          --demo-text: #f4f4f5;
+          --demo-text-muted: #a1a1aa;
+          --demo-text-faint: #71717a;
+          --demo-placeholder: #52525b;
+          --demo-control: #1f1f23;
+          --demo-control-active: #27272a;
+          --demo-control-border: #3f3f46;
+          --demo-dropdown: #18181b;
+          --demo-dropdown-border: #3f3f46;
          }
         * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
         html { scroll-behavior: auto; }

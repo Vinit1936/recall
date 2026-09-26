@@ -48,7 +48,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Recall — Never Forget What You Solved',
+    default: 'Recall | Turn Solved Problems Into Lasting Intuition',
     template: '%s | Recall',
   },
   description:
@@ -188,7 +188,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Recall',
-    title: 'Recall — Never Forget What You Solved',
+    title: 'Recall | Turn Solved Problems Into Lasting Intuition',
     description:
       'Never forget what you solved. Automated spaced repetition queue (+3, +7, +14, +30 days) for LeetCode, Codeforces, HackerRank, GFG, and CodeChef.',
     images: [
@@ -196,14 +196,14 @@ export const metadata: Metadata = {
         url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'Recall — Never Forget What You Solved',
+        alt: 'Recall | Turn Solved Problems Into Lasting Intuition',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Recall — Never Forget What You Solved',
+    title: 'Recall | Turn Solved Problems Into Lasting Intuition',
     description:
       'Automated spaced repetition queue for LeetCode, Codeforces, GFG, HackerRank, and CodeChef.',
     creator: '@vinitpatil193',

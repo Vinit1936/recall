@@ -6,23 +6,23 @@ import { motion, AnimatePresence, useInView } from 'motion/react';
 const FAQS = [
   {
     q: 'How does Recall calculate when a problem is due for revision?',
-    a: 'Recall uses a spaced repetition algorithm where problems are reviewed at increasing intervals: 3, 7, 14, and 30 days. When you mark a problem Clean, the interval advances to the next step. Marking Struggled resets it to day 3. Marking Shaky repeats the same interval. This mirrors how human memory consolidates — frequent early reviews, then longer gaps as the concept stabilizes.',
+    a: 'Recall uses a spaced repetition algorithm where problems are reviewed at increasing intervals: 3, 7, 14, and 30 days. When you mark a problem Clean, the interval advances to the next step. Marking Struggled resets it to day 3. Marking Shaky repeats the same interval. This mirrors how human memory consolidates: frequent early reviews, then longer gaps as the concept stabilizes.',
   },
   {
     q: 'Which coding platforms does Recall support?',
-    a: 'Recall supports LeetCode (with a local dataset of 2,800+ problems for instant auto-fill), Codeforces, GeeksForGeeks, HackerRank, and CodeChef. For LeetCode, you only need to enter the problem number — title, difficulty, and topic fill in automatically. For other platforms, paste the URL and Recall extracts the metadata.',
+    a: 'Recall supports LeetCode (with a local dataset of 2,800+ problems for instant auto-fill), Codeforces, GeeksForGeeks, HackerRank, and CodeChef. For LeetCode, you only need to enter the problem number: title, difficulty, and topic fill in automatically. For other platforms, paste the URL and Recall extracts the metadata.',
   },
   {
     q: 'Is Recall free to use?',
-    a: 'Yes. Recall is completely free with no credit card required. It runs on Neon PostgreSQL (free tier) and Vercel (hobby tier), so there are no infrastructure costs passed to users. The project is open source — you can also self-host it.',
+    a: 'Yes. Recall is completely free with no credit card required. It runs on Neon PostgreSQL (free tier) and Vercel (hobby tier), so there are no infrastructure costs passed to users. The project is open source, and you can also self-host it.',
   },
   {
     q: 'What is spaced repetition and why does it work for DSA?',
-    a: 'Spaced repetition is a learning technique based on the Ebbinghaus forgetting curve — the discovery that memory decays exponentially without reinforcement. By reviewing material at increasing intervals (3, 7, 14, 30 days), you intercept the forgetting curve just before a concept is lost. For DSA, this means you don\'t re-solve problems you\'ve already mastered, and weak problems get more repetition until they\'re solid.',
+    a: 'Spaced repetition is a learning technique based on the Ebbinghaus forgetting curve, the discovery that memory decays exponentially without reinforcement. By reviewing material at increasing intervals (3, 7, 14, 30 days), you intercept the forgetting curve just before a concept is lost. For DSA, this means you don\'t re-solve problems you\'ve already mastered, and weak problems get more repetition until they\'re solid.',
   },
   {
     q: 'How is this different from just using a Notion database?',
-    a: 'A Notion database requires you to manually decide what to revise and when. Recall automates the scheduling — you add a problem once, and the system tells you when to revisit it based on your recall confidence. It also tracks revision history, calculates streaks, and surfaces overdue problems automatically. Think of it as Notion\'s table UI with a scheduling engine underneath.',
+    a: 'A Notion database requires you to manually decide what to revise and when. Recall automates the scheduling: you add a problem once, and the system tells you when to revisit it based on your recall confidence. It also tracks revision history, calculates streaks, and surfaces overdue problems automatically. Think of it as Notion\'s table UI with a scheduling engine underneath.',
   },
   {
     q: 'Can I add problems that aren\'t on LeetCode?',
@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: 'What happens to my streak if I miss a day?',
-    a: 'Your streak resets to zero if you don\'t clear all due problems on a given day. Overdue problems carry forward to the next day — they accumulate in your Daily Revision list until you clear them. Missing a day doesn\'t change the scheduling of individual problems (they still get rescheduled from the date you actually revised them), only the streak counter resets.',
+    a: 'Your streak resets to zero if you don\'t clear all due problems on a given day. Overdue problems carry forward to the next day, accumulating in your Daily Revision list until you clear them. Missing a day doesn\'t change the scheduling of individual problems (they still get rescheduled from the date you actually revised them), only the streak counter resets.',
   },
   {
     q: 'Can I import my existing problem list?',
@@ -201,9 +201,9 @@ export function FAQ() {
         <h2
           data-faq-title
           style={{
-            fontFamily: 'var(--font-display), Georgia, serif',
-            fontStyle: 'italic',
-            fontWeight: 400,
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontStyle: 'normal',
+            fontWeight: 300,
             fontSize: 'clamp(32px, 3.5vw, 42px)',
             color: 'var(--text-primary)',
             textAlign: 'center',

@@ -755,17 +755,17 @@ html {
   --footer-social-hover-bg: rgba(255, 255, 255, 0.1);
   --footer-social-hover-border: rgba(255, 255, 255, 0.25);
   --footer-social-hover-color: #ffffff;
-  --chrome-border: #1a1a1a;
-  --chrome-bg: #0a0a0a;
-  --chrome-toolbar-bg: #0f0f0f;
-  --chrome-toolbar-border: #111111;
-  --chrome-dot-red: #3a1a1a;
-  --chrome-dot-yellow: #3a3010;
-  --chrome-dot-green: #1a3a1a;
-  --chrome-url-bg: #080808;
-  --chrome-url-border: #1a1a1a;
-  --chrome-url-text: #333333;
-  --chrome-shadow: none;
+  --chrome-border: #27272a;
+  --chrome-bg: #121214;
+  --chrome-toolbar-bg: #18181b;
+  --chrome-toolbar-border: #27272a;
+  --chrome-dot-red: #ef4444;
+  --chrome-dot-yellow: #f59e0b;
+  --chrome-dot-green: #22c55e;
+  --chrome-url-bg: #121214;
+  --chrome-url-border: #27272a;
+  --chrome-url-text: #a1a1aa;
+  --chrome-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 @layer base {
