@@ -400,3 +400,226 @@ export function TopicPickerCell({
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Company Tags Cell (from Leet-Vision)
+// ---------------------------------------------------------------------------
+export function CompanyTagsCell({ problem }: { problem: any }) {
+  const [companies, setCompanies] = useState<string[]>(() => {
+    const raw = problem?.customFields?.companies ?? problem?.companies;
+    return Array.isArray(raw) ? raw : [];
+  });
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  // Auto-fetch if LeetCode problem has no companies yet
+  useEffect(() => {
+    const raw = problem?.customFields?.companies ?? problem?.companies;
+    if (Array.isArray(raw) && raw.length > 0) {
+      setCompanies(raw);
+      return;
+    }
+
+    if (problem?.platform === 'LEETCODE' && problem?.problemNumber > 0 && !companies.length && !loading) {
+      setLoading(true);
+      fetch(`/api/leetvision?id=${problem.problemNumber}`)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (data?.companies && Array.isArray(data.companies) && data.companies.length > 0) {
+            setCompanies(data.companies);
+          }
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }
+  }, [problem?.id, problem?.problemNumber, problem?.platform]);
+
+  if (!companies || companies.length === 0) {
+    if (loading) {
+      return (
+        <span style={{ fontSize: 11, color: 'var(--text-faint)', fontStyle: 'italic', fontFamily: 'var(--font-geist-mono), monospace' }}>
+          fetching...
+        </span>
+      );
+    }
+    return <span style={{ fontSize: 13, color: 'var(--text-faint)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
+  }
+
+  const displayed = companies.slice(0, 2);
+  const remaining = companies.length - displayed.length;
+  const filtered = search.trim()
+    ? companies.filter((c) => c.toLowerCase().includes(search.toLowerCase().trim()))
+    : companies;
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'nowrap', overflow: 'hidden' }}>
+      {displayed.map((comp) => (
+        <span
+          key={comp}
+          title={comp}
+          style={{
+            fontSize: 11,
+            padding: '2px 7px',
+            borderRadius: 4,
+            background: 'rgba(56, 189, 248, 0.08)',
+            color: '#38bdf8',
+            border: '1px solid rgba(56, 189, 248, 0.2)',
+            whiteSpace: 'nowrap',
+            maxWidth: 82,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            fontFamily: 'var(--font-geist-mono), monospace',
+            display: 'inline-block',
+          }}
+        >
+          {comp}
+        </span>
+      ))}
+
+      {remaining > 0 && (
+        <>
+          <button
+            ref={triggerRef}
+            onClick={(e) => {
+              e.stopPropagation();
+              setOpen((o) => !o);
+            }}
+            title={`${remaining} more companies (click to view all)`}
+            style={{
+              fontSize: 10.5,
+              padding: '2px 5px',
+              borderRadius: 4,
+              background: 'rgba(255, 255, 255, 0.06)',
+              color: 'var(--text-muted)',
+              border: '1px solid var(--border)',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              fontFamily: 'var(--font-geist-mono), monospace',
+              display: 'inline-flex',
+              alignItems: 'center',
+              outline: 'none',
+              transition: 'background 0.15s ease',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)')}
+          >
+            +{remaining}
+          </button>
+
+          {open && (
+            <TopLevelPortal anchorRef={triggerRef} onClose={() => setOpen(false)} width={230} minHeight={220}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: 218 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)', paddingBottom: 6 }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--foreground)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    Companies ({companies.length})
+                  </span>
+                  <span style={{ fontSize: 10, color: '#38bdf8', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                    Leet-Vision
+                  </span>
+                </div>
+
+                <input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Filter companies..."
+                  autoFocus
+                  style={{
+                    background: 'var(--input-bg)',
+                    border: '1px solid var(--input-border)',
+                    borderRadius: 4,
+                    color: 'var(--foreground)',
+                    fontSize: 12,
+                    padding: '4px 8px',
+                    width: '100%',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                  }}
+                />
+
+                <div style={{ maxHeight: 180, overflowY: 'auto', display: 'flex', flexWrap: 'wrap', gap: 4, padding: '2px 0' }}>
+                  {filtered.map((comp) => (
+                    <span
+                      key={comp}
+                      style={{
+                        fontSize: 11,
+                        padding: '2px 6px',
+                        borderRadius: 3,
+                        background: 'rgba(56, 189, 248, 0.08)',
+                        color: '#38bdf8',
+                        border: '1px solid rgba(56, 189, 248, 0.2)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {comp}
+                    </span>
+                  ))}
+                  {filtered.length === 0 && (
+                    <div style={{ padding: 8, fontSize: 11, color: 'var(--text-subtle)', textAlign: 'center', width: '100%' }}>
+                      No matching companies
+                    </div>
+                  )}
+                </div>
+              </div>
+            </TopLevelPortal>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Solution Button Cell (Leet-Vision visualizer link)
+// ---------------------------------------------------------------------------
+export function SolutionButtonCell({ problem }: { problem: any }) {
+  const customSolUrl = problem?.customFields?.solutionUrl ?? problem?.solutionUrl;
+  const isLeetCode = problem?.platform === 'LEETCODE' && problem?.problemNumber > 0;
+  const solutionUrl = customSolUrl || (isLeetCode ? `https://leet-vision.com/solution/${problem.problemNumber}` : null);
+
+  if (!solutionUrl) {
+    return <span style={{ fontSize: 13, color: 'var(--text-faint)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>;
+  }
+
+  return (
+    <a
+      href={solutionUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      title="Open Leet-Vision solution visualizer"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 5,
+        padding: '3px 9px',
+        borderRadius: 5,
+        fontSize: 11,
+        fontWeight: 500,
+        textDecoration: 'none',
+        background: 'rgba(249, 115, 22, 0.1)',
+        color: '#fb923c',
+        border: '1px solid rgba(249, 115, 22, 0.25)',
+        transition: 'all 0.15s ease',
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.background = 'rgba(249, 115, 22, 0.2)';
+        e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.45)';
+        e.currentTarget.style.transform = 'translateY(-0.5px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.background = 'rgba(249, 115, 22, 0.1)';
+        e.currentTarget.style.borderColor = 'rgba(249, 115, 22, 0.25)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      <span style={{ fontSize: 9 }}>▶</span>
+      <span>Solution</span>
+      <span style={{ fontSize: 9, opacity: 0.7 }}>↗</span>
+    </a>
+  );
+}
+

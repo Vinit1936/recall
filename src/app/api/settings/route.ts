@@ -24,11 +24,27 @@ export async function GET(_request: NextRequest) {
 
     if (!user) return Response.json({ error: 'User not found' }, { status: 404 });
 
+    let dailyTarget = 5;
+    let emailNotifications = false;
+    try {
+      const res = await prisma.$queryRawUnsafe<{ dailyTarget: number; emailNotifications: boolean }[]>(
+        `SELECT "dailyTarget", "emailNotifications" FROM "User" WHERE "id" = $1 LIMIT 1`,
+        userId
+      );
+      if (res && res[0]) {
+        if (typeof res[0].dailyTarget === 'number') dailyTarget = res[0].dailyTarget;
+        if (typeof res[0].emailNotifications === 'boolean') emailNotifications = res[0].emailNotifications;
+      }
+    } catch {
+      // fallback to 5 and false
+    }
+
     return Response.json({
       user,
       preferences: {
         defaultPlatform: 'LEETCODE',
-        dailyTarget: 5,
+        dailyTarget,
+        emailNotifications,
       },
     });
   } catch (e) {
@@ -44,7 +60,7 @@ export async function PATCH(request: NextRequest) {
     const userId = session.user.id;
 
     const body = await request.json();
-    const { name } = body;
+    const { name, dailyTarget, emailNotifications } = body;
 
     const updatedUser = await prisma.user.update({
       where: { id: userId },
@@ -57,6 +73,30 @@ export async function PATCH(request: NextRequest) {
         email: true,
       },
     });
+
+    if (dailyTarget !== undefined && typeof dailyTarget === 'number') {
+      try {
+        await prisma.$executeRawUnsafe(
+          `UPDATE "User" SET "dailyTarget" = $1 WHERE "id" = $2`,
+          dailyTarget,
+          userId
+        );
+      } catch (err) {
+        console.warn('Could not update dailyTarget in DB:', err);
+      }
+    }
+
+    if (emailNotifications !== undefined && typeof emailNotifications === 'boolean') {
+      try {
+        await prisma.$executeRawUnsafe(
+          `UPDATE "User" SET "emailNotifications" = $1 WHERE "id" = $2`,
+          emailNotifications,
+          userId
+        );
+      } catch (err) {
+        console.warn('Could not update emailNotifications in DB:', err);
+      }
+    }
 
     return Response.json({ success: true, user: updatedUser });
   } catch (e) {

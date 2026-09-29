@@ -15,7 +15,7 @@ type NewRowProps = {
     url: string;
     code?: string;
     notes?: string;
-    customFields?: Record<string, string>;
+    customFields?: Record<string, any>;
     dateSolved: string;
   }) => Promise<void>;
   onCancel: () => void;
@@ -29,6 +29,8 @@ type AutoFillData = {
   url: string;
   problemNumber?: number;
   code?: string;
+  companies?: string[];
+  solutionUrl?: string;
 } | null;
 
 const PLATFORMS = [
@@ -259,7 +261,10 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
         topic: autoData.topic === 'General' ? '' : autoData.topic,
         url: autoData.url,
         notes: undefined,
-        customFields: {},
+        customFields: {
+          ...(autoData.companies && autoData.companies.length > 0 ? { companies: autoData.companies } : {}),
+          ...(autoData.solutionUrl ? { solutionUrl: autoData.solutionUrl } : {}),
+        },
         dateSolved: new Date().toISOString(),
       });
     } catch (e: any) {
@@ -439,7 +444,11 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
           topic: topic || (autoFill.topic === 'General' ? '' : autoFill.topic),
           url: autoFill.url,
           notes: notes || undefined,
-          customFields: Object.keys(customFields).length > 0 ? customFields : undefined,
+          customFields: {
+            ...customFields,
+            ...(autoFill.companies && autoFill.companies.length > 0 ? { companies: autoFill.companies } : {}),
+            ...(autoFill.solutionUrl ? { solutionUrl: autoFill.solutionUrl } : {}),
+          },
           dateSolved: new Date().toISOString(),
         });
       } else if (isOther) {
@@ -734,6 +743,76 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
           )}
         </td>
 
+        {/* Companies (Leet-Vision) */}
+        <td data-cell="companies" data-col="companies" style={{ width: 180, padding: '0 12px' }}>
+          {autoFill?.companies && autoFill.companies.length > 0 ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 4, overflow: 'hidden' }}>
+              {autoFill.companies.slice(0, 2).map((c: string) => (
+                <span
+                  key={c}
+                  title={c}
+                  style={{
+                    fontSize: 11,
+                    padding: '2px 7px',
+                    borderRadius: 4,
+                    background: 'rgba(56, 189, 248, 0.08)',
+                    color: '#38bdf8',
+                    border: '1px solid rgba(56, 189, 248, 0.2)',
+                    whiteSpace: 'nowrap',
+                    maxWidth: 75,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    fontFamily: 'var(--font-geist-mono), monospace',
+                  }}
+                >
+                  {c}
+                </span>
+              ))}
+              {autoFill.companies.length > 2 && (
+                <span style={{ fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                  +{autoFill.companies.length - 2}
+                </span>
+              )}
+            </div>
+          ) : (
+            <span style={{ fontSize: 13, color: 'var(--text-subtle)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>
+          )}
+        </td>
+
+        {/* Solution (Leet-Vision) */}
+        <td data-cell="solution" data-col="solution" style={{ width: 110, padding: '0 10px' }}>
+          {autoFill && (autoFill.solutionUrl || (isLeetCode && (autoFill.problemNumber || problemNumber))) ? (
+            <a
+              href={autoFill.solutionUrl || `https://leet-vision.com/solution/${autoFill.problemNumber || problemNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              title="Open Leet-Vision solution visualizer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 5,
+                padding: '3px 9px',
+                borderRadius: 5,
+                fontSize: 11,
+                fontWeight: 500,
+                textDecoration: 'none',
+                background: 'rgba(249, 115, 22, 0.1)',
+                color: '#fb923c',
+                border: '1px solid rgba(249, 115, 22, 0.25)',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span style={{ fontSize: 9 }}>▶</span>
+              <span>Solution</span>
+              <span style={{ fontSize: 9, opacity: 0.7 }}>↗</span>
+            </a>
+          ) : (
+            <span style={{ fontSize: 13, color: 'var(--text-subtle)', fontFamily: 'var(--font-geist-mono), monospace' }}>—</span>
+          )}
+        </td>
+
         {/* Status */}
         <td style={{ width: 140, padding: '0 12px', color: 'var(--text-subtle)', fontSize: 13, fontFamily: 'var(--font-geist-mono), monospace' }}>—</td>
         {/* Star */}
@@ -778,7 +857,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       {/* ── LeetCode / Codeforces: number/code not found → URL fallback ── */}
       {isAutoSupported && notFound && (
         <tr data-new-row="true" style={{ background: 'var(--new-row-bg)', borderBottom: '1px solid var(--table-border)', borderLeft: '1px solid var(--new-row-border-left)' }}>
-          <td colSpan={9 + columns.length} style={{ padding: '8px 68px' }}>
+          <td colSpan={11 + columns.length} style={{ padding: '8px 68px' }}>
             <div style={{ marginBottom: 8 }}>
               <span style={{ fontSize: 12, color: 'var(--text-dim)' }}>
                 Problem &quot;{problemNumber}&quot; not found in dataset. Paste the URL to continue, or press Esc to cancel.
@@ -829,7 +908,7 @@ export function NewRow({ onSave, onCancel, columns }: NewRowProps) {
       {/* ── Other platforms: URL + Title inputs ── */}
       {isOther && (
         <tr data-new-row="true" style={{ background: 'var(--new-row-bg)', borderBottom: '1px solid var(--table-border)', borderLeft: '1px solid var(--new-row-border-left)' }}>
-          <td colSpan={9 + columns.length} style={{ padding: '8px 68px' }}>
+          <td colSpan={11 + columns.length} style={{ padding: '8px 68px' }}>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <span style={{ fontSize: 10, color: 'var(--text-subtle)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>URL</span>

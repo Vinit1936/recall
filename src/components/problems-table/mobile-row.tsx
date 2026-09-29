@@ -122,6 +122,75 @@ export function MobileRow({ problem, isSelected, onStarToggle }: MobileRowProps)
           <StatusCell problem={problem} />
         </div>
       </div>
+
+      {/* Line 3: Companies & Solution (Leet-Vision) */}
+      {(() => {
+        const rawCompanies = problem?.customFields?.companies ?? problem?.companies;
+        const companies: string[] = Array.isArray(rawCompanies) ? rawCompanies : [];
+        const customSolUrl = problem?.customFields?.solutionUrl ?? problem?.solutionUrl;
+        const isLeetCode = problem?.platform === 'LEETCODE' && problem?.problemNumber > 0;
+        const solutionUrl = customSolUrl || (isLeetCode ? `https://leet-vision.com/solution/${problem.problemNumber}` : null);
+
+        if (companies.length === 0 && !solutionUrl) return null;
+
+        return (
+          <div
+            style={{
+              marginTop: 6,
+              marginLeft: 26,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              flexWrap: 'wrap',
+            }}
+          >
+            {companies.slice(0, 2).map((comp: string) => (
+              <span
+                key={comp}
+                style={{
+                  fontSize: 10,
+                  padding: '1px 6px',
+                  borderRadius: 3,
+                  background: 'rgba(56, 189, 248, 0.08)',
+                  color: '#38bdf8',
+                  border: '1px solid rgba(56, 189, 248, 0.2)',
+                  fontFamily: 'var(--font-geist-mono), monospace',
+                }}
+              >
+                {comp}
+              </span>
+            ))}
+            {companies.length > 2 && (
+              <span style={{ fontSize: 9.5, color: '#888', fontFamily: 'var(--font-geist-mono), monospace' }}>
+                +{companies.length - 2}
+              </span>
+            )}
+            {solutionUrl && (
+              <a
+                href={solutionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  marginLeft: 'auto',
+                  fontSize: 10,
+                  padding: '2px 7px',
+                  borderRadius: 4,
+                  background: 'rgba(249, 115, 22, 0.1)',
+                  color: '#fb923c',
+                  border: '1px solid rgba(249, 115, 22, 0.25)',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 3,
+                }}
+              >
+                <span>▶ Solution</span>
+              </a>
+            )}
+          </div>
+        );
+      })()}
     </div>
   );
 }

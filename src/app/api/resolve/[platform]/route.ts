@@ -34,6 +34,22 @@ export async function GET(
 
     const result = await resolver.resolve(id);
     console.log(`[GET /api/resolve/${rawPlatform}] id=${id} found=${result.found}`);
+
+    if (result.found && platform === 'LEETCODE') {
+      try {
+        const { getLeetVisionData } = await import('@/lib/leetvision');
+        const num = result.data.problemNumber || id;
+        const lvData = await getLeetVisionData(num);
+        result.data = {
+          ...result.data,
+          companies: lvData.companies,
+          solutionUrl: lvData.solutionUrl,
+        };
+      } catch (lvErr) {
+        console.error('[GET /api/resolve/LEETCODE] Failed to fetch Leet-Vision enrichment:', lvErr);
+      }
+    }
+
     return Response.json(result);
   } catch (e) {
     console.error(`[GET /api/resolve/${rawPlatform}]`, e);

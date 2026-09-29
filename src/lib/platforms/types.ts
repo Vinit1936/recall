@@ -8,6 +8,8 @@ export type ProblemMeta = {
   url: string;
   problemNumber?: number;
   code?: string;
+  companies?: string[];
+  solutionUrl?: string;
 };
 
 export type ResolveResult =

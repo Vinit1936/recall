@@ -116,6 +116,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    let enrichedCustomFields: Record<string, any> = typeof customFields === 'object' && customFields ? { ...customFields } : {};
+    if (platform === 'LEETCODE') {
+      try {
+        const { getLeetVisionData } = await import('@/lib/leetvision');
+        const num = finalProblemNumber > 0 ? finalProblemNumber : parseInt(String(problemNumber), 10) || 0;
+        if (num > 0) {
+          const lvData = await getLeetVisionData(num);
+          if (!enrichedCustomFields.companies || (Array.isArray(enrichedCustomFields.companies) && enrichedCustomFields.companies.length === 0)) {
+            enrichedCustomFields.companies = lvData.companies;
+          }
+          if (!enrichedCustomFields.solutionUrl) {
+            enrichedCustomFields.solutionUrl = lvData.solutionUrl;
+          }
+        }
+      } catch (lvErr) {
+        console.error('[POST /api/problems] Leet-Vision enrichment error:', lvErr);
+      }
+    }
+
     try {
       const problem = await prisma.problem.create({
         data: {
@@ -128,7 +147,7 @@ export async function POST(request: NextRequest) {
           topic: meta.topic,
           dateSolved: dateSolved ? new Date(dateSolved) : now,
           notes: notes ?? null,
-          customFields: customFields ?? {},
+          customFields: enrichedCustomFields,
           currentStep: schedule.currentStep,
           nextRevisionAt: schedule.nextRevisionAt,
           status: schedule.status,

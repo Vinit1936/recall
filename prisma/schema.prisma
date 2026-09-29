@@ -47,7 +47,9 @@ model User {
   name          String?
   image         String?
   password      String?
-  createdAt     DateTime  @default(now())
+  dailyTarget        Int       @default(5)
+  emailNotifications Boolean   @default(false)
+  createdAt          DateTime  @default(now())
 
   problems  Problem[]
   accounts  Account[]
