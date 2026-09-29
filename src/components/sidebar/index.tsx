@@ -7,6 +7,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { Settings, MessageSquare } from 'lucide-react';
 import { FeedbackModal } from '@/components/feedback-modal';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { GitHubStarButton } from '@/components/landing/github-star-button';
 
 const navItems = [
   {
@@ -143,6 +144,9 @@ export function Sidebar() {
             <MessageSquare size={16} style={{ color: 'var(--text-subtle)' }} />
             <span>Feedback</span>
           </button>
+
+          {/* Minimal GitHub Star Nav Item */}
+          <GitHubStarButton variant="sidebar" />
 
           {/* Theme Toggle Nav Item */}
           <ThemeToggle variant="sidebar" />
