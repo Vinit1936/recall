@@ -39,4 +39,11 @@ describe('GitHubStarButton', () => {
 
     expect(clientMarkup).toBe(serverMarkup);
   });
+
+  it('renders sidebar variant properly with star counter', () => {
+    const markup = renderToStaticMarkup(<GitHubStarButton variant="sidebar" />);
+    expect(markup).toContain('data-sidebar-github');
+    expect(markup).toContain('Star on GitHub');
+    expect(markup).toContain('https://github.com/Vinit1936/Recall');
+  });
 });
