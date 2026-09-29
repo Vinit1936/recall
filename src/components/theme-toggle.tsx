@@ -102,6 +102,7 @@ export function ThemeToggle({ variant = 'icon', className = '', style }: ThemeTo
     return (
       <button
         type="button"
+        data-nav-theme
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
         title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

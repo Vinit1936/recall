@@ -39,7 +39,7 @@
     min-width: 44px;
   }
 
-  p a, span a, td a, th a, [data-inline-link], [data-heatmap-container] *, [data-heatmap-inner] *, [data-new-row="true"] *, .import-modal-container button, .import-modal-container a {
+  p a, span a, td a, th a, [data-inline-link], [data-heatmap-container] *, [data-heatmap-inner] *, [data-new-row="true"] *, .import-modal-container button, .import-modal-container a, [data-nav-theme], [data-hero-cta-btn], [data-hero-producthunt] {
     min-height: auto !important;
     min-width: auto !important;
   }
@@ -57,6 +57,10 @@
 
   [data-nav-center] {
     display: none !important;
+  }
+
+  [data-nav-right] {
+    gap: 6px !important;
   }
 
   [data-nav-howtouse] {
@@ -84,6 +88,20 @@
 
   .nav-github-label {
     display: none !important;
+  }
+
+  [data-nav-theme] {
+    display: inline-flex !important;
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   [data-nav-signin] {
@@ -120,14 +138,52 @@
   }
 
   [data-hero-cta] {
-    flex-direction: column !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
     width: 100% !important;
+    margin-bottom: 20px !important;
   }
 
   [data-hero-cta] a, [data-hero-cta] button {
-    width: 100% !important;
-    text-align: center !important;
+    width: auto !important;
+    min-width: auto !important;
+    text-align: left !important;
     justify-content: center !important;
+  }
+
+  [data-hero-cta-btn] {
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0 16px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  [data-hero-producthunt] {
+    height: 38px !important;
+    min-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+  }
+
+  [data-hero-producthunt] img {
+    height: 38px !important;
+    width: auto !important;
+    border-radius: 8px !important;
+    display: block !important;
   }
 
   [data-hero-title] {
@@ -1078,6 +1134,29 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 4px !important;
+  }
+}
+
+/* Compact Mobile (320px - 390px) */
+@media (max-width: 390px) {
+  [data-hero-cta] {
+    gap: 8px !important;
+  }
+
+  [data-hero-cta-btn] {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+  }
+
+  [data-hero-producthunt] {
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+
+  [data-hero-producthunt] img {
+    height: 36px !important;
   }
 }
 

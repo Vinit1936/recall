@@ -129,6 +129,7 @@ export function Hero({ TableDemo }: HeroProps) {
             }}
           >
             <Link
+              data-hero-cta-btn
               href="/auth/login"
               style={{
                 background: 'var(--text-primary)',

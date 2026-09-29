@@ -106,7 +106,7 @@ export function Navbar() {
         </div>
 
         {/* Right — How to use + GitHub + ThemeToggle + Sign in */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div data-nav-right style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <a
             data-nav-howtouse
             href="https://youtu.be/EF25DZDJ6gw"
