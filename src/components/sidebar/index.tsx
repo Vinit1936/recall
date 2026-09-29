@@ -65,12 +65,34 @@ export function Sidebar() {
           zIndex: 10,
         }}
       >
-        {/* Wordmark */}
-        <Link href="/dashboard" style={{ textDecoration: 'none' }}>
-          <div style={{ fontFamily: 'var(--font-geist-mono), monospace', fontSize: 18, fontWeight: 600, color: 'var(--foreground)', paddingLeft: 12, marginBottom: 32, letterSpacing: '-0.02em', cursor: 'pointer' }}>
-            recall<span style={{ color: '#F7981E' }}>.</span>
-          </div>
-        </Link>
+        {/* Wordmark + Theme Toggle */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingLeft: 12,
+            paddingRight: 6,
+            marginBottom: 28,
+          }}
+        >
+          <Link href="/dashboard" style={{ textDecoration: 'none' }}>
+            <div
+              style={{
+                fontFamily: 'var(--font-geist-mono), monospace',
+                fontSize: 18,
+                fontWeight: 600,
+                color: 'var(--foreground)',
+                letterSpacing: '-0.02em',
+                cursor: 'pointer',
+              }}
+            >
+              recall<span style={{ color: '#F7981E' }}>.</span>
+            </div>
+          </Link>
+
+          <ThemeToggle variant="ghost" />
+        </div>
 
         {/* Nav */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
@@ -147,9 +169,6 @@ export function Sidebar() {
 
           {/* Minimal GitHub Star Nav Item */}
           <GitHubStarButton variant="sidebar" />
-
-          {/* Theme Toggle Nav Item */}
-          <ThemeToggle variant="sidebar" />
         </nav>
 
         {/* User + Sign out */}
