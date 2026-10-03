@@ -86,3 +86,7 @@ docs/infra-diagnostic-report.md
 
 # Feature Implementation Planning
 csv-implementation/
+
+# Raw DSA sheet dumps (~19 MB / 5.6k files of re-downloadable third-party repos
+# and spreadsheets). The curated output is committed at src/data/sheets/ instead.
+/sheets/

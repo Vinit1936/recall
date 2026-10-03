@@ -12,6 +12,7 @@ export default auth((req) => {
   const isProtectedRoute =
     nextUrl.pathname.startsWith('/dashboard') ||
     nextUrl.pathname.startsWith('/daily') ||
+    nextUrl.pathname.startsWith('/sheets') ||
     nextUrl.pathname.startsWith('/settings');
 
   // If user has an explicit auth error (e.g. SessionRequired), do not redirect back to dashboard

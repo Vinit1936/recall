@@ -35,6 +35,16 @@ const navItems = [
     ),
   },
   {
+    label: 'Sheets',
+    href: '/sheets',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <rect x="2.5" y="1.5" width="11" height="13" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+        <path d="M5 5h6M5 8h6M5 11h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
     label: 'Settings',
     href: '/settings',
     icon: <Settings size={16} />,
@@ -97,7 +107,12 @@ export function Sidebar() {
         {/* Nav */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1 }}>
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            // Prefix match, not strict equality: /sheets has child routes
+            // (/sheets/fraz, /sheets/blind-75, ...) and the nav item must stay
+            // highlighted while browsing one. Strict equality left the item
+            // unlit on every sheet detail page.
+            const isActive =
+              pathname === item.href || pathname.startsWith(`${item.href}/`);
             return (
               <Link
                 key={item.href}
