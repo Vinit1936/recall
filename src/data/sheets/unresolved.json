@@ -1,0 +1,4685 @@
+{
+  "lastVerified": "2026-10-02",
+  "entries": [
+    {
+      "sheet": "blind-75",
+      "ref": "271",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "blind-75",
+      "ref": "269",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "blind-75",
+      "ref": "261",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "blind-75",
+      "ref": "323",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "blind-75",
+      "ref": "252",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "blind-75",
+      "ref": "253",
+      "reason": "not in repo dataset (premium?)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-CodingNinja-Inversion of Array.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-InterviewBit-Repeat and Missing Number Array.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Largest Subarray with K sum.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-InterviewBit-Subarray with given XOR.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Flattening of a LinkedList.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "455. Assign Cookies.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-GFG- n Meetings in One Room.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Fractional Knapsack.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Job Sequencing Problem.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Minimum Coins to Make Sum.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Minimum Platforms.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Subset Sum.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-M-Coloring Problem.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Rat in a Maze.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Word Break (print all ways).java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-SphereOnlineJudge-Aggressive Cows.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-GFG-Matrix Median.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-Find nth root of m.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-GFG-K-th element of two arrays.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-InterviewBit-Allocate Books.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-CodingNinja-Max heap - Min Heap Implementation.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-CodingNinja-Merge K sorted arrays.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-InterviewBit-Maximum Sum Combination.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-Implement Queue using Arrays.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-Implement Stack using Arrays.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-Sort a Stack.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-InterviewBit-Next Smaller Element.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Maximum of Minimums for Every Window Size.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-The Celebrity Problem.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-KMP Algorithm or LPS array.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-InterviewBit-Minimum Characters required to make a String Palindromic.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-Morris-Preorder Traversal.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Print root to node path.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Bottom view of Binary Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Left view of Binary Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Preorder inorder postorder in a single traversal.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Right view of Binary Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Top view of Binary Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "545 M545. Boundary Traversal of Binary Tree.java",
+      "reason": "id not in repo dataset"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Children Sum Property in Binary Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Mirror Tree.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-InterviewBit-Distinct Numbers in Window.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Inorder successor and predecessor in BST.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-Floor and Ceil in a BST.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Find K-th largest & smallest element in BST.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "E-TUF-BFS & DFS Traversal Techniques.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Topological sort or Kahn's algorithm.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Bellman ford algorithm.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Dijkstra's algorithm.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Find the MST weight -  Kruskal's Algo.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Find the MST weight - Prim's Algo.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Floyd warshall algorithm.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-0 and 1 Knapsack.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Matrix chain multiplication.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Maximum Sum Increasing Subsequence.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Palindrome partitioning.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Job sequencing Problem.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Super Egg Drop.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Word Break.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "H-TUF-Implement Trie II (Prefix Tree).java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Longest Word with All Prefixes.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Number of distinct substrings in a string.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-sde",
+      "ref": "M-TUF-Power Set.java",
+      "reason": "no LeetCode id (non-LeetCode exercise)"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Input Output",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Cpp Basics",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "If ElseIf",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Switch Case",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "What are arrays, strings?",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "For loops",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "While loops",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Functions (Pass by Reference and Value)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Theory with examples",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Easy and Medium",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Hard",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 1",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 2",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 3",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 4",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 5",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 6",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 7",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 8",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 9",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 10",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 11",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 12",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 13",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 14",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 15",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 16",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 17",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 18",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 19",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 20",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 21",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pattern 22",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "STL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Java Collections",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count all Digits of a Number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse a number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "GCD of Two Numbers",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if the Number is Armstrong",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print all Divisors",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check for Prime Number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Understand recursion by print something N times",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print name N times using recursion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print 1 to N using Recursion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print N to 1 using Recursion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sum of First N Numbers",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Factorial of a given number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse an array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if String is Palindrome or Not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Basic Hashing",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Counting Frequencies of Array Elements",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Highest Occurring Element in an Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Selection Sort",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bubble Sort",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Insertion Sorting",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Merge Sorting",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Recursive Bubble Sort",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Recursive Insertion Sort",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Quick Sorting",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Largest Element",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Second Largest Element",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if the Array is Sorted II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Left Rotate Array by One",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Left Rotate Array by K Places",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Move Zeros to End",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Linear Search",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Union of two sorted arrays",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find missing number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Consecutive Ones",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the number that appears once, and other numbers twice.",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest subarray with given sum K(positives)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest subarray with sum K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sort an array of 0's 1's and 2's",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Majority Element-I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kadane's Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print subarray with maximum subarray sum (extended version of above problem)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Stock Buy and Sell",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Leaders in an Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest Consecutive Sequence in an Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rotate matrix by 90 degrees",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print the matrix in spiral manner",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count subarrays with given sum",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pascal's Triangle I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Majority Element-II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "3 Sum",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "4 Sum",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Largest Subarray with Sum 0",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count subarrays with given xor K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Merge Overlapping Subintervals",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Merge two sorted arrays without extra space",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the repeating and missing number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count Inversions",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Product Subarray in an Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search X in sorted array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Lower Bound",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Upper Bound",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Floor and Ceil in Sorted Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "First and last occurrence",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count Occurrences in a Sorted Array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search in rotated sorted array-I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search in rotated sorted array-II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find out how many times the array is rotated",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find square root of a number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find Nth root of a number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum days to make M bouquets",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the smallest divisor",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Aggressive Cows",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Book Allocation Problem",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Painter's Partition",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimize Max Distance to Gas Station",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Median of 2 sorted arrays",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kth element of 2 sorted arrays",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find row with maximum 1's",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search in a 2D matrix",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search in 2D matrix - II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find Peak Element - II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Matrix Median",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse words in a given string / Palindrome Check",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Largest Odd Number in a String",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Isomorphic String",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if two strings are anagram of each other",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count Number of Substrings",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse every word in a string",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to Singly LinkedList",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Insertion at the head of Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Deletion of the head of LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the length of the Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Search in Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to Doubly LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Insert node before head in Doubly Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Delete head of Doubly Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse a Doubly Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Middle of a LinkedList [TortoiseHare Method]",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse a LinkedList [Iterative]",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse a LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Detect a loop in LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the starting point in LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Length of loop in LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if LL is palindrome or not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Segregate odd and even nodes in Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Remove Nth node from the back of the LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Delete the middle node in LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sort LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sort a Linked List of 0's 1's and 2's",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the intersection point of Y LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Add one to a number represented by LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Add two numbers in Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Delete all occurrences of a key in DLL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find Pairs with Given Sum in Doubly Linked List",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Remove duplicates from sorted DLL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse LL in group of given size K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rotate a LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Flattening of LL",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Clone a LL with random and next pointer",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Recursive Implementation of atoi()",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sort a stack using recursion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Reverse a Stack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Generate Binary Strings Without Consecutive 1s",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Power Set",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Learn All Patterns of Subsequences (Theory)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count all subsequences with sum K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if there exists a subsequence with sum K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Subsets I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "N Queen",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rat in a Maze",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "M Coloring Problem",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to Bits and Tricks",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if the i-th bit is Set or Not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if a Number is Odd or Not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if a Number is Power of 2 or Not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count the Number of Set Bits",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Set/Unset the rightmost unset bit",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Swap Two Numbers",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Divide two numbers without multiplication and division",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Single Number - I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Power Set Bit Manipulation",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "XOR of numbers in a given range",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print Prime Factors of a Number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Divisors of a Number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count primes in range L to R",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Prime factorisation of a Number",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pow(x,n)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Stack using Arrays",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Queue using Arrays",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Stack using Queue",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Queue using Stack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement stack using Linkedlist",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement queue using Linkedlist",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Balanced Paranthesis",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Min Stack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Infix to Postfix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Prefix to Infix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Prefix to Postfix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Postfix to Prefix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Postfix to Infix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Infix to Prefix Conversion",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Next Greater Element",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Next Greater Element - 2",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Next Smaller Element",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Number of Greater Elements to the Right",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Trapping Rainwater",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Largest rectangle in a histogram",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Rectangles",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Stock span problem",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Celebrity Problem",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest Substring With At Most K Distinct Characters",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum Window Subsequence",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Heaps (Theory Video)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Implement Min Heap",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if an array represents a min heap",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Convert Min Heap to Max Heap",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kth smallest element in an array [use priority queue]",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Sort K sorted array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Replace Elements by Their Rank",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum Cost to Connect Sticks",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kth largest element in a stream of running integers",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Sum Combination",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Fractional Knapsack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Valid Paranthesis Checker",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "N meetings in one room",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Jump Game - I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum number of platforms required for a railway",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Job sequencing Problem",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Shortest Job First",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Program for Least Recently Used (LRU) Page Replacement Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to Trees",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Binary Tree Representation in Java",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Pre, Post, Inorder in one traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Preorder Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Inorder Traversal of Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Postorder Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Level Order Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Iterative Preorder Traversal of Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Iterative Inorder Traversal of Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Post-order Traversal of Binary Tree using 2 stack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Post-order Traversal of Binary Tree using 1 stack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Depth in BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check for balanced binary tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum path sum",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if two trees are identical or not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Zig Zag or Spiral Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Boundary Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Vertical Order Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Top View of BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bottom view of BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Right/Left View of Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Symmetric Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print root to leaf path in BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "LCA in BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Width of BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Children Sum Property in Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print all nodes at a distance of K in BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum time taken to burn the BT from a given Node",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count total nodes in a complete BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Requirements needed to construct a unique BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Construct a BT from Preorder and Inorder",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Construct the Binary Tree from Postorder and Inorder Traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Serialize and De-serialize BT",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Morris Preorder Traversal of a Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Morris Inorder Traversal of a Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find Min/Max in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Floor and Ceil in a BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Floor in a Binary Search Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Insert a given node in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Delete a node in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kth Smallest and Largest element in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Check if a tree is a BST or not",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "LCA in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Construct a BST from a preorder traversal",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Inorder Successor/Predecessor in BST",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Merge 2 BST's",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Two Sum In BST | Check if there exists a pair with Sum K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Correct BST with two nodes swapped",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Largest BST in Binary Tree",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to Graph",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Graph Representation | C++",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Graph Representation | Java",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Connected Components",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Traversal Techniques",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "DFS",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Connected Components Problem in Matrix",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rotten Oranges",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Flood fill algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Cycle Detection in Undirected Graph (bfs)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Detect a cycle in an undirected graph",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Distance of nearest cell having one",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Word ladder I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bipartite Graph (DFS)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Cycle Detection in Directed Graph (DFS)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Topo Sort",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Topological sort or Kahn's algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Detect a cycle in a directed graph",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Course Schedule I",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Alien Dictionary",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Shortest path in undirected graph with unit weights",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Shortest path in DAG",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Djisktra's Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Why priority Queue is used in Djisktra's Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Shortest Distance in a Binary Maze",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Cheapest flight within K stops",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum multiplications to reach end",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bellman Ford Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Floyd warshall algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the city with the smallest number of neighbors",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "MST theory",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Prim's Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Disjoint Set",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Find the MST weight",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Number of islands II",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bridges in graph",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Articulation point in graph",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Kosaraju's algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Introduction to DP",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Frog jump with K distances",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum sum of non adjacent elements",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Ninja's training",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Grid Unique Paths : DP on Grids (DP8)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Ninja and his Friends",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Subset sum equal to target (DP- 14)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Partition a set into two subsets with minimum absolute sum difference",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count subsets with sum K",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count partitions with given difference",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum Coins (DP - 20)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Coin Change 2 (DP - 22)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Unbounded knapsack",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rod Cutting Problem | (DP - 24)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print Longest Common Subsequence | (DP - 26)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest common substring",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum insertions to make string palindrome | DP-29",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum insertions or deletions to convert string A to B",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Best time to buy and sell stock with transaction fees",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Print Longest Increasing Subsequence",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest Increasing Subsequence |(DP-43)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest Bitonic Subsequence",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Number of Longest Increasing Subsequences",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Matrix chain multiplication",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Matrix Chain Multiplication | Bottom-Up|(DP-49)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum cost to cut the stick",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Different Ways to Evaluate a Boolean Expression",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Rectangle Area with all 1's|(DP-55)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Count Square Submatrices with All Ones|(DP-56)",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Trie Implementation and Operations",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Trie Implementation and Advanced Operations",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Longest Word with All Prefixes",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Number of distinct substrings in a string",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Bit PreRequisites for TRIE Problems",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Maximum Xor with an element from an array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Minimum number of bracket reversals to make an expression balanced",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Hashing In Strings | Theory",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Rabin Karp Algorithm",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "Z function",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "striver-a2z",
+      "ref": "KMP Algorithm or LPS array",
+      "reason": "title did not match a LeetCode problem"
+    },
+    {
+      "sheet": "fraz",
+      "ref": "https://leetcode.com/problems/implement-strstr/",
+      "reason": "slug not in repo dataset"
+    },
+    {
+      "sheet": "fraz",
+      "ref": "https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/",
+      "reason": "slug not in repo dataset"
+    },
+    {
+      "sheet": "fraz",
+      "ref": "https://leetcode.com/explore/learn/card/trie/",
+      "reason": "non-LeetCode source"
+    },
+    {
+      "sheet": "fraz",
+      "ref": "https://leetcode.com/articles/a-recursive-approach-to-segment-trees-range-sum-queries-lazy-propagation/",
+      "reason": "non-LeetCode source"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/chocolate-distribution-problem/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://leetcode.com/problems/implement-strstr/",
+      "reason": "slug not in repo dataset"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/word-wrap1646/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-number-of-islands/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/ceiling-in-a-sorted-array/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/check-reversing-sub-array-make-array-sorted/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/radix-sort/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/a-product-array-puzzle/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/make-array-elements-equal-minimum-cost/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.spoj.com/problems/AGGRCOW/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/merge-sort-for-linked-list/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/flattening-a-linked-list/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/subtract-two-numbers-represented-as-linked-lists/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/implement-stack-queue-using-deque/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/implement-two-stacks-in-an-array/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/rotten-oranges2536/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/circular-tour/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-the-maximum-of-minimums-for-every-window-size-in-a-given-array/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/lru-cache-implementation/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "http://geeksforgeeks.org/the-celebrity-problem/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/preorder-to-postorder4423/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-median-bst-time-o1-space/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/largest-bst-binary-tree-set-2/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/detect-cycle-in-a-graph/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/steps-by-knight5927/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/graph-coloring-applications/#:~:text=Graph%20coloring%20problem%20is%20to,are%20colored%20using%20same%20color.",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-whether-it-is-possible-to-finish-all-tasks-or-not-from-given-dependencies/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/topological-sort/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/bipartite-graph/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/alien-dictionary/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/water-jug-problem-using-bfs/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/total-number-spanning-trees-graph/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/minimize-cash-flow-among-given-set-friends-borrowed-money/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/word-break-problem-trie-solution/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/trie-insert-and-search/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/k-anagrams-1/0",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/phone-directory/0",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/smallest-positive-missing-number-1587115621/1/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/cutted-segments1642/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/mobile-numeric-keypad5456/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/weighted-job-scheduling/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/largest-area-rectangular-sub-matrix-equal-number-1s-0s/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/minimum-cost-for-acquiring-all-coins-with-k-extra-coins-allowed-with-every-coin/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.spoj.com/problems/CHOCOLA/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/",
+      "reason": "slug not in repo dataset"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/minimum-sum-two-numbers-formed-digits-array-2/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-maximum-number-possible-by-doing-at-most-k-swaps/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/tug-of-war/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/find-paths-from-corner-cell-to-middle-cell-in-maze/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/solving-cryptarithmetic-puzzles-backtracking-8/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "arsh",
+      "ref": "https://www.geeksforgeeks.org/print-palindromic-partitions-string/",
+      "reason": "non-LeetCode source (GeeksforGeeks)"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Topic: / Problem:",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Reverse the array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find the maximum and minimum element in an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find the \"Kth\" max and min element of an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Given an array which consists of only 0, 1 and 2. Sort the array without using any sorting algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Move all the negative elements to one side of the array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find the Union and Intersection of the two sorted arrays.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Write a program to cyclically rotate an array by one.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / find Largest sum contiguous Subarray [V. IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Minimise the maximum difference between heights [V.IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Minimum no. of Jumps to reach end of an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / find duplicate in an array of N+1 Integers",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Merge 2 sorted arrays without using Extra space.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Kadane's Algo [V.V.V.V.V IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Count Inversion",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / find all pairs on integer array whose sum is equal to given number",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / find common elements In 3 sorted arrays",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Rearrange the array in alternating positive and negative items with O(1) extra space",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find if there is any subarray with sum equal to 0",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find factorial of a large number",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find longest coinsecutive subsequence",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Given an array of size n and a number k, fin all elements that appear more than \" n/k \" times.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Maximum profit by buying and selling a share atmost twice",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find whether an array is a subset of another array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Find the triplet that sum to a given value",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Chocolate Distribution problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Smallest Subarray with sum greater than a given value",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Three way partitioning of an array around a given value",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Minimum swaps required bring elements less equal K together",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Minimum no. of operations required to make an array palindrome",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Median of 2 sorted arrays of equal size",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Array / Median of 2 sorted arrays of different size",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Spiral traversal on a Matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Search an element in a matriix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Find median in a row wise sorted matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Find row with maximum no. of 1's",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Print elements in sorted order using row-column wise sorted matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Maximum size rectangle",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Find a specific pair in matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Rotate matrix by 90 degrees",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Kth smallest element in a row-cpumn wise sorted matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Matrix / Common elements in all rows of a given matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Check whether a String is Palindrome or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find Duplicate characters in a string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Why strings are immutable in Java?",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Write a Code to check whether one string is a rotation of another",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Write a Program to check whether a string is a valid shuffle of two strings or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Count and Say problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Write a program to find the longest Palindrome in a string.[ Longest palindromic Substring]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find Longest Recurring Subsequence in String",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Print all Subsequences of a string.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Print all the permutations of the given string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Split the Binary string into two substring with equal 0’s and 1’s",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Word Wrap Problem [VERY IMP].",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / EDIT Distance [Very Imp]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find next greater number with same set of digits. [Very Very IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Balanced Parenthesis problem.[Imp]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Word break Problem[ Very Imp]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Rabin Karp Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / KMP Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Convert a Sentence into its equivalent mobile numeric keypad sequence.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Minimum number of bracket reversals needed to make an expression balanced.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Count All Palindromic Subsequence in a given String.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Count of number of given string in 2D character array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Search a Word in a 2D Grid of characters.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Boyer Moore Algorithm for Pattern Searching.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Converting Roman Numerals to Decimal",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Number of flips to make binary string alternate",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find the first repeated word in string.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Minimum number of swaps for bracket balancing.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find the longest common subsequence between two strings.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Program to generate all possible valid IP addresses from given  string.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Write a program tofind the smallest window that contains all characters of string itself.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Rearrange characters in a string such that no two adjacent are same",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Minimum characters to be added at front to make string palindrome",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Given a sequence of words, print all anagrams together",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Find the smallest window in a string containing all characters of another string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Recursively remove all adjacent duplicates",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / String matching where one string contains wildcard characters",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Function to find Number of customers who could not get a computer",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Transform One String to Another using Minimum Number of Given Operation",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Check if two given strings are isomorphic to each other",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "String / Recursively print all sentences that can be formed from list of word lists",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Find first and last positions of an element in a sorted array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Find a Fixed Point (Value equal to index) in a given array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / square root of an integer",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Maximum and minimum of an array using minimum number of comparisons",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Optimum location of point to minimize total distance",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Find the repeating and the missing",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / find majority element",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Searching in an array where adjacent differ by at most k",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / find a pair with a given difference",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / find four elements that sum to a given value",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / maximum sum such that no 2 elements are adjacent",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Count triplet with sum smaller than a given value",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / merge 2 sorted arrays",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / print all subarrays with 0 sum",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Product array Puzzle",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Sort array according to count of set bits",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / minimum no. of swaps required to sort the array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Bishu and Soldiers",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Rasta and Kheshtak",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Kth smallest number again",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Find pivot element in a sorted array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / K-th Element of Two Sorted Arrays",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Aggressive cows",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Book Allocation Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / EKOSPOJ:",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Job Scheduling Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Smallest number with atleastn trailing zeroes infactorial",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Painters Partition Problem:",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / ROTI-Prata SPOJ",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / DoubleHelix SPOJ",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Subset Sums",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Findthe inversion count",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Implement Merge-sort in-place",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Searching & Sorting / Partitioning and Sorting Arrays with Many Repeated Entries",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Write a Program to reverse the Linked List. (Both Iterative and recursive)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Reverse a Linked List in group of Given Size. [Very Imp]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Write a program to Detect loop in a linked list.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Write a program to Delete loop in a linked list.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Find the starting point of the loop.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Remove Duplicates in a Un-sorted Linked List.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Write a Program to Move the last element to Front in a Linked List.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Add “1” to a number represented as a Linked List.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Add two numbers represented by linked lists.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Intersection of two Sorted Linked List.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Intersection Point of two Linked Lists.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Merge Sort For Linked lists.[Very Important]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Quicksort for Linked Lists.[Very Important]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Find the middle Element of a linked list.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Check if a linked list is a circular linked list.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Split a Circular linked list into two halves.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Write a Program to check whether the Singly Linked list is a palindrome or not.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Deletion from a Circular Linked List.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Find pairs with a given sum in a DLL.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Count triplets in a sorted DLL whose sum is equal to given value “X”.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Sort a “k”sorted Doubly Linked list.[Very IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Rotate DoublyLinked list by N nodes.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Rotate a Doubly Linked list in group of Given Size.[Very IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Can we reverse a linked list in less than O(n) ?",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Why Quicksort is preferred for. Arrays and Merge Sort for LinkedLists ?",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Flatten a Linked List",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Sort a LL of 0's, 1's and 2's",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Clone a linked list with next and random pointer",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Merge K sorted Linked list",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Multiply 2 no. represented by LL",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Delete nodes which have a greater value on right side",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Segregate even and odd nodes in a Linked List",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Program for n’th node from the end of a Linked List",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "LinkedList / Find the first non-repeating character from a stream of characters",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / level order traversal",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Reverse Level Order traversal",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Height of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Diameter of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Mirror of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Inorder Traversal of a tree both using recursion and Iteration",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Preorder Traversal of a tree both using recursion and Iteration",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Postorder Traversal of a tree both using recursion and Iteration",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Left View of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Right View of Tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Top View of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Bottom View of a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if a tree is balanced or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Construct Binary Tree from String with Bracket Representation",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Convert Binary tree into Doubly Linked List",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Convert Binary tree into Sum tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Find minimum swaps required to convert a Binary tree into BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if Binary tree is Sum tree or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if all leaf nodes are at same level or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if a Binary Tree contains duplicate subtrees of size 2 or more [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if 2 trees are mirror or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Sum of Nodes on the Longest path from root to leaf node",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Check if given graph is tree or not.  [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Find Largest subtree sum in a tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Maximum Sum of nodes in Binary tree such that no two are adjacent",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Find LCA in a Binary tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Find distance between 2 nodes in a Binary tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Kth Ancestor of node in a Binary tree",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Find all Duplicate subtrees in a Binary tree [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Trees / Tree Isomorphism Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Fina a value in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Deletion of a node in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find min and max value in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find inorder successor and inorder predecessor in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Check if a tree is a BST or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Populate Inorder successor of all nodes",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find LCA  of 2 nodes in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Construct BST from preorder traversal",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Convert Binary tree into BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Convert a normal BST into a Balanced BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Merge two BST [ V.V.V>IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find Kth largest element in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find Kth smallest element in a BST",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Count pairs from 2 BST whose sum is equal to given value \"X\"",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Find the median of BST in O(n) time and O(1) space",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Count BST ndoes that lie in a given range",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Replace every element with the least greater element on its right",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Given \"n\" appointments, find the conflicting appointments",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Check preorder is valid or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Check whether BST contains Dead end",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Largest BST in a Binary Tree [ V.V.V.V.V IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Binary Search Trees / Flatten BST to sorted list",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Activity Selection Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Job SequencingProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Huffman Coding",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Water Connection Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Fractional Knapsack Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Greedy Algorithm to find Minimum number of Coins",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximum trains for which stoppage can be provided",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Minimum Platforms Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Buy Maximum Stocks if i stocks can be bought on i-th day",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Find the minimum and maximum amount to buy all N candies",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Minimize Cash Flow among a given set of friends who have borrowed money from each other",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Minimum Cost to cut a board into squares",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Check if it is possible to survive on Island",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Find maximum meetings in one room",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximum product subset of an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximize array sum after K negations",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximize the sum of arr[i]*i",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximum sum of absolute difference of an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Maximize sum of consecutive differences in a circular array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Minimum sum of absolute difference of pairs of two arrays",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Program for Shortest Job First (or SJF) CPU Scheduling",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Program for Least Recently Used (LRU) Page Replacement algorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Smallest subset with sum greater than all other elements",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Chocolate Distribution Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / DEFKIN -Defense of a Kingdom",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / DIEHARD -DIE HARD",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / GERGOVIA -Wine trading in Gergovia",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Picking Up Chicks",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / CHOCOLA –Chocolate",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / ARRANGE -Arranging Amplifiers",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / K Centers Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Minimum Cost of ropes",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Find smallest number with given number of digits and sum of digits",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Rearrange characters in a string such that no two adjacent are same",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Greedy / Find maximum sum possible equal sum of three stacks",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Rat in a maze Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Printing all solutions in N-Queen Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Word Break Problem using Backtracking",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / m Coloring Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Print all palindromic partitions of a string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Subset Sum Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / The Knight’s tour problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Tug of War",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Find shortest safe route in a path with landmines",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Combinational Sum",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Find Maximum number possible by doing at-most K swaps",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Print all permutations of a string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Find if there is a path of more than k length from a source",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Longest Possible Route in a Matrix with Hurdles",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Print all possible paths from top left to bottom right of a mXn matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Partition of a set intoK subsets with equal sum",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "BackTracking / Find the K-th Permutation Sequence of first N natural numbers",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement Stack from Scratch",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement Queue from Scratch",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement 2 stack in an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / find the middle element of a stack",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement \"N\" stacks in an Array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Check the expression has valid or Balanced parenthesis or not.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Reverse a String using Stack",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Design a Stack that supports getMin() in O(1) time and O(1) extra space.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / The celebrity Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Arithmetic Expression evaluation",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Evaluation of Postfix expression",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement a method to insert an element at its bottom without using any other data structure.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Reverse a stack using recursion",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Sort a Stack using recursion",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Merge Overlapping Intervals",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Largest rectangular Area in Histogram",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Expression contains redundant bracket or not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Stack Permutations (Check if an array is stack permutation of other)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement \"n\" queue in an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Implement a Circular queue",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / LRU Cache Implementationa",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Reverse a Queue using recursion",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Reverse the first “K” elements of a queue",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Interleave the first half of the queue with second half",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Find the first circular tour that visits all Petrol Pumps",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Minimum time required to rot all oranges",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Distance of nearest cell having 1 in a binary matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / First negative integer in every window of size “k”",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Check if all levels of two trees are anagrams or not.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Sum of minimum and maximum elements of all subarrays of size “k”.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Minimum sum of squares of character counts in a given string after removing “k” characters.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Queue based approach or first non-repeating character in a stream.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Stacks & Queues / Next Smaller Element",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Implement a Maxheap/MinHeap using arrays and recursion.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Sort an Array using heap. (HeapSort)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Maximum of all subarrays of size k.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / “k” largest element in an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Kth smallest and largest element in an unsorted array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Merge “K” sorted arrays. [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Merge 2 Binary Max Heaps",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Kth largest sum continuous subarrays",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Leetcode- reorganize strings",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Merge “K” Sorted Linked Lists [V.IMP]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Smallest range in “K” Lists",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Median in a stream of Integers",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Check if a Binary Tree is Heap",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Connect “n” ropes with minimum cost",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Convert BST to Min Heap",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Convert min heap to max heap",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Rearrange characters in a string such that no two adjacent are same.",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Heap / Minimum sum of two numbers formed from digits of an array",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Create a Graph, print it",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement BFS algorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement DFS Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Detect Cycle in Directed Graph using BFS/DFS Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Detect Cycle in UnDirected Graph using BFS/DFS Algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Search in a Maze",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Minimum Step by Knight",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / flood fill algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Making wired Connections",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Dijkstra algo",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement Topological Sort",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Minimum time taken by each job to be completed given by a Directed Acyclic Graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Find whether it is possible to finish all tasks or not from given dependencies",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Find the no. of Isalnds",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Given a sorted Dictionary of an Alien Language, find order of characters",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement Kruksal’sAlgorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement Prim’s Algorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Total no. of Spanning tree in a graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement Bellman Ford Algorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Implement Floyd warshallAlgorithm",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Travelling Salesman Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Graph ColouringProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Snake and Ladders Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Find bridge in a graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Count Strongly connected Components(Kosaraju Algo)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Check whether a graph is Bipartite or Not",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Detect Negative cycle in a graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Longest path in a Directed Acyclic Graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Journey to the Moon",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Oliver and the Game",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Water Jug problem using BFS",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Water Jug problem using BFS",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Find if there is a path of more thank length from a source",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / M-ColouringProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Minimum edges to reverse o make path from source to destination",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Paths to travel each nodes using each edge(Seven Bridges)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Vertex Cover Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Chinese Postman or Route Inspection",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Number of Triangles in a Directed and Undirected Graph",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Minimise the cashflow among a given set of friends who have borrowed money from each other",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Graph / Two Clique Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Construct a trie from scratch",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Find shortest unique prefix for every word in a given list",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Word Break Problem | (Trie solution)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Given a sequence of words, print all anagrams together",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Implement a Phone Directory",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Trie / Print unique rows in a given boolean matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Coin ChangeProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Knapsack Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Binomial CoefficientProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Permutation CoefficientProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Program for nth Catalan Number",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Matrix Chain Multiplication",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Subset Sum Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Friends Pairing Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Gold Mine Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Assembly Line SchedulingProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Painting the Fenceproblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximize The Cut Segments",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Longest Repeated Subsequence",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Space Optimized Solution of LCS",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / LCS (Longest Common Subsequence) of three strings",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum Sum Increasing Subsequence",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Count all subsequences having product less than K",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Longest subsequence such that difference between adjacent is one",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum subsequence sum such that no three are consecutive",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Egg Dropping Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum Length Chain of Pairs",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum size square sub-matrix with all 1s",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum sum of pairs with specific difference",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Min Cost PathProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum difference of zeros and ones in binary string",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Minimum number of jumps to reach end",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Minimum cost to fill given weight in a bag",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Minimum removals from array to make max –min <= K",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Longest Common Substring",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Count number of ways to reacha given score in a game",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Count Balanced Binary Trees of Height h",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / LargestSum Contiguous Subarray [V>V>V>V IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Smallest sum contiguous subarray",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Unbounded Knapsack (Repetition of items allowed)",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Word Break Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Largest Independent Set Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Partition problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Count All Palindromic Subsequence in a given String",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Longest alternating subsequence",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Weighted Job Scheduling",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Coin game winner where every player has three choices",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Count Derangements (Permutation such that no element appears in its original position) [ IMPORTANT ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum profit by buying and selling a share at most twice [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Optimal Strategy for a Game",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Palindrome PartitioningProblem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Word Wrap Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Mobile Numeric Keypad Problem [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Boolean Parenthesization Problem",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Largest rectangular sub-matrix whose sum is 0",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Largest area rectangular sub-matrix with equal number of 1’s and 0’s [ IMP ]",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum sum rectangle in a 2D matrix",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Maximum profit by buying and selling a share at most k times",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Dynamic Programming / Find if a string is interleaved of two other strings",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Count set bits in an integer",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Find the two non-repeating elements in an array of repeating elements",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Count number of bits to be flipped to convert A to B",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Count total set bits in all numbers from 1 to n",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Program to find whether a no is power of two",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Find position of the only set bit",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Copy set bits in a range",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Divide two integers without using multiplication, division and mod operator",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Calculate square of a number without using *, / and pow()",
+      "reason": "no reliable LeetCode match"
+    },
+    {
+      "sheet": "love-babbar-450",
+      "ref": "Bit Manipulation / Power Set",
+      "reason": "no reliable LeetCode match"
+    }
+  ]
+}

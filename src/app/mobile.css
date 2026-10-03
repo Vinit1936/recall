@@ -330,6 +330,46 @@
     height: 36px !important;
   }
 
+  /* ----------------------------------------------------
+     App Shell — DSA Sheets
+     The 88px bottom padding clears the fixed mobile dock.
+  ---------------------------------------------------- */
+  [data-sheets-container],
+  [data-sheet-detail] {
+    max-width: 100% !important;
+    padding: 16px 12px 88px 12px !important;
+  }
+
+  [data-sheets-grid] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [data-company-grid] {
+    grid-template-columns: 1fr !important;
+  }
+
+  [data-sheet-card] {
+    width: 100%;
+  }
+
+  /* Section rows get tighter so more of the list fits above the dock. */
+  [data-sheet-row] {
+    gap: 8px !important;
+    padding: 8px 10px !important;
+  }
+
+  /* The topic label is hidden on desktop to keep rows to one line; on a phone
+     there is horizontal room to spare, so show it. */
+  .sheet-row-topic {
+    display: inline-block !important;
+  }
+
+  /* Same for the company tags. */
+  .sheet-row-companies {
+    display: inline-block !important;
+    max-width: 40vw !important;
+  }
+
   /* Tab Bar */
   [data-tab-bar-wrapper] {
     position: relative !important;

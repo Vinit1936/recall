@@ -1,0 +1,61 @@
+{
+  "lastVerified": "2026-10-02",
+  "sheets": [
+    {
+      "id": "blind-75",
+      "title": "Blind 75",
+      "description": "The 75 problems that cover the most ground per hour of practice.",
+      "sourceUrl": "https://neetcode.io/practice",
+      "problemCount": 69,
+      "sectionCount": 10
+    },
+    {
+      "id": "striver-sde",
+      "title": "Striver's SDE Sheet",
+      "description": "Product-company SDE questions, grouped into 27 topics in Striver's order.",
+      "sourceUrl": "https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/",
+      "problemCount": 124,
+      "sectionCount": 26
+    },
+    {
+      "id": "striver-a2z",
+      "title": "Striver's A2Z DSA Sheet",
+      "description": "The step-by-step A2Z roadmap, from language basics to advanced patterns.",
+      "sourceUrl": "https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/",
+      "problemCount": 120,
+      "sectionCount": 9
+    },
+    {
+      "id": "fraz",
+      "title": "Fraz DSA Sheet",
+      "description": "Topic-wise DSA sheet with a linked editorial for every problem.",
+      "sourceUrl": "https://www.youtube.com/c/LeadCodingbyFRAZ",
+      "problemCount": 314,
+      "sectionCount": 20
+    },
+    {
+      "id": "arsh",
+      "title": "Arsh Goyal DSA Sheet",
+      "description": "A 45-60 day placement plan, with per-company tracking built in.",
+      "sourceUrl": "https://www.youtube.com/c/arshgoyal",
+      "problemCount": 206,
+      "sectionCount": 16
+    },
+    {
+      "id": "love-babbar-450",
+      "title": "Love Babbar 450",
+      "description": "The classic 450-question sheet, organised topic by topic.",
+      "sourceUrl": "https://www.geeksforgeeks.org/dsa/dsa-sheet-by-love-babbar/",
+      "problemCount": 29,
+      "sectionCount": 9
+    },
+    {
+      "id": "company-pyqs",
+      "title": "Company-wise PYQs",
+      "description": "Problems tagged by 435 companies, bucketed by how recently they were asked.",
+      "sourceUrl": "https://github.com/ashishps1/awesome-leetcode-resources",
+      "problemCount": 13038,
+      "sectionCount": 435
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'motion/react';
-import { ListFilter, Calendar, Settings, Sun, Moon } from 'lucide-react';
+import { ListFilter, Calendar, Settings, Sun, Moon, LayoutGrid } from 'lucide-react';
 import { useTheme } from '@/components/theme-provider';
 
 const navItems = [
@@ -17,6 +17,11 @@ const navItems = [
     label: 'Daily',
     href: '/daily',
     icon: Calendar,
+  },
+  {
+    label: 'Sheets',
+    href: '/sheets',
+    icon: LayoutGrid,
   },
   {
     label: 'Settings',
@@ -62,7 +67,9 @@ export function MobileNav() {
       }}
     >
       {navItems.map((item) => {
-        const isActive = pathname === item.href;
+        // Prefix match so /sheets/fraz keeps the Sheets pill active.
+        const isActive =
+          pathname === item.href || pathname.startsWith(`${item.href}/`);
         const Icon = item.icon;
 
         return (

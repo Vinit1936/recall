@@ -84,6 +84,7 @@ Full breakdown of every transition, trigger, and edge case is documented inline 
 - **Notion-style inline table** — click-to-create rows, click-to-edit cells, no modals, autosave.
 - **Schema-less custom columns** — users define their own columns without a database migration; values live in a `Json` field, updated atomically.
 - **Auth** — NextAuth.js v5 with Google, GitHub, and Credentials providers, automatic cross-provider account linking.
+- **Curated DSA sheets** — browse popular problem sheets (Striver SDE, Striver A2Z, Fraz, Arsh Goyal, Blind 75, Love Babbar 450, and 435 company-wise PYQ lists) grouped by topic, and add any of them straight into the revision queue.
 - **Daily revision queue + streaks + 365-day activity heatmap.**
 - **Full data export** — one-click JSON backup of every problem, revision, and streak record. No lock-in.
 
@@ -154,6 +155,7 @@ Early in this project, the Prisma dependency was installed without pinning a ver
 
 - **Pluggable Platform Resolver Pattern** — every platform lookup implements `PlatformResolver { resolve(identifier: string): ResolveResult }`, registered in a central dictionary. Adding platform #6 requires one new file, zero changes to the schema, UI, or API layer.
 - **Schema-less Custom Fields** — user-defined columns are stored in a `Json` field (`Problem.customFields`) rather than triggering a migration per new column, paired with `UserColumnConfig` for layout/ordering.
+- **Sheets as a normalized join** — curated sheets hold *only* LeetCode problem numbers, grouped into each sheet's own topic sections, and the title/difficulty/topic for those numbers lives in a per-sheet `problems-<sheet>.json`. Two Sum sits in six sheets and is defined once per sheet rather than six times. The metadata is sliced per sheet rather than shared, because a single global index would put 276 KB on every sheets page to render Blind 75's 69. See [`src/data/sheets/README.md`](src/data/sheets/README.md).
 
 ---
 
@@ -184,6 +186,9 @@ Early in this project, the Prisma dependency was installed without pinning a ver
 | `GET` | `/api/activity` | 365-day revision activity for the heatmap |
 | `GET` | `/api/streak` | Current streak + today's completion status |
 | `GET` | `/api/export` | Full JSON data export |
+| `GET` | `/api/sheets/progress-all` | Per-sheet add-counts for the signed-in user (sheets catalog) |
+| `GET` | `/api/sheets/[slug]/progress` | Which of a sheet's problems are already tracked |
+| `POST` | `/api/sheets/[slug]/add` | Bulk-add problems from a sheet (idempotent, skips duplicates) |
 
 ---
 
@@ -192,20 +197,24 @@ Early in this project, the Prisma dependency was installed without pinning a ver
 ```text
 recall/
 ├── prisma/schema.prisma        # Schema + dual-connection Neon config
+├── scripts/
+│   └── generate-sheets-json.mjs # Regenerates src/data/sheets/ from raw dumps
 ├── src/
 │   ├── app/
-│   │   ├── (app)/               # Authenticated views: dashboard, daily, settings
+│   │   ├── (app)/               # Authenticated views: dashboard, daily, sheets, settings
 │   │   ├── (landing)/            # Public marketing site
 │   │   ├── api/                  # Route handlers
 │   │   └── auth/                 # Login/register
 │   ├── components/
 │   │   ├── problems-table/       # Interactive table + cell editors
-│   │   ├── daily/                 # Revision queue + streak UI
-│   │   └── heatmap/               # Activity heatmap
-│   ├── data/                      # Indexed offline problem datasets
+│   │   ├── sheets/               # Curated DSA sheet browser
+│   │   ├── daily/                # Revision queue + streak UI
+│   │   └── heatmap/              # Activity heatmap
+│   ├── data/                     # Indexed offline problem datasets + curated sheets
 │   └── lib/
 │       ├── scheduling.ts          # The spaced repetition engine
 │       ├── prisma.ts              # Prisma client singleton
+│       ├── sheets.ts              # Curated sheet loader (lazy per-sheet chunks)
 │       └── platforms/             # Pluggable platform resolvers
 ```
 
