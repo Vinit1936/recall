@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow, startOfDay } from 'date-fns';
-import { DifficultyPickerCell, TopicPickerCell } from './columns';
+import { DifficultyPickerCell, TopicPickerCell, CompanyTagsCell, SolutionButtonCell } from './columns';
 import { PlatformLogo } from '@/lib/platforms/logos';
 
 import { useState, useRef, useEffect } from 'react';
@@ -427,6 +427,16 @@ export function ProblemRow({ problem, columns, isSelected, isHighlighted, onTogg
           topic={problem.topic}
           onSave={(newTopic) => onTopicSave(problem.id, newTopic)}
         />
+      </td>
+
+      {/* Companies (Leet-Vision) */}
+      <td data-cell="companies" data-col="companies" style={{ width: 180, padding: '0 12px' }}>
+        <CompanyTagsCell problem={problem} />
+      </td>
+
+      {/* Solution (Leet-Vision) */}
+      <td data-cell="solution" data-col="solution" style={{ width: 110, padding: '0 10px' }}>
+        <SolutionButtonCell problem={problem} />
       </td>
 
       {/* Status */}

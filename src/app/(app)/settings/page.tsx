@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import { PlatformLogo } from '@/lib/platforms/logos';
-import { Upload } from 'lucide-react';
+import { Upload, Mail, Loader2 } from 'lucide-react';
 import { ImportModal } from '@/components/import-modal';
 import { ThemeToggle } from '@/components/theme-toggle';
 
@@ -131,9 +131,13 @@ export default function SettingsPage() {
   const [email, setEmail] = useState('');
   const [defaultPlatform, setDefaultPlatform] = useState('LEETCODE');
   const [dailyTarget, setDailyTarget] = useState('5');
+  const [emailNotifications, setEmailNotifications] = useState(false);
+  const [togglingEmail, setTogglingEmail] = useState(false);
   const [loading, setLoading] = useState(true);
   const [savingName, setSavingName] = useState(false);
   const [savedMessage, setSavedMessage] = useState<string | null>(null);
+  const [sendingGoalEmail, setSendingGoalEmail] = useState(false);
+  const [goalFeedback, setGoalFeedback] = useState<{ message: string; type: 'success' | 'error' | 'info' } | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importToast, setImportToast] = useState<string | null>(null);
@@ -146,12 +150,21 @@ export default function SettingsPage() {
     const savedTarget = localStorage.getItem('recall_daily_target');
     if (savedTarget) setDailyTarget(savedTarget);
 
+    const savedEmailNotify = localStorage.getItem('recall_email_notifications');
+    if (savedEmailNotify !== null) setEmailNotifications(savedEmailNotify === 'true');
+
     fetch('/api/settings')
       .then((res) => res.json())
       .then((data) => {
         if (data.user) {
           setName(data.user.name || '');
           setEmail(data.user.email || '');
+        }
+        if (data.preferences?.dailyTarget && !savedTarget) {
+          setDailyTarget(String(data.preferences.dailyTarget));
+        }
+        if (data.preferences?.emailNotifications !== undefined && savedEmailNotify === null) {
+          setEmailNotifications(Boolean(data.preferences.emailNotifications));
         }
       })
       .catch((err) => console.error(err))
@@ -185,9 +198,131 @@ export default function SettingsPage() {
     setDropdownOpen(false);
   };
 
-  const handleTargetChange = (val: string) => {
+  const handleToggleEmailNotifications = async (enabled: boolean) => {
+    setEmailNotifications(enabled);
+    localStorage.setItem('recall_email_notifications', enabled ? 'true' : 'false');
+    setTogglingEmail(true);
+
+    try {
+      const res = await fetch('/api/settings/goal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          dailyTarget: Number(dailyTarget),
+          emailNotifications: enabled,
+          sendEmail: enabled,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        if (enabled) {
+          if (data.emailSent) {
+            setGoalFeedback({
+              message: `Email revision service enabled! Today's queue with ${data.problemsCount} questions has been sent to ${data.emailRecipient || 'your email'}.`,
+              type: 'success',
+            });
+          } else {
+            setGoalFeedback({
+              message: 'Email revision service enabled! You will automatically receive your daily revision digest.',
+              type: 'success',
+            });
+          }
+        } else {
+          setGoalFeedback({
+            message: 'Email revision service turned off. Automatic revision emails are paused.',
+            type: 'info',
+          });
+        }
+      } else {
+        setGoalFeedback({
+          message: data.error || 'Failed to update email notification preference',
+          type: 'error',
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setGoalFeedback({
+        message: 'Network error updating email service preference.',
+        type: 'error',
+      });
+    } finally {
+      setTogglingEmail(false);
+      setTimeout(() => {
+        setGoalFeedback((curr) => (curr?.type === 'info' ? curr : null));
+      }, 7000);
+    }
+  };
+
+  const handleTargetChange = async (val: string, sendEmail = true) => {
     setDailyTarget(val);
     localStorage.setItem('recall_daily_target', val);
+    setSendingGoalEmail(true);
+    setGoalFeedback({
+      message: emailNotifications
+        ? `Setting goal to ${val}/day and sending your today's schedule email...`
+        : `Setting goal to ${val}/day...`,
+      type: 'info',
+    });
+
+    try {
+      const res = await fetch('/api/settings/goal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          dailyTarget: Number(val),
+          emailNotifications,
+          sendEmail: sendEmail && emailNotifications,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        if (data.emailSent) {
+          setGoalFeedback({
+            message: `Goal set to ${val}/day! We emailed today's ${data.problemsCount} problem${data.problemsCount === 1 ? '' : 's'} with solve links & Recall access to ${data.emailRecipient || 'your email'}.`,
+            type: 'success',
+          });
+        } else if (!emailNotifications) {
+          setGoalFeedback({
+            message: `Goal set to ${val}/day. (Email service is currently OFF. Turn it ON below to receive email digests).`,
+            type: 'info',
+          });
+        } else if (data.error) {
+          setGoalFeedback({
+            message: `Goal saved to ${val}/day. (Email note: ${data.error})`,
+            type: 'info',
+          });
+        } else {
+          setGoalFeedback({
+            message: `Goal updated to ${val}/day.`,
+            type: 'success',
+          });
+        }
+      } else {
+        setGoalFeedback({
+          message: data.error || 'Failed to update goal',
+          type: 'error',
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      setGoalFeedback({
+        message: 'Network error while updating goal.',
+        type: 'error',
+      });
+    } finally {
+      setSendingGoalEmail(false);
+      setTimeout(() => {
+        setGoalFeedback((curr) => (curr?.type === 'info' ? curr : null));
+      }, 7000);
+    }
+  };
+
+  const handleSendGoalEmail = () => {
+    if (!emailNotifications) {
+      handleToggleEmailNotifications(true);
+    } else {
+      handleTargetChange(dailyTarget, true);
+    }
   };
 
   const handleExportData = () => {
@@ -477,9 +612,15 @@ export default function SettingsPage() {
 
               {/* Daily Revision Goal */}
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)', marginBottom: 6 }}>
-                  Daily Revision Goal
-                </label>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 500, color: 'var(--text-dim)' }}>
+                    Daily Revision Goal
+                  </label>
+                  <span style={{ fontSize: 11, color: 'var(--brand-orange, #ff6b00)', display: 'inline-flex', alignItems: 'center', gap: 4, fontWeight: 500 }}>
+                    <Mail size={12} /> Auto-emails today's queue
+                  </span>
+                </div>
+
                 <div data-daily-target-grid style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {['3', '5', '10', '15'].map((targetVal) => {
                     const active = dailyTarget === targetVal;
@@ -487,7 +628,8 @@ export default function SettingsPage() {
                       <button
                         key={targetVal}
                         type="button"
-                        onClick={() => handleTargetChange(targetVal)}
+                        disabled={sendingGoalEmail}
+                        onClick={() => handleTargetChange(targetVal, true)}
                         style={{
                           flex: 1,
                           padding: '7px 0',
@@ -497,7 +639,8 @@ export default function SettingsPage() {
                           color: active ? 'var(--target-btn-active-color)' : 'var(--target-btn-inactive-color)',
                           fontSize: 13,
                           fontWeight: active ? 600 : 400,
-                          cursor: 'pointer',
+                          cursor: sendingGoalEmail ? 'not-allowed' : 'pointer',
+                          opacity: sendingGoalEmail ? 0.7 : 1,
                           fontFamily: 'var(--font-geist-mono), monospace',
                           transition: 'all 0.12s ease',
                         }}
@@ -507,9 +650,184 @@ export default function SettingsPage() {
                     );
                   })}
                 </div>
-                <span style={{ fontSize: 11, color: 'var(--text-subtle)', marginTop: 6, display: 'block' }}>
-                  Target number of problem revisions per day.
-                </span>
+
+                {/* Email Action & Helper */}
+                <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: 11, color: 'var(--text-subtle)', flex: 1 }}>
+                    Selecting a goal emails today&apos;s scheduled questions with direct solve links and Recall access.
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={handleSendGoalEmail}
+                    disabled={sendingGoalEmail}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      background: 'var(--input-bg)',
+                      border: '1px solid var(--settings-action-btn-border)',
+                      borderRadius: 6,
+                      color: 'var(--text-strong)',
+                      fontSize: 12,
+                      fontWeight: 500,
+                      padding: '5px 12px',
+                      cursor: sendingGoalEmail ? 'not-allowed' : 'pointer',
+                      transition: 'all 0.15s ease',
+                      whiteSpace: 'nowrap',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!sendingGoalEmail) e.currentTarget.style.borderColor = 'var(--brand-orange, #ff6b00)';
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!sendingGoalEmail) e.currentTarget.style.borderColor = 'var(--settings-action-btn-border)';
+                    }}
+                  >
+                    {sendingGoalEmail ? (
+                      <>
+                        <Loader2 size={13} className="animate-spin" />
+                        <span>Sending Goal Email...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Mail size={13} style={{ color: 'var(--brand-orange, #ff6b00)' }} />
+                        <span>Send Today&apos;s Goal Email</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Feedback Banner */}
+                {goalFeedback && (
+                  <div
+                    style={{
+                      marginTop: 10,
+                      padding: '8px 12px',
+                      borderRadius: 6,
+                      fontSize: 12,
+                      lineHeight: 1.45,
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 8,
+                      background:
+                        goalFeedback.type === 'success'
+                          ? 'rgba(16, 185, 129, 0.1)'
+                          : goalFeedback.type === 'error'
+                          ? 'rgba(239, 68, 68, 0.1)'
+                          : 'rgba(255, 107, 0, 0.08)',
+                      border:
+                        goalFeedback.type === 'success'
+                          ? '1px solid rgba(16, 185, 129, 0.3)'
+                          : goalFeedback.type === 'error'
+                          ? '1px solid rgba(239, 68, 68, 0.3)'
+                          : '1px solid rgba(255, 107, 0, 0.25)',
+                      color:
+                        goalFeedback.type === 'success'
+                          ? 'var(--success, #10b981)'
+                          : goalFeedback.type === 'error'
+                          ? 'var(--error, #ef4444)'
+                          : 'var(--brand-orange, #ff8833)',
+                    }}
+                  >
+                    <span style={{ fontSize: 13, flexShrink: 0 }}>
+                      {goalFeedback.type === 'success' ? '✓' : goalFeedback.type === 'error' ? '⚠' : 'ℹ'}
+                    </span>
+                    <span style={{ flex: 1 }}>{goalFeedback.message}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Email Revision Service Toggle */}
+              <div
+                style={{
+                  background: 'var(--input-bg)',
+                  border: '1px solid var(--settings-action-btn-border)',
+                  borderRadius: 8,
+                  padding: '14px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 16,
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: '50%',
+                      background: emailNotifications ? 'rgba(255, 107, 0, 0.12)' : 'rgba(255, 255, 255, 0.05)',
+                      border: emailNotifications ? '1px solid rgba(255, 107, 0, 0.3)' : '1px solid var(--settings-action-btn-border)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: emailNotifications ? 'var(--brand-orange, #ff6b00)' : 'var(--text-dim)',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-strong)' }}>
+                        Daily Revision Email Service
+                      </span>
+                      <span
+                        style={{
+                          fontSize: 10,
+                          fontFamily: 'var(--font-geist-mono), monospace',
+                          fontWeight: 700,
+                          padding: '2px 6px',
+                          borderRadius: 4,
+                          textTransform: 'uppercase',
+                          background: emailNotifications ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255, 255, 255, 0.08)',
+                          color: emailNotifications ? '#34d399' : '#a1a1aa',
+                          border: emailNotifications ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid rgba(255, 255, 255, 0.1)',
+                        }}
+                      >
+                        {emailNotifications ? 'ACTIVE' : 'OFF'}
+                      </span>
+                    </div>
+                    <p style={{ margin: '4px 0 0 0', fontSize: 11.5, color: 'var(--text-muted)', lineHeight: 1.4 }}>
+                      Automatically deliver your scheduled revision queue, official problem links, and Recall access to your inbox.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Toggle Switch */}
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={emailNotifications}
+                  disabled={togglingEmail}
+                  onClick={() => handleToggleEmailNotifications(!emailNotifications)}
+                  style={{
+                    width: 44,
+                    height: 24,
+                    borderRadius: 12,
+                    background: emailNotifications ? 'var(--brand-orange, #ff6b00)' : 'var(--target-btn-inactive-bg, #27272a)',
+                    border: 'none',
+                    position: 'relative',
+                    cursor: togglingEmail ? 'not-allowed' : 'pointer',
+                    transition: 'background-color 0.2s',
+                    flexShrink: 0,
+                    padding: 0,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 18,
+                      height: 18,
+                      borderRadius: '50%',
+                      background: '#ffffff',
+                      position: 'absolute',
+                      top: 3,
+                      left: emailNotifications ? 23 : 3,
+                      transition: 'left 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                    }}
+                  />
+                </button>
               </div>
 
               {/* Interface Theme Preference */}

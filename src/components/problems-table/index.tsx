@@ -677,6 +677,8 @@ export function ProblemsTable() {
           { label: 'PROBLEM', width: 340, padding: '0 16px', dataCol: 'problem' },
           { label: 'DIFFICULTY', width: 115, padding: '0 12px', dataCol: 'difficulty' },
           { label: 'TOPIC', width: 185, padding: '0 12px', dataCol: 'topic' },
+          { label: 'COMPANIES', width: 180, padding: '0 12px', dataCol: 'companies' },
+          { label: 'SOLUTION', width: 110, padding: '0 10px', dataCol: 'solution' },
           { label: 'STATUS', width: 140, padding: '0 12px', dataCol: 'status' },
           { label: 'STAR', icon: <Bookmark size={13} strokeWidth={2} style={{ color: 'var(--muted-foreground)' }} />, width: 44, center: true, padding: '0', dataCol: 'star' },
           { label: 'NEXT REVISION', width: 140, padding: '0 12px', dataCol: 'next-revision' },
