@@ -12,9 +12,10 @@ type Confidence = 'CLEAN' | 'SHAKY' | 'STRUGGLED';
 
 type ProblemRowProps = {
   problem: any;
-  onRevised: (id: string) => void;
+  onRevised: (problem: any, conf: Confidence) => void;
   onToast: (msg: string) => void;
 };
+
 
 const CONF_BUTTONS: Record<
   Confidence,
@@ -80,7 +81,7 @@ export function ProblemRevisionRow({ problem, onRevised, onToast }: ProblemRowPr
       }
       setChosenConf(conf);
       setDone(true);
-      onRevised(problem.id);
+      onRevised(problem, conf);
     } catch (e: any) {
       onToast(e.message ?? 'Failed to submit revision');
     } finally {

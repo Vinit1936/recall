@@ -5,7 +5,7 @@ import { useTheme } from '@/components/theme-provider';
 import { Sun, Moon } from 'lucide-react';
 
 interface ThemeToggleProps {
-  variant?: 'icon' | 'sidebar' | 'segmented' | 'nav';
+  variant?: 'icon' | 'sidebar' | 'segmented' | 'nav' | 'ghost';
   className?: string;
   style?: React.CSSProperties;
 }
@@ -146,6 +146,51 @@ export function ThemeToggle({ variant = 'icon', className = '', style }: ThemeTo
     );
   }
 
+  if (variant === 'ghost') {
+    return (
+      <button
+        type="button"
+        data-theme-ghost
+        onClick={() => setTheme(isDark ? 'light' : 'dark')}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '28px',
+          height: '28px',
+          borderRadius: '6px',
+          background: 'transparent',
+          border: 'none',
+          color: 'var(--text-muted)',
+          cursor: 'pointer',
+          padding: 0,
+          transition: 'color 0.15s ease, background 0.15s ease',
+          ...style,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = 'var(--foreground)';
+          e.currentTarget.style.background = 'var(--sidebar-item-hover-bg)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = 'var(--text-muted)';
+          e.currentTarget.style.background = 'transparent';
+        }}
+      >
+        {mounted ? (
+          isDark ? (
+            <Sun size={16} strokeWidth={1.75} style={{ color: 'currentColor' }} />
+          ) : (
+            <Moon size={16} strokeWidth={1.75} style={{ color: 'currentColor' }} />
+          )
+        ) : (
+          <span style={{ width: 16, height: 16 }} />
+        )}
+      </button>
+    );
+  }
+
   // Default 'icon' variant
   return (
     <button
@@ -153,13 +198,14 @@ export function ThemeToggle({ variant = 'icon', className = '', style }: ThemeTo
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      style={style}
       className={`inline-flex items-center justify-center w-8 h-8 rounded-lg border border-border bg-background/80 hover:bg-accent hover:text-accent-foreground text-muted-foreground hover:text-foreground transition-all cursor-pointer ${className}`}
     >
       {mounted ? (
         isDark ? (
-          <Sun size={15} className="text-amber-400" />
+          <Sun size={15} strokeWidth={1.75} />
         ) : (
-          <Moon size={15} className="text-indigo-500" />
+          <Moon size={15} strokeWidth={1.75} />
         )
       ) : (
         <span className="w-3.5 h-3.5" />

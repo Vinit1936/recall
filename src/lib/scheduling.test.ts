@@ -6,6 +6,7 @@ import {
   reviseAgainFromMastered,
   getInitialSchedule,
   isDueToday,
+  revertRevision,
 } from './scheduling';
 
 // ---------------------------------------------------------------------------
@@ -210,3 +211,82 @@ describe('isDueToday', () => {
     expect(isDueToday(daysAfter(TODAY, 3), TODAY)).toBe(false);
   });
 });
+
+// ---------------------------------------------------------------------------
+// revertRevision
+// ---------------------------------------------------------------------------
+
+describe('revertRevision', () => {
+  it('reverts first revision back to initial schedule', () => {
+    const createdAt = daysAfter(TODAY, -3);
+    const result = revertRevision({
+      currentProblem: { createdAt, revisionCount: 1 },
+      latestRevision: { stepBefore: 0, type: 'REGULAR' },
+      priorRevision: null,
+    });
+
+    expect(result.restoredStep).toBe(0);
+    expect(result.restoredStatus).toBe('ACTIVE');
+    expect(result.restoredRevisionCount).toBe(0);
+    // When created 3 days ago, initial schedule was createdAt + 3 days = TODAY
+    expect(sameDay(result.restoredNextRevisionAt, TODAY)).toBe(true);
+  });
+
+  it('reverts to prior revision schedule when prior revision exists', () => {
+    const createdAt = daysAfter(TODAY, -10);
+    const priorRevisedAt = daysAfter(TODAY, -7);
+    // Prior revision was at step 0, CLEAN, so next revision was scheduled for priorRevisedAt + 7 days = TODAY
+    const result = revertRevision({
+      currentProblem: { createdAt, revisionCount: 2 },
+      latestRevision: { stepBefore: 1, type: 'REGULAR' },
+      priorRevision: {
+        stepBefore: 0,
+        confidence: 'CLEAN',
+        type: 'REGULAR',
+        revisedAt: priorRevisedAt,
+      },
+    });
+
+    expect(result.restoredStep).toBe(1);
+    expect(result.restoredStatus).toBe('ACTIVE');
+    expect(result.restoredRevisionCount).toBe(1);
+    expect(sameDay(result.restoredNextRevisionAt, TODAY)).toBe(true);
+  });
+
+  it('reverts a RECHECK revision back to MASTERED', () => {
+    const createdAt = daysAfter(TODAY, -40);
+    const result = revertRevision({
+      currentProblem: { createdAt, revisionCount: 5 },
+      latestRevision: { stepBefore: 0, type: 'RECHECK' },
+      priorRevision: null,
+    });
+
+    expect(result.restoredStep).toBe(0);
+    expect(result.restoredStatus).toBe('MASTERED');
+    expect(result.restoredRevisionCount).toBe(4);
+  });
+
+  it('reverts an overdue problem back to its overdue nextRevisionAt', () => {
+    const createdAt = daysAfter(TODAY, -20);
+    // Prior revision was 10 days ago at step 0 (Clean -> next revision in 7 days = 3 days ago)
+    const priorRevisedAt = daysAfter(TODAY, -10);
+    const expectedOverdueDate = daysAfter(priorRevisedAt, 7); // 3 days ago
+
+    const result = revertRevision({
+      currentProblem: { createdAt, revisionCount: 2 },
+      latestRevision: { stepBefore: 1, type: 'REGULAR' },
+      priorRevision: {
+        stepBefore: 0,
+        confidence: 'CLEAN',
+        type: 'REGULAR',
+        revisedAt: priorRevisedAt,
+      },
+    });
+
+    expect(result.restoredStep).toBe(1);
+    expect(result.restoredStatus).toBe('ACTIVE');
+    expect(sameDay(result.restoredNextRevisionAt, expectedOverdueDate)).toBe(true);
+    expect(result.restoredNextRevisionAt < TODAY).toBe(true);
+  });
+});
+

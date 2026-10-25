@@ -17,17 +17,69 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { confidence } = body as { confidence: Confidence };
+    const { confidence, replaceLatest } = body as { confidence: Confidence; replaceLatest?: boolean };
 
     if (!confidence || !['CLEAN', 'SHAKY', 'STRUGGLED'].includes(confidence)) {
       return Response.json({ error: 'confidence must be one of: CLEAN, SHAKY, STRUGGLED' }, { status: 400 });
     }
 
-    const problem = await prisma.problem.findFirst({ where: { id, userId } });
+    const problem = await prisma.problem.findFirst({
+      where: { id, userId },
+      select: {
+        id: true,
+        currentStep: true,
+        status: true,
+        nextRevisionAt: true,
+        revisions: {
+          orderBy: { revisedAt: 'desc' },
+          take: 1,
+          select: {
+            id: true,
+            type: true,
+            stepBefore: true,
+            revisedAt: true,
+          },
+        },
+      },
+    });
     if (!problem) return Response.json({ error: 'Problem not found' }, { status: 404 });
 
-    const revisionType = problem.status === 'MASTERED' ? 'RECHECK' : 'REGULAR';
     const today = new Date();
+
+    // If replacing / changing the latest revision (e.g. from Clean to Struggled)
+    if (replaceLatest && problem.revisions.length > 0) {
+      const latestRev = problem.revisions[0];
+      const revisionType = latestRev.type;
+      const { newStep, newStatus, nextRevisionAt } = applyRevision({
+        currentStep: latestRev.stepBefore,
+        status: (revisionType === 'RECHECK' ? 'MASTERED' : 'ACTIVE') as any,
+        confidence,
+        revisionType: revisionType as any,
+        today: latestRev.revisedAt,
+      });
+
+      const updatedProblem = await prisma.$transaction(async (tx) => {
+        await tx.revision.update({
+          where: { id: latestRev.id },
+          data: {
+            confidence: confidence as any,
+            stepAfter: newStep,
+          },
+        });
+        return tx.problem.update({
+          where: { id },
+          data: {
+            currentStep: newStep,
+            status: newStatus as any,
+            nextRevisionAt: nextRevisionAt ?? problem.nextRevisionAt,
+          },
+        });
+      });
+
+      return Response.json(updatedProblem);
+    }
+
+    const revisionType = problem.status === 'MASTERED' ? 'RECHECK' : 'REGULAR';
 
     const { newStep, newStatus, nextRevisionAt } = applyRevision({
       currentStep: problem.currentStep,

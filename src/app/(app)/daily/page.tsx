@@ -1,7 +1,7 @@
 'use client';
 
 import useSWR, { useSWRConfig } from 'swr';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { format } from 'date-fns';
 import { motion, AnimatePresence } from 'motion/react';
 import { StatsStrip } from '@/components/daily/stats-strip';
@@ -10,6 +10,8 @@ import { ProblemRevisionRow } from '@/components/daily/problem-row';
 import { AllDone } from '@/components/daily/all-done';
 import { EmptyState } from '@/components/daily/empty-state';
 import { ContributionHeatmap } from '@/components/heatmap';
+import { CompletedSection } from '@/components/daily/completed-section';
+import { UndoToast, type UndoToastItem } from '@/components/daily/undo-toast';
 
 import { fetcher } from '@/lib/fetcher';
 
@@ -26,12 +28,16 @@ export default function DailyRevisionPage() {
   const endOfToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999);
 
   const dueUrl = mounted ? `/api/problems/due?before=${endOfToday.toISOString()}` : '/api/problems/due';
+  const revisedUrl = mounted ? `/api/problems/revised-today?before=${endOfToday.toISOString()}` : '/api/problems/revised-today';
+
   const { data: dueProblems, isLoading: dueLoading } = useSWR(dueUrl, fetcher);
+  const { data: revisedProblems } = useSWR(revisedUrl, fetcher);
   const { data: allProblems } = useSWR('/api/problems', fetcher);
   const { data: streakData } = useSWR('/api/streak', fetcher);
   const { data: activity } = useSWR('/api/activity', fetcher);
 
   const [revisedIds, setRevisedIds] = useState<Set<string>>(new Set());
+  const [undoToast, setUndoToast] = useState<UndoToastItem | null>(null);
   const [toast, setToast] = useState('');
 
   const isDailyLoading = !mounted || (dueLoading && !dueProblems);
@@ -41,15 +47,123 @@ export default function DailyRevisionPage() {
     setTimeout(() => setToast(''), 3000);
   };
 
-  const handleRevised = (id: string) => {
-    setRevisedIds((prev) => new Set(prev).add(id));
+  const handleRevised = (problem: any, conf: 'CLEAN' | 'SHAKY' | 'STRUGGLED') => {
+    setRevisedIds((prev) => new Set(prev).add(problem.id));
+    setUndoToast({
+      id: `${problem.id}-${Date.now()}`,
+      problemId: problem.id,
+      title: problem.title,
+      confidence: conf,
+    });
     mutate((key: any) => typeof key === 'string' && key.startsWith('/api/problems/due'));
+    mutate((key: any) => typeof key === 'string' && key.startsWith('/api/problems/revised-today'));
     mutate('/api/streak');
     mutate('/api/activity');
     mutate('/api/problems');
   };
 
+  const handleUndo = async (problemId: string) => {
+    const revisedKeyMatcher = (key: any) => typeof key === 'string' && key.startsWith('/api/problems/revised-today');
+    const dueKeyMatcher = (key: any) => typeof key === 'string' && key.startsWith('/api/problems/due');
+
+    // 1. Optimistically remove from completed list immediately (0ms)
+    mutate(
+      revisedKeyMatcher,
+      (current: any) => {
+        if (!Array.isArray(current)) return current;
+        return current.filter((p: any) => p.id !== problemId);
+      },
+      { revalidate: false }
+    );
+
+    setRevisedIds((prev) => {
+      const next = new Set(prev);
+      next.delete(problemId);
+      return next;
+    });
+
+    if (undoToast?.problemId === problemId) {
+      setUndoToast(null);
+    }
+
+    try {
+      const res = await fetch(`/api/problems/${problemId}/undo-revision`, {
+        method: 'POST',
+      });
+      if (!res.ok) {
+        const j = await res.json();
+        throw new Error(j.error ?? 'Failed to undo revision');
+      }
+
+      // Revalidate in background to sync state without blocking UI
+      mutate(dueKeyMatcher);
+      mutate(revisedKeyMatcher);
+      mutate('/api/streak');
+      mutate('/api/activity');
+      mutate('/api/problems');
+
+      showToast('Revision undone');
+    } catch (e: any) {
+      // Rollback on error
+      mutate(revisedKeyMatcher);
+      mutate(dueKeyMatcher);
+      showToast(e.message ?? 'Failed to undo revision');
+    }
+  };
+
+  const handleChangeConfidence = async (problemId: string, newConf: 'CLEAN' | 'SHAKY' | 'STRUGGLED') => {
+    const revisedKeyMatcher = (key: any) => typeof key === 'string' && key.startsWith('/api/problems/revised-today');
+
+    // 1. Optimistic update in SWR cache immediately (0ms feedback)
+    mutate(
+      revisedKeyMatcher,
+      (current: any) => {
+        if (!Array.isArray(current)) return current;
+        return current.map((p: any) => {
+          if (p.id !== problemId) return p;
+          return {
+            ...p,
+            latestRevision: {
+              ...(p.latestRevision ?? {}),
+              confidence: newConf,
+            },
+          };
+        });
+      },
+      { revalidate: false }
+    );
+
+    showToast(`Updated status to ${newConf.charAt(0) + newConf.slice(1).toLowerCase()}`);
+
+    try {
+      const res = await fetch(`/api/problems/${problemId}/revise`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ confidence: newConf, replaceLatest: true }),
+      });
+      if (!res.ok) {
+        const j = await res.json();
+        throw new Error(j.error ?? 'Failed to update revision');
+      }
+
+      // Background revalidation without blocking UI
+      mutate(revisedKeyMatcher);
+      mutate((key: any) => typeof key === 'string' && key.startsWith('/api/problems/due'));
+      mutate('/api/problems');
+    } catch (e: any) {
+      // Rollback on error
+      mutate(revisedKeyMatcher);
+      showToast(e.message ?? 'Failed to update status');
+      throw e;
+    }
+  };
+
+  const handleDismissToast = useCallback(() => {
+    setUndoToast(null);
+  }, []);
+
   const rawDueList = Array.isArray(dueProblems) ? dueProblems : [];
+  const completedList = mounted && Array.isArray(revisedProblems) ? revisedProblems : [];
   const allList = Array.isArray(allProblems) ? allProblems : [];
 
   // Overdue: strictly before today's start
@@ -67,7 +181,7 @@ export default function DailyRevisionPage() {
   const streak = streakData?.currentStreak ?? 0;
 
   const unrevisedDue = activeDueList.filter((p: any) => !revisedIds.has(p.id));
-  const allDone = activeDueList.length > 0 && unrevisedDue.length === 0;
+  const hasFinishedAll = (activeDueList.length > 0 && unrevisedDue.length === 0) || (activeDueList.length === 0 && completedList.length > 0);
   const dateLabel = format(today, 'EEEE, MMMM d');
 
   return (
@@ -110,7 +224,7 @@ export default function DailyRevisionPage() {
         masteredCount={masteredCount}
         dueCount={dueCount}
         overdueCount={overdue.length}
-        todayCompleted={streakData?.todayCompleted}
+        todayCompleted={streakData?.todayCompleted || completedList.length > 0}
       />
 
       {/* Hero Questions Table Area */}
@@ -124,11 +238,11 @@ export default function DailyRevisionPage() {
               ))}
             </div>
           </div>
-        ) : activeDueList.length === 0 ? (
+        ) : activeDueList.length === 0 && completedList.length === 0 ? (
           <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <EmptyState />
           </motion.div>
-        ) : allDone ? (
+        ) : hasFinishedAll ? (
           <AllDone key="done" streak={streak} />
         ) : (
           <motion.div
@@ -201,6 +315,24 @@ export default function DailyRevisionPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Completed Today Section */}
+      {mounted && (
+        <CompletedSection
+          problems={completedList}
+          onUndo={handleUndo}
+          onChangeConfidence={handleChangeConfidence}
+        />
+      )}
+
+      {/* Interactive Undo Toast */}
+      {mounted && (
+        <UndoToast
+          toast={undoToast}
+          onUndo={handleUndo}
+          onDismiss={handleDismissToast}
+        />
+      )}
 
       {/* Heatmap Section */}
       <div style={{ marginTop: 40 }}>

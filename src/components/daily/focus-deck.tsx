@@ -13,7 +13,7 @@ type Confidence = 'CLEAN' | 'SHAKY' | 'STRUGGLED';
 type FocusDeckProps = {
   problems: any[];
   revisedIds: Set<string>;
-  onRevised: (id: string) => void;
+  onRevised: (problem: any, conf: Confidence) => void;
   onToast: (msg: string) => void;
   onExitFocus: () => void;
 };
@@ -39,7 +39,7 @@ export function FocusDeck({ problems, revisedIds, onRevised, onToast, onExitFocu
         const j = await res.json();
         throw new Error(j.error ?? 'Failed');
       }
-      onRevised(currentProblem.id);
+      onRevised(currentProblem, conf);
       if (currentIndex >= activeList.length - 1) {
         setCurrentIndex(0);
       }

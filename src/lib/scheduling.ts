@@ -227,3 +227,70 @@ export function isDueToday(nextRevisionAt: Date, today: Date): boolean {
   // due <= now means: due today OR already past due (overdue)
   return due <= now;
 }
+
+// -----------------------------------------------------------------------------
+// revertRevision — Reverts the latest revision and restores the previous state.
+//
+// When a user accidentally marks a revision or wants to undo it:
+// 1. Restores currentStep to the step it had before that revision (stepBefore).
+// 2. Restores status: if this was a RECHECK on a previously MASTERED problem,
+//    it reverts to MASTERED; otherwise ACTIVE.
+// 3. Decrements revisionCount by 1 (minimum 0).
+// 4. Restores nextRevisionAt:
+//    - If there was a revision prior to the undone one, we recalculate its scheduled
+//      due date using that prior revision's parameters.
+//    - If there was no prior revision, we restore to the initial schedule (createdAt + 3 days).
+// -----------------------------------------------------------------------------
+export type RevertRevisionInput = {
+  currentProblem: {
+    createdAt: Date;
+    revisionCount: number;
+  };
+  latestRevision: {
+    stepBefore: number;
+    type: RevisionType;
+  };
+  priorRevision?: {
+    stepBefore: number;
+    confidence: Confidence;
+    type: RevisionType;
+    revisedAt: Date;
+  } | null;
+};
+
+export type RevertRevisionResult = {
+  restoredStep: number;
+  restoredStatus: ProblemStatus;
+  restoredNextRevisionAt: Date;
+  restoredRevisionCount: number;
+};
+
+export function revertRevision(input: RevertRevisionInput): RevertRevisionResult {
+  const { currentProblem, latestRevision, priorRevision } = input;
+
+  const restoredStep = latestRevision.stepBefore;
+  const restoredStatus: ProblemStatus = latestRevision.type === 'RECHECK' ? 'MASTERED' : 'ACTIVE';
+  const restoredRevisionCount = Math.max(0, currentProblem.revisionCount - 1);
+
+  let restoredNextRevisionAt: Date;
+  if (priorRevision) {
+    const priorResult = applyRevision({
+      currentStep: priorRevision.stepBefore,
+      status: priorRevision.type === 'RECHECK' ? 'MASTERED' : 'ACTIVE',
+      confidence: priorRevision.confidence,
+      revisionType: priorRevision.type,
+      today: priorRevision.revisedAt,
+    });
+    restoredNextRevisionAt = priorResult.nextRevisionAt ?? priorRevision.revisedAt;
+  } else {
+    restoredNextRevisionAt = getInitialSchedule(currentProblem.createdAt).nextRevisionAt;
+  }
+
+  return {
+    restoredStep,
+    restoredStatus,
+    restoredNextRevisionAt,
+    restoredRevisionCount,
+  };
+}
+
